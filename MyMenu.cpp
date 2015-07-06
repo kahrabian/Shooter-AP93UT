@@ -16,13 +16,6 @@ MyMenu::MyMenu(QWidget *parent, Qt::WindowFlags f) :
 
 MyMenu::~MyMenu()
 {
-    delete this->start;
-    delete this->setting;
-    delete this->tutorial;
-    delete this->exit;
-    delete this->buttons;
-    delete this->logo;
-    delete this->menu;
 }
 
 void MyMenu::construct_menu()
