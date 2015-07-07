@@ -8,8 +8,7 @@ MySetting::MySetting(QWidget *parent, Qt::WindowFlags f) :
         QWidget(parent, f)
 {
     resize(1120, 630);
-    setStyleSheet("image: url(/home/kahrabian/ClionProjects/Shooter-AP93UT/Contents/background_menu.jpg);");
-    back = new QPushButton("Back", this);
+    setStyleSheet("MySetting {background-image: url(/home/kahrabian/ClionProjects/Shooter-AP93UT/Contents/background_menu.jpg);}");    back = new QPushButton("Back", this);
     construct_logo();
     construct_tabs();
     construct_setting();
@@ -23,12 +22,16 @@ void MySetting::construct_tabs()
 {
     tabs = new QTabWidget(this);
     construct_audio_tab();
+    tabs->setStyleSheet("QTabWidget {background-color: rgba(0, 0, 0, 60%);}");
     tabs->addTab(audio_tab, "Audio:");
 }
 
 void MySetting::construct_audio_tab()
 {
     audio_tab = new QWidget(tabs);
+    audio_tab->setStyleSheet("QWidget {background-color: transparent;}");
+    audio_tab_layout = new QVBoxLayout(audio_tab);
+
     sound_effects = new QHBoxLayout(audio_tab);
     sound_effects_text = new QLabel("Sound Effects:", audio_tab);
     sound_effects->addWidget(sound_effects_text);
@@ -42,8 +45,9 @@ void MySetting::construct_audio_tab()
     sound_effects->addWidget(sound_effects_mute);
     sound_effects_mute_checkbox = new QCheckBox(audio_tab);
     sound_effects->addWidget(sound_effects_mute_checkbox);
+
     musics = new QHBoxLayout(audio_tab);
-    musics_text = new QLabel("Sound Effects:", audio_tab);
+    musics_text = new QLabel("Musics:", audio_tab);
     musics->addWidget(musics_text);
     musics_slider = new QSlider(Qt::Orientation::Horizontal ,audio_tab);
     musics_slider->setRange(0, 100);
@@ -55,7 +59,7 @@ void MySetting::construct_audio_tab()
     musics->addWidget(musics_mute);
     musics_mute_checkbox = new QCheckBox(audio_tab);
     musics->addWidget(musics_mute_checkbox);
-    audio_tab_layout = new QVBoxLayout(audio_tab);
+
     audio_tab_layout->addLayout(musics);
     audio_tab_layout->addLayout(sound_effects);
 }

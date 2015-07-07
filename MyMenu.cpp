@@ -8,8 +8,7 @@ MyMenu::MyMenu(QWidget *parent, Qt::WindowFlags f) :
         QWidget(parent, f)
 {
     resize(1120, 630);
-    setStyleSheet("image: url(/home/kahrabian/ClionProjects/Shooter-AP93UT/Contents/background_menu.jpg);");
-    construct_buttons();
+    setStyleSheet("MyMenu {background-image: url(/home/kahrabian/ClionProjects/Shooter-AP93UT/Contents/background_menu.jpg);}");    construct_buttons();
     construct_logo();
     construct_menu();
 }

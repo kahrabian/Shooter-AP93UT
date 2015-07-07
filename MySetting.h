@@ -37,6 +37,7 @@ private:
     QLabel *sound_effects_mute;
     QSlider *sound_effects_slider;
     QCheckBox *sound_effects_mute_checkbox;
+
     QHBoxLayout *musics;
     QLabel *musics_text;
     QLabel *musics_mute;
