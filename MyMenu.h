@@ -6,10 +6,10 @@
 #define SHOOTER_AP93UT_MENU_H
 
 
-#include <QtWidgets/qmainwindow.h>
+#include <QtWidgets/qwidget.h>
+#include <QtWidgets/qboxlayout.h>
 #include <QtWidgets/qpushbutton.h>
 #include <QtWidgets/qlabel.h>
-#include <QtWidgets/qboxlayout.h>
 #include <QtWidgets/qstyleoption.h>
 #include <QtGui/qpainter.h>
 

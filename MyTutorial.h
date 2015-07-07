@@ -7,12 +7,13 @@
 
 
 #include <QtWidgets/qwidget.h>
-#include <QtWidgets/qlabel.h>
-#include <QtWidgets/qpushbutton.h>
 #include <QtWidgets/qboxlayout.h>
+#include <QtWidgets/qpushbutton.h>
 #include <QtWidgets/qtextedit.h>
+#include <QtWidgets/qlabel.h>
 #include <QtWidgets/qstyleoption.h>
 #include <QtGui/qpainter.h>
+
 
 class MyTutorial : public QWidget
 {

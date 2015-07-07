@@ -7,11 +7,11 @@
 MyMenu::MyMenu(QWidget *parent, Qt::WindowFlags f) :
         QWidget(parent, f)
 {
-    this->resize(1120, 630);
-    this->setStyleSheet("image: url(/home/kahrabian/ClionProjects/Shooter-AP93UT/Contents/background_menu.jpg);");
-    this->construct_buttons();
-    this->construct_logo();
-    this->construct_menu();
+    resize(1120, 630);
+    setStyleSheet("image: url(/home/kahrabian/ClionProjects/Shooter-AP93UT/Contents/background_menu.jpg);");
+    construct_buttons();
+    construct_logo();
+    construct_menu();
 }
 
 MyMenu::~MyMenu()
@@ -20,32 +20,32 @@ MyMenu::~MyMenu()
 
 void MyMenu::construct_menu()
 {
-    this->menu = new QVBoxLayout(this);
-    this->menu->addWidget(this->logo);
-    this->menu->addSpacing(630);
-    this->menu->addLayout(this->buttons);
+    menu = new QVBoxLayout(this);
+    menu->addWidget(logo);
+    menu->addSpacing(630);
+    menu->addLayout(buttons);
 }
 
 void MyMenu::construct_buttons()
 {
-    this->buttons = new QHBoxLayout();
-    this->start = new QPushButton("Start", this);
-    this->buttons->addWidget(this->start);
-    this->setting = new QPushButton("Setting", this);
-    this->buttons->addWidget(this->setting);
-    this->tutorial = new QPushButton("Tutorial", this);
-    this->buttons->addWidget(this->tutorial);
-    this->exit = new QPushButton("Exit", this);
-    this->buttons->addWidget(this->exit);
+    buttons = new QHBoxLayout();
+    start = new QPushButton("Start", this);
+    buttons->addWidget(start);
+    setting = new QPushButton("Setting", this);
+    buttons->addWidget(setting);
+    tutorial = new QPushButton("Tutorial", this);
+    buttons->addWidget(tutorial);
+    exit = new QPushButton("Exit", this);
+    buttons->addWidget(exit);
 }
 
 void MyMenu::construct_logo()
 {
-    this->logo = new QLabel(this);
+    logo = new QLabel(this);
     QPixmap *my_pix = new QPixmap("/home/kahrabian/ClionProjects/Shooter-AP93UT/Contents/logo.png");
-    this->logo->setPixmap(*my_pix);
-    this->logo->setAlignment(Qt::AlignHCenter);
-    this->logo->setAttribute(Qt::WA_TranslucentBackground);
+    logo->setPixmap(*my_pix);
+    logo->setAlignment(Qt::AlignHCenter);
+    logo->setAttribute(Qt::WA_TranslucentBackground);
     delete my_pix;
 }
 
@@ -54,6 +54,6 @@ void MyMenu::paintEvent(QPaintEvent *my_event)
     QPainter *my_painter = new QPainter(this);
     QStyleOption *my_option = new QStyleOption();
     my_option->init(this);
-    this->style()->drawPrimitive(QStyle::PE_Widget, my_option, my_painter, this);
+    style()->drawPrimitive(QStyle::PE_Widget, my_option, my_painter, this);
     QWidget::paintEvent(my_event);
 }

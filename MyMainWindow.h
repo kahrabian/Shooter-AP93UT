@@ -11,6 +11,7 @@
 #include <QtWidgets/qdesktopwidget.h>
 #include "MyMenu.h"
 #include "MyTutorial.h"
+#include "MySetting.h"
 
 class MyMainWindow : QMainWindow
 {
@@ -22,6 +23,7 @@ public:
 public slots:
     void exit_button_clicked();
     void tutorial_button_clicked();
+    void setting_button_clicked();
     void back_button_clicked();
 
 
@@ -29,7 +31,7 @@ private:
     QStackedWidget *widget_stack;
     MyMenu *menu;
     MyTutorial *tutorial;
-//    MySetting *setting;
+    MySetting *setting;
 //    MyGame *game;
     void set_initial_position();
     void set_properties();
