@@ -6,7 +6,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(SOURCE_FILES main.cpp)
-add_executable(Shooter-AP93UT ${SOURCE_FILES} Sources/MyMenu.cpp Sources/MyMenu.h Sources/MyMainWindow.cpp Sources/MyMainWindow.h Sources/MyTutorial.cpp Sources/MyTutorial.h Sources/MySetting.cpp Sources/MySetting.h)
+add_executable(Shooter-AP93UT ${SOURCE_FILES} "Sources/Source Files/MyMenu.cpp" Sources/Headers/MyMenu.h "Sources/Source Files/MyMainWindow.cpp" Sources/Headers/MyMainWindow.h "Sources/Source Files/MyTutorial.cpp" Sources/Headers/MyTutorial.h "Sources/Source Files/MySetting.cpp" Sources/Headers/MySetting.h)
 
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Widgets REQUIRED)

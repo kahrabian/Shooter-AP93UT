@@ -2,7 +2,7 @@
 // Created by kahrabian on 7/5/15.
 //
 
-#include "MyTutorial.h"
+#include "../Headers/MyTutorial.h"
 
 MyTutorial::MyTutorial(QWidget *parent, Qt::WindowFlags f) :
         QWidget(parent, f)

@@ -2,7 +2,7 @@
 // Created by kahrabian on 7/4/15.
 //
 
-#include "MyMainWindow.h"
+#include "../Headers/MyMainWindow.h"
 
 MyMainWindow::MyMainWindow(QWidget * parent, Qt::WindowFlags flag) :
         QMainWindow(parent, flag)
