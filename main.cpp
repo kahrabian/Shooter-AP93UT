@@ -1,10 +1,9 @@
 #include <QApplication>
-#include "MyMenu.h"
-#include "MyMainWindow.h"
+#include <Sources/MyMainWindow.h>
 
 int main(int argc, char **argv)
 {
-    QApplication app (argc, argv);
+    QApplication *app = new QApplication(argc, argv);
     MyMainWindow *mainwin = new MyMainWindow();
-    return app.exec();
+    return app->exec();
 }

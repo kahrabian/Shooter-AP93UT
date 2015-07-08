@@ -24,14 +24,14 @@ public:
     ~MyTutorial();
 
 private:
-    QVBoxLayout *tutorial;
+    QVBoxLayout *ttrl;
     QPushButton *back;
-    QTextEdit *text;
+    QTextEdit *txt;
     QLabel *logo;
 
-    void construct_logo();
-    void construct_text();
-    void construct_tutorial();
+    void cnstrct_logo();
+    void cnstrct_txt();
+    void cnstrct_ttrl();
     void paintEvent(QPaintEvent *);
 };
 

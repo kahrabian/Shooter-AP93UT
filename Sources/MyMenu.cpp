@@ -8,40 +8,41 @@ MyMenu::MyMenu(QWidget *parent, Qt::WindowFlags f) :
         QWidget(parent, f)
 {
     resize(1120, 630);
-    setStyleSheet("MyMenu {background-image: url(/home/kahrabian/ClionProjects/Shooter-AP93UT/Contents/background_menu.jpg);}");    construct_buttons();
-    construct_logo();
-    construct_menu();
+    setStyleSheet("MyMenu {background-image: url(/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/background.jpg);}");
+    cnstrct_btns();
+    cnstrct_logo();
+    cnstrct_menu();
 }
 
 MyMenu::~MyMenu()
 {
 }
 
-void MyMenu::construct_menu()
+void MyMenu::cnstrct_menu()
 {
     menu = new QVBoxLayout(this);
     menu->addWidget(logo);
     menu->addSpacing(630);
-    menu->addLayout(buttons);
+    menu->addLayout(btns);
 }
 
-void MyMenu::construct_buttons()
+void MyMenu::cnstrct_btns()
 {
-    buttons = new QHBoxLayout();
+    btns = new QHBoxLayout();
     start = new QPushButton("Start", this);
-    buttons->addWidget(start);
-    setting = new QPushButton("Setting", this);
-    buttons->addWidget(setting);
-    tutorial = new QPushButton("Tutorial", this);
-    buttons->addWidget(tutorial);
+    btns->addWidget(start);
+    stng = new QPushButton("Setting", this);
+    btns->addWidget(stng);
+    ttrl = new QPushButton("Tutorial", this);
+    btns->addWidget(ttrl);
     exit = new QPushButton("Exit", this);
-    buttons->addWidget(exit);
+    btns->addWidget(exit);
 }
 
-void MyMenu::construct_logo()
+void MyMenu::cnstrct_logo()
 {
     logo = new QLabel(this);
-    QPixmap *my_pix = new QPixmap("/home/kahrabian/ClionProjects/Shooter-AP93UT/Contents/logo.png");
+    QPixmap *my_pix = new QPixmap("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/logo.png");
     logo->setPixmap(*my_pix);
     logo->setAlignment(Qt::AlignHCenter);
     logo->setAttribute(Qt::WA_TranslucentBackground);

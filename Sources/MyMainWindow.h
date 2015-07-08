@@ -9,6 +9,7 @@
 #include <QtWidgets/qmainwindow.h>
 #include <QtWidgets/qstackedwidget.h>
 #include <QtWidgets/qdesktopwidget.h>
+#include <QtMultimedia/qmediaplayer.h>
 #include "MyMenu.h"
 #include "MyTutorial.h"
 #include "MySetting.h"
@@ -21,22 +22,24 @@ public:
     ~MyMainWindow();
 
 public slots:
-    void exit_button_clicked();
-    void tutorial_button_clicked();
-    void setting_button_clicked();
-    void back_button_clicked();
+    void exit_bttn_clicked();
+    void ttrl_bttn_clicked();
+    void stng_bttn_clicked();
+    void back_bttn_clicked();
 
 
 private:
+    QMediaPlayer *med_player;
     QStackedWidget *widget_stack;
     MyMenu *menu;
-    MyTutorial *tutorial;
-    MySetting *setting;
+    MyTutorial *ttrl;
+    MySetting *stng;
 //    MyGame *game;
-    void set_initial_position();
-    void set_properties();
-    void construct_stack();
-    void set_connections();
+
+    void set_init_pos();
+    void set_prpts();
+    void cnstrct_stack();
+    void set_cnctns();
 };
 
 

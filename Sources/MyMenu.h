@@ -23,17 +23,17 @@ public:
     ~MyMenu();
 
 private:
-    QHBoxLayout *buttons;
+    QHBoxLayout *btns;
     QVBoxLayout *menu;
     QPushButton *exit;
     QPushButton *start;
-    QPushButton *setting;
-    QPushButton *tutorial;
+    QPushButton *stng;
+    QPushButton *ttrl;
     QLabel *logo;
 
-    void construct_buttons();
-    void construct_logo();
-    void construct_menu();
+    void cnstrct_btns();
+    void cnstrct_logo();
+    void cnstrct_menu();
     void paintEvent(QPaintEvent *);
 };
 
