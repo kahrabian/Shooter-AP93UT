@@ -89,7 +89,62 @@ void MySetting::cnstrct_mode_tab()
 
 void MySetting::cnstrct_thm_tab()
 {
+    thmTab = new QWidget(tabs);
+    thmTab->setStyleSheet("QWidget {background-color: transparent;}");
+    thmTab_lay = new QHBoxLayout(thmTab);
 
+    aln_spc_lay = new QVBoxLayout(thmTab);
+//    aln_spc_lay->setAlignment(Qt::AlignTop);
+//     Spaceship selector
+    spc_pic = new QLabel(thmTab);
+    aln_spc_lay->addWidget(spc_pic);
+    spcbtn_lay = new QHBoxLayout(thmTab);
+    spc_prebtn = new QToolButton(thmTab);
+    spc_prebtn->setArrowType(Qt::LeftArrow);
+    spcbtn_lay->addWidget(spc_prebtn);
+    spc_txt = new QLabel("User Space Ship", thmTab);
+    spc_txt->setStyleSheet("QLabel {font-size: 12pt;}");
+    spc_txt->setAlignment(Qt::AlignCenter);
+    spcbtn_lay->addWidget(spc_txt);
+    spc_nexbtn = new QToolButton(thmTab);
+    spc_nexbtn->setArrowType(Qt::RightArrow);
+    spcbtn_lay->addWidget(spc_nexbtn);
+    aln_spc_lay->addLayout(spcbtn_lay);
+
+    aln_pic = new QLabel(thmTab);
+    aln_spc_lay->addWidget(aln_pic);
+    alnbtn_lay = new QHBoxLayout(thmTab);
+    aln_prebtn = new QToolButton(thmTab);
+    aln_prebtn->setArrowType(Qt::LeftArrow);
+    alnbtn_lay->addWidget(aln_prebtn);
+    aln_txt = new QLabel("Alien", thmTab);
+    aln_txt->setStyleSheet("QLabel {font-size: 12pt;}");
+    aln_txt->setAlignment(Qt::AlignCenter);
+    alnbtn_lay->addWidget(aln_txt);
+    aln_nexbtn = new QToolButton(thmTab);
+    aln_nexbtn->setArrowType(Qt::RightArrow);
+    alnbtn_lay->addWidget(aln_nexbtn);
+    aln_spc_lay->addLayout(alnbtn_lay);
+
+    env_lay = new QVBoxLayout(thmTab);
+//    env_lay->setAlignment(Qt::AlignTop);
+    env_pic = new QLabel(thmTab);
+    env_lay->addWidget(env_pic);
+    envbtn_lay = new QHBoxLayout(thmTab);
+    env_prebtn = new QToolButton(thmTab);
+    env_prebtn->setArrowType(Qt::LeftArrow);
+    envbtn_lay->addWidget(env_prebtn);
+    env_txt = new QLabel("Environment", thmTab);
+    env_txt->setAlignment(Qt::AlignCenter);
+    env_txt->setStyleSheet("QLabel {font-size: 12pt;}");
+    envbtn_lay->addWidget(env_txt);
+    env_nexbtn = new QToolButton(thmTab);
+    env_nexbtn->setArrowType(Qt::RightArrow);
+    envbtn_lay->addWidget(env_nexbtn);
+    env_lay->addLayout(envbtn_lay);
+
+    thmTab_lay->addLayout(aln_spc_lay);
+    thmTab_lay->addLayout(env_lay);
 }
 
 void MySetting::cnstrct_aud_tab()
