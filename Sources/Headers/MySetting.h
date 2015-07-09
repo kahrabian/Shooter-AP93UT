@@ -17,6 +17,8 @@
 #include <QtWidgets/qradiobutton.h>
 #include <QtWidgets/qbuttongroup.h>
 #include <QtWidgets/qtoolbutton.h>
+#include "Resources.h"
+//#include "SettingData.h"
 
 
 class MySetting : public QWidget
@@ -96,8 +98,8 @@ private:
     QToolButton *aiShip_nexbtn;
     QToolButton *aiShip_prebtn;
 
-    void cnstrct_logo();
     void cnstrct_stng();
+    void cnstrct_logo();
     void cnstrct_tabs();
     void cnstrct_aud_tab();
     void cnstrct_mode_tab();

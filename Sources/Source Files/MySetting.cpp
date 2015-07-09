@@ -8,16 +8,14 @@ MySetting::MySetting(QWidget *parent, Qt::WindowFlags f) :
         QWidget(parent, f)
 {
     resize(1120, 630);
-    setStyleSheet("MySetting {background-image: url(/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/background.jpg);}");
+    setStyleSheet("MySetting " + MyRes::background_add);
     back = new QPushButton("Back", this);
     cnstrct_logo();
     cnstrct_tabs();
     cnstrct_stng();
 }
 
-MySetting::~MySetting()
-{
-}
+MySetting::~MySetting() { }
 
 void MySetting::cnstrct_tabs()
 {
@@ -26,7 +24,7 @@ void MySetting::cnstrct_tabs()
     cnstrct_thm_tab();
     cnstrct_aud_tab();
     cnstrct_ai_tab();
-    tabs->setStyleSheet("QTabWidget {background-color: rgba(0, 0, 0, 60%);}");
+    tabs->setStyleSheet(MyRes::wdg_stlsheet);
     tabs->addTab(modeTab, "Game Mode");
     tabs->addTab(thmTab, "Theme");
     tabs->addTab(audTab, "Audio");
@@ -36,50 +34,50 @@ void MySetting::cnstrct_tabs()
 void MySetting::cnstrct_mode_tab()
 {
     modeTab = new QWidget(tabs);
-    modeTab->setStyleSheet("QWidget {background-color: transparent;}");
+    modeTab->setStyleSheet(MyRes::wdg_stlsheet);
     modeTab_lay = new QHBoxLayout(modeTab);
 
     gMod_lay = new QVBoxLayout(modeTab);
     gMod_lay->setAlignment(Qt::AlignTop);
     gMod_txt = new QLabel("Game Mode:", modeTab);
-    gMod_txt->setStyleSheet("QLabel {font-size: 25pt; font-weight: bold;}");
+    gMod_txt->setStyleSheet(MyRes::lbl_bstlsheet);
     gMod_lay->addWidget(gMod_txt);
     gMods = new QButtonGroup();
     gMod_sng = new QRadioButton("Single", modeTab);
-    gMod_sng->setStyleSheet("QRadioButton {font-size: 12pt;}");
+    gMod_sng->setStyleSheet(MyRes::rdbtn_stlsheet);
     gMod_sng->setChecked(true);
     gMods->addButton(gMod_sng, 1);
     gMod_lay->addWidget(gMod_sng);
     gMod_co = new QRadioButton("Co-Op", modeTab);
-    gMod_co->setStyleSheet("QRadioButton {font-size: 12pt;}");
+    gMod_co->setStyleSheet(MyRes::rdbtn_stlsheet);
     gMods->addButton(gMod_co, 2);
     gMod_lay->addWidget(gMod_co);
     gMod_vs = new QRadioButton("vs Ai", modeTab);
-    gMod_vs->setStyleSheet("QRadioButton {font-size: 12pt;}");
+    gMod_vs->setStyleSheet(MyRes::rdbtn_stlsheet);
     gMods->addButton(gMod_vs, 3);
     gMod_lay->addWidget(gMod_vs);
 
     gDiff_lay = new QVBoxLayout(modeTab);
     gDiff_lay->setAlignment(Qt::AlignTop);
     gDiff_txt = new QLabel("Game Difficulty:", modeTab);
-    gDiff_txt->setStyleSheet("QLabel {font-size: 25pt; font-weight: bold;}");
+    gDiff_txt->setStyleSheet(MyRes::lbl_bstlsheet);
     gDiff_lay->addWidget(gDiff_txt);
     gDiffs = new QButtonGroup();
     gDiff_eas = new QRadioButton("Easy", modeTab);
-    gDiff_eas->setStyleSheet("QRadioButton {font-size: 12pt;}");
+    gDiff_eas->setStyleSheet(MyRes::rdbtn_stlsheet);
     gDiff_eas->setChecked(true);
     gDiffs->addButton(gDiff_eas, 1);
     gDiff_lay->addWidget(gDiff_eas);
     gDiff_nor = new QRadioButton("Normal", modeTab);
-    gDiff_nor->setStyleSheet("QRadioButton {font-size: 12pt;}");
+    gDiff_nor->setStyleSheet(MyRes::rdbtn_stlsheet);
     gDiffs->addButton(gDiff_nor, 2);
     gDiff_lay->addWidget(gDiff_nor);
     gDiff_har = new QRadioButton("Hard", modeTab);
-    gDiff_har->setStyleSheet("QRadioButton {font-size: 12pt;}");
+    gDiff_har->setStyleSheet(MyRes::rdbtn_stlsheet);
     gDiffs->addButton(gDiff_har, 3);
     gDiff_lay->addWidget(gDiff_har);
     gDiff_ext = new QRadioButton("Extreme", modeTab);
-    gDiff_ext->setStyleSheet("QRadioButton {font-size: 12pt;}");
+    gDiff_ext->setStyleSheet(MyRes::rdbtn_stlsheet);
     gDiffs->addButton(gDiff_ext, 4);
     gDiff_lay->addWidget(gDiff_ext);
 

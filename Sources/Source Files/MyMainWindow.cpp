@@ -12,9 +12,7 @@ MyMainWindow::MyMainWindow(QWidget * parent, Qt::WindowFlags flag) :
     set_cnctns();
 }
 
-MyMainWindow::~MyMainWindow()
-{
-}
+MyMainWindow::~MyMainWindow() { }
 
 void MyMainWindow::exit_bttn_clicked()
 {
@@ -38,8 +36,8 @@ void MyMainWindow::stng_bttn_clicked()
 
 void MyMainWindow::set_init_pos()
 {
-    QDesktopWidget desktop;
-    setGeometry((desktop.screen()->width() / 2) - (frameGeometry().width() / 2), (desktop.screen()->height() / 2) - (frameGeometry().height() / 2), frameGeometry().width(), frameGeometry().height());
+    QDesktopWidget *desktop = new QDesktopWidget();
+    setGeometry((desktop->screen()->width() / 2) - (frameGeometry().width() / 2), (desktop->screen()->height() / 2) - (frameGeometry().height() / 2), frameGeometry().width(), frameGeometry().height());
 }
 
 void MyMainWindow::set_prpts()
@@ -47,7 +45,7 @@ void MyMainWindow::set_prpts()
     setFixedSize(1120, 630);
     set_init_pos();
     setWindowTitle("Awsome Space Shooter");
-    QIcon *icon = new QIcon("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/icon.ico");
+    QIcon *icon = new QIcon(MyRes::mainwin_icon);
     setWindowIcon(*icon);
     setCentralWidget(widget_stack);
     show();

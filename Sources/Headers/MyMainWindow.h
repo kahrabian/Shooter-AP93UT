@@ -10,6 +10,7 @@
 #include <QtWidgets/qstackedwidget.h>
 #include <QtWidgets/qdesktopwidget.h>
 #include <QtMultimedia/qmediaplayer.h>
+#include "Resources.h"
 #include "MyMenu.h"
 #include "MyTutorial.h"
 #include "MySetting.h"

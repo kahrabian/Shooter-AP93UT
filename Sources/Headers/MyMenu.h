@@ -12,7 +12,7 @@
 #include <QtWidgets/qlabel.h>
 #include <QtWidgets/qstyleoption.h>
 #include <QtGui/qpainter.h>
-
+#include "Resources.h"
 
 class MyMenu : public QWidget
 {

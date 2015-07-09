@@ -8,15 +8,13 @@ MyMenu::MyMenu(QWidget *parent, Qt::WindowFlags f) :
         QWidget(parent, f)
 {
     resize(1120, 630);
-    setStyleSheet("MyMenu {background-image: url(/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/background.jpg);}");
+    setStyleSheet("MyMenu " + MyRes::background_add);
     cnstrct_btns();
     cnstrct_logo();
     cnstrct_menu();
 }
 
-MyMenu::~MyMenu()
-{
-}
+MyMenu::~MyMenu() { }
 
 void MyMenu::cnstrct_menu()
 {
@@ -42,7 +40,7 @@ void MyMenu::cnstrct_btns()
 void MyMenu::cnstrct_logo()
 {
     logo = new QLabel(this);
-    QPixmap *my_pix = new QPixmap("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/logo.png");
+    QPixmap *my_pix = new QPixmap(MyRes::logo_add);
     logo->setPixmap(*my_pix);
     logo->setAlignment(Qt::AlignHCenter);
     logo->setAttribute(Qt::WA_TranslucentBackground);
