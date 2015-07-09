@@ -11,7 +11,7 @@ bool SettingData::mMut = false;
 int SettingData::sfVol = 50;
 bool SettingData::sfMut = false;
 int SettingData::aiDiff = 1;
-int SettingData::aiShp = 2;
+int SettingData::aiShp = 1;
 
 int main(int argc, char **argv)
 {
