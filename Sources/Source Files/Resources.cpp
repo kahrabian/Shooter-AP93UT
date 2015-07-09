@@ -7,6 +7,7 @@ namespace MyRes
 {
     QString logo_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/logo.png");
     QString background_add("{background-image: url(/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/background.jpg);}");
+    QString mainwdg_stlsheet("QWidget {background-color: rgba(0, 0, 0, 60%);}");
     QString wdg_stlsheet("QWidget {background-color: transparent;}");
     QString rdbtn_stlsheet("QRadioButton {font-size: 12pt;}");
     QString lbl_bstlsheet("QLabel {font-size: 25pt; font-weight: bold;}");

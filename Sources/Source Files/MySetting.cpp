@@ -24,7 +24,7 @@ void MySetting::cnstrct_tabs()
     cnstrct_thm_tab();
     cnstrct_aud_tab();
     cnstrct_ai_tab();
-    tabs->setStyleSheet(MyRes::wdg_stlsheet);
+    tabs->setStyleSheet(MyRes::mainwdg_stlsheet);
     tabs->addTab(modeTab, "Game Mode");
     tabs->addTab(thmTab, "Theme");
     tabs->addTab(audTab, "Audio");
@@ -88,7 +88,7 @@ void MySetting::cnstrct_mode_tab()
 void MySetting::cnstrct_thm_tab()
 {
     thmTab = new QWidget(tabs);
-    thmTab->setStyleSheet("QWidget {background-color: transparent;}");
+    thmTab->setStyleSheet(MyRes::wdg_stlsheet);
     thmTab_lay = new QHBoxLayout(thmTab);
 
     aln_spc_lay = new QVBoxLayout(thmTab);
@@ -101,7 +101,7 @@ void MySetting::cnstrct_thm_tab()
     spc_prebtn->setArrowType(Qt::LeftArrow);
     spcbtn_lay->addWidget(spc_prebtn);
     spc_txt = new QLabel("User Space Ship", thmTab);
-    spc_txt->setStyleSheet("QLabel {font-size: 12pt;}");
+    spc_txt->setStyleSheet(MyRes::lbl_stlsheet);
     spc_txt->setAlignment(Qt::AlignCenter);
     spcbtn_lay->addWidget(spc_txt);
     spc_nexbtn = new QToolButton(thmTab);
@@ -116,7 +116,7 @@ void MySetting::cnstrct_thm_tab()
     aln_prebtn->setArrowType(Qt::LeftArrow);
     alnbtn_lay->addWidget(aln_prebtn);
     aln_txt = new QLabel("Alien", thmTab);
-    aln_txt->setStyleSheet("QLabel {font-size: 12pt;}");
+    aln_txt->setStyleSheet(MyRes::lbl_stlsheet);
     aln_txt->setAlignment(Qt::AlignCenter);
     alnbtn_lay->addWidget(aln_txt);
     aln_nexbtn = new QToolButton(thmTab);
@@ -134,7 +134,7 @@ void MySetting::cnstrct_thm_tab()
     envbtn_lay->addWidget(env_prebtn);
     env_txt = new QLabel("Environment", thmTab);
     env_txt->setAlignment(Qt::AlignCenter);
-    env_txt->setStyleSheet("QLabel {font-size: 12pt;}");
+    env_txt->setStyleSheet(MyRes::lbl_stlsheet);
     envbtn_lay->addWidget(env_txt);
     env_nexbtn = new QToolButton(thmTab);
     env_nexbtn->setArrowType(Qt::RightArrow);
@@ -148,12 +148,12 @@ void MySetting::cnstrct_thm_tab()
 void MySetting::cnstrct_aud_tab()
 {
     audTab = new QWidget(tabs);
-    audTab->setStyleSheet("QWidget {background-color: transparent;}");
+    audTab->setStyleSheet(MyRes::wdg_stlsheet);
     audTab_lay = new QVBoxLayout(audTab);
 
     sndEffs = new QHBoxLayout(audTab);
     sndEffs_txt = new QLabel("Sound Effects:", audTab);
-    sndEffs_txt->setStyleSheet("QLabel {font-size: 12pt;}");
+    sndEffs_txt->setStyleSheet(MyRes::lbl_stlsheet);
     sndEffs->addWidget(sndEffs_txt);
     sndEffs_sli = new QSlider(Qt::Orientation::Horizontal ,audTab);
     sndEffs_sli->setRange(0, 100);
@@ -162,11 +162,11 @@ void MySetting::cnstrct_aud_tab()
     sndEffs_sli->setTickPosition(QSlider::TicksBelow);
     sndEffs->addWidget(sndEffs_sli);
     sndEffs_mute = new QCheckBox("Mute", audTab);
-    sndEffs_mute->setStyleSheet("QCheckBox {font-size: 12pt;}");
+    sndEffs_mute->setStyleSheet(MyRes::chckbx_stlsheet);
     sndEffs->addWidget(sndEffs_mute);
     muse = new QHBoxLayout(audTab);
     muse_txt = new QLabel("Musics:", audTab);
-    muse_txt->setStyleSheet("QLabel {font-size: 12pt;}");
+    muse_txt->setStyleSheet(MyRes::lbl_stlsheet);
     muse->addWidget(muse_txt);
     muse->addSpacing(sndEffs_txt->fontMetrics().width("Sound Effects:") - muse_txt->fontMetrics().width("Musics:"));
     muse_sli = new QSlider(Qt::Orientation::Horizontal ,audTab);
@@ -176,7 +176,7 @@ void MySetting::cnstrct_aud_tab()
     muse_sli->setTickPosition(QSlider::TicksBelow);
     muse->addWidget(muse_sli);
     muse_mute = new QCheckBox("Mute", audTab);
-    muse_mute->setStyleSheet("QCheckBox {font-size: 12pt;}");
+    muse_mute->setStyleSheet(MyRes::chckbx_stlsheet);
     muse->addWidget(muse_mute);
 
     audTab_lay->addLayout(muse);
@@ -186,30 +186,30 @@ void MySetting::cnstrct_aud_tab()
 void MySetting::cnstrct_ai_tab()
 {
     aiTab = new QWidget(tabs);
-    aiTab->setStyleSheet("QWidget {background-color: transparent;}");
+    aiTab->setStyleSheet(MyRes::wdg_stlsheet);
     aiTab_lay = new QHBoxLayout(aiTab);
 
     aiDiff_lay = new QVBoxLayout(aiTab);
     aiDiff_lay->setAlignment(Qt::AlignTop);
     aiDiff_txt = new QLabel("Ai Difficulty:", aiTab);
-    aiDiff_txt->setStyleSheet("QLabel {font-size: 25pt; font-weight: bold;}");
+    aiDiff_txt->setStyleSheet(MyRes::lbl_bstlsheet);
     aiDiff_lay->addWidget(aiDiff_txt);
     aiDiffs = new QButtonGroup();
     aiDiff_eas = new QRadioButton("Easy", aiTab);
-    aiDiff_eas->setStyleSheet("QRadioButton {font-size: 12pt;}");
+    aiDiff_eas->setStyleSheet(MyRes::rdbtn_stlsheet);
     aiDiff_eas->setChecked(true);
     aiDiffs->addButton(aiDiff_eas, 1);
     aiDiff_lay->addWidget(aiDiff_eas);
     aiDiff_nor = new QRadioButton("Normal", aiTab);
-    aiDiff_nor->setStyleSheet("QRadioButton {font-size: 12pt;}");
+    aiDiff_nor->setStyleSheet(MyRes::rdbtn_stlsheet);
     aiDiffs->addButton(aiDiff_nor, 2);
     aiDiff_lay->addWidget(aiDiff_nor);
     aiDiff_har = new QRadioButton("Hard", aiTab);
-    aiDiff_har->setStyleSheet("QRadioButton {font-size: 12pt;}");
+    aiDiff_har->setStyleSheet(MyRes::rdbtn_stlsheet);
     aiDiffs->addButton(aiDiff_har, 3);
     aiDiff_lay->addWidget(aiDiff_har);
     aiDiff_ext = new QRadioButton("Extreme", aiTab);
-    aiDiff_ext->setStyleSheet("QRadioButton {font-size: 12pt;}");
+    aiDiff_ext->setStyleSheet(MyRes::rdbtn_stlsheet);
     aiDiffs->addButton(aiDiff_ext, 4);
     aiDiff_lay->addWidget(aiDiff_ext);
 
@@ -223,7 +223,7 @@ void MySetting::cnstrct_ai_tab()
     aiShip_prebtn->setArrowType(Qt::LeftArrow);
     aiShipbtn_lay->addWidget(aiShip_prebtn);
     aiShip_txt = new QLabel("Ai Space Ship", aiTab);
-    aiShip_txt->setStyleSheet("QLabel {font-size: 12pt;}");
+    aiShip_txt->setStyleSheet(MyRes::lbl_stlsheet);
     aiShip_txt->setAlignment(Qt::AlignCenter);
     aiShipbtn_lay->addWidget(aiShip_txt);
     aiShip_nexbtn = new QToolButton(aiTab);
@@ -246,7 +246,7 @@ void MySetting::cnstrct_stng()
 void MySetting::cnstrct_logo()
 {
     logo = new QLabel(this);
-    QPixmap *my_pix = new QPixmap("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/logo.png");
+    QPixmap *my_pix = new QPixmap(MyRes::logo_add);
     logo->setPixmap(*my_pix);
     logo->setAlignment(Qt::AlignHCenter);
     logo->setAttribute(Qt::WA_TranslucentBackground);

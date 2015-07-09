@@ -12,6 +12,7 @@ namespace MyRes
 {
     extern QString logo_add;
     extern QString background_add;
+    extern QString mainwdg_stlsheet;
     extern QString wdg_stlsheet;
     extern QString rdbtn_stlsheet;
     extern QString lbl_bstlsheet;
