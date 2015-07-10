@@ -40,7 +40,6 @@ void MyTutorial::cnstrct_logo()
     logo->setPixmap(*my_pix);
     logo->setAlignment(Qt::AlignHCenter);
     logo->setAttribute(Qt::WA_TranslucentBackground, true);
-    delete my_pix;
 }
 
 void MyTutorial::paintEvent(QPaintEvent *my_event)

@@ -20,14 +20,23 @@ void MyMenu::cnstrct_menu()
 {
     menu = new QVBoxLayout(this);
     menu->addWidget(logo);
-    menu->addSpacing(630);
     menu->addLayout(btns);
 }
 
 void MyMenu::cnstrct_btns()
 {
+    QFile file(MyRes::stng_add);
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    QTextStream stream(&file);
+    QString tmp;
+    stream >> tmp;
+
     btns = new QHBoxLayout();
-    start = new QPushButton("Start", this);
+    rsm = new QPushButton("Resume", this);
+    btns->addWidget(rsm);
+    if(tmp == "0")
+        rsm->hide();
+    start = new QPushButton("New Game", this);
     btns->addWidget(start);
     stng = new QPushButton("Setting", this);
     btns->addWidget(stng);
@@ -44,7 +53,6 @@ void MyMenu::cnstrct_logo()
     logo->setPixmap(*my_pix);
     logo->setAlignment(Qt::AlignHCenter);
     logo->setAttribute(Qt::WA_TranslucentBackground);
-    delete my_pix;
 }
 
 void MyMenu::paintEvent(QPaintEvent *my_event)

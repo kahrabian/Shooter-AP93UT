@@ -34,7 +34,6 @@ public slots:
     void update_stng();
 
 private:
-    QMediaPlaylist *med_playlist;
     QMediaPlayer *med_player;
     QStackedWidget *widget_stack;
     MyMenu *menu;

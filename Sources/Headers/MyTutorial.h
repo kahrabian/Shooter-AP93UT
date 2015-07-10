@@ -6,13 +6,13 @@
 #define SHOOTER_AP93UT_MYTUTORIAL_H
 
 
-#include <QtWidgets/qwidget.h>
-#include <QtWidgets/qboxlayout.h>
-#include <QtWidgets/qpushbutton.h>
-#include <QtWidgets/qtextedit.h>
-#include <QtWidgets/qlabel.h>
-#include <QtWidgets/qstyleoption.h>
-#include <QtGui/qpainter.h>
+#include <QWidget>
+#include <QBoxLayout>
+#include <QPushButton>
+#include <QTextEdit>
+#include <QLabel>
+#include <QStyleOption>
+#include <QPainter>
 #include "Resources.h"
 
 

@@ -6,12 +6,13 @@
 #define SHOOTER_AP93UT_MENU_H
 
 
-#include <QtWidgets/qwidget.h>
-#include <QtWidgets/qboxlayout.h>
-#include <QtWidgets/qpushbutton.h>
-#include <QtWidgets/qlabel.h>
-#include <QtWidgets/qstyleoption.h>
-#include <QtGui/qpainter.h>
+#include <QWidget>
+#include <QBoxLayout>
+#include <QPushButton>
+#include <QLabel>
+#include <QStyleOption>
+#include <QPainter>
+#include <QFile>
 #include "Resources.h"
 
 class MyMenu : public QWidget
@@ -27,6 +28,7 @@ private:
     QVBoxLayout *menu;
     QPushButton *exit;
     QPushButton *start;
+    QPushButton *rsm;
     QPushButton *stng;
     QPushButton *ttrl;
     QLabel *logo;

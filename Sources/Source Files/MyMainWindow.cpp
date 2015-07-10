@@ -44,8 +44,6 @@ void MyMainWindow::set_init_pos()
 void MyMainWindow::set_media()
 {
     med_player = new QMediaPlayer(this);
-    med_playlist = new QMediaPlaylist(med_player);
-//    med_playlist-addMedia(QUrl::fromLocalFile(MyRes::mainmuse_add));
     med_player->setMedia(QUrl::fromLocalFile(MyRes::mainmuse_add));
     update_stng();
     med_player->play();
@@ -60,7 +58,6 @@ void MyMainWindow::set_prpts()
     setWindowIcon(*icon);
     setCentralWidget(widget_stack);
     show();
-    delete icon;
 }
 
 void MyMainWindow::cnstrct_stack()

@@ -17,6 +17,7 @@
 #include <QRadioButton>
 #include <QButtonGroup>
 #include <QToolButton>
+#include <QTextStream>
 #include "Resources.h"
 
 

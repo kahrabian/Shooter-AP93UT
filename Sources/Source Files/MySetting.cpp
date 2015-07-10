@@ -2,7 +2,6 @@
 // Created by kahrabian on 7/7/15.
 //
 
-#include <QtCore/qtextstream.h>
 #include "../Headers/MySetting.h"
 
 MySetting::MySetting(QWidget *parent, Qt::WindowFlags f) :
@@ -94,8 +93,6 @@ void MySetting::cnstrct_thm_tab()
     thmTab_lay = new QHBoxLayout(thmTab);
 
     spc_lay = new QVBoxLayout(thmTab);
-//    spc_lay->setAlignment(Qt::AlignTop);
-//     Spaceship selector
     spc_pic = new QLabel(thmTab);
     spc_lay->addWidget(spc_pic);
     spcbtn_lay = new QHBoxLayout(thmTab);
@@ -112,7 +109,6 @@ void MySetting::cnstrct_thm_tab()
     spc_lay->addLayout(spcbtn_lay);
 
     env_lay = new QVBoxLayout(thmTab);
-//    env_lay->setAlignment(Qt::AlignTop);
     env_pic = new QLabel(thmTab);
     env_lay->addWidget(env_pic);
     envbtn_lay = new QHBoxLayout(thmTab);
@@ -142,7 +138,7 @@ void MySetting::cnstrct_aud_tab()
     sndEffs_txt = new QLabel("Sound Effects:", audTab);
     sndEffs_txt->setStyleSheet(MyRes::lbl_stlsheet);
     sndEffs->addWidget(sndEffs_txt);
-    sndEffs_sli = new QSlider(Qt::Orientation::Horizontal ,audTab);
+    sndEffs_sli = new QSlider(Qt::Orientation::Horizontal, audTab);
     sndEffs_sli->setRange(0, 100);
     sndEffs_sli->setValue(50);
     sndEffs_sli->setTickInterval(1);
@@ -151,12 +147,13 @@ void MySetting::cnstrct_aud_tab()
     sndEffs_mute = new QCheckBox("Mute", audTab);
     sndEffs_mute->setStyleSheet(MyRes::chckbx_stlsheet);
     sndEffs->addWidget(sndEffs_mute);
+
     muse = new QHBoxLayout(audTab);
     muse_txt = new QLabel("Musics:", audTab);
     muse_txt->setStyleSheet(MyRes::lbl_stlsheet);
     muse->addWidget(muse_txt);
     muse->addSpacing(sndEffs_txt->fontMetrics().width("Sound Effects:") - muse_txt->fontMetrics().width("Musics:"));
-    muse_sli = new QSlider(Qt::Orientation::Horizontal ,audTab);
+    muse_sli = new QSlider(Qt::Orientation::Horizontal, audTab);
     muse_sli->setRange(0, 100);
     muse_sli->setValue(50);
     muse_sli->setTickInterval(1);
@@ -201,8 +198,6 @@ void MySetting::cnstrct_ai_tab()
     aiDiff_lay->addWidget(aiDiff_ext);
 
     aiShip_lay = new QVBoxLayout(aiTab);
-//    aiShip_lay->setAlignment(Qt::AlignTop);
-//     Use label to show the Ai ship pictures
     aiShip_pic = new QLabel(aiTab);
     aiShip_lay->addWidget(aiShip_pic);
     aiShipbtn_lay = new QHBoxLayout(aiTab);
@@ -262,14 +257,14 @@ void MySetting::set_cnctns()
 
 void MySetting::update_stng()
 {
-    // Set new ships, env & ... pics
+    // Set theme & ai pics
     SettingData::gMode = gMods->checkedId();
     SettingData::gDiff = gDiffs->checkedId();
+    SettingData::mVol = muse_sli->value();
+    SettingData::mMut = muse_mute->isChecked();
     SettingData::sfVol = sndEffs_sli->value();
     SettingData::sfMut = sndEffs_mute->isChecked();
     SettingData::aiDiff = aiDiffs->checkedId();
-    SettingData::mVol = muse_sli->value();
-    SettingData::mMut = muse_mute->isChecked();
     emit settingChanged();
 }
 
