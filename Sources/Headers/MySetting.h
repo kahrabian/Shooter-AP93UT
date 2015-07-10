@@ -30,8 +30,6 @@ public:
 
 public slots:
     void update_stng();
-    void pre_aln();
-    void nxt_aln();
     void pre_env();
     void nxt_env();
     void pre_shp();
@@ -67,17 +65,12 @@ private:
 
     QWidget *thmTab;
     QHBoxLayout *thmTab_lay;
-    QVBoxLayout *aln_spc_lay;
+    QVBoxLayout *spc_lay;
     QLabel *spc_pic;
     QHBoxLayout *spcbtn_lay;
     QLabel *spc_txt;
     QToolButton *spc_prebtn;
     QToolButton *spc_nexbtn;
-    QLabel *aln_pic;
-    QHBoxLayout *alnbtn_lay;
-    QLabel *aln_txt;
-    QToolButton *aln_prebtn;
-    QToolButton *aln_nexbtn;
     QVBoxLayout *env_lay;
     QLabel *env_pic;
     QHBoxLayout *envbtn_lay;

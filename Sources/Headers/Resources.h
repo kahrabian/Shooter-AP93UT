@@ -13,7 +13,6 @@ namespace MyRes
 {
     const int env_cnt = 5;
     const int shp_cnt = 5;
-    const int aln_cnt = 5;
     extern const QString mainmuse_add;
     extern const QString logo_add;
     extern const QString background_add;

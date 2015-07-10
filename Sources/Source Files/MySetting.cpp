@@ -93,11 +93,11 @@ void MySetting::cnstrct_thm_tab()
     thmTab->setStyleSheet(MyRes::wdg_stlsheet);
     thmTab_lay = new QHBoxLayout(thmTab);
 
-    aln_spc_lay = new QVBoxLayout(thmTab);
-//    aln_spc_lay->setAlignment(Qt::AlignTop);
+    spc_lay = new QVBoxLayout(thmTab);
+//    spc_lay->setAlignment(Qt::AlignTop);
 //     Spaceship selector
     spc_pic = new QLabel(thmTab);
-    aln_spc_lay->addWidget(spc_pic);
+    spc_lay->addWidget(spc_pic);
     spcbtn_lay = new QHBoxLayout(thmTab);
     spc_prebtn = new QToolButton(thmTab);
     spc_prebtn->setArrowType(Qt::LeftArrow);
@@ -109,22 +109,7 @@ void MySetting::cnstrct_thm_tab()
     spc_nexbtn = new QToolButton(thmTab);
     spc_nexbtn->setArrowType(Qt::RightArrow);
     spcbtn_lay->addWidget(spc_nexbtn);
-    aln_spc_lay->addLayout(spcbtn_lay);
-
-    aln_pic = new QLabel(thmTab);
-    aln_spc_lay->addWidget(aln_pic);
-    alnbtn_lay = new QHBoxLayout(thmTab);
-    aln_prebtn = new QToolButton(thmTab);
-    aln_prebtn->setArrowType(Qt::LeftArrow);
-    alnbtn_lay->addWidget(aln_prebtn);
-    aln_txt = new QLabel("Alien", thmTab);
-    aln_txt->setStyleSheet(MyRes::lbl_stlsheet);
-    aln_txt->setAlignment(Qt::AlignCenter);
-    alnbtn_lay->addWidget(aln_txt);
-    aln_nexbtn = new QToolButton(thmTab);
-    aln_nexbtn->setArrowType(Qt::RightArrow);
-    alnbtn_lay->addWidget(aln_nexbtn);
-    aln_spc_lay->addLayout(alnbtn_lay);
+    spc_lay->addLayout(spcbtn_lay);
 
     env_lay = new QVBoxLayout(thmTab);
 //    env_lay->setAlignment(Qt::AlignTop);
@@ -143,7 +128,7 @@ void MySetting::cnstrct_thm_tab()
     envbtn_lay->addWidget(env_nexbtn);
     env_lay->addLayout(envbtn_lay);
 
-    thmTab_lay->addLayout(aln_spc_lay);
+    thmTab_lay->addLayout(spc_lay);
     thmTab_lay->addLayout(env_lay);
 }
 
@@ -262,8 +247,6 @@ void MySetting::set_cnctns()
 
     QObject::connect(spc_prebtn , SIGNAL(clicked()), this, SLOT(pre_shp()));
     QObject::connect(spc_nexbtn , SIGNAL(clicked()), this, SLOT(nxt_shp()));
-    QObject::connect(aln_prebtn , SIGNAL(clicked()), this, SLOT(pre_aln()));
-    QObject::connect(aln_nexbtn , SIGNAL(clicked()), this, SLOT(nxt_aln()));
     QObject::connect(env_prebtn , SIGNAL(clicked()), this, SLOT(pre_env()));
     QObject::connect(env_nexbtn , SIGNAL(clicked()), this, SLOT(nxt_env()));
 
@@ -297,18 +280,6 @@ void MySetting::paintEvent(QPaintEvent *my_event)
     my_option->init(this);
     style()->drawPrimitive(QStyle::PE_Widget, my_option, my_painter, this);
     QWidget::paintEvent(my_event);
-}
-
-void MySetting::pre_aln()
-{
-    SettingData::aln = (SettingData::aln + MyRes::aln_cnt - 1) % MyRes::aln_cnt;
-    update_stng();
-}
-
-void MySetting::nxt_aln()
-{
-    SettingData::aln = (SettingData::aln + MyRes::aln_cnt + 1) % MyRes::aln_cnt;
-    update_stng();
 }
 
 void MySetting::pre_env()
