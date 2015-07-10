@@ -6,19 +6,18 @@
 #define SHOOTER_AP93UT_MYSETTING_H
 
 
-#include <QtGui/qpainter.h>
-#include <QtWidgets/qwidget.h>
-#include <QtWidgets/qboxlayout.h>
-#include <QtWidgets/qtabwidget.h>
-#include <QtWidgets/qpushbutton.h>
-#include <QtWidgets/qlabel.h>
-#include <QtWidgets/qstyleoption.h>
-#include <QtWidgets/qcheckbox.h>
-#include <QtWidgets/qradiobutton.h>
-#include <QtWidgets/qbuttongroup.h>
-#include <QtWidgets/qtoolbutton.h>
+#include <QPainter>
+#include <QWidget>
+#include <QBoxLayout>
+#include <QTabWidget>
+#include <QPushButton>
+#include <QLabel>
+#include <QStyleOption>
+#include <QCheckBox>
+#include <QRadioButton>
+#include <QButtonGroup>
+#include <QToolButton>
 #include "Resources.h"
-//#include "SettingData.h"
 
 
 class MySetting : public QWidget
@@ -28,6 +27,21 @@ class MySetting : public QWidget
 public:
     MySetting(QWidget * = 0, Qt::WindowFlags = 0);
     ~MySetting();
+
+public slots:
+    void update_stng();
+    void pre_aln();
+    void nxt_aln();
+    void pre_env();
+    void nxt_env();
+    void pre_shp();
+    void nxt_shp();
+    void pre_aishp();
+    void nxt_aishp();
+
+signals:
+    void settingChanged();
+
 
 private:
     QVBoxLayout *setting;
@@ -98,6 +112,7 @@ private:
     QToolButton *aiShip_nexbtn;
     QToolButton *aiShip_prebtn;
 
+    void set_cnctns();
     void cnstrct_stng();
     void cnstrct_logo();
     void cnstrct_tabs();

@@ -2,6 +2,7 @@
 // Created by kahrabian on 7/7/15.
 //
 
+#include <QtCore/qtextstream.h>
 #include "../Headers/MySetting.h"
 
 MySetting::MySetting(QWidget *parent, Qt::WindowFlags f) :
@@ -13,6 +14,7 @@ MySetting::MySetting(QWidget *parent, Qt::WindowFlags f) :
     cnstrct_logo();
     cnstrct_tabs();
     cnstrct_stng();
+    set_cnctns();
 }
 
 MySetting::~MySetting() { }
@@ -253,6 +255,41 @@ void MySetting::cnstrct_logo()
     delete my_pix;
 }
 
+void MySetting::set_cnctns()
+{
+    QObject::connect(gMods, SIGNAL(buttonToggled(int, bool)), this, SLOT(update_stng()));
+    QObject::connect(gDiffs, SIGNAL(buttonToggled(int, bool)), this, SLOT(update_stng()));
+
+    QObject::connect(spc_prebtn , SIGNAL(clicked()), this, SLOT(pre_shp()));
+    QObject::connect(spc_nexbtn , SIGNAL(clicked()), this, SLOT(nxt_shp()));
+    QObject::connect(aln_prebtn , SIGNAL(clicked()), this, SLOT(pre_aln()));
+    QObject::connect(aln_nexbtn , SIGNAL(clicked()), this, SLOT(nxt_aln()));
+    QObject::connect(env_prebtn , SIGNAL(clicked()), this, SLOT(pre_env()));
+    QObject::connect(env_nexbtn , SIGNAL(clicked()), this, SLOT(nxt_env()));
+
+    QObject::connect(sndEffs_sli , SIGNAL(valueChanged(int)), this, SLOT(update_stng()));
+    QObject::connect(sndEffs_mute , SIGNAL(stateChanged(int)), this, SLOT(update_stng()));
+    QObject::connect(muse_sli , SIGNAL(valueChanged(int)), this, SLOT(update_stng()));
+    QObject::connect(muse_mute , SIGNAL(stateChanged(int)), this, SLOT(update_stng()));
+
+    QObject::connect(aiDiffs , SIGNAL(buttonToggled(int, bool)), this, SLOT(update_stng()));
+    QObject::connect(aiShip_prebtn , SIGNAL(clicked()), this, SLOT(pre_aishp()));
+    QObject::connect(aiShip_nexbtn , SIGNAL(clicked()), this, SLOT(nxt_aishp()));
+}
+
+void MySetting::update_stng()
+{
+    // Set new ships, env & ... pics
+    SettingData::gMode = gMods->checkedId();
+    SettingData::gDiff = gDiffs->checkedId();
+    SettingData::sfVol = sndEffs_sli->value();
+    SettingData::sfMut = sndEffs_mute->isChecked();
+    SettingData::aiDiff = aiDiffs->checkedId();
+    SettingData::mVol = muse_sli->value();
+    SettingData::mMut = muse_mute->isChecked();
+    emit settingChanged();
+}
+
 void MySetting::paintEvent(QPaintEvent *my_event)
 {
     QPainter *my_painter = new QPainter(this);
@@ -260,4 +297,52 @@ void MySetting::paintEvent(QPaintEvent *my_event)
     my_option->init(this);
     style()->drawPrimitive(QStyle::PE_Widget, my_option, my_painter, this);
     QWidget::paintEvent(my_event);
+}
+
+void MySetting::pre_aln()
+{
+    SettingData::aln = (SettingData::aln + MyRes::aln_cnt - 1) % MyRes::aln_cnt;
+    update_stng();
+}
+
+void MySetting::nxt_aln()
+{
+    SettingData::aln = (SettingData::aln + MyRes::aln_cnt + 1) % MyRes::aln_cnt;
+    update_stng();
+}
+
+void MySetting::pre_env()
+{
+    SettingData::env = (SettingData::env + MyRes::env_cnt - 1) % MyRes::env_cnt;
+    update_stng();
+}
+
+void MySetting::nxt_env()
+{
+    SettingData::env = (SettingData::env + MyRes::env_cnt + 1) % MyRes::env_cnt;
+    update_stng();
+}
+
+void MySetting::pre_shp()
+{
+    SettingData::uShp = (SettingData::uShp + MyRes::shp_cnt - 1) % MyRes::shp_cnt;
+    update_stng();
+}
+
+void MySetting::nxt_shp()
+{
+    SettingData::uShp = (SettingData::uShp + MyRes::shp_cnt + 1) % MyRes::shp_cnt;
+    update_stng();
+}
+
+void MySetting::pre_aishp()
+{
+    SettingData::aiShp = (SettingData::aiShp + MyRes::shp_cnt - 1) % MyRes::shp_cnt;
+    update_stng();
+}
+
+void MySetting::nxt_aishp()
+{
+    SettingData::aiShp = (SettingData::aiShp + MyRes::shp_cnt + 1) % MyRes::shp_cnt;
+    update_stng();
 }

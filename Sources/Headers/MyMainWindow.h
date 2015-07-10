@@ -6,10 +6,13 @@
 #define SHOOTER_AP93UT_MYMAINWINDOW_H
 
 
-#include <QtWidgets/qmainwindow.h>
-#include <QtWidgets/qstackedwidget.h>
-#include <QtWidgets/qdesktopwidget.h>
-#include <QtMultimedia/qmediaplayer.h>
+//#include <iostream>
+#include <QDebug>
+#include <QTextStream>
+#include <QMainWindow>
+#include <QStackedWidget>
+#include <QDesktopWidget>
+#include <QMediaPlayer>
 #include "Resources.h"
 #include "MyMenu.h"
 #include "MyTutorial.h"
@@ -27,9 +30,11 @@ public slots:
     void ttrl_bttn_clicked();
     void stng_bttn_clicked();
     void back_bttn_clicked();
-
+    void reset_music();
+    void update_stng();
 
 private:
+    QMediaPlaylist *med_playlist;
     QMediaPlayer *med_player;
     QStackedWidget *widget_stack;
     MyMenu *menu;
@@ -38,6 +43,7 @@ private:
 //    MyGame *game;
 
     void set_init_pos();
+    void set_media();
     void set_prpts();
     void cnstrct_stack();
     void set_cnctns();

@@ -2,7 +2,8 @@
 // Created by kahrabian on 7/9/15.
 //
 
-#include <QtCore/qstring.h>
+#include <QString>
+#include <QMediaPlaylist>
 #include "SettingData.h"
 
 #ifndef SHOOTER_AP93UT_RESOURCES_H
@@ -10,21 +11,25 @@
 
 namespace MyRes
 {
-    extern QString logo_add;
-    extern QString background_add;
-    extern QString mainwdg_stlsheet;
-    extern QString wdg_stlsheet;
-    extern QString rdbtn_stlsheet;
-    extern QString lbl_bstlsheet;
-    extern QString lbl_stlsheet;
-    extern QString chckbx_stlsheet;
+    const int env_cnt = 5;
+    const int shp_cnt = 5;
+    const int aln_cnt = 5;
+    extern const QString mainmuse_add;
+    extern const QString logo_add;
+    extern const QString background_add;
+    extern const QString mainwdg_stlsheet;
+    extern const QString wdg_stlsheet;
+    extern const QString rdbtn_stlsheet;
+    extern const QString lbl_bstlsheet;
+    extern const QString lbl_stlsheet;
+    extern const QString chckbx_stlsheet;
 
     // MyMainWindow
-    extern QString mainwin_icon;
+    extern const QString mainwin_icon;
 
     // MyTutorial
-    extern QString ttrl_txt;
-    extern QString ttrl_txt_stlsheet;
+    extern const QString ttrl_txt;
+    extern const QString ttrl_txt_stlsheet;
 }
 
 #endif //SHOOTER_AP93UT_RESOURCES_H

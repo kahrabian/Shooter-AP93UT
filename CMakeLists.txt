@@ -11,5 +11,7 @@ add_executable(Shooter-AP93UT ${SOURCE_FILES} "Sources/Source Files/MyMenu.cpp" 
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5Gui REQUIRED)
+find_package(Qt5Multimedia REQUIRED)
+
 qt5_use_modules(Shooter-AP93UT Core Widgets Gui)
-target_link_libraries(Shooter-AP93UT Qt5::Widgets Qt5::Gui Qt5::Core)
+target_link_libraries(Shooter-AP93UT Qt5::Widgets Qt5::Gui Qt5::Core Qt5::Multimedia)
