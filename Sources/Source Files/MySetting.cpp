@@ -23,13 +23,12 @@ void MySetting::cnstrct_tabs()
     tabs = new QTabWidget(this);
     modeTab = new MymodeTab(tabs);
     thmTab = new MythmTab(tabs);
-    audTab = new MyaudioTab(tabs);
     aiTab = new MyaiTab(tabs);
+    audTab = new MyaudioTab(tabs);
     tabs->setStyleSheet(MyRes::mainwdg_stlsheet);
     tabs->addTab(modeTab, "Game Mode");
     tabs->addTab(thmTab, "Theme");
     tabs->addTab(audTab, "Audio");
-//    tabs->addTab(aiTab, "Ai");
 }
 
 void MySetting::cnstrct_stng()
