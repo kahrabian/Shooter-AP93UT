@@ -27,11 +27,18 @@ public:
 private:
     QVBoxLayout *ttrl;
     QPushButton *back;
-    QTextEdit *txt;
+    QHBoxLayout *txt;
+    QVBoxLayout *howto_lay;
+    QLabel *howto_txt;
+    QTextEdit *howto;
+    QVBoxLayout *rule_lay;
+    QLabel *rule_txt;
+    QTextEdit *rule;
     QLabel *logo;
 
     void cnstrct_logo();
-    void cnstrct_txt();
+    void cnstrct_howto();
+    void cnstrct_rule();
     void cnstrct_ttrl();
     void paintEvent(QPaintEvent *);
 };

@@ -12,9 +12,9 @@
 
 namespace MyRes
 {
-    const QSize app_size;
     const int env_cnt = 5;
     const int shp_cnt = 5;
+    extern const QSize app_size;
     extern const QString stng_add;
     extern const QString mainmuse_add;
     extern const QString logo_add;
@@ -30,7 +30,8 @@ namespace MyRes
     extern const QString mainwin_icon;
 
     // MyTutorial
-    extern const QString ttrl_txt;
+    extern const QString ttrl_rule;
+    extern const QString ttrl_howto;
     extern const QString ttrl_txt_stlsheet;
 }
 

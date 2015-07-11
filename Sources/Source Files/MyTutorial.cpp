@@ -11,7 +11,6 @@ MyTutorial::MyTutorial(QWidget *parent, Qt::WindowFlags f) :
     setStyleSheet("MyTutorial " + MyRes::background_add);
     back = new QPushButton("Back", this);
     cnstrct_logo();
-    cnstrct_txt();
     cnstrct_ttrl();
 }
 
@@ -21,16 +20,39 @@ void MyTutorial::cnstrct_ttrl()
 {
     ttrl = new QVBoxLayout(this);
     ttrl->addWidget(logo);
-    ttrl->addWidget(txt);
+    txt = new QHBoxLayout(this);
+    cnstrct_rule();
+    cnstrct_howto();
+    txt->addLayout(howto_lay);
+    txt->addLayout(rule_lay);
+    ttrl->addLayout(txt);
     ttrl->addWidget(back);
 }
 
-void MyTutorial::cnstrct_txt()
+void MyTutorial::cnstrct_rule()
 {
-    txt = new QTextEdit(MyRes::ttrl_txt, this);
-    txt->setReadOnly(true);
-    txt->setStyleSheet(MyRes::ttrl_txt_stlsheet);
-    txt->setFocusPolicy(Qt::NoFocus);
+    rule_lay = new QVBoxLayout(this);
+    rule = new QTextEdit(MyRes::ttrl_rule, this);
+    rule_txt = new QLabel("Games Rule:", this);
+    rule_txt->setStyleSheet(MyRes::lbl_bstlsheet);
+    rule->setReadOnly(true);
+    rule->setStyleSheet(MyRes::ttrl_txt_stlsheet);
+    rule->setFocusPolicy(Qt::NoFocus);
+    rule_lay->addWidget(rule_txt);
+    rule_lay->addWidget(rule);
+}
+
+void MyTutorial::cnstrct_howto()
+{
+    howto_lay = new QVBoxLayout(this);
+    howto_txt = new QLabel("How To Play:", this);
+    howto_txt->setStyleSheet(MyRes::lbl_bstlsheet);
+    howto = new QTextEdit(MyRes::ttrl_howto, this);
+    howto->setReadOnly(true);
+    howto->setStyleSheet(MyRes::ttrl_txt_stlsheet);
+    howto->setFocusPolicy(Qt::NoFocus);
+    howto_lay->addWidget(howto_txt);
+    howto_lay->addWidget(howto);
 }
 
 void MyTutorial::cnstrct_logo()
