@@ -79,8 +79,8 @@ void MySetting::update_stng()
     }
     else if(modeTab->gMods->checkedId() != 3 && SettingData::gMode == 3)
     {
-        tabs->removeTab(3);
         aiTab->hide();
+        tabs->removeTab(3);
     }
     SettingData::gMode = modeTab->gMods->checkedId();
     SettingData::gDiff = modeTab->gDiffs->checkedId();

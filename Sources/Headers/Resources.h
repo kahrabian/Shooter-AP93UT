@@ -2,13 +2,13 @@
 // Created by kahrabian on 7/9/15.
 //
 
+#ifndef SHOOTER_AP93UT_RESOURCES_H
+#define SHOOTER_AP93UT_RESOURCES_H
+
 #include <QString>
 #include <QSize>
 #include <QMediaPlaylist>
 #include "SettingData.h"
-
-#ifndef SHOOTER_AP93UT_RESOURCES_H
-#define SHOOTER_AP93UT_RESOURCES_H
 
 namespace MyRes
 {
