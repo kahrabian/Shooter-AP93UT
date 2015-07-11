@@ -26,7 +26,7 @@ void MySetting::cnstrct_tabs()
     aiTab = new MyaiTab(tabs);
     audTab = new MyaudioTab(tabs);
     tabs->setStyleSheet(MyRes::mainwdg_stlsheet);
-    tabs->addTab(modeTab, "Game Mode");
+    tabs->addTab(modeTab, "Game");
     tabs->addTab(thmTab, "Theme");
     tabs->addTab(audTab, "Audio");
 }
