@@ -13,7 +13,7 @@ MyaiTab::MyaiTab(QWidget *parent, Qt::WindowFlags f) :
     cnstrct_shp();
     aiTab_lay->addLayout(aiDiff_lay);
     aiTab_lay->addLayout(aiShip_lay);
-    show();
+    hide();
 }
 
 MyaiTab::~MyaiTab() { }

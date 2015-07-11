@@ -29,7 +29,7 @@ void MySetting::cnstrct_tabs()
     tabs->addTab(modeTab, "Game Mode");
     tabs->addTab(thmTab, "Theme");
     tabs->addTab(audTab, "Audio");
-    tabs->addTab(aiTab, "Ai");
+//    tabs->addTab(aiTab, "Ai");
 }
 
 void MySetting::cnstrct_stng()
@@ -73,6 +73,16 @@ void MySetting::set_cnctns()
 void MySetting::update_stng()
 {
     // Set theme & ai pics
+    if(modeTab->gMods->checkedId() == 3 && SettingData::gMode != 3)
+    {
+        aiTab->show();
+        tabs->addTab(aiTab, "Ai");
+    }
+    else if(modeTab->gMods->checkedId() != 3 && SettingData::gMode == 3)
+    {
+        tabs->removeTab(3);
+        aiTab->hide();
+    }
     SettingData::gMode = modeTab->gMods->checkedId();
     SettingData::gDiff = modeTab->gDiffs->checkedId();
     SettingData::mVol = audTab->muse_sli->value();
