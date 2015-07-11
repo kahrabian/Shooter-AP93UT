@@ -6,9 +6,9 @@
 namespace MyRes
 {
     const QString stng_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Sources/resume.txt");
-    const QString mainmuse_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/ss.mp3");
+    const QString mainmuse_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/main_music.wav");
     const QString logo_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/logo.png");
-    const QString background_add("{background-image: url(/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/background.jpg);}");
+    const QString background_add("{background-image: url(/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/main_background.jpg);}");
     const QString mainwdg_stlsheet("QWidget {background-color: rgba(0, 0, 0, 60%);}");
     const QString wdg_stlsheet("QWidget {background-color: transparent;}");
     const QString rdbtn_stlsheet("QRadioButton {font-size: 12pt;}");
