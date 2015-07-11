@@ -5,6 +5,7 @@
 #include "../Headers/Resources.h"
 namespace MyRes
 {
+    const QSize app_size(1120, 630);
     const QString stng_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Sources/resume.txt");
     const QString mainmuse_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/main_music.wav");
     const QString logo_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/logo.png");

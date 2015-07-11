@@ -7,7 +7,7 @@
 MyMenu::MyMenu(QWidget *parent, Qt::WindowFlags f) :
         QWidget(parent, f)
 {
-    resize(1120, 630);
+    resize(MyRes::app_size);
     setStyleSheet("MyMenu " + MyRes::background_add);
     cnstrct_btns();
     cnstrct_logo();

@@ -51,7 +51,7 @@ void MyMainWindow::set_media()
 
 void MyMainWindow::set_prpts()
 {
-    setFixedSize(1120, 630);
+    setFixedSize(MyRes::app_size);
     set_init_pos();
     setWindowTitle("Awsome Space Shooter");
     QIcon *icon = new QIcon(MyRes::mainwin_icon);

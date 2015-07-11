@@ -7,7 +7,7 @@
 MyTutorial::MyTutorial(QWidget *parent, Qt::WindowFlags f) :
         QWidget(parent, f)
 {
-    resize(1120, 630);
+    resize(MyRes::app_size);
     setStyleSheet("MyTutorial " + MyRes::background_add);
     back = new QPushButton("Back", this);
     cnstrct_logo();

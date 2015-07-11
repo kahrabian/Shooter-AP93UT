@@ -3,6 +3,7 @@
 //
 
 #include <QString>
+#include <QSize>
 #include <QMediaPlaylist>
 #include "SettingData.h"
 
@@ -11,6 +12,7 @@
 
 namespace MyRes
 {
+    const QSize app_size;
     const int env_cnt = 5;
     const int shp_cnt = 5;
     extern const QString stng_add;
