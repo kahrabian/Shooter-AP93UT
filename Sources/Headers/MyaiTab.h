@@ -17,7 +17,7 @@
 
 class MyaiTab : public QWidget
 {
-Q_OBJECT
+    Q_OBJECT
     friend class MySetting;
 public:
     MyaiTab(QWidget * = 0, Qt::WindowFlags = 0);

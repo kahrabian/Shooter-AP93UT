@@ -19,7 +19,7 @@
 
 class MymodeTab : public QWidget
 {
-Q_OBJECT
+    Q_OBJECT
     friend class MySetting;
 public:
     MymodeTab(QWidget * = 0, Qt::WindowFlags = 0);
