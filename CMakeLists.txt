@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.2)
 project(Shooter-AP93UT)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(SOURCE_FILES main.cpp)
-add_executable(Shooter-AP93UT ${SOURCE_FILES} "Sources/Source Files/MyMenu.cpp" Sources/Headers/MyMenu.h "Sources/Source Files/MyMainWindow.cpp" Sources/Headers/MyMainWindow.h "Sources/Source Files/MyTutorial.cpp" Sources/Headers/MyTutorial.h "Sources/Source Files/MySetting.cpp" Sources/Headers/MySetting.h Sources/Headers/SettingData.h Sources/Headers/SettingData.h Sources/Headers/Resources.h "Sources/Source Files/Resources.cpp" Sources/Headers/MymodeTab.h "Sources/Source Files/MymodeTab.cpp" Sources/Headers/MythmTab.h "Sources/Source Files/MythmTab.cpp" Sources/Headers/MyaudioTab.h "Sources/Source Files/MyaudioTab.cpp"  Sources/Headers/MyaiTab.h "Sources/Source Files/MyaiTab.cpp" Sources/Headers/Game/MyGame.h "Sources/Source Files/Game/MyGame.cpp" Sources/Headers/Game/MyShip.h "Sources/Source Files/Game/MyShip.cpp" Sources/Headers/Game/MyAlien.h Sources/Headers/Game/MyBullet.h Sources/Headers/Game/MyAsteroid.h Sources/Headers/Game/MyStar.h Sources/Headers/Game/MyLife.h Sources/Headers/Game/MyShield.h Sources/Headers/Game/MyMagic.h)
+add_executable(Shooter-AP93UT ${SOURCE_FILES} "Sources/Source Files/MyMenu.cpp" Sources/Headers/MyMenu.h "Sources/Source Files/MyMainWindow.cpp" Sources/Headers/MyMainWindow.h "Sources/Source Files/MyTutorial.cpp" Sources/Headers/MyTutorial.h "Sources/Source Files/MySetting.cpp" Sources/Headers/MySetting.h Sources/Headers/SettingData.h Sources/Headers/Resources.h "Sources/Source Files/Resources.cpp" Sources/Headers/MymodeTab.h "Sources/Source Files/MymodeTab.cpp" Sources/Headers/MythmTab.h "Sources/Source Files/MythmTab.cpp" Sources/Headers/MyaudioTab.h "Sources/Source Files/MyaudioTab.cpp"  Sources/Headers/MyaiTab.h "Sources/Source Files/MyaiTab.cpp" Sources/Headers/Game/MyGame.h "Sources/Source Files/Game/MyGame.cpp" Sources/Headers/Game/MyShip.h "Sources/Source Files/Game/MyShip.cpp" Sources/Headers/Game/MyAlien.h Sources/Headers/Game/MyBullet.h Sources/Headers/Game/MyAsteroid.h Sources/Headers/Game/MyStar.h Sources/Headers/Game/MyLife.h Sources/Headers/Game/MyShield.h Sources/Headers/Game/MyMagic.h "Sources/Source Files/Game/MyAlien.cpp" "Sources/Source Files/Game/MyAsteroid.cpp" "Sources/Source Files/Game/MyBullet.cpp" "Sources/Source Files/Game/MyLife.cpp" "Sources/Source Files/Game/MyShield.cpp" "Sources/Source Files/Game/MyStar.cpp")
 
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Widgets REQUIRED)
