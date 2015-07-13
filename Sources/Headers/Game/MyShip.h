@@ -6,8 +6,9 @@
 #define SHOOTER_AP93UT_MYSHIP_H
 
 #include <QGraphicsPixmapItem>
-#include <QTimer>
 #include <QElapsedTimer>
+#include <QTimer>
+#include <QPointF>
 #include <QString>
 
 class MyShip : public QGraphicsPixmapItem
@@ -25,7 +26,7 @@ public:
 	void setShld(bool shld);
 	bool isMgc() const;
 	void setMgc(bool mgc);
-	void updt(qint64);
+	void updt(qint64 = 0);
 
 private:
 	QString *name;

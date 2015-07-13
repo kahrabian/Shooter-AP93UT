@@ -7,6 +7,16 @@
 
 #include <QGraphicsScene>
 #include <QElapsedTimer>
+#include <QTimer>
+#include <QVector>
+#include "MyShip.h"
+#include "MyBullet.h"
+#include "MyAsteroid.h"
+#include "MyStar.h"
+#include "MyAlien.h"
+#include "MyLife.h"
+#include "MyShield.h"
+#include "MyMagic.h"
 
 class MyGame : public QGraphicsScene
 {
@@ -19,14 +29,14 @@ public:
     ~MyGame();
 
 private:
-//    QVector<> shps;
-//    QVector<> blts;
-//    QVector<> astrs;
-//    QVector<> strs;
-//    QVector<> alns;
-//    QVector<> lfs;
-//    QVector<> shlds;
-//    QVector<> mgns;
+    QVector<MyShip> shps;
+    QVector<MyBullet> blts;
+    QVector<MyAsteroid> astrs;
+    QVector<MyStar> strs;
+    QVector<MyAlien> alns;
+    QVector<MyLife> lfs;
+    QVector<MyShield> shlds;
+    QVector<MyMagic> mgns;
 
 	QTimer *g_tmr;
 	QElapsedTimer *stp_tmr;
