@@ -20,7 +20,7 @@ MyaudioTab::~MyaudioTab() { }
 
 void MyaudioTab::cnstrct_sndeffs()
 {
-    sndEffs = new QHBoxLayout(this);
+    sndEffs = new QHBoxLayout();
     sndEffs_txt = new QLabel("Sound Effects:", this);
     sndEffs_txt->setStyleSheet(MyRes::lbl_stlsheet);
     sndEffs->addWidget(sndEffs_txt);
@@ -37,7 +37,7 @@ void MyaudioTab::cnstrct_sndeffs()
 
 void MyaudioTab::cnstrct_muse()
 {
-    muse = new QHBoxLayout(this);
+    muse = new QHBoxLayout();
     muse_txt = new QLabel("Musics:", this);
     muse_txt->setStyleSheet(MyRes::lbl_stlsheet);
     muse->addWidget(muse_txt);

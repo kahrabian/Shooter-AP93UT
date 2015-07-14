@@ -20,10 +20,13 @@ MythmTab::~MythmTab() { }
 
 void MythmTab::cnstrct_spc()
 {
-    spc_lay = new QVBoxLayout(this);
+    spc_lay = new QVBoxLayout();
     spc_pic = new QLabel(this);
+    spc_pic->setPixmap(QPixmap(MyRes::shp_adds[SettingData::uShp]).scaled(MyRes::img_init_size, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    spc_pic->setAlignment(Qt::AlignCenter);
+    spc_pic->setAttribute(Qt::WA_TranslucentBackground);
     spc_lay->addWidget(spc_pic);
-    spcbtn_lay = new QHBoxLayout(this);
+    spcbtn_lay = new QHBoxLayout();
     spc_prebtn = new QToolButton(this);
     spc_prebtn->setArrowType(Qt::LeftArrow);
     spcbtn_lay->addWidget(spc_prebtn);
@@ -39,10 +42,10 @@ void MythmTab::cnstrct_spc()
 
 void MythmTab::cnstrct_env()
 {
-    env_lay = new QVBoxLayout(this);
+    env_lay = new QVBoxLayout();
     env_pic = new QLabel(this);
     env_lay->addWidget(env_pic);
-    envbtn_lay = new QHBoxLayout(this);
+    envbtn_lay = new QHBoxLayout();
     env_prebtn = new QToolButton(this);
     env_prebtn->setArrowType(Qt::LeftArrow);
     envbtn_lay->addWidget(env_prebtn);

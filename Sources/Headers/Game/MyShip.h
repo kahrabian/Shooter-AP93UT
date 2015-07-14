@@ -10,10 +10,10 @@
 #include <QTimer>
 #include <QPointF>
 #include <QString>
+#include <QPixmap>
 
 class MyShip : public QGraphicsPixmapItem
 {
-//    Q_OBJECT
 public:
     MyShip(QGraphicsItem * parent = 0);
     MyShip(const QPixmap & pixmap, QGraphicsItem * parent = 0);

@@ -6,10 +6,16 @@
 
 namespace MyRes
 {
+
+    const QString *shp_adds = new QString[5] {"Resources/Ships/shp1.png",
+                                              "Resources/Ships/shp2.png",
+                                              "Resources/Ships/shp3.png",
+                                              "Resources/Ships/shp4.png",
+                                              "Resources/Ships/shp5.png"};
+    const QSize img_init_size(323, 541);
     const QSize app_size(1120, 630);
     const QString stng_add("Resources/resume.txt");
-//    const QString mainmuse_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/main_music.wav");
-    const QString mainmuse_add("Resources/main_music.wav");
+    const QString mainmuse_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/main_music.wav");
     const QString logo_add("Resources/logo.png");
     const QString background_add("{background-image: url(Resources/main_background.jpg);}");
     const QString mainwdg_stlsheet("QWidget {background-color: rgba(0, 0, 0, 60%);}");

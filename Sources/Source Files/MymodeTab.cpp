@@ -20,7 +20,7 @@ MymodeTab::~MymodeTab() { }
 
 void MymodeTab::cnstrct_mode()
 {
-    gMod_lay = new QVBoxLayout(this);
+    gMod_lay = new QVBoxLayout();
     gMod_lay->setAlignment(Qt::AlignTop);
     gMod_txt = new QLabel("Game Mode:", this);
     gMod_txt->setStyleSheet(MyRes::lbl_bstlsheet);
@@ -43,7 +43,7 @@ void MymodeTab::cnstrct_mode()
 
 void MymodeTab::cnstrct_diff()
 {
-    gDiff_lay = new QVBoxLayout(this);
+    gDiff_lay = new QVBoxLayout();
     gDiff_lay->setAlignment(Qt::AlignTop);
     gDiff_txt = new QLabel("Game Difficulty:", this);
     gDiff_txt->setStyleSheet(MyRes::lbl_bstlsheet);

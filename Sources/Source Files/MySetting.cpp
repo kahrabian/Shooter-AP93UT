@@ -42,11 +42,9 @@ void MySetting::cnstrct_stng()
 void MySetting::cnstrct_logo()
 {
     logo = new QLabel(this);
-    QPixmap *my_pix = new QPixmap(MyRes::logo_add);
-    logo->setPixmap(*my_pix);
+    logo->setPixmap(QPixmap(MyRes::logo_add));
     logo->setAlignment(Qt::AlignHCenter);
     logo->setAttribute(Qt::WA_TranslucentBackground);
-    delete my_pix;
 }
 
 void MySetting::set_cnctns()
@@ -89,6 +87,8 @@ void MySetting::update_stng()
     SettingData::sfVol = audTab->sndEffs_sli->value();
     SettingData::sfMut = audTab->sndEffs_mute->isChecked();
     SettingData::aiDiff = aiTab->aiDiffs->checkedId();
+	thmTab->spc_pic->setPixmap(QPixmap(MyRes::shp_adds[SettingData::uShp]).scaled(thmTab->spc_pic->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
+	aiTab->aiShip_pic->setPixmap(QPixmap(MyRes::shp_adds[SettingData::aiShp]).scaled(aiTab->aiShip_pic->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
     emit settingChanged();
 }
 

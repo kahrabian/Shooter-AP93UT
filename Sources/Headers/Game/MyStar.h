@@ -12,7 +12,6 @@
 
 class MyStar : public QGraphicsPixmapItem
 {
-//    Q_OBJECT
 public:
 	MyStar(QGraphicsItem * parent = 0);
 	MyStar(const QPixmap & pixmap, QGraphicsItem * parent = 0);

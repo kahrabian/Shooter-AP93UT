@@ -49,8 +49,7 @@ void MyMenu::cnstrct_btns()
 void MyMenu::cnstrct_logo()
 {
     logo = new QLabel(this);
-    QPixmap *my_pix = new QPixmap(MyRes::logo_add);
-    logo->setPixmap(*my_pix);
+    logo->setPixmap(QPixmap(MyRes::logo_add));
     logo->setAlignment(Qt::AlignHCenter);
     logo->setAttribute(Qt::WA_TranslucentBackground);
 }

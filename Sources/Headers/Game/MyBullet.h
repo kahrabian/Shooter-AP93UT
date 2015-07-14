@@ -12,7 +12,6 @@
 
 class MyBullet : public QGraphicsPixmapItem
 {
-//    Q_OBJECT
 public:
 	MyBullet(QGraphicsItem * parent = 0);
 	MyBullet(const QPixmap & pixmap, QGraphicsItem * parent = 0);

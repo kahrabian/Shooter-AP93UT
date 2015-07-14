@@ -5,10 +5,11 @@
 #ifndef SHOOTER_AP93UT_MYGAME_H
 #define SHOOTER_AP93UT_MYGAME_H
 
+#include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QElapsedTimer>
 #include <QTimer>
-#include <QVector>
+#include <QList>
 #include "MyShip.h"
 #include "MyBullet.h"
 #include "MyAsteroid.h"
@@ -18,25 +19,26 @@
 #include "MyShield.h"
 #include "MyMagic.h"
 
-class MyGame : public QGraphicsScene
+class MyGame : public QGraphicsView
 {
     Q_OBJECT
     friend class MyMainWindow;
 public:
-    MyGame(QObject * = 0);
-    MyGame(const QRectF &, QObject * = 0);
-    MyGame(qreal, qreal, qreal, qreal, QObject * = 0);
+    MyGame(QWidget * = 0);
+    MyGame(QGraphicsScene *, QWidget * = 0);
     ~MyGame();
 
 private:
-    QVector<MyShip> shps;
-    QVector<MyBullet> blts;
-    QVector<MyAsteroid> astrs;
-    QVector<MyStar> strs;
-    QVector<MyAlien> alns;
-    QVector<MyLife> lfs;
-    QVector<MyShield> shlds;
-    QVector<MyMagic> mgns;
+    QGraphicsScene *gscn;
+
+    QList<MyShip> shps;
+    QList<MyBullet> blts;
+    QList<MyAsteroid> astrs;
+    QList<MyStar> strs;
+    QList<MyAlien> alns;
+    QList<MyLife> lfs;
+    QList<MyShield> shlds;
+    QList<MyMagic> mgns;
 
 	QTimer *g_tmr;
 	QElapsedTimer *stp_tmr;

@@ -20,7 +20,7 @@ MyaiTab::~MyaiTab() { }
 
 void MyaiTab::cnstrct_diff()
 {
-    aiDiff_lay = new QVBoxLayout(this);
+    aiDiff_lay = new QVBoxLayout();
     aiDiff_lay->setAlignment(Qt::AlignTop);
     aiDiff_txt = new QLabel("Ai Difficulty:", this);
     aiDiff_txt->setStyleSheet(MyRes::lbl_bstlsheet);
@@ -47,10 +47,13 @@ void MyaiTab::cnstrct_diff()
 
 void MyaiTab::cnstrct_shp()
 {
-    aiShip_lay = new QVBoxLayout(this);
+    aiShip_lay = new QVBoxLayout();
     aiShip_pic = new QLabel(this);
+    aiShip_pic->setPixmap(QPixmap(MyRes::shp_adds[SettingData::aiShp]).scaled(MyRes::img_init_size, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    aiShip_pic->setAlignment(Qt::AlignCenter);
+    aiShip_pic->setAttribute(Qt::WA_TranslucentBackground);
     aiShip_lay->addWidget(aiShip_pic);
-    aiShipbtn_lay = new QHBoxLayout(this);
+    aiShipbtn_lay = new QHBoxLayout();
     aiShip_prebtn = new QToolButton(this);
     aiShip_prebtn->setArrowType(Qt::LeftArrow);
     aiShipbtn_lay->addWidget(aiShip_prebtn);

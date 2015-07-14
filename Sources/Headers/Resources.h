@@ -7,6 +7,7 @@
 
 #include <QString>
 #include <QSize>
+#include <QVector>
 #include <QMediaPlaylist>
 #include "SettingData.h"
 
@@ -14,6 +15,10 @@ namespace MyRes
 {
     const int env_cnt = 5;
     const int shp_cnt = 5;
+    const int astrd_frcnt = 16;
+    const int astrd_typcnt = 7;
+	extern const QString *shp_adds;
+    extern const QSize img_init_size;
     extern const QSize app_size;
     extern const QString stng_add;
     extern const QString mainmuse_add;

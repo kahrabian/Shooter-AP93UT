@@ -20,7 +20,7 @@ void MyTutorial::cnstrct_ttrl()
 {
     ttrl = new QVBoxLayout(this);
     ttrl->addWidget(logo);
-    txt = new QHBoxLayout(this);
+    txt = new QHBoxLayout();
     cnstrct_rule();
     cnstrct_howto();
     txt->addLayout(howto_lay);
@@ -31,7 +31,7 @@ void MyTutorial::cnstrct_ttrl()
 
 void MyTutorial::cnstrct_rule()
 {
-    rule_lay = new QVBoxLayout(this);
+    rule_lay = new QVBoxLayout();
     rule = new QTextEdit(MyRes::ttrl_rule, this);
     rule_txt = new QLabel("Games Rule:", this);
     rule_txt->setStyleSheet(MyRes::lbl_bstlsheet);
@@ -44,7 +44,7 @@ void MyTutorial::cnstrct_rule()
 
 void MyTutorial::cnstrct_howto()
 {
-    howto_lay = new QVBoxLayout(this);
+    howto_lay = new QVBoxLayout();
     howto_txt = new QLabel("How To Play:", this);
     howto_txt->setStyleSheet(MyRes::lbl_bstlsheet);
     howto = new QTextEdit(MyRes::ttrl_howto, this);
@@ -58,8 +58,7 @@ void MyTutorial::cnstrct_howto()
 void MyTutorial::cnstrct_logo()
 {
     logo = new QLabel(this);
-    QPixmap *my_pix = new QPixmap(MyRes::logo_add);
-    logo->setPixmap(*my_pix);
+    logo->setPixmap(QPixmap(MyRes::logo_add));
     logo->setAlignment(Qt::AlignHCenter);
     logo->setAttribute(Qt::WA_TranslucentBackground, true);
 }
