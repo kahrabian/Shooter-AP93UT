@@ -49,7 +49,8 @@ void MyaiTab::cnstrct_shp()
 {
     aiShip_lay = new QVBoxLayout();
     aiShip_pic = new QLabel(this);
-    aiShip_pic->setPixmap(QPixmap(MyRes::shp_adds[SettingData::aiShp]).scaled(MyRes::img_init_size, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    aiShip_pic->setFixedSize(MyRes::img_init_size);
+    aiShip_pic->setPixmap(QPixmap(MyRes::shp_adds[SettingData::aiShp]).scaled(aiShip_pic->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
     aiShip_pic->setAlignment(Qt::AlignCenter);
     aiShip_pic->setAttribute(Qt::WA_TranslucentBackground);
     aiShip_lay->addWidget(aiShip_pic);

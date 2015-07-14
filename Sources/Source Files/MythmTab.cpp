@@ -22,7 +22,8 @@ void MythmTab::cnstrct_spc()
 {
     spc_lay = new QVBoxLayout();
     spc_pic = new QLabel(this);
-    spc_pic->setPixmap(QPixmap(MyRes::shp_adds[SettingData::uShp]).scaled(MyRes::img_init_size, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    spc_pic->setFixedSize(MyRes::img_init_size);
+	spc_pic->setPixmap(QPixmap(MyRes::shp_adds[SettingData::uShp]).scaled(spc_pic->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
     spc_pic->setAlignment(Qt::AlignCenter);
     spc_pic->setAttribute(Qt::WA_TranslucentBackground);
     spc_lay->addWidget(spc_pic);
