@@ -35,6 +35,16 @@ void MyMainWindow::stng_bttn_clicked()
     widget_stack->setCurrentWidget(stng);
 }
 
+void MyMainWindow::strt_bttn_clicked()
+{
+    widget_stack->setCurrentWidget(game);
+}
+
+void MyMainWindow::resm_bttn_clicked()
+{
+    widget_stack->setCurrentWidget(stng);
+}
+
 void MyMainWindow::set_init_pos()
 {
     QDesktopWidget *desktop = new QDesktopWidget();
@@ -68,12 +78,16 @@ void MyMainWindow::cnstrct_stack()
     widget_stack->addWidget(ttrl);
     stng = new MySetting(widget_stack);
     widget_stack->addWidget(stng);
+	game = new MyGame(widget_stack);
+	widget_stack->addWidget(game);
 }
 
 void MyMainWindow::set_cnctns()
 {
     QObject::connect(stng, SIGNAL(settingChanged()), this, SLOT(update_stng()));
     QObject::connect(med_player, SIGNAL(stateChanged(QMediaPlayer::State)), this, SLOT(reset_music()));
+	QObject::connect(menu->rsm, SIGNAL(clicked()), this, SLOT(resm_bttn_clicked()));
+	QObject::connect(menu->start, SIGNAL(clicked()), this, SLOT(strt_bttn_clicked()));
     QObject::connect(menu->exit, SIGNAL(clicked()), this, SLOT(exit_bttn_clicked()));
     QObject::connect(menu->ttrl, SIGNAL(clicked()), this, SLOT(ttrl_bttn_clicked()));
     QObject::connect(menu->stng, SIGNAL(clicked()), this, SLOT(stng_bttn_clicked()));

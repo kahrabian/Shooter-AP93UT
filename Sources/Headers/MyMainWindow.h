@@ -13,6 +13,7 @@
 #include <QStackedWidget>
 #include <QDesktopWidget>
 #include <QMediaPlayer>
+#include <Sources/Headers/Game/MyGame.h>
 #include "Resources.h"
 #include "MyMenu.h"
 #include "MyTutorial.h"
@@ -26,6 +27,8 @@ public:
     ~MyMainWindow();
 
 public slots:
+	void strt_bttn_clicked();
+	void resm_bttn_clicked();
     void exit_bttn_clicked();
     void ttrl_bttn_clicked();
     void stng_bttn_clicked();
@@ -39,7 +42,7 @@ private:
     MyMenu *menu;
     MyTutorial *ttrl;
     MySetting *stng;
-//    MyGame *game;
+    MyGame *game;
 
     void set_init_pos();
     void set_media();

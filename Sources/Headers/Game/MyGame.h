@@ -10,6 +10,8 @@
 #include <QElapsedTimer>
 #include <QTimer>
 #include <QList>
+#include <QKeyEvent>
+#include <QTextStream>
 #include "MyShip.h"
 #include "MyBullet.h"
 #include "MyAsteroid.h"
@@ -31,6 +33,8 @@ public:
 private:
     QGraphicsScene *gscn;
 
+	MyShip *tmp;
+
     QList<MyShip> shps;
     QList<MyBullet> blts;
     QList<MyAsteroid> astrs;
@@ -43,6 +47,9 @@ private:
 	QTimer *g_tmr;
 	QElapsedTimer *stp_tmr;
 	qint64 stp_tmr_val;
+
+protected:
+	void keyPressEvent(QKeyEvent *);
 };
 
 #endif //SHOOTER_AP93UT_MYGAME_H
