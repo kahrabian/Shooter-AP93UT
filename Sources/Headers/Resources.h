@@ -40,6 +40,9 @@ namespace MyRes
     extern const QString ttrl_rule;
     extern const QString ttrl_howto;
     extern const QString ttrl_txt_stlsheet;
+
+	// MyName
+	extern const QString nm_txt_stlsheet;
 }
 
 #endif //SHOOTER_AP93UT_RESOURCES_H

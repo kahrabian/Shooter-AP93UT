@@ -30,6 +30,9 @@ public:
     MyGame(QGraphicsScene *, QWidget * = 0);
     ~MyGame();
 
+signals:
+	void gamePaused();
+
 private:
     QGraphicsScene *gscn;
 

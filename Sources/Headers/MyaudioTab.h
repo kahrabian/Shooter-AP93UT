@@ -18,9 +18,11 @@ class MyaudioTab : public QWidget
 {
     Q_OBJECT
     friend class MySetting;
+    friend class MyPause;
 public:
     MyaudioTab(QWidget * = 0, Qt::WindowFlags = 0);
     ~MyaudioTab();
+	void sync();
 
 private:
     QVBoxLayout *audTab_lay;

@@ -6,8 +6,8 @@
 #define SHOOTER_AP93UT_MYTUTORIAL_H
 
 
-#include <QWidget>
 #include <QBoxLayout>
+#include <QWidget>
 #include <QPushButton>
 #include <QTextEdit>
 #include <QLabel>

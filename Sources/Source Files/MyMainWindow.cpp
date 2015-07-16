@@ -7,13 +7,18 @@
 MyMainWindow::MyMainWindow(QWidget * parent, Qt::WindowFlags flag) :
         QMainWindow(parent, flag)
 {
-    set_media();
-    cnstrct_stack();
+	set_media();
+	cnstrct_stack();
     set_prpts();
     set_cnctns();
 }
 
 MyMainWindow::~MyMainWindow() { }
+
+void MyMainWindow::game_paused()
+{
+	widget_stack->setCurrentWidget(ps);
+}
 
 void MyMainWindow::exit_bttn_clicked()
 {
@@ -35,14 +40,25 @@ void MyMainWindow::stng_bttn_clicked()
     widget_stack->setCurrentWidget(stng);
 }
 
-void MyMainWindow::strt_bttn_clicked()
+void MyMainWindow::newg_bttn_clicked()
 {
-    widget_stack->setCurrentWidget(game);
+    name->reset();
+	widget_stack->setCurrentWidget(name);
 }
 
 void MyMainWindow::resm_bttn_clicked()
 {
     widget_stack->setCurrentWidget(stng);
+}
+
+void MyMainWindow::strt_bttn_clicked()
+{
+	SettingData::p1_nm = name->frst_nm_txt->text();
+	SettingData::p2_nm = name->scnd_nm_txt->text();
+	game = new MyGame(widget_stack);
+	widget_stack->addWidget(game);
+	widget_stack->setCurrentWidget(game);
+	QObject::connect(game, SIGNAL(gamePaused()), this, SLOT(game_paused()));
 }
 
 void MyMainWindow::set_init_pos()
@@ -55,7 +71,8 @@ void MyMainWindow::set_media()
 {
     med_player = new QMediaPlayer(this);
     med_player->setMedia(QUrl::fromLocalFile(MyRes::mainmuse_add));
-    update_stng();
+	med_player->setVolume(SettingData::mVol);
+	med_player->setMuted(SettingData::mMut);
     med_player->play();
 }
 
@@ -78,21 +95,35 @@ void MyMainWindow::cnstrct_stack()
     widget_stack->addWidget(ttrl);
     stng = new MySetting(widget_stack);
     widget_stack->addWidget(stng);
-	game = new MyGame(widget_stack);
-	widget_stack->addWidget(game);
+	name = new MyName(widget_stack);
+	widget_stack->addWidget(name);
+	ps = new MyPause(widget_stack);
+	widget_stack->addWidget(ps);
 }
 
 void MyMainWindow::set_cnctns()
 {
-    QObject::connect(stng, SIGNAL(settingChanged()), this, SLOT(update_stng()));
     QObject::connect(med_player, SIGNAL(stateChanged(QMediaPlayer::State)), this, SLOT(reset_music()));
+
 	QObject::connect(menu->rsm, SIGNAL(clicked()), this, SLOT(resm_bttn_clicked()));
-	QObject::connect(menu->start, SIGNAL(clicked()), this, SLOT(strt_bttn_clicked()));
+	QObject::connect(menu->start, SIGNAL(clicked()), this, SLOT(newg_bttn_clicked()));
     QObject::connect(menu->exit, SIGNAL(clicked()), this, SLOT(exit_bttn_clicked()));
     QObject::connect(menu->ttrl, SIGNAL(clicked()), this, SLOT(ttrl_bttn_clicked()));
     QObject::connect(menu->stng, SIGNAL(clicked()), this, SLOT(stng_bttn_clicked()));
-    QObject::connect(ttrl->back, SIGNAL(clicked()), this, SLOT(back_bttn_clicked()));
+
+	QObject::connect(ttrl->back, SIGNAL(clicked()), this, SLOT(back_bttn_clicked()));
+
+	QObject::connect(stng, SIGNAL(settingChanged()), this, SLOT(update_stng()));
     QObject::connect(stng->back, SIGNAL(clicked()), this, SLOT(back_bttn_clicked()));
+
+	QObject::connect(name->strt, SIGNAL(clicked()), this, SLOT(strt_bttn_clicked()));
+	QObject::connect(name->back, SIGNAL(clicked()), this, SLOT(back_bttn_clicked()));
+
+	QObject::connect(ps, SIGNAL(settingChanged()), this, SLOT(update_stng()));
+	QObject::connect(ps->exit, SIGNAL(clicked()), this, SLOT(back_bttn_clicked()));
+
+//	QObject::connect(ps->rest, SIGNAL(clicked()), this, SLOT(back_bttn_clicked()));
+//	QObject::connect(ps->resm, SIGNAL(clicked()), this, SLOT(back_bttn_clicked()));
 }
 
 void MyMainWindow::reset_music()
@@ -103,6 +134,8 @@ void MyMainWindow::reset_music()
 
 void MyMainWindow::update_stng()
 {
-    med_player->setVolume(SettingData::mVol);
+    stng->audTab->sync();
+	ps->aud->sync();
+	med_player->setVolume(SettingData::mVol);
     med_player->setMuted(SettingData::mMut);
 }

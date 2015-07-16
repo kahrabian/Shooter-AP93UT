@@ -10,7 +10,7 @@ MyGame::MyGame(QWidget * parent) :
 {
 	gscn = new QGraphicsScene();
 	gscn->setSceneRect(0, 0, 1120 + 6000, 630);
-	gscn->setBackgroundBrush(QBrush(QImage("Resources/texture11.jpeg")));
+	gscn->setBackgroundBrush(QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(50, 50)));
 	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]));
 	gscn->addItem(tmp);
 	setScene(gscn);
@@ -49,6 +49,10 @@ void MyGame::keyPressEvent(QKeyEvent *event)
 	if(event->key() == Qt::Key_Right)
 	{
 		tmp->setPos(tmp->x() + 10, tmp->y());
+	}
+	if(event->key() == Qt::Key_Escape)
+	{
+		emit gamePaused();
 	}
 	QGraphicsView::keyPressEvent(event);
 }

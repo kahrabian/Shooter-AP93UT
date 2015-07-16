@@ -1,6 +1,8 @@
 #include <QApplication>
 #include <Sources/Headers/MyMainWindow.h>
 
+QString SettingData::p1_nm = "Player 1";
+QString SettingData::p2_nm = "Player 2";
 int SettingData::gMode = 1;
 int SettingData::gDiff = 1;
 int SettingData::uShp = 0;

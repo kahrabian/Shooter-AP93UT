@@ -69,7 +69,6 @@ void MySetting::set_cnctns()
 
 void MySetting::update_stng()
 {
-    // Set theme & ai pics
     if(modeTab->gMods->checkedId() == 3 && SettingData::gMode != 3)
     {
         aiTab->show();
@@ -87,7 +86,6 @@ void MySetting::update_stng()
     SettingData::sfVol = audTab->sndEffs_sli->value();
     SettingData::sfMut = audTab->sndEffs_mute->isChecked();
     SettingData::aiDiff = aiTab->aiDiffs->checkedId();
-	QTextStream X(stderr);
 	thmTab->spc_pic->setPixmap(QPixmap(MyRes::shp_adds[SettingData::uShp]).scaled(thmTab->spc_pic->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
 	thmTab->env_pic->setPixmap(QPixmap(MyRes::env_adds[SettingData::env]).scaled(thmTab->env_pic->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
 	aiTab->aiShip_pic->setPixmap(QPixmap(MyRes::shp_adds[SettingData::aiShp]).scaled(aiTab->aiShip_pic->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));

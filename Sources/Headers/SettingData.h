@@ -8,6 +8,8 @@
 
 struct SettingData
 {
+	static QString p1_nm;
+	static QString p2_nm;
     static int gMode;
     static int gDiff;
     static int uShp;
