@@ -50,6 +50,7 @@ private:
 
 protected:
 	void keyPressEvent(QKeyEvent *);
+	void timerEvent(QTimerEvent *);
 };
 
 #endif //SHOOTER_AP93UT_MYGAME_H

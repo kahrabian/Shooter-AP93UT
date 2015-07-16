@@ -45,6 +45,10 @@ void MythmTab::cnstrct_env()
 {
     env_lay = new QVBoxLayout();
     env_pic = new QLabel(this);
+	env_pic->setFixedSize(MyRes::img_init_size);
+	env_pic->setPixmap(QPixmap(MyRes::env_adds[SettingData::env]).scaled(env_pic->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
+	env_pic->setAlignment(Qt::AlignCenter);
+	env_pic->setAttribute(Qt::WA_TranslucentBackground);
     env_lay->addWidget(env_pic);
     envbtn_lay = new QHBoxLayout();
     env_prebtn = new QToolButton(this);

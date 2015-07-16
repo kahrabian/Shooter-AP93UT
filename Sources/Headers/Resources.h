@@ -13,12 +13,13 @@
 
 namespace MyRes
 {
-    const int env_cnt = 5;
+    const int env_cnt = 16;
     const int shp_cnt = 5;
     const int astrd_frcnt = 16;
     const int astrd_typcnt = 7;
-	extern const QString shp_adds[5];
-    extern const QString astrd_adds[7][16];
+	extern const QString shp_adds[shp_cnt];
+	extern const QString env_adds[env_cnt];
+    extern const QString astrd_adds[astrd_typcnt][astrd_frcnt];
     extern const QSize img_init_size;
     extern const QSize app_size;
     extern const QString stng_add;

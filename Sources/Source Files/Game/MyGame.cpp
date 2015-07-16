@@ -9,13 +9,19 @@ MyGame::MyGame(QWidget * parent) :
 		QGraphicsView(parent)
 {
 	gscn = new QGraphicsScene();
-	gscn->setSceneRect(0, 0, 1000, 500);
+	gscn->setSceneRect(0, 0, 1120 + 6000, 630);
+	gscn->setBackgroundBrush(QBrush(QImage("Resources/texture11.jpeg")));
 	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]));
 	gscn->addItem(tmp);
 	setScene(gscn);
-	setSceneRect(0, 0, 1120, 620);
+//	setSceneRect(0, 0, 1120, 620);
+//	setSceneRect(this->parentWidget()->frameGeometry());
+	setSceneRect(0, 0, this->parentWidget()->frameGeometry().width(), this->parentWidget()->frameGeometry().height());
+//	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+//	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 //	tmp->setPos(0, 0);
 //	repaint();
+	startTimer(20);
 }
 
 MyGame::MyGame(QGraphicsScene * scene, QWidget * parent) :
@@ -26,23 +32,28 @@ MyGame::MyGame(QGraphicsScene * scene, QWidget * parent) :
 
 MyGame::~MyGame() { }
 
-void MyGame::keyPressEvent(QKeyEvent *e)
+void MyGame::keyPressEvent(QKeyEvent *event)
 {
-	if(e->key() == Qt::Key_Up)
+	if(event->key() == Qt::Key_Up)
 	{
-		tmp->setPos(tmp->x(), tmp->y() - 2);
+		tmp->setPos(tmp->x(), tmp->y() - 10);
 	}
-	if(e->key() == Qt::Key_Down)
+	if(event->key() == Qt::Key_Down)
 	{
-		tmp->setPos(tmp->x(), tmp->y() + 2);
+		tmp->setPos(tmp->x(), tmp->y() + 10);
 	}
-	if(e->key() == Qt::Key_Left)
+	if(event->key() == Qt::Key_Left)
 	{
-		tmp->setPos(tmp->x() - 2, tmp->y());
+		tmp->setPos(tmp->x() - 10, tmp->y());
 	}
-	if(e->key() == Qt::Key_Right)
+	if(event->key() == Qt::Key_Right)
 	{
-		tmp->setPos(tmp->x() + 2, tmp->y());
+		tmp->setPos(tmp->x() + 10, tmp->y());
 	}
-	QGraphicsView::keyPressEvent(e);
+	QGraphicsView::keyPressEvent(event);
+}
+
+void MyGame::timerEvent(QTimerEvent *event)
+{
+	setSceneRect(sceneRect().x() + 1, 0, this->parentWidget()->frameGeometry().width(), this->parentWidget()->frameGeometry().height());
 }
