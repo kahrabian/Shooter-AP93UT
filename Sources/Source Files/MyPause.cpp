@@ -8,7 +8,6 @@ MyPause::MyPause(QWidget *parent, Qt::WindowFlags f) :
 		QWidget(parent, f)
 {
 	resize(MyRes::app_size);
-//	setStyleSheet("MyPause " + MyRes::scrnsht_add);
 	cnstrct_btns();
 	cnstrct_logo();
 	cnstrct_ps();
@@ -65,6 +64,13 @@ void MyPause::cnstrct_logo()
 void MyPause::set_bckgrnd()
 {
 	setStyleSheet("MyPause " + MyRes::ps_stlsheet);
+}
+
+void MyPause::keyPressEvent(QKeyEvent *event)
+{
+	if(event->key() == Qt::Key_Escape)
+		emit gameUnpaused();
+	QWidget::keyPressEvent(event);
 }
 
 void MyPause::paintEvent(QPaintEvent *my_event)

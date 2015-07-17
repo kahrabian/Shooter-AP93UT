@@ -34,7 +34,7 @@ signals:
 	void gamePaused();
 
 private:
-    QGraphicsScene *gscn;
+	QGraphicsScene *gscn;
 
 	MyShip *tmp;
 
@@ -50,6 +50,11 @@ private:
 	QTimer *g_tmr;
 	QElapsedTimer *stp_tmr;
 	qint64 stp_tmr_val;
+
+	int timer_id;
+
+	void unpause();
+	void restart();
 
 protected:
 	void keyPressEvent(QKeyEvent *);

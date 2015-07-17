@@ -15,13 +15,13 @@ MyGame::MyGame(QWidget * parent) :
 	gscn->addItem(tmp);
 	setScene(gscn);
 //	setSceneRect(0, 0, 1120, 620);
-//	setSceneRect(this->parentWidget()->frameGeometry());
-	setSceneRect(0, 0, this->parentWidget()->frameGeometry().width(), this->parentWidget()->frameGeometry().height());
-//	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-//	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	setSceneRect(this->parentWidget()->frameGeometry());
+//	setSceneRect(0, 0, this->parentWidget()->frameGeometry().width(), this->parentWidget()->frameGeometry().height());
+	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 //	tmp->setPos(0, 0);
 //	repaint();
-	startTimer(20);
+	timer_id = startTimer(20);
 }
 
 MyGame::MyGame(QGraphicsScene * scene, QWidget * parent) :
@@ -31,6 +31,11 @@ MyGame::MyGame(QGraphicsScene * scene, QWidget * parent) :
 }
 
 MyGame::~MyGame() { }
+
+void MyGame::unpause()
+{
+	timer_id = startTimer(20);
+}
 
 void MyGame::keyPressEvent(QKeyEvent *event)
 {
@@ -52,6 +57,7 @@ void MyGame::keyPressEvent(QKeyEvent *event)
 	}
 	if(event->key() == Qt::Key_Escape)
 	{
+		killTimer(timer_id);
 		emit gamePaused();
 	}
 	QGraphicsView::keyPressEvent(event);

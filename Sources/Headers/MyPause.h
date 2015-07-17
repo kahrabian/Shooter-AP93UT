@@ -12,6 +12,7 @@
 #include <QStyleOption>
 #include <QPainter>
 #include <QFile>
+#include <QKeyEvent>
 #include "Resources.h"
 #include "MyaudioTab.h"
 
@@ -28,6 +29,7 @@ public slots:
 
 signals:
 	void settingChanged();
+	void gameUnpaused();
 
 private:
 	QVBoxLayout *ps_lay;
@@ -43,6 +45,9 @@ private:
 	void cnstrct_logo();
 	void cnstrct_ps();
 	void set_bckgrnd();
+
+protected:
+	void keyPressEvent(QKeyEvent *);
 	void paintEvent(QPaintEvent *);
 };
 

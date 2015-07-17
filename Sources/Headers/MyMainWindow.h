@@ -21,6 +21,7 @@
 #include "MySetting.h"
 #include "MyName.h"
 #include "MyPause.h"
+#include "MyEnd.h"
 
 class MyMainWindow : QMainWindow
 {
@@ -31,6 +32,7 @@ public:
 
 public slots:
 	void game_paused();
+	void game_unpaused();
 	void strt_bttn_clicked();
 	void newg_bttn_clicked();
 	void resm_bttn_clicked();
@@ -50,6 +52,7 @@ private:
 	MyName *name;
 	MyGame *game;
 	MyPause *ps;
+	MyEnd *end;
 
     void set_init_pos();
     void set_media();

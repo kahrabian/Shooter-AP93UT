@@ -22,9 +22,14 @@ void MyMainWindow::game_paused()
 	widget_stack->setCurrentWidget(ps);
 }
 
+void MyMainWindow::game_unpaused()
+{
+	widget_stack->setCurrentWidget(game);
+	game->unpause();
+}
+
 void MyMainWindow::exit_bttn_clicked()
 {
-	QFile::remove(MyRes::scrnsht_add);
 	close();
 }
 
@@ -102,6 +107,8 @@ void MyMainWindow::cnstrct_stack()
 	widget_stack->addWidget(name);
 	ps = new MyPause(widget_stack);
 	widget_stack->addWidget(ps);
+	end = new MyEnd(widget_stack);
+	widget_stack->addWidget(end);
 }
 
 void MyMainWindow::set_cnctns()
@@ -123,9 +130,13 @@ void MyMainWindow::set_cnctns()
 	QObject::connect(name->back, SIGNAL(clicked()), this, SLOT(back_bttn_clicked()));
 
 	QObject::connect(ps, SIGNAL(settingChanged()), this, SLOT(update_stng()));
+	QObject::connect(ps, SIGNAL(gameUnpaused()), this, SLOT(game_unpaused()));
 	QObject::connect(ps->exit, SIGNAL(clicked()), this, SLOT(back_bttn_clicked()));
 //	QObject::connect(ps->rest, SIGNAL(clicked()), this, SLOT(back_bttn_clicked()));
-//	QObject::connect(ps->resm, SIGNAL(clicked()), this, SLOT(back_bttn_clicked()));
+	QObject::connect(ps->resm, SIGNAL(clicked()), this, SLOT(game_unpaused()));
+
+	QObject::connect(end->exit, SIGNAL(clicked()), this, SLOT(back_bttn_clicked()));
+//	QObject::connect(end->rest, SIGNAL(clicked()), this, SLOT(back_bttn_clicked()));
 }
 
 void MyMainWindow::reset_music()
