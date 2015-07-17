@@ -32,4 +32,8 @@ namespace MyRes
 
 	// MyName
 	const QString nm_txt_stlsheet("background-color: rgba(0, 0, 0, 60%); color : #99FF33; font-size: 10pt");
+
+    // MyPause
+    const QString scrnsht_add("Resources/scrnsht.png");
+    const QString ps_stlsheet("{background-image: url(Resources/scrnsht.png);}");
 }

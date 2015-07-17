@@ -13,6 +13,7 @@
 #include <QStackedWidget>
 #include <QDesktopWidget>
 #include <QMediaPlayer>
+#include <QPixmap>
 #include "Game/MyGame.h"
 #include "Resources.h"
 #include "MyMenu.h"

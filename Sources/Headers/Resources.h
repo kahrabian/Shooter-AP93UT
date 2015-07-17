@@ -43,6 +43,10 @@ namespace MyRes
 
 	// MyName
 	extern const QString nm_txt_stlsheet;
+
+	// MyPause
+	extern const QString scrnsht_add;
+    extern const QString ps_stlsheet;
 }
 
 #endif //SHOOTER_AP93UT_RESOURCES_H

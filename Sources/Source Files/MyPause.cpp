@@ -8,7 +8,7 @@ MyPause::MyPause(QWidget *parent, Qt::WindowFlags f) :
 		QWidget(parent, f)
 {
 	resize(MyRes::app_size);
-	setStyleSheet("MyPause " + MyRes::background_add);
+//	setStyleSheet("MyPause " + MyRes::scrnsht_add);
 	cnstrct_btns();
 	cnstrct_logo();
 	cnstrct_ps();
@@ -60,6 +60,11 @@ void MyPause::cnstrct_logo()
 	logo->setPixmap(QPixmap(MyRes::logo_add));
 	logo->setAlignment(Qt::AlignHCenter);
 	logo->setAttribute(Qt::WA_TranslucentBackground);
+}
+
+void MyPause::set_bckgrnd()
+{
+	setStyleSheet("MyPause " + MyRes::ps_stlsheet);
 }
 
 void MyPause::paintEvent(QPaintEvent *my_event)

@@ -42,6 +42,7 @@ private:
 	void cnstrct_btns();
 	void cnstrct_logo();
 	void cnstrct_ps();
+	void set_bckgrnd();
 	void paintEvent(QPaintEvent *);
 };
 

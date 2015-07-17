@@ -17,12 +17,15 @@ MyMainWindow::~MyMainWindow() { }
 
 void MyMainWindow::game_paused()
 {
+	QPixmap::grabWidget(game, game->frameGeometry()).save(MyRes::scrnsht_add);
+	ps->set_bckgrnd();
 	widget_stack->setCurrentWidget(ps);
 }
 
 void MyMainWindow::exit_bttn_clicked()
 {
-    close();
+	QFile::remove(MyRes::scrnsht_add);
+	close();
 }
 
 void MyMainWindow::back_bttn_clicked()
@@ -121,7 +124,6 @@ void MyMainWindow::set_cnctns()
 
 	QObject::connect(ps, SIGNAL(settingChanged()), this, SLOT(update_stng()));
 	QObject::connect(ps->exit, SIGNAL(clicked()), this, SLOT(back_bttn_clicked()));
-
 //	QObject::connect(ps->rest, SIGNAL(clicked()), this, SLOT(back_bttn_clicked()));
 //	QObject::connect(ps->resm, SIGNAL(clicked()), this, SLOT(back_bttn_clicked()));
 }
