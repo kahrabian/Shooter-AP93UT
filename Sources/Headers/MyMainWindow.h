@@ -33,6 +33,7 @@ public:
 public slots:
 	void game_paused();
 	void game_unpaused();
+	void game_restart();
 	void strt_bttn_clicked();
 	void newg_bttn_clicked();
 	void resm_bttn_clicked();

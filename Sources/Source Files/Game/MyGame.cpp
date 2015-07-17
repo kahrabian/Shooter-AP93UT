@@ -9,19 +9,18 @@ MyGame::MyGame(QWidget * parent) :
 		QGraphicsView(parent)
 {
 	stp_tmr = new QElapsedTimer();
+	stp_tmr->invalidate();
+
 	gscn = new QGraphicsScene();
 	gscn->setSceneRect(0, 0, 1120 + 6000, 630);
 	gscn->setBackgroundBrush(QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(50, 50)));
 	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]));
 	gscn->addItem(tmp);
 	setScene(gscn);
-//	setSceneRect(0, 0, 1120, 620);
-	setSceneRect(this->parentWidget()->frameGeometry());
-//	setSceneRect(0, 0, this->parentWidget()->frameGeometry().width(), this->parentWidget()->frameGeometry().height());
+//	setSceneRect(this->parentWidget()->frameGeometry());
+	setSceneRect(0, 0, this->parentWidget()->frameGeometry().width(), this->parentWidget()->frameGeometry().height());
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-//	tmp->setPos(0, 0);
-//	repaint();
 	timer_id = startTimer(20);
 }
 
@@ -40,6 +39,10 @@ void MyGame::unpause()
 	QTextStream X(stderr);
 	X << stp_tmr_val << endl;
 	timer_id = startTimer(20);
+}
+
+void MyGame::restart()
+{
 }
 
 void MyGame::keyPressEvent(QKeyEvent *event)
