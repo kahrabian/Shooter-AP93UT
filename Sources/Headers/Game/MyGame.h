@@ -32,6 +32,7 @@ public:
 
 signals:
 	void gamePaused();
+	void gameEnded();
 
 private:
 	QGraphicsScene *gscn;

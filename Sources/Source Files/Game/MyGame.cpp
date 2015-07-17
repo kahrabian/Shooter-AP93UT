@@ -36,8 +36,6 @@ void MyGame::unpause()
 {
 	stp_tmr_val = stp_tmr->elapsed();
 	stp_tmr->invalidate();
-	QTextStream X(stderr);
-	X << stp_tmr_val << endl;
 	timer_id = startTimer(20);
 }
 

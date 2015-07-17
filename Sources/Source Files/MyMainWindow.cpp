@@ -34,6 +34,12 @@ void MyMainWindow::game_restart()
 	game->restart();
 }
 
+void MyMainWindow::game_ended()
+{
+	widget_stack->setCurrentWidget(end);
+	game->restart();
+}
+
 void MyMainWindow::exit_bttn_clicked()
 {
 	close();
@@ -73,6 +79,7 @@ void MyMainWindow::strt_bttn_clicked()
 	widget_stack->addWidget(game);
 	widget_stack->setCurrentWidget(game);
 	QObject::connect(game, SIGNAL(gamePaused()), this, SLOT(game_paused()));
+	QObject::connect(game, SIGNAL(gameEnded()), this, SLOT(game_ended()));
 }
 
 void MyMainWindow::set_init_pos()
