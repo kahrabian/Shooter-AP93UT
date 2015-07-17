@@ -47,7 +47,6 @@ private:
     QList<MyShield> shlds;
     QList<MyMagic> mgns;
 
-	QTimer *g_tmr;
 	QElapsedTimer *stp_tmr;
 	qint64 stp_tmr_val;
 

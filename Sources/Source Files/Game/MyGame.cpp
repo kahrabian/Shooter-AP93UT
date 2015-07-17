@@ -8,6 +8,7 @@
 MyGame::MyGame(QWidget * parent) :
 		QGraphicsView(parent)
 {
+	stp_tmr = new QElapsedTimer();
 	gscn = new QGraphicsScene();
 	gscn->setSceneRect(0, 0, 1120 + 6000, 630);
 	gscn->setBackgroundBrush(QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(50, 50)));
@@ -34,6 +35,10 @@ MyGame::~MyGame() { }
 
 void MyGame::unpause()
 {
+	stp_tmr_val = stp_tmr->elapsed();
+	stp_tmr->invalidate();
+	QTextStream X(stderr);
+	X << stp_tmr_val << endl;
 	timer_id = startTimer(20);
 }
 
@@ -57,6 +62,7 @@ void MyGame::keyPressEvent(QKeyEvent *event)
 	}
 	if(event->key() == Qt::Key_Escape)
 	{
+		stp_tmr->restart();
 		killTimer(timer_id);
 		emit gamePaused();
 	}
