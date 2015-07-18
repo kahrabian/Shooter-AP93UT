@@ -8,20 +8,20 @@
 MyGame::MyGame(QWidget * parent) :
 		QGraphicsView(parent)
 {
+    prsd_kys = new QSet<int>();
+	resize(MyRes::app_size);
+
 	stp_tmr = new QElapsedTimer();
 	stp_tmr->invalidate();
 
 	gscn = new QGraphicsScene();
-	gscn->setSceneRect(0, 0, 1120 + 6000, 630);
-	gscn->setBackgroundBrush(QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(50, 50)));
+	gscn->setSceneRect(MyRes::scn_rct);
+	gscn->setBackgroundBrush(QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(MyRes::tl_size)));
 	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]));
 	gscn->addItem(tmp);
 	setScene(gscn);
-//	setSceneRect(this->parentWidget()->frameGeometry());
-	setSceneRect(0, 0, this->parentWidget()->frameGeometry().width(), this->parentWidget()->frameGeometry().height());
-	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	timer_id = startTimer(20);
+	setSceneRect(viewport()->frameGeometry());
+	timer_id = startTimer(MyRes::frm_dly);
 }
 
 MyGame::MyGame(QGraphicsScene * scene, QWidget * parent) :
@@ -36,7 +36,7 @@ void MyGame::unpause()
 {
 	stp_tmr_val = stp_tmr->elapsed();
 	stp_tmr->invalidate();
-	timer_id = startTimer(20);
+	timer_id = startTimer(MyRes::frm_dly);
 }
 
 void MyGame::restart()
@@ -45,22 +45,7 @@ void MyGame::restart()
 
 void MyGame::keyPressEvent(QKeyEvent *event)
 {
-	if(event->key() == Qt::Key_Up)
-	{
-		tmp->setPos(tmp->x(), tmp->y() - 10);
-	}
-	if(event->key() == Qt::Key_Down)
-	{
-		tmp->setPos(tmp->x(), tmp->y() + 10);
-	}
-	if(event->key() == Qt::Key_Left)
-	{
-		tmp->setPos(tmp->x() - 10, tmp->y());
-	}
-	if(event->key() == Qt::Key_Right)
-	{
-		tmp->setPos(tmp->x() + 10, tmp->y());
-	}
+	prsd_kys->insert(event->key());
 	if(event->key() == Qt::Key_Escape)
 	{
 		stp_tmr->restart();
@@ -70,7 +55,21 @@ void MyGame::keyPressEvent(QKeyEvent *event)
 	QGraphicsView::keyPressEvent(event);
 }
 
+void MyGame::keyReleaseEvent(QKeyEvent *event)
+{
+	prsd_kys->remove(event->key());
+	QGraphicsView::keyReleaseEvent(event);
+}
+
 void MyGame::timerEvent(QTimerEvent *event)
 {
-	setSceneRect(sceneRect().x() + 1, 0, this->parentWidget()->frameGeometry().width(), this->parentWidget()->frameGeometry().height());
+	if(prsd_kys->find(Qt::Key_Up) != prsd_kys->end())
+		tmp->setPos(tmp->x(), tmp->y() - MyRes::shp_mvmnt);
+	if(prsd_kys->find(Qt::Key_Down) != prsd_kys->end())
+		tmp->setPos(tmp->x(), tmp->y() + MyRes::shp_mvmnt);
+	if(prsd_kys->find(Qt::Key_Left) != prsd_kys->end())
+		tmp->setPos(tmp->x() - MyRes::shp_mvmnt, tmp->y());
+	if(prsd_kys->find(Qt::Key_Right) != prsd_kys->end())
+		tmp->setPos(tmp->x() + MyRes::shp_mvmnt, tmp->y());
+	setSceneRect(sceneRect().x() + MyRes::vw_mvmnt, 0, viewport()->frameGeometry().width(), viewport()->frameGeometry().height());
 }

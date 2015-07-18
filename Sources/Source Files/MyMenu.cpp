@@ -30,6 +30,7 @@ void MyMenu::cnstrct_btns()
     QTextStream stream(&file);
     QString tmp;
     stream >> tmp;
+	file.close();
 
     btns = new QHBoxLayout();
     rsm = new QPushButton("Resume", this);

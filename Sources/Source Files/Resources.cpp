@@ -11,6 +11,8 @@ namespace MyRes
     const QString env_adds[env_cnt] = {"Resources/Environments/txtr1.jpeg", "Resources/Environments/txtr2.jpeg", "Resources/Environments/txtr3.jpeg", "Resources/Environments/txtr4.jpeg", "Resources/Environments/txtr5.jpeg", "Resources/Environments/txtr6.jpeg", "Resources/Environments/txtr7.jpeg", "Resources/Environments/txtr8.jpeg", "Resources/Environments/txtr9.jpeg", "Resources/Environments/txtr10.jpeg", "Resources/Environments/txtr11.jpeg", "Resources/Environments/txtr12.jpeg", "Resources/Environments/txtr13.jpeg", "Resources/Environments/txtr14.jpeg", "Resources/Environments/txtr15.jpeg", "Resources/Environments/txtr16.jpeg"};
     const QSize img_init_size(541, 323);
     const QSize app_size(1120, 630);
+    const QRect scn_rct(0, 0, app_size.width() + (gm_drtn / frm_dly), app_size.height());
+    const QSize tl_size(50, 50);
     const QString stng_add("Resources/resume.txt");
     const QString mainmuse_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/main_music.wav");
     const QString logo_add("Resources/logo.png");

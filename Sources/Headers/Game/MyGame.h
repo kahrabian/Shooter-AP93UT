@@ -12,6 +12,7 @@
 #include <QList>
 #include <QKeyEvent>
 #include <QTextStream>
+#include <QSet>
 #include "MyShip.h"
 #include "MyBullet.h"
 #include "MyAsteroid.h"
@@ -35,6 +36,8 @@ signals:
 	void gameEnded();
 
 private:
+	QSet<int> *prsd_kys;
+
 	QGraphicsScene *gscn;
 
 	MyShip *tmp;
@@ -58,6 +61,7 @@ private:
 
 protected:
 	void keyPressEvent(QKeyEvent *);
+	void keyReleaseEvent(QKeyEvent *);
 	void timerEvent(QTimerEvent *);
 };
 
