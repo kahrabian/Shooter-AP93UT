@@ -79,8 +79,7 @@ void MyMainWindow::set_init_pos() {
 
 void MyMainWindow::set_media() {
 	med_player = new QMediaPlayer(this);
-//	med_player->setMedia(QUrl::fromLocalFile(MyRes::mainmuse_add));
-	med_player->setMedia(QMediaContent(QUrl("Resources/main_music.wav")));
+	med_player->setMedia(QUrl::fromLocalFile(MyRes::mainmuse_add));
 	med_player->setVolume(SettingData::mVol);
 	med_player->setMuted(SettingData::mMut);
 	med_player->play();
