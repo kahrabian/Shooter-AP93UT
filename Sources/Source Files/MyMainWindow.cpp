@@ -102,7 +102,7 @@ void MyMainWindow::set_prpts()
     setFixedSize(MyRes::app_size);
     set_init_pos();
     setWindowTitle("Awsome Space Shooter");
-    setWindowIcon(QIcon(MyRes::mainwin_icon));
+    setWindowIcon(QIcon(MyRes::mainwin_icon_add));
     setCentralWidget(widget_stack);
     show();
 }
