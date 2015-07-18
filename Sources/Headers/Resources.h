@@ -22,6 +22,8 @@ namespace MyRes {
     const int mgc_cnt = 4;
     const int env_cnt = 16;
     const int shp_cnt = 5;
+    const int aln_bss_cnt = 5;
+    const int aln_nrml_cnt = 11;
     const int astrd_frcnt = 16;
     const int astrd_typcnt = 7;
 
@@ -33,6 +35,9 @@ namespace MyRes {
 
     // Resource location addresses
     extern const QString shp_adds[shp_cnt];
+    extern const QString shp_shld_add;
+    extern const QString aln_bss_adds[aln_bss_cnt];
+    extern const QString aln_nrml_adds[aln_nrml_cnt];
     extern const QString env_adds[env_cnt];
     extern const QString astrd_adds[astrd_typcnt][astrd_frcnt];
     extern const QString str_add;

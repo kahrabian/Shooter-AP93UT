@@ -12,7 +12,17 @@ namespace MyRes {
     const QSize tl_size(50, 50);
 
     // Resource location addresses
-    const QString shp_adds[shp_cnt] = {"Resources/Ships/shp1.png", "Resources/Ships/shp2.png",
+    const QString shp_adds[shp_cnt] = {"Resources/Aliens/Boss/bss1.png", "Resources/Aliens/Boss/bss2.png",
+                                       "Resources/Aliens/Boss/bss3.png", "Resources/Aliens/Boss/bss4.png",
+                                       "Resources/Aliens/Boss/bss5.png"};
+    const QString shp_shld_add("Resources/Ships/shpshld.png");
+    const QString aln_bss_adds[aln_bss_cnt] = {"Resources/Aliens/Normal/aln1.png", "Resources/Aliens/Normal/aln2.png",
+                                               "Resources/Aliens/Normal/aln3.png", "Resources/Aliens/Normal/aln4.png",
+                                               "Resources/Aliens/Normal/aln5.png", "Resources/Aliens/Normal/aln6.png",
+                                               "Resources/Aliens/Normal/aln7.png", "Resources/Aliens/Normal/aln8.png",
+                                               "Resources/Aliens/Normal/aln9.png", "Resources/Aliens/Normal/aln10.png",
+                                               "Resources/Aliens/Normal/aln11.png"};
+    const QString aln_nrml_adds[aln_nrml_cnt] = {"Resources/Ships/shp1.png", "Resources/Ships/shp2.png",
                                        "Resources/Ships/shp3.png", "Resources/Ships/shp4.png",
                                        "Resources/Ships/shp5.png"};
     const QString env_adds[env_cnt] = {"Resources/Environments/txtr1.jpeg", "Resources/Environments/txtr2.jpeg",
