@@ -10,12 +10,14 @@
 #include <QPointF>
 #include <QPixmap>
 
-class MyStar : public QGraphicsPixmapItem
-{
+class MyStar : public QGraphicsPixmapItem {
 public:
-	MyStar(QGraphicsItem * parent = 0);
-	MyStar(const QPixmap & pixmap, QGraphicsItem * parent = 0);
+	MyStar(QGraphicsItem *parent = 0);
+
+	MyStar(const QPixmap &pixmap, QGraphicsItem *parent = 0);
+
 	~MyStar();
+
 	void updt(qint64 = 0);
 
 private:

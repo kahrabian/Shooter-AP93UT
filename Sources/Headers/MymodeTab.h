@@ -17,33 +17,37 @@
 #include <QButtonGroup>
 #include "Resources.h"
 
-class MymodeTab : public QWidget
-{
-    Q_OBJECT
-    friend class MySetting;
+class MymodeTab : public QWidget {
+Q_OBJECT
+
+	friend class MySetting;
+
 public:
-    MymodeTab(QWidget * = 0, Qt::WindowFlags = 0);
-    ~MymodeTab();
+	MymodeTab(QWidget * = 0, Qt::WindowFlags = 0);
+
+	~MymodeTab();
 
 private:
-    QHBoxLayout *modeTab_lay;
-    QVBoxLayout *gMod_lay;
-    QLabel *gMod_txt;
-    QButtonGroup *gMods;
-    QRadioButton *gMod_sng;
-    QRadioButton *gMod_co;
-    QRadioButton *gMod_vs;
-    QVBoxLayout *gDiff_lay;
-    QLabel *gDiff_txt;
-    QButtonGroup *gDiffs;
-    QRadioButton *gDiff_eas;
-    QRadioButton *gDiff_nor;
-    QRadioButton *gDiff_har;
-    QRadioButton *gDiff_ext;
+	QHBoxLayout *modeTab_lay;
+	QVBoxLayout *gMod_lay;
+	QLabel *gMod_txt;
+	QButtonGroup *gMods;
+	QRadioButton *gMod_sng;
+	QRadioButton *gMod_co;
+	QRadioButton *gMod_vs;
+	QVBoxLayout *gDiff_lay;
+	QLabel *gDiff_txt;
+	QButtonGroup *gDiffs;
+	QRadioButton *gDiff_eas;
+	QRadioButton *gDiff_nor;
+	QRadioButton *gDiff_har;
+	QRadioButton *gDiff_ext;
 
-    void cnstrct_mode();
-    void cnstrct_diff();
-    void paintEvent(QPaintEvent *);
+	void cnstrct_mode();
+
+	void cnstrct_diff();
+
+	void paintEvent(QPaintEvent *);
 };
 
 #endif //SHOOTER_AP93UT_MYMODETAB_H

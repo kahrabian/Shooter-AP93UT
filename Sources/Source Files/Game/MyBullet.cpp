@@ -4,24 +4,20 @@
 
 #include "../../Headers/Game/MyBullet.h"
 
-MyBullet::MyBullet(QGraphicsItem * parent) :
-		QGraphicsPixmapItem(parent)
-{
+MyBullet::MyBullet(QGraphicsItem *parent) :
+		QGraphicsPixmapItem(parent) {
 
 }
 
 MyBullet::MyBullet(const QPixmap &pixmap, QGraphicsItem *parent) :
-		QGraphicsPixmapItem(pixmap, parent)
-{
+		QGraphicsPixmapItem(pixmap, parent) {
 
 }
 
-MyBullet::~MyBullet()
-{
+MyBullet::~MyBullet() {
 
 }
 
-void MyBullet::updt(qint64 qint641)
-{
+void MyBullet::updt(qint64 qint641) {
 
 }

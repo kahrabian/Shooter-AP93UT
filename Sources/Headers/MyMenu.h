@@ -15,28 +15,33 @@
 #include <QFile>
 #include "Resources.h"
 
-class MyMenu : public QWidget
-{
-    Q_OBJECT
-    friend class MyMainWindow;
+class MyMenu : public QWidget {
+Q_OBJECT
+
+	friend class MyMainWindow;
+
 public:
-    MyMenu(QWidget * = 0, Qt::WindowFlags = 0);
-    ~MyMenu();
+	MyMenu(QWidget * = 0, Qt::WindowFlags = 0);
+
+	~MyMenu();
 
 private:
-    QHBoxLayout *btns;
-    QVBoxLayout *menu;
-    QPushButton *exit;
-    QPushButton *start;
-    QPushButton *rsm;
-    QPushButton *stng;
-    QPushButton *ttrl;
-    QLabel *logo;
+	QHBoxLayout *btns;
+	QVBoxLayout *menu;
+	QPushButton *exit;
+	QPushButton *start;
+	QPushButton *rsm;
+	QPushButton *stng;
+	QPushButton *ttrl;
+	QLabel *logo;
 
-    void cnstrct_btns();
-    void cnstrct_logo();
-    void cnstrct_menu();
-    void paintEvent(QPaintEvent *);
+	void cnstrct_btns();
+
+	void cnstrct_logo();
+
+	void cnstrct_menu();
+
+	void paintEvent(QPaintEvent *);
 };
 
 

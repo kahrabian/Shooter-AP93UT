@@ -15,12 +15,14 @@
 #include "Resources.h"
 
 
-class MyName : public QWidget
-{
-	Q_OBJECT
+class MyName : public QWidget {
+Q_OBJECT
+
 	friend class MyMainWindow;
+
 public:
 	MyName(QWidget * = 0, Qt::WindowFlags = 0);
+
 	~MyName();
 
 private:
@@ -41,10 +43,15 @@ private:
 	QLabel *logo;
 
 	void cnstrct_logo();
+
 	void cnstrct_frm();
+
 	void cnstrct_btns();
+
 	void cnstrct_nm();
+
 	void reset();
+
 	void paintEvent(QPaintEvent *);
 };
 

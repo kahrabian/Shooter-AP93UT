@@ -6,20 +6,19 @@
 #define SHOOTER_AP93UT_SETTINGDATA_H
 
 
-struct SettingData
-{
+struct SettingData {
 	static QString p1_nm;
 	static QString p2_nm;
-    static int gMode;
-    static int gDiff;
-    static int uShp;
-    static int env;
-    static int mVol;
-    static bool mMut;
-    static int sfVol;
-    static bool sfMut;
-    static int aiDiff;
-    static int aiShp;
+	static int gMode;
+	static int gDiff;
+	static int uShp;
+	static int env;
+	static int mVol;
+	static bool mMut;
+	static int sfVol;
+	static bool sfMut;
+	static int aiDiff;
+	static int aiShp;
 };
 
 

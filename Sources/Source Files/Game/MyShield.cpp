@@ -4,24 +4,20 @@
 
 #include "../../Headers/Game/MyShield.h"
 
-MyShield::MyShield(QGraphicsItem * parent) :
-		QGraphicsPixmapItem(parent)
-{
+MyShield::MyShield(QGraphicsItem *parent) :
+		QGraphicsPixmapItem(parent) {
 
 }
 
 MyShield::MyShield(const QPixmap &pixmap, QGraphicsItem *parent) :
-		QGraphicsPixmapItem(pixmap, parent)
-{
+		QGraphicsPixmapItem(pixmap, parent) {
 
 }
 
-MyShield::~MyShield()
-{
+MyShield::~MyShield() {
 
 }
 
-void MyShield::updt(qint64 qint641)
-{
+void MyShield::updt(qint64 qint641) {
 
 }

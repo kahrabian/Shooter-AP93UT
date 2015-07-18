@@ -10,12 +10,14 @@
 #include <QPointF>
 #include <QPixmap>
 
-class MyShield : public QGraphicsPixmapItem
-{
+class MyShield : public QGraphicsPixmapItem {
 public:
-	MyShield(QGraphicsItem * parent = 0);
-	MyShield(const QPixmap & pixmap, QGraphicsItem * parent = 0);
+	MyShield(QGraphicsItem *parent = 0);
+
+	MyShield(const QPixmap &pixmap, QGraphicsItem *parent = 0);
+
 	~MyShield();
+
 	void updt(qint64 = 0);
 
 private:

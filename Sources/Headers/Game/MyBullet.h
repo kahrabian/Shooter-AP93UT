@@ -10,12 +10,14 @@
 #include <QPointF>
 #include <QPixmap>
 
-class MyBullet : public QGraphicsPixmapItem
-{
+class MyBullet : public QGraphicsPixmapItem {
 public:
-	MyBullet(QGraphicsItem * parent = 0);
-	MyBullet(const QPixmap & pixmap, QGraphicsItem * parent = 0);
+	MyBullet(QGraphicsItem *parent = 0);
+
+	MyBullet(const QPixmap &pixmap, QGraphicsItem *parent = 0);
+
 	~MyBullet();
+
 	void updt(qint64 = 0);
 
 private:

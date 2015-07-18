@@ -22,17 +22,22 @@
 #include "MyShield.h"
 #include "MyMagic.h"
 
-class MyGame : public QGraphicsView
-{
-    Q_OBJECT
-    friend class MyMainWindow;
+class MyGame : public QGraphicsView {
+Q_OBJECT
+
+	friend class MyMainWindow;
+
 public:
-    MyGame(QWidget * = 0);
-    MyGame(QGraphicsScene *, QWidget * = 0);
-    ~MyGame();
+	MyGame(QWidget * = 0);
+
+	MyGame(QGraphicsScene *, QWidget * = 0);
+
+	~MyGame();
 
 signals:
+
 	void gamePaused();
+
 	void gameEnded();
 
 private:
@@ -42,14 +47,14 @@ private:
 
 	MyShip *tmp;
 
-    QList<MyShip> shps;
-    QList<MyBullet> blts;
-    QList<MyAsteroid> astrs;
-    QList<MyStar> strs;
-    QList<MyAlien> alns;
-    QList<MyLife> lfs;
-    QList<MyShield> shlds;
-    QList<MyMagic> mgns;
+	QList<MyShip> shps;
+	QList<MyBullet> blts;
+	QList<MyAsteroid> astrs;
+	QList<MyStar> strs;
+	QList<MyAlien> alns;
+	QList<MyLife> lfs;
+	QList<MyShield> shlds;
+	QList<MyMagic> mgns;
 
 	QElapsedTimer *stp_tmr;
 	qint64 stp_tmr_val;
@@ -57,11 +62,14 @@ private:
 	int timer_id;
 
 	void unpause();
+
 	void restart();
 
 protected:
 	void keyPressEvent(QKeyEvent *);
+
 	void keyReleaseEvent(QKeyEvent *);
+
 	void timerEvent(QTimerEvent *);
 };
 

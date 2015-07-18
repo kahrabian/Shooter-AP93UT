@@ -14,12 +14,14 @@
 #include <QFile>
 #include "Resources.h"
 
-class MyEnd : public QWidget
-{
-	Q_OBJECT
+class MyEnd : public QWidget {
+Q_OBJECT
+
 	friend class MyMainWindow;
+
 public:
 	MyEnd(QWidget * = 0, Qt::WindowFlags = 0);
+
 	~MyEnd();
 
 private:
@@ -31,8 +33,11 @@ private:
 	QLabel *logo;
 
 	void cnstrct_btns();
+
 	void cnstrct_logo();
+
 	void cnstrct_end();
+
 	void paintEvent(QPaintEvent *);
 };
 

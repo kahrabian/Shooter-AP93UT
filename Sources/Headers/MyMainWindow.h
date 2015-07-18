@@ -23,44 +23,61 @@
 #include "MyPause.h"
 #include "MyEnd.h"
 
-class MyMainWindow : QMainWindow
-{
-    Q_OBJECT
+class MyMainWindow : QMainWindow {
+Q_OBJECT
 public:
-    MyMainWindow(QWidget * = 0, Qt::WindowFlags = 0);
-    ~MyMainWindow();
+	MyMainWindow(QWidget * = 0, Qt::WindowFlags = 0);
+
+	~MyMainWindow();
 
 public slots:
+
 	void game_paused();
+
 	void game_unpaused();
+
 	void game_restart();
+
 	void game_ended();
+
 	void strt_bttn_clicked();
+
 	void newg_bttn_clicked();
+
 	void resm_bttn_clicked();
-    void exit_bttn_clicked();
-    void ttrl_bttn_clicked();
-    void stng_bttn_clicked();
-    void back_bttn_clicked();
-    void reset_music();
-    void update_stng();
+
+	void exit_bttn_clicked();
+
+	void ttrl_bttn_clicked();
+
+	void stng_bttn_clicked();
+
+	void back_bttn_clicked();
+
+	void reset_music();
+
+	void update_stng();
 
 private:
-    QMediaPlayer *med_player;
-    QStackedWidget *widget_stack;
-    MyMenu *menu;
-    MyTutorial *ttrl;
-    MySetting *stng;
+	QMediaPlayer *med_player;
+	QStackedWidget *widget_stack;
+	MyMenu *menu;
+	MyTutorial *ttrl;
+	MySetting *stng;
 	MyName *name;
 	MyGame *game;
 	MyPause *ps;
 	MyEnd *end;
 
-    void set_init_pos();
-    void set_media();
-    void set_prpts();
-    void cnstrct_stack();
-    void set_cnctns();
+	void set_init_pos();
+
+	void set_media();
+
+	void set_prpts();
+
+	void cnstrct_stack();
+
+	void set_cnctns();
 };
 
 

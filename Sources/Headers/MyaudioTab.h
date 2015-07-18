@@ -14,30 +14,36 @@
 #include <QPainter>
 #include "Resources.h"
 
-class MyaudioTab : public QWidget
-{
-    Q_OBJECT
-    friend class MySetting;
-    friend class MyPause;
+class MyaudioTab : public QWidget {
+Q_OBJECT
+
+	friend class MySetting;
+
+	friend class MyPause;
+
 public:
-    MyaudioTab(QWidget * = 0, Qt::WindowFlags = 0);
-    ~MyaudioTab();
+	MyaudioTab(QWidget * = 0, Qt::WindowFlags = 0);
+
+	~MyaudioTab();
+
 	void sync();
 
 private:
-    QVBoxLayout *audTab_lay;
-    QHBoxLayout *sndEffs;
-    QLabel *sndEffs_txt;
-    QSlider *sndEffs_sli;
-    QCheckBox *sndEffs_mute;
-    QHBoxLayout *muse;
-    QLabel *muse_txt;
-    QSlider *muse_sli;
-    QCheckBox *muse_mute;
+	QVBoxLayout *audTab_lay;
+	QHBoxLayout *sndEffs;
+	QLabel *sndEffs_txt;
+	QSlider *sndEffs_sli;
+	QCheckBox *sndEffs_mute;
+	QHBoxLayout *muse;
+	QLabel *muse_txt;
+	QSlider *muse_sli;
+	QCheckBox *muse_mute;
 
-    void cnstrct_sndeffs();
-    void cnstrct_muse();
-    void paintEvent(QPaintEvent *);
+	void cnstrct_sndeffs();
+
+	void cnstrct_muse();
+
+	void paintEvent(QPaintEvent *);
 };
 
 #endif //SHOOTER_AP93UT_MYAUDIOTAB_H

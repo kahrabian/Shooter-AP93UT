@@ -5,10 +5,9 @@
 #include <Sources/Headers/Resources.h>
 #include "../../Headers/Game/MyGame.h"
 
-MyGame::MyGame(QWidget * parent) :
-		QGraphicsView(parent)
-{
-    prsd_kys = new QSet<int>();
+MyGame::MyGame(QWidget *parent) :
+		QGraphicsView(parent) {
+	prsd_kys = new QSet<int>();
 	resize(MyRes::app_size);
 
 	stp_tmr = new QElapsedTimer();
@@ -24,30 +23,25 @@ MyGame::MyGame(QWidget * parent) :
 	timer_id = startTimer(MyRes::frm_dly);
 }
 
-MyGame::MyGame(QGraphicsScene * scene, QWidget * parent) :
-		QGraphicsView(scene, parent)
-{
+MyGame::MyGame(QGraphicsScene *scene, QWidget *parent) :
+		QGraphicsView(scene, parent) {
 
 }
 
 MyGame::~MyGame() { }
 
-void MyGame::unpause()
-{
+void MyGame::unpause() {
 	stp_tmr_val = stp_tmr->elapsed();
 	stp_tmr->invalidate();
 	timer_id = startTimer(MyRes::frm_dly);
 }
 
-void MyGame::restart()
-{
+void MyGame::restart() {
 }
 
-void MyGame::keyPressEvent(QKeyEvent *event)
-{
+void MyGame::keyPressEvent(QKeyEvent *event) {
 	prsd_kys->insert(event->key());
-	if(event->key() == Qt::Key_Escape)
-	{
+	if (event->key() == Qt::Key_Escape) {
 		stp_tmr->restart();
 		killTimer(timer_id);
 		emit gamePaused();
@@ -55,21 +49,20 @@ void MyGame::keyPressEvent(QKeyEvent *event)
 	QGraphicsView::keyPressEvent(event);
 }
 
-void MyGame::keyReleaseEvent(QKeyEvent *event)
-{
+void MyGame::keyReleaseEvent(QKeyEvent *event) {
 	prsd_kys->remove(event->key());
 	QGraphicsView::keyReleaseEvent(event);
 }
 
-void MyGame::timerEvent(QTimerEvent *event)
-{
-	if(prsd_kys->find(Qt::Key_Up) != prsd_kys->end())
+void MyGame::timerEvent(QTimerEvent *event) {
+	if (prsd_kys->find(Qt::Key_Up) != prsd_kys->end())
 		tmp->setPos(tmp->x(), tmp->y() - MyRes::shp_mvmnt);
-	if(prsd_kys->find(Qt::Key_Down) != prsd_kys->end())
+	if (prsd_kys->find(Qt::Key_Down) != prsd_kys->end())
 		tmp->setPos(tmp->x(), tmp->y() + MyRes::shp_mvmnt);
-	if(prsd_kys->find(Qt::Key_Left) != prsd_kys->end())
+	if (prsd_kys->find(Qt::Key_Left) != prsd_kys->end())
 		tmp->setPos(tmp->x() - MyRes::shp_mvmnt, tmp->y());
-	if(prsd_kys->find(Qt::Key_Right) != prsd_kys->end())
+	if (prsd_kys->find(Qt::Key_Right) != prsd_kys->end())
 		tmp->setPos(tmp->x() + MyRes::shp_mvmnt, tmp->y());
-	setSceneRect(sceneRect().x() + MyRes::vw_mvmnt, 0, viewport()->frameGeometry().width(), viewport()->frameGeometry().height());
+	setSceneRect(sceneRect().x() + MyRes::vw_mvmnt, 0, viewport()->frameGeometry().width(),
+	             viewport()->frameGeometry().height());
 }

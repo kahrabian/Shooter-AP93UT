@@ -14,12 +14,11 @@ bool SettingData::sfMut = false;
 int SettingData::aiDiff = 1;
 int SettingData::aiShp = 0;
 
-int main(int argc, char **argv)
-{
-    QApplication *app = new QApplication(argc, argv);
-    MyMainWindow *mainwin = new MyMainWindow();
-    app->exec();
+int main(int argc, char **argv) {
+	QApplication *app = new QApplication(argc, argv);
+	MyMainWindow *mainwin = new MyMainWindow();
+	app->exec();
 //	delete mainwin;
 //	delete app;
-    return 0;
+	return 0;
 }

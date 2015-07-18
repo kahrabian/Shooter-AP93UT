@@ -12,20 +12,30 @@
 #include <QString>
 #include <QPixmap>
 
-class MyShip : public QGraphicsPixmapItem
-{
+class MyShip : public QGraphicsPixmapItem {
 public:
-    MyShip(QGraphicsItem * parent = 0);
-    MyShip(const QPixmap & pixmap, QGraphicsItem * parent = 0);
-    ~MyShip();
+	MyShip(QGraphicsItem *parent = 0);
+
+	MyShip(const QPixmap &pixmap, QGraphicsItem *parent = 0);
+
+	~MyShip();
+
 	int getLf() const;
+
 	void setLf(int lf);
+
 	int getScr() const;
+
 	void setScr(int scr);
+
 	bool isShld() const;
+
 	void setShld(bool shld);
+
 	bool isMgc() const;
+
 	void setMgc(bool mgc);
+
 	void updt(qint64 = 0);
 
 private:

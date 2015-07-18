@@ -12,13 +12,12 @@
 #include <QRect>
 #include "SettingData.h"
 
-namespace MyRes
-{
-	// Project properties
+namespace MyRes {
+    // Project properties
     const int frm_dly = 30;
-	const int gm_drtn = 120000;
-	const int vw_mvmnt = 1;
-	const int shp_mvmnt = 5;
+    const int gm_drtn = 120000;
+    const int vw_mvmnt = 1;
+    const int shp_mvmnt = 5;
     const int env_cnt = 16;
     const int shp_cnt = 5;
     const int astrd_frcnt = 16;
@@ -30,8 +29,8 @@ namespace MyRes
     extern const QRect scn_rct;
     extern const QSize tl_size;
 
-	// Resource location addresses
-	extern const QString shp_adds[shp_cnt];
+    // Resource location addresses
+    extern const QString shp_adds[shp_cnt];
     extern const QString env_adds[env_cnt];
     extern const QString astrd_adds[astrd_typcnt][astrd_frcnt];
     extern const QString stng_add;

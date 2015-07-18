@@ -25,43 +25,57 @@
 #include "MyaiTab.h"
 
 
-class MySetting : public QWidget
-{
-    Q_OBJECT
-    friend class MyMainWindow;
+class MySetting : public QWidget {
+Q_OBJECT
+
+	friend class MyMainWindow;
+
 public:
-    MySetting(QWidget * = 0, Qt::WindowFlags = 0);
-    ~MySetting();
+	MySetting(QWidget * = 0, Qt::WindowFlags = 0);
+
+	~MySetting();
 
 public slots:
-    void update_stng();
-    void pre_env();
-    void nxt_env();
-    void pre_shp();
-    void nxt_shp();
-    void pre_aishp();
-    void nxt_aishp();
+
+	void update_stng();
+
+	void pre_env();
+
+	void nxt_env();
+
+	void pre_shp();
+
+	void nxt_shp();
+
+	void pre_aishp();
+
+	void nxt_aishp();
 
 signals:
-    void settingChanged();
+
+	void settingChanged();
 
 
 private:
-    QVBoxLayout *setting;
-    QTabWidget *tabs;
-    QPushButton *back;
-    QLabel *logo;
+	QVBoxLayout *setting;
+	QTabWidget *tabs;
+	QPushButton *back;
+	QLabel *logo;
 
-    MymodeTab *modeTab;
-    MythmTab *thmTab;
-    MyaudioTab *audTab;
-    MyaiTab *aiTab;
+	MymodeTab *modeTab;
+	MythmTab *thmTab;
+	MyaudioTab *audTab;
+	MyaiTab *aiTab;
 
-    void set_cnctns();
-    void cnstrct_stng();
-    void cnstrct_logo();
-    void cnstrct_tabs();
-    void paintEvent(QPaintEvent *);
+	void set_cnctns();
+
+	void cnstrct_stng();
+
+	void cnstrct_logo();
+
+	void cnstrct_tabs();
+
+	void paintEvent(QPaintEvent *);
 };
 
 

@@ -10,12 +10,14 @@
 #include <QPointF>
 #include <QPixmap>
 
-class MyAsteroid : public QGraphicsPixmapItem
-{
+class MyAsteroid : public QGraphicsPixmapItem {
 public:
-	MyAsteroid(QGraphicsItem * parent = 0);
-	MyAsteroid(const QPixmap & pixmap, QGraphicsItem * parent = 0);
+	MyAsteroid(QGraphicsItem *parent = 0);
+
+	MyAsteroid(const QPixmap &pixmap, QGraphicsItem *parent = 0);
+
 	~MyAsteroid();
+
 	void updt(qint64 = 0);
 
 private:

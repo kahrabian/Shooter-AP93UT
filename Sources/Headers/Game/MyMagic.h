@@ -10,12 +10,14 @@
 #include <QPointF>
 #include <QPixmap>
 
-class MyMagic : public QGraphicsPixmapItem
-{
+class MyMagic : public QGraphicsPixmapItem {
 public:
-	MyMagic(QGraphicsItem * parent = 0);
-	MyMagic(const QPixmap & pixmap, QGraphicsItem * parent = 0);
+	MyMagic(QGraphicsItem *parent = 0);
+
+	MyMagic(const QPixmap &pixmap, QGraphicsItem *parent = 0);
+
 	~MyMagic();
+
 	void updt(qint64 = 0);
 
 private:
