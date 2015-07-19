@@ -5,6 +5,7 @@
 #ifndef SHOOTER_AP93UT_MYMAGIC_H
 #define SHOOTER_AP93UT_MYMAGIC_H
 
+#include <QGraphicsDropShadowEffect>
 #include <QGraphicsPixmapItem>
 #include <QElapsedTimer>
 #include <QPointF>

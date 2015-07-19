@@ -6,6 +6,7 @@
 
 MyLife::MyLife(QGraphicsItem *parent) :
 		QGraphicsPixmapItem(parent) {
+	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	frm_tmr = new QElapsedTimer();
 	vlc = new QPointF(0.0, 0.0);
 	frst_frm = true;
@@ -13,6 +14,7 @@ MyLife::MyLife(QGraphicsItem *parent) :
 
 MyLife::MyLife(const QPixmap &pixmap, QGraphicsItem *parent) :
 		QGraphicsPixmapItem(pixmap, parent) {
+	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	frm_tmr = new QElapsedTimer();
 	vlc = new QPointF(0.0, 0.0);
 	frst_frm = true;
