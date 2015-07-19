@@ -22,6 +22,7 @@ public:
 
 private:
 	QElapsedTimer *frm_tmr;
+	bool frst_frm;
 
 	QPointF *vlc;
 };
