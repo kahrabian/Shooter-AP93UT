@@ -55,14 +55,7 @@ void MyGame::keyReleaseEvent(QKeyEvent *event) {
 }
 
 void MyGame::timerEvent(QTimerEvent *event) {
-	if (prsd_kys->find(Qt::Key_Up) != prsd_kys->end())
-		tmp->setPos(tmp->x(), tmp->y() - MyRes::shp_mvmnt);
-	if (prsd_kys->find(Qt::Key_Down) != prsd_kys->end())
-		tmp->setPos(tmp->x(), tmp->y() + MyRes::shp_mvmnt);
-	if (prsd_kys->find(Qt::Key_Left) != prsd_kys->end())
-		tmp->setPos(tmp->x() - MyRes::shp_mvmnt, tmp->y());
-	if (prsd_kys->find(Qt::Key_Right) != prsd_kys->end())
-		tmp->setPos(tmp->x() + MyRes::shp_mvmnt, tmp->y());
+	tmp->updt(stp_tmr->elapsed(), prsd_kys);
 	setSceneRect(sceneRect().x() + MyRes::vw_mvmnt, 0, viewport()->frameGeometry().width(),
 	             viewport()->frameGeometry().height());
 }

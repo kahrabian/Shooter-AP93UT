@@ -12,6 +12,8 @@
 #include <QPointF>
 #include <QString>
 #include <QPixmap>
+#include <QSet>
+#include <Sources/Headers/Resources.h>
 
 class MyShip : public QGraphicsPixmapItem {
 public:
@@ -37,10 +39,15 @@ public:
 
 	void setMgc(bool mgc);
 
-	void updt(qint64 = 0);
+	void setVlc(QPointF *);
+
+	QPointF *getVlc() const;
+
+	void updt(qint64 = 0, QSet<int> * = 0);
 
 private:
 	QString *name;
+	int rtn;
 
 	int lf;
 	int scr;
@@ -52,7 +59,6 @@ private:
 	QElapsedTimer *frm_tmr;
 
 	int mss;
-	QPointF *pos;
 	QPointF *vlc;
 	QPointF *acc;
 	QPointF *frc;
