@@ -22,7 +22,7 @@ public:
 
 private:
 	QElapsedTimer *frm_tmr;
-
+	
 	bool grv;
 
 	int mss;

@@ -18,11 +18,15 @@ public:
 
 	~MyStar();
 
+	void setVlc(QPointF *);
+
+	QPointF *getVlc() const;
+
 	void updt(qint64 = 0);
 
 private:
-	QElapsedTimer *frm_tmr;
 	bool frst_frm;
+	QElapsedTimer *frm_tmr;
 
 	QPointF *vlc;
 };

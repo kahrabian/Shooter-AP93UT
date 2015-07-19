@@ -7,12 +7,14 @@
 MyLife::MyLife(QGraphicsItem *parent) :
 		QGraphicsPixmapItem(parent) {
 	frm_tmr = new QElapsedTimer();
+	vlc = new QPointF(0.0, 0.0);
 	frst_frm = true;
 }
 
 MyLife::MyLife(const QPixmap &pixmap, QGraphicsItem *parent) :
 		QGraphicsPixmapItem(pixmap, parent) {
 	frm_tmr = new QElapsedTimer();
+	vlc = new QPointF(0.0, 0.0);
 	frst_frm = true;
 }
 
@@ -20,10 +22,18 @@ MyLife::~MyLife() {
 
 }
 
+void MyLife::setVlc(QPointF *vlc) {
+	MyLife::vlc = vlc;
+}
+
+QPointF *MyLife::getVlc() const {
+	return vlc;
+}
+
 void MyLife::updt(qint64 stp_tm) {
 	if (frst_frm) {
-		frm_tmr->start();
 		frst_frm = false;
+		frm_tmr->start();
 	}
 	else {
 		setPos(pos().x() + (vlc->x() * (frm_tmr->elapsed() - stp_tm)),

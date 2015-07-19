@@ -20,11 +20,12 @@ namespace MyRes {
                                                "Resources/Aliens/Boss/bss3.png", "Resources/Aliens/Boss/bss4.png",
                                                "Resources/Aliens/Boss/bss5.png"};
     const QString aln_nrml_adds[aln_nrml_cnt] = {"Resources/Aliens/Normal/aln1.png", "Resources/Aliens/Normal/aln2.png",
-                                               "Resources/Aliens/Normal/aln3.png", "Resources/Aliens/Normal/aln4.png",
-                                               "Resources/Aliens/Normal/aln5.png", "Resources/Aliens/Normal/aln6.png",
-                                               "Resources/Aliens/Normal/aln7.png", "Resources/Aliens/Normal/aln8.png",
-                                               "Resources/Aliens/Normal/aln9.png", "Resources/Aliens/Normal/aln10.png",
-                                               "Resources/Aliens/Normal/aln11.png"};
+                                                 "Resources/Aliens/Normal/aln3.png", "Resources/Aliens/Normal/aln4.png",
+                                                 "Resources/Aliens/Normal/aln5.png", "Resources/Aliens/Normal/aln6.png",
+                                                 "Resources/Aliens/Normal/aln7.png", "Resources/Aliens/Normal/aln8.png",
+                                                 "Resources/Aliens/Normal/aln9.png",
+                                                 "Resources/Aliens/Normal/aln10.png",
+                                                 "Resources/Aliens/Normal/aln11.png"};
     const QString env_adds[env_cnt] = {"Resources/Environments/txtr1.jpeg", "Resources/Environments/txtr2.jpeg",
                                        "Resources/Environments/txtr3.jpeg", "Resources/Environments/txtr4.jpeg",
                                        "Resources/Environments/txtr5.jpeg", "Resources/Environments/txtr6.jpeg",
