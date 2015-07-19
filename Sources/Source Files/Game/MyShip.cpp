@@ -12,7 +12,6 @@ MyShip::MyShip(QGraphicsItem *parent) :
 	setPos(0.0, 0.0);
 	vlc = new QPointF(0.0, 0.0);
 	rtn = 0;
-//	setTransform(QTransform().rotate(70, Qt::XAxis), true);
 }
 
 MyShip::MyShip(const QPixmap &pixmap, QGraphicsItem *parent) :
@@ -21,7 +20,6 @@ MyShip::MyShip(const QPixmap &pixmap, QGraphicsItem *parent) :
 	setPos(0.0, 0.0);
 	vlc = new QPointF(0.0, 0.0);
 	rtn = 0;
-//	setTransform(QTransform().rotate(70, Qt::XAxis), true);
 }
 
 MyShip::~MyShip() {
