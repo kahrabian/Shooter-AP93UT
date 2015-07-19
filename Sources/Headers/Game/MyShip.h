@@ -7,6 +7,8 @@
 
 #include <QGraphicsDropShadowEffect>
 #include <QGraphicsPixmapItem>
+#include <QGraphicsScene>
+#include <QGraphicsView>
 #include <QElapsedTimer>
 #include <QTimer>
 #include <QPointF>
@@ -46,8 +48,9 @@ public:
 	void updt(qint64 = 0, QSet<int> * = 0);
 
 private:
-	QString *name;
 	int rtn;
+	QString *name;
+	QRectF *init_rct;
 
 	int lf;
 	int scr;
@@ -62,6 +65,8 @@ private:
 	QPointF *vlc;
 	QPointF *acc;
 	QPointF *frc;
+
+	void cnstrct_shldpxmp();
 };
 
 #endif //SHOOTER_AP93UT_MYSHIP_H
