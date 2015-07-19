@@ -6,12 +6,14 @@
 
 MyShip::MyShip(QGraphicsItem *parent) :
 		QGraphicsPixmapItem(parent) {
-	setPos(QPointF(0.0, 0.0));
-//	setTransform(QTransform().rotate(60, Qt::XAxis));
+	setGraphicsEffect(new QGraphicsDropShadowEffect());
+	setPos(0.0, 0.0);
+	setTransform(QTransform().rotate(70, Qt::XAxis), true);
 }
 
 MyShip::MyShip(const QPixmap &pixmap, QGraphicsItem *parent) :
 		QGraphicsPixmapItem(pixmap, parent) {
+	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	setPos(0.0, 0.0);
 	setTransform(QTransform().rotate(70, Qt::XAxis), true);
 }

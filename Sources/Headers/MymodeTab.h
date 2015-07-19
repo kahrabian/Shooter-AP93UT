@@ -15,7 +15,7 @@
 #include <QPainter>
 #include <QRadioButton>
 #include <QButtonGroup>
-#include "Resources.h"
+#include <Sources/Headers/Resources.h>
 
 class MymodeTab : public QWidget {
 Q_OBJECT

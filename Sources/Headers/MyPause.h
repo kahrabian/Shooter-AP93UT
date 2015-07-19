@@ -13,8 +13,8 @@
 #include <QPainter>
 #include <QFile>
 #include <QKeyEvent>
-#include "Resources.h"
-#include "MyaudioTab.h"
+#include <Sources/Headers/Resources.h>
+#include <Sources/Headers/MyaudioTab.h>
 
 class MyPause : public QWidget {
 Q_OBJECT

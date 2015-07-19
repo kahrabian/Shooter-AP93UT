@@ -10,7 +10,7 @@
 #include <QVector>
 #include <QMediaPlaylist>
 #include <QRect>
-#include "SettingData.h"
+#include <Sources/Headers/SettingData.h>
 
 namespace MyRes {
     // Project properties

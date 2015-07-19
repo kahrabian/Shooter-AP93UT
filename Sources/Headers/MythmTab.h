@@ -11,7 +11,7 @@
 #include <QBoxLayout>
 #include <QLabel>
 #include <QToolButton>
-#include "Resources.h"
+#include <Sources/Headers/Resources.h>
 
 class MythmTab : public QWidget {
 Q_OBJECT

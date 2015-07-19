@@ -18,11 +18,11 @@
 #include <QButtonGroup>
 #include <QToolButton>
 #include <QTextStream>
-#include "Resources.h"
-#include "MythmTab.h"
-#include "MyaudioTab.h"
-#include "MymodeTab.h"
-#include "MyaiTab.h"
+#include <Sources/Headers/Resources.h>
+#include <Sources/Headers/MythmTab.h>
+#include <Sources/Headers/MyaudioTab.h>
+#include <Sources/Headers/MymodeTab.h>
+#include <Sources/Headers/MyaiTab.h>
 
 
 class MySetting : public QWidget {

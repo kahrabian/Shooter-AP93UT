@@ -13,7 +13,7 @@
 #include <QStyleOption>
 #include <QPainter>
 #include <QFile>
-#include "Resources.h"
+#include <Sources/Headers/Resources.h>
 
 class MyMenu : public QWidget {
 Q_OBJECT

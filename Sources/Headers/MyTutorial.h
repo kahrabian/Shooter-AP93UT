@@ -13,7 +13,7 @@
 #include <QLabel>
 #include <QStyleOption>
 #include <QPainter>
-#include "Resources.h"
+#include <Sources/Headers/Resources.h>
 
 
 class MyTutorial : public QWidget {

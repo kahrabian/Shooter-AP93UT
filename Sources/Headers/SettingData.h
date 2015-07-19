@@ -5,6 +5,7 @@
 #ifndef SHOOTER_AP93UT_SETTINGDATA_H
 #define SHOOTER_AP93UT_SETTINGDATA_H
 
+#include <QString>
 
 struct SettingData {
 	static QString p1_nm;
