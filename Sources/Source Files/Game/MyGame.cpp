@@ -15,8 +15,11 @@ MyGame::MyGame(QWidget *parent) :
 	gscn->setSceneRect(MyRes::scn_rct);
 	gscn->setBackgroundBrush(QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(MyRes::tl_size)));
 	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]));
+	tmp2 = new MyMagic(QPixmap(MyRes::mgc_add[2]));
+	tmp2->setPos(1000, 100);
 	gscn->addItem(tmp);
 	gscn->addItem(tmp->shpshld);
+	gscn->addItem(tmp2);
 	setScene(gscn);
 	setSceneRect(viewport()->frameGeometry());
 	timer_id = startTimer(MyRes::frm_dly);
@@ -53,9 +56,8 @@ void MyGame::keyReleaseEvent(QKeyEvent *event) {
 void MyGame::timerEvent(QTimerEvent *event) {
 	QList<QGraphicsItem *> items = gscn->items();
 			foreach(QGraphicsItem *i, items) {
-			MyShip *tmp = dynamic_cast<MyShip *>(i);
-			if (tmp)
-				tmp->updt(prsd_kys);
+			if (dynamic_cast<MyShip *>(i))
+				dynamic_cast<MyShip *>(i)->updt(prsd_kys);
 		}
 	setSceneRect(sceneRect().x() + MyRes::vw_mvmnt, 0, viewport()->frameGeometry().width(),
 	             viewport()->frameGeometry().height());

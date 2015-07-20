@@ -46,15 +46,7 @@ private:
 	QGraphicsScene *gscn;
 
 	MyShip *tmp;
-
-	QList<MyShip> shps;
-	QList<MyBullet> blts;
-	QList<MyAsteroid> astrs;
-	QList<MyStar> strs;
-	QList<MyAlien> alns;
-	QList<MyLife> lfs;
-	QList<MyShield> shlds;
-	QList<MyMagic> mgns;
+	MyMagic *tmp2;
 
 	int timer_id;
 

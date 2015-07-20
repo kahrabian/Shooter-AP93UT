@@ -15,8 +15,15 @@
 #include <QString>
 #include <QPixmap>
 #include <QSet>
+#include <QTextStream>
+#include <QTransform>
+#include <Sources/Headers/Game/MyStar.h>
+#include <Sources/Headers/Game/MyShield.h>
+#include <Sources/Headers/Game/MyMagic.h>
+#include <Sources/Headers/Game/MyLife.h>
 #include <Sources/Headers/Resources.h>
-#include "MyShipShield.h"
+#include <Sources/Headers/Game/MyShipShield.h>
+//#include "MyShipShield.h"
 
 class MyShip : public QObject, public QGraphicsPixmapItem {
 Q_OBJECT
@@ -52,24 +59,18 @@ public:
 
 	void updt(QSet<int> * = 0);
 
-	void updt_vlc(QSet<int> *);
-
-	void updt_rtn();
-
-	void updt_pos();
-
 private:
 	MyShipShield *shpshld;
 
-	int rtn;
+	int rtn = 0;
 	QString *name;
 	QRectF *init_rct;
 
-	int lf;
-	int scr;
-	bool shld;
+	int lf = 0;
+	int scr = 0;
+	bool shld = false;
 	QTimer *shld_tmr;
-	bool mgc;
+	bool mgc = false;
 	QTimer *mgc_tmr;
 
 	int mss;
@@ -78,6 +79,14 @@ private:
 	QPointF *frc;
 
 	void cnstrct_shldpxmp();
+
+	void cllsn_dtctn();
+
+	void updt_vlc(QSet<int> *);
+
+	void updt_rtn();
+
+	void updt_pos();
 
 private slots:
 

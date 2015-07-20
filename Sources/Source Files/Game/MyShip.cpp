@@ -2,15 +2,12 @@
 // Created by kahrabian on 7/12/15.
 //
 
-#include <QtCore/qtextstream.h>
-#include <QTransform>
 #include "../../Headers/Game/MyShip.h"
 
 MyShip::MyShip(QGraphicsItem *parent) :
 		QGraphicsPixmapItem(parent), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	setPos(10.0, 10.0);
-	rtn = 0;
 	vlc = new QPointF(0.0, 0.0);
 	shpshld = new MyShipShield(MyRes::shp_shld_add);
 	shpshld->setGraphicsEffect(new QGraphicsDropShadowEffect());
@@ -26,7 +23,6 @@ MyShip::MyShip(const QPixmap &pixmap, QGraphicsItem *parent) :
 		                                  Qt::SmoothTransformation), parent), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	setPos(10.0, 10.0);
-	rtn = 0;
 	vlc = new QPointF(0.0, 0.0);
 	shpshld = new MyShipShield(MyRes::shp_shld_add);
 	shpshld->setGraphicsEffect(new QGraphicsDropShadowEffect());
@@ -94,8 +90,6 @@ void MyShip::activate_shld() {
 }
 
 void MyShip::deactivate_shld() {
-	QTextStream X(stderr);
-	X << 1 << endl;
 	shld = false;
 	shpshld->hide();
 	shld_tmr->stop();
@@ -109,6 +103,28 @@ void MyShip::activate_mgc() {
 void MyShip::deactivate_mgc() {
 	mgc = false;
 	mgc_tmr->stop();
+}
+
+void MyShip::cllsn_dtctn() {
+	QList<QGraphicsItem *> clldng_items = collidingItems(Qt::ItemSelectionMode::IntersectsItemShape);
+			foreach(QGraphicsItem *i, clldng_items) {
+			if (dynamic_cast<MyStar *>(i)) {
+				scr++;
+				scene()->removeItem(i);
+			}
+			else if (dynamic_cast<MyShield *>(i)) {
+				activate_shld();
+				scene()->removeItem(i);
+			}
+			else if (dynamic_cast<MyMagic *>(i)) {
+				activate_mgc();
+				scene()->removeItem(i);
+			}
+			else if (dynamic_cast<MyLife *>(i)) {
+				lf++;
+				scene()->removeItem(i);
+			}
+		}
 }
 
 void MyShip::updt_vlc(QSet<int> *prsd_kys) {
@@ -159,7 +175,7 @@ void MyShip::updt_pos() {
 }
 
 void MyShip::updt(QSet<int> *prsd_kys) {
-//	collidingItems(Qt::ItemSelectionMode::IntersectsItemShape);
+	cllsn_dtctn();
 	updt_vlc(prsd_kys);
 	updt_rtn();
 	updt_pos();
