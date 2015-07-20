@@ -13,13 +13,26 @@ MyGame::MyGame(QWidget *parent) :
 	// Test
 	gscn = new QGraphicsScene();
 	gscn->setSceneRect(MyRes::scn_rct);
-	gscn->setBackgroundBrush(QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(MyRes::tl_size)));
+	gscn->setBackgroundBrush(
+			QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(MyRes::tl_size, Qt::KeepAspectRatio,
+			                                                        Qt::SmoothTransformation)));
 	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]));
-	tmp2 = new MyMagic(QPixmap(MyRes::mgc_add[2]));
+
+	tmp2 = new MyStar(QPixmap(MyRes::mgc_add[rand() % MyRes::mgc_cnt]).scaled(MyRes::mgc_size, Qt::KeepAspectRatio,
+	                                                                          Qt::SmoothTransformation));
 	tmp2->setPos(1000, 100);
+	gscn->addItem(tmp2);
+	tmp2 = new MyStar(QPixmap(MyRes::str_add).scaled(MyRes::str_size, Qt::KeepAspectRatio,
+	                                                 Qt::SmoothTransformation));
+	tmp2->setPos(1050, 100);
+	gscn->addItem(tmp2);
+	tmp2 = new MyStar(QPixmap(MyRes::shld_add).scaled(MyRes::shld_size, Qt::KeepAspectRatio,
+	                                                  Qt::SmoothTransformation));
+	tmp2->setPos(1100, 100);
+
+	gscn->addItem(tmp2);
 	gscn->addItem(tmp);
 	gscn->addItem(tmp->shpshld);
-	gscn->addItem(tmp2);
 	setScene(gscn);
 	setSceneRect(viewport()->frameGeometry());
 	timer_id = startTimer(MyRes::frm_dly);

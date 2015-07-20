@@ -7,7 +7,7 @@
 MyShip::MyShip(QGraphicsItem *parent) :
 		QGraphicsPixmapItem(parent), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
-	setPos(10.0, 10.0);
+	setPos(MyRes::x_offset, MyRes::y_offset);
 	vlc = new QPointF(0.0, 0.0);
 	shpshld = new MyShipShield(MyRes::shp_shld_add);
 	shpshld->setGraphicsEffect(new QGraphicsDropShadowEffect());
@@ -19,10 +19,10 @@ MyShip::MyShip(QGraphicsItem *parent) :
 }
 
 MyShip::MyShip(const QPixmap &pixmap, QGraphicsItem *parent) :
-		QGraphicsPixmapItem(pixmap.scaled(QSize(150, 150), Qt::KeepAspectRatio,
+		QGraphicsPixmapItem(pixmap.scaled(QSize(100, 100), Qt::KeepAspectRatio,
 		                                  Qt::SmoothTransformation), parent), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
-	setPos(10.0, 10.0);
+	setPos(MyRes::x_offset, MyRes::y_offset);
 	vlc = new QPointF(0.0, 0.0);
 	shpshld = new MyShipShield(MyRes::shp_shld_add);
 	shpshld->setGraphicsEffect(new QGraphicsDropShadowEffect());
@@ -86,7 +86,7 @@ void MyShip::cnstrct_shldpxmp() {
 void MyShip::activate_shld() {
 	shld = true;
 	shpshld->show();
-	shld_tmr->start(5000);
+	shld_tmr->start(MyRes::spcl_tm);
 }
 
 void MyShip::deactivate_shld() {
@@ -97,7 +97,7 @@ void MyShip::deactivate_shld() {
 
 void MyShip::activate_mgc() {
 	mgc = true;
-	mgc_tmr->start(5000);
+	mgc_tmr->start(MyRes::spcl_tm);
 }
 
 void MyShip::deactivate_mgc() {
@@ -129,7 +129,7 @@ void MyShip::cllsn_dtctn() {
 
 void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 	vlc->setY(0);
-	vlc->setX(0);
+	vlc->setX(MyRes::vw_mvmnt);
 
 	if (prsd_kys->find(Qt::Key_Up) != prsd_kys->end())
 		vlc->setY(vlc->y() - MyRes::shp_mvmnt);
@@ -142,21 +142,20 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 }
 
 void MyShip::updt_rtn() {
-	if (vlc->y() > 0 && rtn < 30)
-		rtn += 3;
-	else if (vlc->y() < 0 && rtn > -30)
-		rtn -= 3;
+	if (vlc->y() > 0 && rtn < MyRes::rtn_max)
+		rtn += MyRes::rtn_stp;
+	else if (vlc->y() < 0 && rtn > -MyRes::rtn_max)
+		rtn -= MyRes::rtn_stp;
 	else if (vlc->y() == 0 && rtn < 0)
-		rtn += 3;
+		rtn += MyRes::rtn_stp;
 	else if (vlc->y() == 0 && rtn > 0)
-		rtn -= 3;
+		rtn -= MyRes::rtn_stp;
 }
 
 void MyShip::updt_pos() {
 	setTransform(QTransform().translate(pixmap().size().width() / 2, pixmap().size().height() / 2).rotate(-rtn,
 	                                                                                                      Qt::XAxis).translate(
 			-pixmap().size().width() / 2, -pixmap().size().height() / 2));
-	setPos(pos().x() + MyRes::vw_mvmnt, pos().y());
 
 	QPointF tplft(scene()->views().first()->viewport()->mapToParent(
 			scene()->views().first()->mapFromScene(mapToScene(boundingRect().topLeft()))));
@@ -164,12 +163,12 @@ void MyShip::updt_pos() {
 			scene()->views().first()->mapFromScene(mapToScene(boundingRect().bottomRight()))));
 	QRectF vw_rct(scene()->views().first()->viewport()->rect());
 
-	if (tplft.x() + vlc->x() >= 10 && bttmrght.x() + vlc->x() <= vw_rct.width() - 10)
+	if (tplft.x() + vlc->x() >= MyRes::x_offset && bttmrght.x() + vlc->x() <= vw_rct.width() - MyRes::x_offset)
 		setPos(pos().x() + vlc->x(), pos().y());
 
-	if ((tplft.y() + vlc->y() >= 15 && bttmrght.y() + vlc->y() <= vw_rct.height() - 15) ||
-	    (tplft.y() + vlc->y() < 15 && vlc->y() > 0) ||
-	    ((bttmrght.y() + vlc->y() > vw_rct.height() - 15) && vlc->y() < 0))
+	if ((tplft.y() + vlc->y() >= MyRes::y_offset && bttmrght.y() + vlc->y() <= vw_rct.height() - MyRes::y_offset) ||
+	    (tplft.y() + vlc->y() < MyRes::y_offset && vlc->y() > 0) ||
+	    ((bttmrght.y() + vlc->y() > vw_rct.height() - MyRes::y_offset) && vlc->y() < 0))
 		setPos(pos().x(), pos().y() + vlc->y());
 	cnstrct_shldpxmp();
 }

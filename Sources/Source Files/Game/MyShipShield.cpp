@@ -11,7 +11,7 @@ MyShipShield::MyShipShield(QGraphicsItem *parent) :
 }
 
 MyShipShield::MyShipShield(const QPixmap &pixmap, QGraphicsItem *parent) :
-		QGraphicsPixmapItem(pixmap, parent) {
+		QGraphicsPixmapItem(pixmap.scaled(150, 150), parent) {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	vlc = new QPointF(0.0, 0.0);
 }

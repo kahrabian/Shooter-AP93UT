@@ -5,6 +5,13 @@
 #include "../Headers/Resources.h"
 
 namespace MyRes {
+    // Game properties
+    const QSize str_size(30, 30);
+    const QSize mgc_size(40, 40);
+    const QSize shld_size(43, 43);
+    const QSize shp_size(100, 100);
+    const QSize shp_shld_size(150, 150);
+
     // Contents size
     const QSize img_init_size(541, 323);
     const QSize app_size(1120, 630);

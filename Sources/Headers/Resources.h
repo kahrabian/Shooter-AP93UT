@@ -27,6 +27,18 @@ namespace MyRes {
     const int astrd_frcnt = 16;
     const int astrd_typcnt = 7;
 
+    // Game properties
+    const int spcl_tm = 5000;
+    const int rtn_max = 30;
+    const int rtn_stp = 3;
+    const int x_offset = 10;
+    const int y_offset = 15;
+    extern const QSize str_size;
+    extern const QSize mgc_size;
+    extern const QSize shld_size;
+    extern const QSize shp_size;
+    extern const QSize shp_shld_size;
+
     // Contents size
     extern const QSize img_init_size;
     extern const QSize app_size;
