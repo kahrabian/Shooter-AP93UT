@@ -18,8 +18,11 @@
 #include <Sources/Headers/Resources.h>
 #include "MyShipShield.h"
 
-class MyShip : public QGraphicsPixmapItem {
+class MyShip : public QObject, public QGraphicsPixmapItem {
+Q_OBJECT
+
 	friend class MyGame;
+
 public:
 	MyShip(QGraphicsItem *parent = 0);
 
@@ -47,7 +50,7 @@ public:
 
 	QPointF *getVlc() const;
 
-	void updt(qint64 = 0, QSet<int> * = 0);
+	void updt(QSet<int> * = 0);
 
 	void updt_vlc(QSet<int> *);
 
@@ -75,6 +78,16 @@ private:
 	QPointF *frc;
 
 	void cnstrct_shldpxmp();
+
+private slots:
+
+	void activate_shld();
+
+	void deactivate_shld();
+
+	void activate_mgc();
+
+	void deactivate_mgc();
 };
 
 #endif //SHOOTER_AP93UT_MYSHIP_H

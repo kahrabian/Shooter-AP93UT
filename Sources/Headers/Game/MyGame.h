@@ -56,9 +56,6 @@ private:
 	QList<MyShield> shlds;
 	QList<MyMagic> mgns;
 
-	QElapsedTimer *stp_tmr;
-	qint64 stp_tmr_val;
-
 	int timer_id;
 
 	void unpause();

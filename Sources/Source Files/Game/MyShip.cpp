@@ -7,26 +7,35 @@
 #include "../../Headers/Game/MyShip.h"
 
 MyShip::MyShip(QGraphicsItem *parent) :
-		QGraphicsPixmapItem(parent) {
+		QGraphicsPixmapItem(parent), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	setPos(10.0, 10.0);
 	rtn = 0;
 	vlc = new QPointF(0.0, 0.0);
 	shpshld = new MyShipShield(MyRes::shp_shld_add);
 	shpshld->setGraphicsEffect(new QGraphicsDropShadowEffect());
-//	scene()->addItem(shpshld);
+	shld_tmr = new QTimer();
+	QTimer::connect(shld_tmr, SIGNAL(timeout()), this, SLOT(deactivate_shld()));
+	mgc_tmr = new QTimer();
+	QTimer::connect(mgc_tmr, SIGNAL(timeout()), this, SLOT(deactivate_mgc()));
+//	shpshld->hide();
 }
 
 MyShip::MyShip(const QPixmap &pixmap, QGraphicsItem *parent) :
 		QGraphicsPixmapItem(pixmap.scaled(QSize(150, 150), Qt::KeepAspectRatio,
-		                                  Qt::SmoothTransformation), parent) {
+		                                  Qt::SmoothTransformation), parent), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	setPos(10.0, 10.0);
 	rtn = 0;
 	vlc = new QPointF(0.0, 0.0);
 	shpshld = new MyShipShield(MyRes::shp_shld_add);
 	shpshld->setGraphicsEffect(new QGraphicsDropShadowEffect());
-//	scene()->addItem(shpshld);
+	shld_tmr = new QTimer();
+	QTimer::connect(shld_tmr, SIGNAL(timeout()), this, SLOT(deactivate_shld()));
+	mgc_tmr = new QTimer();
+	QTimer::connect(mgc_tmr, SIGNAL(timeout()), this, SLOT(deactivate_mgc()));
+	shpshld->hide();
+	activate_shld();
 }
 
 MyShip::~MyShip() {
@@ -78,6 +87,30 @@ void MyShip::cnstrct_shldpxmp() {
 	                pos().y() + (pixmap().height() / 2) - (shpshld->pixmap().height() / 2));
 }
 
+void MyShip::activate_shld() {
+	shld = true;
+	shpshld->show();
+	shld_tmr->start(5000);
+}
+
+void MyShip::deactivate_shld() {
+	QTextStream X(stderr);
+	X << 1 << endl;
+	shld = false;
+	shpshld->hide();
+	shld_tmr->stop();
+}
+
+void MyShip::activate_mgc() {
+	mgc = true;
+	mgc_tmr->start(5000);
+}
+
+void MyShip::deactivate_mgc() {
+	mgc = false;
+	mgc_tmr->stop();
+}
+
 void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 	vlc->setY(0);
 	vlc->setX(0);
@@ -125,7 +158,7 @@ void MyShip::updt_pos() {
 	cnstrct_shldpxmp();
 }
 
-void MyShip::updt(qint64 stp_tm, QSet<int> *prsd_kys) {
+void MyShip::updt(QSet<int> *prsd_kys) {
 	updt_vlc(prsd_kys);
 	updt_rtn();
 	updt_pos();

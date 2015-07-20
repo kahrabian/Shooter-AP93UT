@@ -6,7 +6,6 @@
 #define SHOOTER_AP93UT_MYMAINWINDOW_H
 
 
-//#include <iostream>
 #include <QDebug>
 #include <QTextStream>
 #include <QMainWindow>

@@ -10,9 +10,7 @@ MyGame::MyGame(QWidget *parent) :
 	prsd_kys = new QSet<int>();
 	resize(MyRes::app_size);
 
-	stp_tmr = new QElapsedTimer();
-	stp_tmr->invalidate();
-
+	// Test
 	gscn = new QGraphicsScene();
 	gscn->setSceneRect(MyRes::scn_rct);
 	gscn->setBackgroundBrush(QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(MyRes::tl_size)));
@@ -32,8 +30,6 @@ MyGame::MyGame(QGraphicsScene *scene, QWidget *parent) :
 MyGame::~MyGame() { }
 
 void MyGame::unpause() {
-	stp_tmr_val = stp_tmr->elapsed();
-	stp_tmr->invalidate();
 	timer_id = startTimer(MyRes::frm_dly);
 }
 
@@ -43,7 +39,6 @@ void MyGame::restart() {
 void MyGame::keyPressEvent(QKeyEvent *event) {
 	prsd_kys->insert(event->key());
 	if (event->key() == Qt::Key_Escape) {
-		stp_tmr->restart();
 		killTimer(timer_id);
 		emit gamePaused();
 	}
@@ -56,7 +51,7 @@ void MyGame::keyReleaseEvent(QKeyEvent *event) {
 }
 
 void MyGame::timerEvent(QTimerEvent *event) {
-	tmp->updt(stp_tmr->elapsed(), prsd_kys);
+	tmp->updt(prsd_kys);
 	setSceneRect(sceneRect().x() + MyRes::vw_mvmnt, 0, viewport()->frameGeometry().width(),
 	             viewport()->frameGeometry().height());
 }
