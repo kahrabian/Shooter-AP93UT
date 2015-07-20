@@ -16,8 +16,10 @@
 #include <QPixmap>
 #include <QSet>
 #include <Sources/Headers/Resources.h>
+#include "MyShipShield.h"
 
 class MyShip : public QGraphicsPixmapItem {
+	friend class MyGame;
 public:
 	MyShip(QGraphicsItem *parent = 0);
 
@@ -47,7 +49,15 @@ public:
 
 	void updt(qint64 = 0, QSet<int> * = 0);
 
+	void updt_vlc(QSet<int> *);
+
+	void updt_rtn();
+
+	void updt_pos();
+
 private:
+	MyShipShield *shpshld;
+
 	int rtn;
 	QString *name;
 	QRectF *init_rct;
@@ -59,6 +69,7 @@ private:
 	bool mgc;
 	QTimer *mgc_tmr;
 
+	bool frst_frm;
 	QElapsedTimer *frm_tmr;
 
 	int mss;

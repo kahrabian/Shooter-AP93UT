@@ -10,8 +10,13 @@ MyShip::MyShip(QGraphicsItem *parent) :
 		QGraphicsPixmapItem(parent) {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	setPos(10.0, 10.0);
-	vlc = new QPointF(0.0, 0.0);
 	rtn = 0;
+	frst_frm = true;
+	vlc = new QPointF(0.0, 0.0);
+	shpshld = new MyShipShield(MyRes::shp_shld_add);
+	shpshld->setGraphicsEffect(new QGraphicsDropShadowEffect());
+	frm_tmr = new QElapsedTimer();
+//	scene()->addItem(shpshld);
 }
 
 MyShip::MyShip(const QPixmap &pixmap, QGraphicsItem *parent) :
@@ -19,8 +24,13 @@ MyShip::MyShip(const QPixmap &pixmap, QGraphicsItem *parent) :
 		                                  Qt::SmoothTransformation), parent) {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	setPos(10.0, 10.0);
-	vlc = new QPointF(0.0, 0.0);
 	rtn = 0;
+	frst_frm = true;
+	vlc = new QPointF(0.0, 0.0);
+	shpshld = new MyShipShield(MyRes::shp_shld_add);
+	shpshld->setGraphicsEffect(new QGraphicsDropShadowEffect());
+	frm_tmr = new QElapsedTimer();
+//	scene()->addItem(shpshld);
 }
 
 MyShip::~MyShip() {
@@ -68,17 +78,11 @@ QPointF *MyShip::getVlc() const {
 }
 
 void MyShip::cnstrct_shldpxmp() {
-	QPixmap *tmp = new QPixmap(250, 250);
-	tmp->fill(Qt::transparent);
-	QPainter *painter = new QPainter(tmp);
-	painter->drawPixmap(125 - (pixmap().width() / 2), 125 - (pixmap().height() / 2), pixmap().width(),
-	                    pixmap().height(), QPixmap(pixmap()));
-	painter->drawPixmap(0, 0, 250, 250, QPixmap(MyRes::shp_shld_add));
-	painter->end();
-	setPixmap(*tmp);
+	shpshld->setPos(pos().x() + (pixmap().width() / 2) - (shpshld->pixmap().width() / 2),
+	                pos().y() + (pixmap().height() / 2) - (shpshld->pixmap().height() / 2));
 }
 
-void MyShip::updt(qint64 stp_tm, QSet<int> *prsd_kys) {
+void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 	vlc->setY(0);
 	vlc->setX(0);
 
@@ -90,7 +94,9 @@ void MyShip::updt(qint64 stp_tm, QSet<int> *prsd_kys) {
 		vlc->setX(vlc->x() - MyRes::shp_mvmnt);
 	if (prsd_kys->find(Qt::Key_Right) != prsd_kys->end())
 		vlc->setX(vlc->x() + MyRes::shp_mvmnt);
+}
 
+void MyShip::updt_rtn() {
 	if (vlc->y() > 0 && rtn < 30)
 		rtn += 3;
 	else if (vlc->y() < 0 && rtn > -30)
@@ -99,11 +105,12 @@ void MyShip::updt(qint64 stp_tm, QSet<int> *prsd_kys) {
 		rtn += 3;
 	else if (vlc->y() == 0 && rtn > 0)
 		rtn -= 3;
+}
 
+void MyShip::updt_pos() {
 	setTransform(QTransform().translate(pixmap().size().width() / 2, pixmap().size().height() / 2).rotate(-rtn,
 	                                                                                                      Qt::XAxis).translate(
 			-pixmap().size().width() / 2, -pixmap().size().height() / 2));
-	cnstrct_shldpxmp();
 	setPos(pos().x() + MyRes::vw_mvmnt, pos().y());
 
 	QPointF tplft(scene()->views().first()->viewport()->mapToParent(
@@ -119,5 +126,21 @@ void MyShip::updt(qint64 stp_tm, QSet<int> *prsd_kys) {
 	    (tplft.y() + vlc->y() < 15 && vlc->y() > 0) ||
 	    ((bttmrght.y() + vlc->y() > vw_rct.height() - 15) && vlc->y() < 0))
 		setPos(pos().x(), pos().y() + vlc->y());
-	QGraphicsPixmapItem::update();
+	cnstrct_shldpxmp();
+}
+
+void MyShip::updt(qint64 stp_tm, QSet<int> *prsd_kys) {
+	if (frst_frm) {
+		frst_frm = false;
+		frm_tmr->start();
+	}
+	else {
+		updt_vlc(prsd_kys);
+		updt_rtn();
+		updt_pos();
+		QGraphicsPixmapItem::update();
+//		QTextStream X(stderr);
+//		X << frm_tmr->elapsed() << endl;
+		frm_tmr->restart();
+	}
 }

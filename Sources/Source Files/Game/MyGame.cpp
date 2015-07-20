@@ -18,6 +18,7 @@ MyGame::MyGame(QWidget *parent) :
 	gscn->setBackgroundBrush(QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(MyRes::tl_size)));
 	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]));
 	gscn->addItem(tmp);
+	gscn->addItem(tmp->shpshld);
 	setScene(gscn);
 	setSceneRect(viewport()->frameGeometry());
 	timer_id = startTimer(MyRes::frm_dly);
