@@ -159,6 +159,7 @@ void MyShip::updt_pos() {
 }
 
 void MyShip::updt(QSet<int> *prsd_kys) {
+//	collidingItems(Qt::ItemSelectionMode::IntersectsItemShape);
 	updt_vlc(prsd_kys);
 	updt_rtn();
 	updt_pos();

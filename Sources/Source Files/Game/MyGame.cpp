@@ -51,7 +51,12 @@ void MyGame::keyReleaseEvent(QKeyEvent *event) {
 }
 
 void MyGame::timerEvent(QTimerEvent *event) {
-	tmp->updt(prsd_kys);
+	QList<QGraphicsItem *> items = gscn->items();
+			foreach(QGraphicsItem *i, items) {
+			MyShip *tmp = dynamic_cast<MyShip *>(i);
+			if (tmp)
+				tmp->updt(prsd_kys);
+		}
 	setSceneRect(sceneRect().x() + MyRes::vw_mvmnt, 0, viewport()->frameGeometry().width(),
 	             viewport()->frameGeometry().height());
 }
