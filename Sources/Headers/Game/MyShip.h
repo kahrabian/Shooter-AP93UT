@@ -69,9 +69,6 @@ private:
 	bool mgc;
 	QTimer *mgc_tmr;
 
-	bool frst_frm;
-	QElapsedTimer *frm_tmr;
-
 	int mss;
 	QPointF *vlc;
 	QPointF *acc;

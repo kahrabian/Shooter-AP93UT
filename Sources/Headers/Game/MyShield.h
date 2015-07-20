@@ -23,12 +23,9 @@ public:
 
 	QPointF *getVlc() const;
 
-	void updt(qint64 = 0);
+	void updt();
 
 private:
-	bool frst_frm;
-	QElapsedTimer *frm_tmr;
-
 	QPointF *vlc;
 };
 

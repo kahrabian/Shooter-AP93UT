@@ -11,11 +11,9 @@ MyShip::MyShip(QGraphicsItem *parent) :
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	setPos(10.0, 10.0);
 	rtn = 0;
-	frst_frm = true;
 	vlc = new QPointF(0.0, 0.0);
 	shpshld = new MyShipShield(MyRes::shp_shld_add);
 	shpshld->setGraphicsEffect(new QGraphicsDropShadowEffect());
-	frm_tmr = new QElapsedTimer();
 //	scene()->addItem(shpshld);
 }
 
@@ -25,11 +23,9 @@ MyShip::MyShip(const QPixmap &pixmap, QGraphicsItem *parent) :
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	setPos(10.0, 10.0);
 	rtn = 0;
-	frst_frm = true;
 	vlc = new QPointF(0.0, 0.0);
 	shpshld = new MyShipShield(MyRes::shp_shld_add);
 	shpshld->setGraphicsEffect(new QGraphicsDropShadowEffect());
-	frm_tmr = new QElapsedTimer();
 //	scene()->addItem(shpshld);
 }
 
@@ -130,17 +126,8 @@ void MyShip::updt_pos() {
 }
 
 void MyShip::updt(qint64 stp_tm, QSet<int> *prsd_kys) {
-	if (frst_frm) {
-		frst_frm = false;
-		frm_tmr->start();
-	}
-	else {
-		updt_vlc(prsd_kys);
-		updt_rtn();
-		updt_pos();
-		QGraphicsPixmapItem::update();
-//		QTextStream X(stderr);
-//		X << frm_tmr->elapsed() << endl;
-		frm_tmr->restart();
-	}
+	updt_vlc(prsd_kys);
+	updt_rtn();
+	updt_pos();
+	QGraphicsPixmapItem::update();
 }
