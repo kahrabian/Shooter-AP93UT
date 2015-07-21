@@ -21,9 +21,9 @@
 #include <Sources/Headers/Game/MyShield.h>
 #include <Sources/Headers/Game/MyMagic.h>
 #include <Sources/Headers/Game/MyLife.h>
-#include <Sources/Headers/Resources.h>
 #include <Sources/Headers/Game/MyShipShield.h>
-//#include "MyShipShield.h"
+#include <Sources/Headers/Game/MyAsteroid.h>
+#include <Sources/Headers/Resources.h>
 
 class MyShip : public QObject, public QGraphicsPixmapItem {
 Q_OBJECT

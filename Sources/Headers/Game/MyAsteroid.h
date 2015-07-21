@@ -5,10 +5,12 @@
 #ifndef SHOOTER_AP93UT_MYASTEROID_H
 #define SHOOTER_AP93UT_MYASTEROID_H
 
+#include <QGraphicsDropShadowEffect>
 #include <QGraphicsPixmapItem>
 #include <QElapsedTimer>
 #include <QPointF>
 #include <QPixmap>
+#include <Sources/Headers/Resources.h>
 
 class MyAsteroid : public QGraphicsPixmapItem {
 public:
@@ -18,15 +20,15 @@ public:
 
 	~MyAsteroid();
 
-	void updt(qint64 = 0);
+	void updt();
 
 private:
-	QElapsedTimer *frm_tmr;
-	
+	int astrd_num;
+	int frm_num;
+
 	bool grv;
 
 	int mss;
-	QPointF *pos;
 	QPointF *vlc;
 	QPointF *acc;
 	QPointF *frc;

@@ -12,7 +12,7 @@
 #include <QStyleOption>
 #include <QPainter>
 #include <QFile>
-#include "Resources.h"
+#include <Sources/Headers/Resources.h>
 
 class MyEnd : public QWidget {
 Q_OBJECT

@@ -2,13 +2,15 @@
 // Created by kahrabian on 7/9/15.
 //
 
-#include "../Headers/Resources.h"
+#include <Sources/Headers/Resources.h>
 
 namespace MyRes {
     // Game properties
+    const QSize lf_size(35, 35);
     const QSize str_size(30, 30);
     const QSize mgc_size(40, 40);
     const QSize shld_size(43, 43);
+    const QSize astrd_size(350, 350);
     const QSize shp_size(100, 100);
     const QSize shp_shld_size(150, 150);
 
@@ -50,7 +52,7 @@ namespace MyRes {
                                                            {"Resources/Asteroids/astrd71.png", "Resources/Asteroids/astrd72.png", "Resources/Asteroids/astrd73.png", "Resources/Asteroids/astrd74.png", "Resources/Asteroids/astrd75.png", "Resources/Asteroids/astrd76.png", "Resources/Asteroids/astrd77.png", "Resources/Asteroids/astrd78.png", "Resources/Asteroids/astrd79.png", "Resources/Asteroids/astrd710.png", "Resources/Asteroids/astrd711.png", "Resources/Asteroids/astrd712.png", "Resources/Asteroids/astrd713.png", "Resources/Asteroids/astrd714.png", "Resources/Asteroids/astrd715.png", "Resources/Asteroids/astrd716.png"}};
     const QString str_add("Resources/Objects/str.png");
     const QString shld_add("Resources/Objects/shld.png");
-    const QString hrt_add("Resources/Objects/hrt.png");
+    const QString lf_add("Resources/Objects/lf.png");
     const QString lsr_add[lsr_cnt] = {"Resources/Objects/Laser/lsr1.png", "Resources/Objects/Laser/lsr2.png"};
     const QString mgc_add[mgc_cnt] = {"Resources/Objects/Magic/mgc1.png", "Resources/Objects/Magic/mgc2.png",
                                       "Resources/Objects/Magic/mgc3.png", "Resources/Objects/Magic/mgc4.png"};

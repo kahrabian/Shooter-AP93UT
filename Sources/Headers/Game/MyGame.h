@@ -13,14 +13,15 @@
 #include <QKeyEvent>
 #include <QTextStream>
 #include <QSet>
-#include "MyShip.h"
-#include "MyBullet.h"
-#include "MyAsteroid.h"
-#include "MyStar.h"
-#include "MyAlien.h"
-#include "MyLife.h"
-#include "MyShield.h"
-#include "MyMagic.h"
+#include <Sources/Headers/Game/MyShip.h>
+#include <Sources/Headers/Game/MyBullet.h>
+#include <Sources/Headers/Game/MyAsteroid.h>
+#include <Sources/Headers/Game/MyStar.h>
+#include <Sources/Headers/Game/MyAlien.h>
+#include <Sources/Headers/Game/MyLife.h>
+#include <Sources/Headers/Game/MyShield.h>
+#include <Sources/Headers/Game/MyMagic.h>
+#include <Sources/Headers/Resources.h>
 
 class MyGame : public QGraphicsView {
 Q_OBJECT
@@ -46,7 +47,10 @@ private:
 	QGraphicsScene *gscn;
 
 	MyShip *tmp;
-	MyStar *tmp2;
+	MyAsteroid *tmp1;
+//	MyMagic *tmp2;
+//	MyShield *tmp3;
+//	MyStar *tmp4;
 
 	int timer_id;
 

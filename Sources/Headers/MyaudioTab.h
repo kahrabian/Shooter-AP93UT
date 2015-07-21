@@ -12,7 +12,7 @@
 #include <QCheckBox>
 #include <QStyleOption>
 #include <QPainter>
-#include "Resources.h"
+#include <Sources/Headers/Resources.h>
 
 class MyaudioTab : public QWidget {
 Q_OBJECT

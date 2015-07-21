@@ -5,13 +5,14 @@
 #include <Sources/Headers/Game/MyShipShield.h>
 
 MyShipShield::MyShipShield(QGraphicsItem *parent) :
-		QGraphicsPixmapItem(parent) {
+		QGraphicsPixmapItem(QPixmap(MyRes::shp_shld_add).scaled(MyRes::shp_shld_size, Qt::KeepAspectRatio,
+		                                                        Qt::SmoothTransformation), parent) {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	vlc = new QPointF(0.0, 0.0);
 }
 
 MyShipShield::MyShipShield(const QPixmap &pixmap, QGraphicsItem *parent) :
-		QGraphicsPixmapItem(pixmap.scaled(150, 150), parent) {
+		QGraphicsPixmapItem(pixmap, parent) {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	vlc = new QPointF(0.0, 0.0);
 }

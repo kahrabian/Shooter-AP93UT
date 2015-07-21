@@ -2,8 +2,7 @@
 // Created by kahrabian on 7/12/15.
 //
 
-#include <Sources/Headers/Resources.h>
-#include "../../Headers/Game/MyGame.h"
+#include <Sources/Headers/Game/MyGame.h>
 
 MyGame::MyGame(QWidget *parent) :
 		QGraphicsView(parent) {
@@ -18,19 +17,19 @@ MyGame::MyGame(QWidget *parent) :
 			                                                        Qt::SmoothTransformation)));
 	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]));
 
-	tmp2 = new MyStar(QPixmap(MyRes::mgc_add[rand() % MyRes::mgc_cnt]).scaled(MyRes::mgc_size, Qt::KeepAspectRatio,
-	                                                                          Qt::SmoothTransformation));
-	tmp2->setPos(1000, 100);
-	gscn->addItem(tmp2);
-	tmp2 = new MyStar(QPixmap(MyRes::str_add).scaled(MyRes::str_size, Qt::KeepAspectRatio,
-	                                                 Qt::SmoothTransformation));
-	tmp2->setPos(1050, 100);
-	gscn->addItem(tmp2);
-	tmp2 = new MyStar(QPixmap(MyRes::shld_add).scaled(MyRes::shld_size, Qt::KeepAspectRatio,
-	                                                  Qt::SmoothTransformation));
-	tmp2->setPos(1100, 100);
+	tmp1 = new MyAsteroid();
+	tmp1->setPos(1000, 100);
+	gscn->addItem(tmp1);
+//	tmp2 = new MyMagic();
+//	tmp2->setPos(1050, 100);
+//	gscn->addItem(tmp2);
+//	tmp3 = new MyShield();
+//	tmp3->setPos(1100, 100);
+//	gscn->addItem(tmp3);
+//	tmp4 = new MyStar();
+//	tmp4->setPos(1100, 100);
+//	gscn->addItem(tmp4);
 
-	gscn->addItem(tmp2);
 	gscn->addItem(tmp);
 	gscn->addItem(tmp->shpshld);
 	setScene(gscn);
@@ -67,11 +66,13 @@ void MyGame::keyReleaseEvent(QKeyEvent *event) {
 }
 
 void MyGame::timerEvent(QTimerEvent *event) {
+	setSceneRect(sceneRect().x() + MyRes::vw_mvmnt, 0, viewport()->frameGeometry().width(),
+	             viewport()->frameGeometry().height());
 	QList<QGraphicsItem *> items = gscn->items();
 			foreach(QGraphicsItem *i, items) {
 			if (dynamic_cast<MyShip *>(i))
 				dynamic_cast<MyShip *>(i)->updt(prsd_kys);
+			if (dynamic_cast<MyAsteroid *>(i))
+				dynamic_cast<MyAsteroid *>(i)->updt();
 		}
-	setSceneRect(sceneRect().x() + MyRes::vw_mvmnt, 0, viewport()->frameGeometry().width(),
-	             viewport()->frameGeometry().height());
 }

@@ -2,7 +2,7 @@
 // Created by kahrabian on 7/12/15.
 //
 
-#include "../../Headers/Game/MyShip.h"
+#include <Sources/Headers/Game/MyShip.h>
 
 MyShip::MyShip(QGraphicsItem *parent) :
 		QGraphicsPixmapItem(parent), QObject() {
@@ -124,12 +124,17 @@ void MyShip::cllsn_dtctn() {
 				lf++;
 				scene()->removeItem(i);
 			}
+			else if (dynamic_cast<MyAsteroid *>(i)) {
+				lf--;
+				scene()->removeItem(i);
+			}
 		}
 }
 
 void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 	vlc->setY(0);
-	vlc->setX(MyRes::vw_mvmnt);
+	vlc->setX(0);
+//	vlc->setX(MyRes::vw_mvmnt);
 
 	if (prsd_kys->find(Qt::Key_Up) != prsd_kys->end())
 		vlc->setY(vlc->y() - MyRes::shp_mvmnt);
@@ -174,6 +179,7 @@ void MyShip::updt_pos() {
 }
 
 void MyShip::updt(QSet<int> *prsd_kys) {
+	setPos(pos().x() + MyRes::vw_mvmnt, pos().y());
 	cllsn_dtctn();
 	updt_vlc(prsd_kys);
 	updt_rtn();

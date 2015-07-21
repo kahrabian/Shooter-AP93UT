@@ -2,7 +2,7 @@
 // Created by kahrabian on 7/16/15.
 //
 
-#include "../Headers/MyPause.h"
+#include <Sources/Headers/MyPause.h>
 
 MyPause::MyPause(QWidget *parent, Qt::WindowFlags f) :
 		QWidget(parent, f) {

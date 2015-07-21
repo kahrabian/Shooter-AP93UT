@@ -2,7 +2,7 @@
 // Created by kahrabian on 7/11/15.
 //
 
-#include "../Headers/MymodeTab.h"
+#include <Sources/Headers/MymodeTab.h>
 
 MymodeTab::MymodeTab(QWidget *parent, Qt::WindowFlags f) :
 		QWidget(parent, f) {

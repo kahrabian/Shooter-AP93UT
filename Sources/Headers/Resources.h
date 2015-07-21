@@ -33,9 +33,11 @@ namespace MyRes {
     const int rtn_stp = 3;
     const int x_offset = 10;
     const int y_offset = 15;
+    extern const QSize lf_size;
     extern const QSize str_size;
     extern const QSize mgc_size;
     extern const QSize shld_size;
+    extern const QSize astrd_size;
     extern const QSize shp_size;
     extern const QSize shp_shld_size;
 
@@ -54,7 +56,7 @@ namespace MyRes {
     extern const QString astrd_adds[astrd_typcnt][astrd_frcnt];
     extern const QString str_add;
     extern const QString shld_add;
-    extern const QString hrt_add;
+    extern const QString lf_add;
     extern const QString lsr_add[lsr_cnt];
     extern const QString mgc_add[mgc_cnt];
     extern const QString stng_add;

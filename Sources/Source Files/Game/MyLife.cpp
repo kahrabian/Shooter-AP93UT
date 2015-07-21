@@ -5,7 +5,8 @@
 #include <Sources/Headers/Game/MyLife.h>
 
 MyLife::MyLife(QGraphicsItem *parent) :
-		QGraphicsPixmapItem(parent) {
+		QGraphicsPixmapItem(QPixmap(MyRes::lf_add).scaled(MyRes::lf_size, Qt::KeepAspectRatio,
+		                                                  Qt::SmoothTransformation), parent) {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	vlc = new QPointF(0.0, 0.0);
 }

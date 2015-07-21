@@ -15,6 +15,7 @@ int SettingData::aiDiff = 1;
 int SettingData::aiShp = 0;
 
 int main(int argc, char **argv) {
+	srand(time(0));
 	QApplication *app = new QApplication(argc, argv);
 	MyMainWindow *mainwin = new MyMainWindow();
 	app->exec();

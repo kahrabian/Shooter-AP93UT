@@ -10,6 +10,7 @@
 #include <QElapsedTimer>
 #include <QPointF>
 #include <QPixmap>
+#include <Sources/Headers/Resources.h>
 
 class MyStar : public QGraphicsPixmapItem {
 public:
