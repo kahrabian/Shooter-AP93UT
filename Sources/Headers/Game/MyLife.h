@@ -20,10 +20,6 @@ public:
 
 	~MyLife();
 
-	void setVlc(QPointF *);
-
-	QPointF *getVlc() const;
-
 	void updt();
 
 private:

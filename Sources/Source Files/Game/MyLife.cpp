@@ -8,25 +8,17 @@ MyLife::MyLife(QGraphicsItem *parent) :
 		QGraphicsPixmapItem(QPixmap(MyRes::lf_add).scaled(MyRes::lf_size, Qt::KeepAspectRatio,
 		                                                  Qt::SmoothTransformation), parent) {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
-	vlc = new QPointF(0.0, 0.0);
+	vlc = new QPointF(0, 0);
 }
 
 MyLife::MyLife(const QPixmap &pixmap, QGraphicsItem *parent) :
 		QGraphicsPixmapItem(pixmap, parent) {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
-	vlc = new QPointF(0.0, 0.0);
+	vlc = new QPointF(0, 0);
 }
 
 MyLife::~MyLife() {
 
-}
-
-void MyLife::setVlc(QPointF *vlc) {
-	MyLife::vlc = vlc;
-}
-
-QPointF *MyLife::getVlc() const {
-	return vlc;
 }
 
 void MyLife::updt() {

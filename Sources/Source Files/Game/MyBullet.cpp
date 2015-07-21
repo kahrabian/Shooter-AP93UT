@@ -7,25 +7,17 @@
 MyBullet::MyBullet(QGraphicsItem *parent) :
 		QGraphicsPixmapItem(parent) {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
-	vlc = new QPointF(0.0, 0.0);
+	vlc = new QPointF(0, 0);
 }
 
 MyBullet::MyBullet(const QPixmap &pixmap, QGraphicsItem *parent) :
 		QGraphicsPixmapItem(pixmap, parent) {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
-	vlc = new QPointF(0.0, 0.0);
+	vlc = new QPointF(0, 0);
 }
 
 MyBullet::~MyBullet() {
 
-}
-
-void MyBullet::setVlc(QPointF *vlc) {
-	MyBullet::vlc = vlc;
-}
-
-QPointF *MyBullet::getVlc() const {
-	return vlc;
 }
 
 void MyBullet::updt() {

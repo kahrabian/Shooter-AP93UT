@@ -20,10 +20,6 @@ public:
 
 	~MyShipShield();
 
-	void setVlc(QPointF *);
-
-	QPointF *getVlc() const;
-
 	void updt();
 
 private:

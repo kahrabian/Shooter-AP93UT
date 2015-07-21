@@ -5,27 +5,20 @@
 #include <Sources/Headers/Game/MyStar.h>
 
 MyStar::MyStar(QGraphicsItem *parent) :
-		QGraphicsPixmapItem(QPixmap(MyRes::str_add).scaled(MyRes::str_size), parent) {
+		QGraphicsPixmapItem(QPixmap(MyRes::str_add).scaled(MyRes::str_size, Qt::KeepAspectRatio,
+		                                                   Qt::SmoothTransformation), parent) {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
-	vlc = new QPointF(0.0, 0.0);
+	vlc = new QPointF(0, 0);
 }
 
 MyStar::MyStar(const QPixmap &pixmap, QGraphicsItem *parent) :
 		QGraphicsPixmapItem(pixmap, parent) {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
-	vlc = new QPointF(0.0, 0.0);
+	vlc = new QPointF(0, 0);
 }
 
 MyStar::~MyStar() {
 
-}
-
-void MyStar::setVlc(QPointF *vlc) {
-	MyStar::vlc = vlc;
-}
-
-QPointF *MyStar::getVlc() const {
-	return vlc;
 }
 
 void MyStar::updt() {

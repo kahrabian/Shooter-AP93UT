@@ -9,25 +9,17 @@ MyMagic::MyMagic(QGraphicsItem *parent) :
 				QPixmap(MyRes::mgc_add[rand() % MyRes::mgc_cnt]).scaled(MyRes::mgc_size, Qt::KeepAspectRatio,
 				                                                        Qt::SmoothTransformation), parent) {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
-	vlc = new QPointF(0.0, 0.0);
+	vlc = new QPointF(0, 0);
 }
 
 MyMagic::MyMagic(const QPixmap &pixmap, QGraphicsItem *parent) :
 		QGraphicsPixmapItem(pixmap, parent) {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
-	vlc = new QPointF(0.0, 0.0);
+	vlc = new QPointF(0, 0);
 }
 
 MyMagic::~MyMagic() {
 
-}
-
-void MyMagic::setVlc(QPointF *vlc) {
-	MyMagic::vlc = vlc;
-}
-
-QPointF *MyMagic::getVlc() const {
-	return vlc;
 }
 
 void MyMagic::updt() {
