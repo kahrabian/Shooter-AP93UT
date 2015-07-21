@@ -23,11 +23,6 @@ MyGame::MyGame(QWidget *parent) :
 	timer_id = startTimer(MyRes::frm_dly);
 }
 
-MyGame::MyGame(QGraphicsScene *scene, QWidget *parent) :
-		QGraphicsView(scene, parent) {
-
-}
-
 MyGame::~MyGame() { }
 
 void MyGame::unpause() {
@@ -43,12 +38,10 @@ void MyGame::keyPressEvent(QKeyEvent *event) {
 		killTimer(timer_id);
 		emit gamePaused();
 	}
-	QGraphicsView::keyPressEvent(event);
 }
 
 void MyGame::keyReleaseEvent(QKeyEvent *event) {
 	prsd_kys->remove(event->key());
-	QGraphicsView::keyReleaseEvent(event);
 }
 
 void MyGame::timerEvent(QTimerEvent *event) {

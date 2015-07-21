@@ -31,8 +31,6 @@ Q_OBJECT
 public:
 	MyGame(QWidget * = 0);
 
-	MyGame(QGraphicsScene *, QWidget * = 0);
-
 	~MyGame();
 
 signals:
@@ -48,9 +46,6 @@ private:
 
 	MyShip *tmp;
 	MyAsteroid *tmp1;
-//	MyMagic *tmp2;
-//	MyShield *tmp3;
-//	MyStar *tmp4;
 
 	int timer_id;
 
