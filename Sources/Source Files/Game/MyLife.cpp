@@ -11,12 +11,6 @@ MyLife::MyLife(QGraphicsItem *parent) :
 	vlc = new QPointF(0, 0);
 }
 
-MyLife::MyLife(const QPixmap &pixmap, QGraphicsItem *parent) :
-		QGraphicsPixmapItem(pixmap, parent) {
-	setGraphicsEffect(new QGraphicsDropShadowEffect());
-	vlc = new QPointF(0, 0);
-}
-
 MyLife::~MyLife() {
 
 }

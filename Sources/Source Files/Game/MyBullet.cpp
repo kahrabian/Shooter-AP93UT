@@ -4,16 +4,14 @@
 
 #include <Sources/Headers/Game/MyBullet.h>
 
-MyBullet::MyBullet(QGraphicsItem *parent) :
-		QGraphicsPixmapItem(parent) {
+MyBullet::MyBullet(int lsr_num, int rtn, QGraphicsItem *parent) :
+		QGraphicsPixmapItem(QPixmap(MyRes::lsr_add[lsr_num]).scaled(MyRes::lsr_size, Qt::KeepAspectRatio,
+		                                                            Qt::SmoothTransformation), parent) {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
-	vlc = new QPointF(0, 0);
-}
-
-MyBullet::MyBullet(const QPixmap &pixmap, QGraphicsItem *parent) :
-		QGraphicsPixmapItem(pixmap, parent) {
-	setGraphicsEffect(new QGraphicsDropShadowEffect());
-	vlc = new QPointF(0, 0);
+	MyBullet::rtn = rtn;
+	vlc = new QPointF(MyRes::lsr_mvmnt * cos(rtn * M_PI / 180.0), MyRes::lsr_mvmnt * sin(rtn * M_PI / 180.0));
+	setTransformOriginPoint(0, pixmap().height() / 2);
+	setRotation(rtn);
 }
 
 MyBullet::~MyBullet() {
@@ -21,5 +19,7 @@ MyBullet::~MyBullet() {
 }
 
 void MyBullet::updt() {
-	setPos(pos().x() + vlc->x(), pos().y() + vlc->y());
+//	setTransformOriginPoint(0, pixmap().height() / 2);
+//	setRotation(rtn);
+	setPos(pos().x() + MyRes::vw_mvmnt + vlc->x(), pos().y() + vlc->y());
 }

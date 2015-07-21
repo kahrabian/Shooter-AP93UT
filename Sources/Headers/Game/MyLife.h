@@ -16,8 +16,6 @@ class MyLife : public QGraphicsPixmapItem {
 public:
 	MyLife(QGraphicsItem *parent = 0);
 
-	MyLife(const QPixmap &pixmap, QGraphicsItem *parent = 0);
-
 	~MyLife();
 
 	void updt();

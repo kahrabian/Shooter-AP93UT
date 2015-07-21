@@ -7,6 +7,7 @@
 namespace MyRes {
     // Game properties
     const QSize lf_size(35, 35);
+    const QSize lsr_size(30, 8);
     const QSize str_size(30, 30);
     const QSize mgc_size(40, 40);
     const QSize shld_size(43, 43);

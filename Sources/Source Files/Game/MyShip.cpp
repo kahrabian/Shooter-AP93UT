@@ -3,13 +3,14 @@
 //
 
 #include <Sources/Headers/Game/MyShip.h>
+#include <Sources/Headers/Game/MyBullet.h>
 
 MyShip::MyShip(QGraphicsItem *parent) :
 		QGraphicsPixmapItem(parent), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	setPos(MyRes::x_offset, MyRes::y_offset);
-	vlc = new QPointF(0.0, 0.0);
-	shpshld = new MyShipShield(MyRes::shp_shld_add);
+	vlc = new QPointF(0, 0);
+	shpshld = new MyShipShield();
 	shpshld->setGraphicsEffect(new QGraphicsDropShadowEffect());
 	shld_tmr = new QTimer();
 	QTimer::connect(shld_tmr, SIGNAL(timeout()), this, SLOT(deactivate_shld()));
@@ -19,12 +20,12 @@ MyShip::MyShip(QGraphicsItem *parent) :
 }
 
 MyShip::MyShip(const QPixmap &pixmap, QGraphicsItem *parent) :
-		QGraphicsPixmapItem(pixmap.scaled(QSize(100, 100), Qt::KeepAspectRatio,
+		QGraphicsPixmapItem(pixmap.scaled(MyRes::shp_size, Qt::KeepAspectRatio,
 		                                  Qt::SmoothTransformation), parent), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	setPos(MyRes::x_offset, MyRes::y_offset);
-	vlc = new QPointF(0.0, 0.0);
-	shpshld = new MyShipShield(MyRes::shp_shld_add);
+	vlc = new QPointF(0, 0);
+	shpshld = new MyShipShield();
 	shpshld->setGraphicsEffect(new QGraphicsDropShadowEffect());
 	shld_tmr = new QTimer();
 	QTimer::connect(shld_tmr, SIGNAL(timeout()), this, SLOT(deactivate_shld()));
@@ -134,7 +135,6 @@ void MyShip::cllsn_dtctn() {
 void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 	vlc->setY(0);
 	vlc->setX(0);
-//	vlc->setX(MyRes::vw_mvmnt);
 
 	if (prsd_kys->find(Qt::Key_Up) != prsd_kys->end())
 		vlc->setY(vlc->y() - MyRes::shp_mvmnt);
@@ -144,6 +144,24 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 		vlc->setX(vlc->x() - MyRes::shp_mvmnt);
 	if (prsd_kys->find(Qt::Key_Right) != prsd_kys->end())
 		vlc->setX(vlc->x() + MyRes::shp_mvmnt);
+	if (prsd_kys->find(Qt::Key_Space) != prsd_kys->end()) {
+		// Fire Bullet
+		if (mgc) {
+			MyBullet *tmp = new MyBullet(0, 0);
+			tmp->setPos(pos().x() + pixmap().width(),
+			            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
+			scene()->addItem(tmp);
+		}
+		else {
+			for (int i = -45; i <= 45; i += 9) {
+				MyBullet *tmp = new MyBullet(0, i);
+				tmp->setPos(pos().x() + pixmap().width(),
+				            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
+				scene()->addItem(tmp);
+			}
+		}
+	}
+
 }
 
 void MyShip::updt_rtn() {

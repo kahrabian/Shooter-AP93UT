@@ -16,8 +16,6 @@ class MyStar : public QGraphicsPixmapItem {
 public:
 	MyStar(QGraphicsItem *parent = 0);
 
-	MyStar(const QPixmap &pixmap, QGraphicsItem *parent = 0);
-
 	~MyStar();
 
 	void updt();

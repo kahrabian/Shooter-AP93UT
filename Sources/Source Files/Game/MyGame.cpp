@@ -9,27 +9,13 @@ MyGame::MyGame(QWidget *parent) :
 	prsd_kys = new QSet<int>();
 	resize(MyRes::app_size);
 
-	// Test
 	gscn = new QGraphicsScene();
 	gscn->setSceneRect(MyRes::scn_rct);
 	gscn->setBackgroundBrush(
 			QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(MyRes::tl_size, Qt::KeepAspectRatio,
 			                                                        Qt::SmoothTransformation)));
+	// Test
 	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]));
-
-	tmp1 = new MyAsteroid();
-	tmp1->setPos(1000, 100);
-	gscn->addItem(tmp1);
-//	tmp2 = new MyMagic();
-//	tmp2->setPos(1050, 100);
-//	gscn->addItem(tmp2);
-//	tmp3 = new MyShield();
-//	tmp3->setPos(1100, 100);
-//	gscn->addItem(tmp3);
-//	tmp4 = new MyStar();
-//	tmp4->setPos(1100, 100);
-//	gscn->addItem(tmp4);
-
 	gscn->addItem(tmp);
 	gscn->addItem(tmp->shpshld);
 	setScene(gscn);
@@ -74,5 +60,7 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				dynamic_cast<MyShip *>(i)->updt(prsd_kys);
 			if (dynamic_cast<MyAsteroid *>(i))
 				dynamic_cast<MyAsteroid *>(i)->updt();
+			if (dynamic_cast<MyBullet *>(i))
+				dynamic_cast<MyBullet *>(i)->updt();
 		}
 }

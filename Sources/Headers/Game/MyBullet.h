@@ -10,18 +10,19 @@
 #include <QElapsedTimer>
 #include <QPointF>
 #include <QPixmap>
+#include <Sources/Headers/Resources.h>
 
 class MyBullet : public QGraphicsPixmapItem {
 public:
-	MyBullet(QGraphicsItem *parent = 0);
-
-	MyBullet(const QPixmap &pixmap, QGraphicsItem *parent = 0);
+	MyBullet(int, int, QGraphicsItem *parent = 0);
 
 	~MyBullet();
 
 	void updt();
 
 private:
+	int rtn;
+
 	QPointF *vlc;
 };
 

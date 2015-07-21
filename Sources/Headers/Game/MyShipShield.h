@@ -16,8 +16,6 @@ class MyShipShield : public QGraphicsPixmapItem {
 public:
 	MyShipShield(QGraphicsItem *parent = 0);
 
-	MyShipShield(const QPixmap &pixmap, QGraphicsItem *parent = 0);
-
 	~MyShipShield();
 
 	void updt();

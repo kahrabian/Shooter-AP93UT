@@ -18,6 +18,7 @@ namespace MyRes {
     const int gm_drtn = 120000;
     const int vw_mvmnt = 1;
     const int shp_mvmnt = 5;
+    const int lsr_mvmnt = 40;
     const int lsr_cnt = 2;
     const int mgc_cnt = 4;
     const int env_cnt = 16;
@@ -34,6 +35,7 @@ namespace MyRes {
     const int x_offset = 10;
     const int y_offset = 15;
     extern const QSize lf_size;
+    extern const QSize lsr_size;
     extern const QSize str_size;
     extern const QSize mgc_size;
     extern const QSize shld_size;

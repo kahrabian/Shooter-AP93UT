@@ -11,12 +11,6 @@ MyStar::MyStar(QGraphicsItem *parent) :
 	vlc = new QPointF(0, 0);
 }
 
-MyStar::MyStar(const QPixmap &pixmap, QGraphicsItem *parent) :
-		QGraphicsPixmapItem(pixmap, parent) {
-	setGraphicsEffect(new QGraphicsDropShadowEffect());
-	vlc = new QPointF(0, 0);
-}
-
 MyStar::~MyStar() {
 
 }

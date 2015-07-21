@@ -16,8 +16,6 @@ class MyMagic : public QGraphicsPixmapItem {
 public:
 	MyMagic(QGraphicsItem *parent = 0);
 
-	MyMagic(const QPixmap &pixmap, QGraphicsItem *parent = 0);
-
 	~MyMagic();
 
 	void updt();
