@@ -19,7 +19,5 @@ MyBullet::~MyBullet() {
 }
 
 void MyBullet::updt() {
-//	setTransformOriginPoint(0, pixmap().height() / 2);
-//	setRotation(rtn);
 	setPos(pos().x() + MyRes::vw_mvmnt + vlc->x(), pos().y() + vlc->y());
 }

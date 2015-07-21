@@ -16,8 +16,6 @@ class MyAsteroid : public QGraphicsPixmapItem {
 public:
 	MyAsteroid(QGraphicsItem *parent = 0);
 
-	MyAsteroid(const QPixmap &pixmap, QGraphicsItem *parent = 0);
-
 	~MyAsteroid();
 
 	void updt();

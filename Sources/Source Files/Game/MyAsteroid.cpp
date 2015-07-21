@@ -12,12 +12,6 @@ MyAsteroid::MyAsteroid(QGraphicsItem *parent) :
 	vlc = new QPointF(0, 0);
 }
 
-MyAsteroid::MyAsteroid(const QPixmap &pixmap, QGraphicsItem *parent) :
-		QGraphicsPixmapItem(pixmap, parent) {
-	setGraphicsEffect(new QGraphicsDropShadowEffect());
-	vlc = new QPointF(0, 0);
-}
-
 MyAsteroid::~MyAsteroid() {
 
 }

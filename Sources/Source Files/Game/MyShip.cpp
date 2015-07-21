@@ -33,6 +33,7 @@ MyShip::MyShip(const QPixmap &pixmap, QGraphicsItem *parent) :
 	QTimer::connect(mgc_tmr, SIGNAL(timeout()), this, SLOT(deactivate_mgc()));
 	shpshld->hide();
 	activate_shld();
+	activate_mgc();
 }
 
 MyShip::~MyShip() {
@@ -146,7 +147,7 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 		vlc->setX(vlc->x() + MyRes::shp_mvmnt);
 	if (prsd_kys->find(Qt::Key_Space) != prsd_kys->end()) {
 		// Fire Bullet
-		if (mgc) {
+		if (!mgc) {
 			MyBullet *tmp = new MyBullet(0, 0);
 			tmp->setPos(pos().x() + pixmap().width(),
 			            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
