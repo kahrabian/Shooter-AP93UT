@@ -83,6 +83,12 @@ void MyShip::cllsn_dtctn() {
 				lf++;
 				scene()->removeItem(i);
 			}
+			else if (dynamic_cast<MyAlien *>(i)) {
+				lf--;
+				dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
+				scene()->removeItem(i);
+				// Add Explosion
+			}
 			else if (dynamic_cast<MyAlien *>(i) || dynamic_cast<MyAsteroid *>(i) || dynamic_cast<MyBullet *>(i)) {
 				lf--;
 				scene()->removeItem(i);

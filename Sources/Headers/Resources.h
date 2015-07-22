@@ -30,6 +30,7 @@ namespace MyRes {
 
     // Game properties
     const int spcl_tm = 5000;
+    const int aln_frtm = 500;
     const int rtn_max = 30;
     const int rtn_stp = 3;
     const int x_offset = 10;
@@ -40,6 +41,8 @@ namespace MyRes {
     extern const QSize mgc_size;
     extern const QSize shld_size;
     extern const QSize astrd_size;
+    extern const QSize aln_bgsize;
+    extern const QSize aln_smllsize;
     extern const QSize shp_size;
     extern const QSize shp_shld_size;
 

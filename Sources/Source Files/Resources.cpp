@@ -12,6 +12,8 @@ namespace MyRes {
     const QSize mgc_size(40, 40);
     const QSize shld_size(43, 43);
     const QSize astrd_size(350, 350);
+    const QSize aln_bgsize(70, 70);
+    const QSize aln_smllsize(140, 140);
     const QSize shp_size(100, 100);
     const QSize shp_shld_size(150, 150);
 

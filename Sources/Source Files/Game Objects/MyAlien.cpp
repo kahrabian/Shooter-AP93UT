@@ -5,12 +5,22 @@
 #include <Sources/Headers/Game Objects/MyAlien.h>
 
 MyAlien::MyAlien() :
-		QGraphicsPixmapItem(
-				QPixmap(MyRes::aln_nrml_adds[rand() % MyRes::aln_nrml_cnt]).scaled(140, 140, Qt::KeepAspectRatio,
-				                                                                   Qt::SmoothTransformation)) {
+		QGraphicsPixmapItem() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
+	typ = rand() % 2;
+	if (typ == 0) {
+		setPixmap(QPixmap(MyRes::aln_nrml_adds[rand() % MyRes::aln_nrml_cnt]).scaled(MyRes::aln_smllsize,
+		                                                                             Qt::KeepAspectRatio,
+		                                                                             Qt::SmoothTransformation));
+	}
+	else {
+		setPixmap(QPixmap(MyRes::aln_nrml_adds[rand() % MyRes::aln_nrml_cnt]).scaled(MyRes::aln_bgsize,
+		                                                                             Qt::KeepAspectRatio,
+		                                                                             Qt::SmoothTransformation));
+	}
+
 	vlc = new QPointF(0, 0);
-	tmr_id = startTimer(1000);
+	tmr_id = startTimer(MyRes::aln_frtm);
 }
 
 MyAlien::~MyAlien() {
@@ -26,17 +36,18 @@ void MyAlien::updt() {
 }
 
 void MyAlien::timerEvent(QTimerEvent *event) {
-	for (int i = -45; i <= 45; i += 9) {
-		MyBullet *tmp = new MyBullet(1, i, -1);
+//	for (int i = -45; i <= 45; i += 9) {
+//		MyBullet *tmp = new MyBullet(1, i, -1);
+//		tmp->setPos(pos().x(),
+//		            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
+//		scene()->addItem(tmp);
+//	}
+	if (typ == 0) {
+		MyBullet *tmp = new MyBullet(1, 0, -1);
 		tmp->setPos(pos().x(),
 		            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
 		scene()->addItem(tmp);
 	}
-
-//	MyBullet *tmp = new MyBullet(1, 0, -1);
-//	tmp->setPos(pos().x(),
-//	            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
-//	scene()->addItem(tmp);
 }
 
 
