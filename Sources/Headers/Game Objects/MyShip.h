@@ -38,26 +38,6 @@ public:
 
 	~MyShip();
 
-	int getLf() const;
-
-	void setLf(int lf);
-
-	int getScr() const;
-
-	void setScr(int scr);
-
-	bool isShld() const;
-
-	void setShld(bool shld);
-
-	bool isMgc() const;
-
-	void setMgc(bool mgc);
-
-	void setVlc(QPointF *);
-
-	QPointF *getVlc() const;
-
 	void updt(QSet<int> * = 0);
 
 private:

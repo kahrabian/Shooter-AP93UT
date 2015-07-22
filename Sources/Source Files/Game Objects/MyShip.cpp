@@ -39,46 +39,6 @@ MyShip::~MyShip() {
 
 }
 
-int MyShip::getLf() const {
-	return lf;
-}
-
-void MyShip::setLf(int lf) {
-	MyShip::lf = lf;
-}
-
-int MyShip::getScr() const {
-	return scr;
-}
-
-void MyShip::setScr(int scr) {
-	MyShip::scr = scr;
-}
-
-bool MyShip::isShld() const {
-	return shld;
-}
-
-void MyShip::setShld(bool shld) {
-	MyShip::shld = shld;
-}
-
-bool MyShip::isMgc() const {
-	return mgc;
-}
-
-void MyShip::setMgc(bool mgc) {
-	MyShip::mgc = mgc;
-}
-
-void MyShip::setVlc(QPointF *vlc) {
-	MyShip::vlc = vlc;
-}
-
-QPointF *MyShip::getVlc() const {
-	return vlc;
-}
-
 void MyShip::cnstrct_shldpxmp() {
 	shpshld->setPos(pos().x() + (pixmap().width() / 2) - (shpshld->pixmap().width() / 2),
 	                pos().y() + (pixmap().height() / 2) - (shpshld->pixmap().height() / 2));
