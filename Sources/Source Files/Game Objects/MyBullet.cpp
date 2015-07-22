@@ -22,19 +22,18 @@ MyBullet::~MyBullet() {
 
 }
 
-//QGraphicsItem *MyBullet::getMstr() const {
-//	return mstr;
-//}
-
 void MyBullet::cllsn_dtctn() {
 	QList<QGraphicsItem *> clldng_items = collidingItems(Qt::ItemSelectionMode::IntersectsItemShape);
 			foreach(QGraphicsItem *i, clldng_items) {
 			if (dynamic_cast<MyAlien *>(i)) {
+				// Add Point to shooter
 				dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
 				scene()->removeItem(i);
+				hide();
 			}
 			else if (dynamic_cast<MyAsteroid *>(i)) {
 				scene()->removeItem(i);
+				hide();
 			}
 		}
 }

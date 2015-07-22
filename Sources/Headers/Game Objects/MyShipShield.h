@@ -26,6 +26,8 @@ public:
 
 	~MyShipShield();
 
+	void dstry();
+
 	void updt();
 
 signals:

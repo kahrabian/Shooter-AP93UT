@@ -22,8 +22,6 @@ public:
 
 	void updt();
 
-	QGraphicsItem *getMstr() const;
-
 private:
 	int rtn;
 

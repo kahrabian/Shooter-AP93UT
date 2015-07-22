@@ -15,15 +15,22 @@ MyShipShield::~MyShipShield() {
 
 }
 
+void MyShipShield::dstry() {
+	emit shieldDestroyd();
+}
 void MyShipShield::cllsn_dtctn() {
 	QList<QGraphicsItem *> clldng_items = collidingItems(Qt::ItemSelectionMode::IntersectsItemShape);
 			foreach(QGraphicsItem *i, clldng_items) {
 			if ((dynamic_cast<MyAsteroid *>(i) || dynamic_cast<MyBullet *>(i)) && isVisible()) {
 				scene()->removeItem(i);
 			}
-			else if (dynamic_cast<MyAlien *>(i)/* || dynamic_cast<MyShip *>(i))*/ && isVisible()) {
+			else if (dynamic_cast<MyAlien *>(i) && isVisible()) {
 				dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
 				scene()->removeItem(i);
+				emit shieldDestroyd();
+			}
+			else if (dynamic_cast<MyShipShield *>(i) && dynamic_cast<MyShipShield *>(i)->isVisible() && isVisible()) {
+				dynamic_cast<MyShipShield *>(i)->dstry();
 				emit shieldDestroyd();
 			}
 		}

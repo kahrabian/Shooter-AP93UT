@@ -52,23 +52,35 @@ void MyGame::timerEvent(QTimerEvent *event) {
 	             viewport()->frameGeometry().height());
 	QList<QGraphicsItem *> items = gscn->items();
 			foreach(QGraphicsItem *i, items) {
-//			if (dynamic_cast<MyAlien *>(i))
-//				dynamic_cast<MyAlien *>(i)->updt();
-			if (dynamic_cast<MyAsteroid *>(i))
+			if (dynamic_cast<MyAlien *>(i)) {
+				dynamic_cast<MyAlien *>(i)->updt();
+			}
+			else if (dynamic_cast<MyAsteroid *>(i)) {
 				dynamic_cast<MyAsteroid *>(i)->updt();
-			if (dynamic_cast<MyBullet *>(i))
+			}
+			else if (dynamic_cast<MyBullet *>(i)) {
 				dynamic_cast<MyBullet *>(i)->updt();
-			if (dynamic_cast<MyMagic *>(i))
+				if (!dynamic_cast<MyBullet *>(i)->isVisible()) {
+					scene()->removeItem(i);
+				}
+			}
+			else if (dynamic_cast<MyLife *>(i)) {
 				dynamic_cast<MyMagic *>(i)->updt();
-			if (dynamic_cast<MyShield *>(i))
+			}
+			else if (dynamic_cast<MyMagic *>(i)) {
 				dynamic_cast<MyShield *>(i)->updt();
-			if (dynamic_cast<MyShield *>(i))
+			}
+			else if (dynamic_cast<MyShield *>(i)) {
 				dynamic_cast<MyShield *>(i)->updt();
-			if (dynamic_cast<MyShip *>(i))
+			}
+			else if (dynamic_cast<MyShip *>(i)) {
 				dynamic_cast<MyShip *>(i)->updt(prsd_kys);
-			if (dynamic_cast<MyShipShield *>(i))
+			}
+			else if (dynamic_cast<MyShipShield *>(i)) {
 				dynamic_cast<MyShipShield *>(i)->updt();
-			if (dynamic_cast<MyStar *>(i))
+			}
+			else if (dynamic_cast<MyStar *>(i)) {
 				dynamic_cast<MyStar *>(i)->updt();
+			}
 		}
 }
