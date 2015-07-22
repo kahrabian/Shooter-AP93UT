@@ -32,9 +32,7 @@ Q_OBJECT
 	friend class MyGame;
 
 public:
-	MyShip(QGraphicsItem *parent = 0);
-
-	MyShip(const QPixmap &pixmap, QGraphicsItem *parent = 0);
+	MyShip(const QPixmap &pixmap);
 
 	~MyShip();
 

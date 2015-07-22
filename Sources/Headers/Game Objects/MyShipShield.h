@@ -20,8 +20,9 @@ class MyShip;
 
 class MyShipShield : public QObject, public QGraphicsPixmapItem {
 Q_OBJECT
+
 public:
-	MyShipShield(MyShip *);
+	MyShipShield();
 
 	~MyShipShield();
 
@@ -32,8 +33,6 @@ signals:
 	void shieldDestroyd();
 
 private:
-	MyShip *mstr;
-
 	QPointF *vlc;
 
 	void cllsn_dtctn();

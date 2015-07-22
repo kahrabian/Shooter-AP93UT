@@ -4,10 +4,9 @@
 
 #include <Sources/Headers/Game Objects/MyBullet.h>
 
-MyBullet::MyBullet(int lsr_num, int rtn, int dir, QGraphicsItem *mstr) :
+MyBullet::MyBullet(int lsr_num, int rtn, int dir) :
 		QGraphicsPixmapItem(QPixmap(MyRes::lsr_add[lsr_num]).scaled(MyRes::lsr_size, Qt::KeepAspectRatio,
 		                                                            Qt::SmoothTransformation)) {
-	MyBullet::mstr = mstr;
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	if (dir == -1)
 		MyBullet::rtn = 180 - rtn;
@@ -23,14 +22,15 @@ MyBullet::~MyBullet() {
 
 }
 
-QGraphicsItem *MyBullet::getMstr() const {
-	return mstr;
-}
+//QGraphicsItem *MyBullet::getMstr() const {
+//	return mstr;
+//}
 
 void MyBullet::cllsn_dtctn() {
 	QList<QGraphicsItem *> clldng_items = collidingItems(Qt::ItemSelectionMode::IntersectsItemShape);
 			foreach(QGraphicsItem *i, clldng_items) {
 			if (dynamic_cast<MyAlien *>(i)) {
+				dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
 				scene()->removeItem(i);
 			}
 			else if (dynamic_cast<MyAsteroid *>(i)) {
@@ -40,5 +40,6 @@ void MyBullet::cllsn_dtctn() {
 }
 
 void MyBullet::updt() {
+	cllsn_dtctn();
 	setPos(pos().x() + MyRes::vw_mvmnt + vlc->x(), pos().y() + vlc->y());
 }

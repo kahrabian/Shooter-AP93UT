@@ -14,13 +14,18 @@
 #include <Sources/Headers/Game Objects/MyBullet.h>
 #include <Sources/Headers/Resources.h>
 
+
 class MyAlien : public QObject, public QGraphicsPixmapItem {
+Q_OBJECT
+
 public:
 	MyAlien();
 
 	~MyAlien();
 
 	void updt();
+
+	int getTmr_id() const;
 
 private:
 	int typ;

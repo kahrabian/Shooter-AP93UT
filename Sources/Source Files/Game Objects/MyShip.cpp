@@ -4,33 +4,24 @@
 
 #include <Sources/Headers/Game Objects/MyShip.h>
 
-MyShip::MyShip(QGraphicsItem *parent) :
-		QGraphicsPixmapItem(parent), QObject() {
-	setGraphicsEffect(new QGraphicsDropShadowEffect());
-	setPos(MyRes::x_offset, MyRes::y_offset);
-	vlc = new QPointF(0, 0);
-	shpshld = new MyShipShield(this);
-	shpshld->setGraphicsEffect(new QGraphicsDropShadowEffect());
-	shld_tmr = new QTimer();
-	QTimer::connect(shld_tmr, SIGNAL(timeout()), this, SLOT(deactivate_shld()));
-	mgc_tmr = new QTimer();
-	QTimer::connect(mgc_tmr, SIGNAL(timeout()), this, SLOT(deactivate_mgc()));
-//	shpshld->hide();
-}
-
-MyShip::MyShip(const QPixmap &pixmap, QGraphicsItem *parent) :
+MyShip::MyShip(const QPixmap &pixmap) :
 		QGraphicsPixmapItem(pixmap.scaled(MyRes::shp_size, Qt::KeepAspectRatio,
-		                                  Qt::SmoothTransformation), parent), QObject() {
+		                                  Qt::SmoothTransformation)), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	setPos(MyRes::x_offset, MyRes::y_offset);
+
 	vlc = new QPointF(0, 0);
-	shpshld = new MyShipShield(this);
+
+	shpshld = new MyShipShield();
 	shpshld->setGraphicsEffect(new QGraphicsDropShadowEffect());
+
 	shld_tmr = new QTimer();
-	QTimer::connect(shld_tmr, SIGNAL(timeout()), this, SLOT(deactivate_shld()));
 	mgc_tmr = new QTimer();
+
+	QTimer::connect(shld_tmr, SIGNAL(timeout()), this, SLOT(deactivate_shld()));
+	QTimer::connect(shpshld, SIGNAL(shieldDestroyd()), this, SLOT(deactivate_shld()));
 	QTimer::connect(mgc_tmr, SIGNAL(timeout()), this, SLOT(deactivate_mgc()));
-	shpshld->hide();
+
 	activate_shld();
 	activate_mgc();
 }

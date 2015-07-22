@@ -16,7 +16,7 @@
 
 class MyBullet : public QGraphicsPixmapItem {
 public:
-	MyBullet(int, int = 0, int = 1, QGraphicsItem * = 0);
+	MyBullet(int, int = 0, int = 1);
 
 	~MyBullet();
 
@@ -25,8 +25,6 @@ public:
 	QGraphicsItem *getMstr() const;
 
 private:
-	QGraphicsItem *mstr;
-
 	int rtn;
 
 	QPointF *vlc;
