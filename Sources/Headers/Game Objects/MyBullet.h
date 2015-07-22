@@ -14,7 +14,7 @@
 
 class MyBullet : public QGraphicsPixmapItem {
 public:
-	MyBullet(int, int, QGraphicsItem *parent = 0);
+	MyBullet(int, int = 0, int = 1, QGraphicsItem *parent = 0);
 
 	~MyBullet();
 

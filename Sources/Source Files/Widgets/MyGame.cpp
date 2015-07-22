@@ -18,7 +18,7 @@ MyGame::MyGame(QWidget *parent) :
 	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]));
 	gscn->addItem(tmp);
 	gscn->addItem(tmp->shpshld);
-	tmp1 = new MyMagic();
+	tmp1 = new MyAlien();
 	tmp1->setPos(1000, 100);
 	gscn->addItem(tmp1);
 	setScene(gscn);

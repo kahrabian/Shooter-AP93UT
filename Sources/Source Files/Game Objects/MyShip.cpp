@@ -105,9 +105,8 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 	if (prsd_kys->find(Qt::Key_Right) != prsd_kys->end())
 		vlc->setX(vlc->x() + MyRes::shp_mvmnt);
 	if (prsd_kys->find(Qt::Key_Space) != prsd_kys->end()) {
-		// Fire Bullet
 		if (!mgc) {
-			MyBullet *tmp = new MyBullet(0, 0);
+			MyBullet *tmp = new MyBullet(0);
 			tmp->setPos(pos().x() + pixmap().width(),
 			            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
 			scene()->addItem(tmp);
@@ -121,7 +120,6 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 			}
 		}
 	}
-
 }
 
 void MyShip::updt_rtn() {
@@ -162,5 +160,4 @@ void MyShip::updt(QSet<int> *prsd_kys) {
 	updt_vlc(prsd_kys);
 	updt_rtn();
 	updt_pos();
-	QGraphicsPixmapItem::update();
 }
