@@ -14,7 +14,7 @@
 
 class MyAsteroid : public QGraphicsPixmapItem {
 public:
-	MyAsteroid(QGraphicsItem *parent = 0);
+	MyAsteroid();
 
 	~MyAsteroid();
 

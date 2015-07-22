@@ -14,7 +14,7 @@
 
 class MyLife : public QGraphicsPixmapItem {
 public:
-	MyLife(QGraphicsItem *parent = 0);
+	MyLife();
 
 	~MyLife();
 

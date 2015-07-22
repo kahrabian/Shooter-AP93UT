@@ -4,10 +4,10 @@
 
 #include <Sources/Headers/Game Objects/MyMagic.h>
 
-MyMagic::MyMagic(QGraphicsItem *parent) :
+MyMagic::MyMagic() :
 		QGraphicsPixmapItem(
 				QPixmap(MyRes::mgc_add[rand() % MyRes::mgc_cnt]).scaled(MyRes::mgc_size, Qt::KeepAspectRatio,
-				                                                        Qt::SmoothTransformation), parent) {
+				                                                        Qt::SmoothTransformation)) {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	vlc = new QPointF(0, 0);
 }

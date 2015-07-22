@@ -4,9 +4,10 @@
 
 #include <Sources/Headers/Game Objects/MyBullet.h>
 
-MyBullet::MyBullet(int lsr_num, int rtn, int dir, QGraphicsItem *parent) :
+MyBullet::MyBullet(int lsr_num, int rtn, int dir, QGraphicsItem *mstr) :
 		QGraphicsPixmapItem(QPixmap(MyRes::lsr_add[lsr_num]).scaled(MyRes::lsr_size, Qt::KeepAspectRatio,
-		                                                            Qt::SmoothTransformation), parent) {
+		                                                            Qt::SmoothTransformation)) {
+	MyBullet::mstr = mstr;
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	if (dir == -1)
 		MyBullet::rtn = 180 - rtn;
@@ -20,6 +21,22 @@ MyBullet::MyBullet(int lsr_num, int rtn, int dir, QGraphicsItem *parent) :
 
 MyBullet::~MyBullet() {
 
+}
+
+QGraphicsItem *MyBullet::getMstr() const {
+	return mstr;
+}
+
+void MyBullet::cllsn_dtctn() {
+	QList<QGraphicsItem *> clldng_items = collidingItems(Qt::ItemSelectionMode::IntersectsItemShape);
+			foreach(QGraphicsItem *i, clldng_items) {
+			if (dynamic_cast<MyAlien *>(i)) {
+				scene()->removeItem(i);
+			}
+			else if (dynamic_cast<MyAsteroid *>(i)) {
+				scene()->removeItem(i);
+			}
+		}
 }
 
 void MyBullet::updt() {

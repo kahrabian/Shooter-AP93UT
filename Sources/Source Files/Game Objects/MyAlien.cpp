@@ -4,10 +4,10 @@
 
 #include <Sources/Headers/Game Objects/MyAlien.h>
 
-MyAlien::MyAlien(QGraphicsItem *parent) :
+MyAlien::MyAlien() :
 		QGraphicsPixmapItem(
 				QPixmap(MyRes::aln_nrml_adds[rand() % MyRes::aln_nrml_cnt]).scaled(140, 140, Qt::KeepAspectRatio,
-		                                                   Qt::SmoothTransformation), parent) {
+				                                                                   Qt::SmoothTransformation)) {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	vlc = new QPointF(0, 0);
 	tmr_id = startTimer(1000);

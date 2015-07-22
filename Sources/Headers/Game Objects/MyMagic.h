@@ -14,7 +14,7 @@
 
 class MyMagic : public QGraphicsPixmapItem {
 public:
-	MyMagic(QGraphicsItem *parent = 0);
+	MyMagic();
 
 	~MyMagic();
 

@@ -16,7 +16,7 @@
 
 class MyAlien : public QObject, public QGraphicsPixmapItem {
 public:
-	MyAlien(QGraphicsItem *parent = 0);
+	MyAlien();
 
 	~MyAlien();
 

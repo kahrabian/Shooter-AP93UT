@@ -4,9 +4,9 @@
 
 #include <Sources/Headers/Game Objects/MyStar.h>
 
-MyStar::MyStar(QGraphicsItem *parent) :
+MyStar::MyStar() :
 		QGraphicsPixmapItem(QPixmap(MyRes::str_add).scaled(MyRes::str_size, Qt::KeepAspectRatio,
-		                                                   Qt::SmoothTransformation), parent) {
+		                                                   Qt::SmoothTransformation)) {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	vlc = new QPointF(0, 0);
 }

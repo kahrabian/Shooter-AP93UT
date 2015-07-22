@@ -14,7 +14,7 @@
 
 class MyStar : public QGraphicsPixmapItem {
 public:
-	MyStar(QGraphicsItem *parent = 0);
+	MyStar();
 
 	~MyStar();
 

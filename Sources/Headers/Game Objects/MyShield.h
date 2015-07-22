@@ -14,7 +14,7 @@
 
 class MyShield : public QGraphicsPixmapItem {
 public:
-	MyShield(QGraphicsItem *parent = 0);
+	MyShield();
 
 	~MyShield();
 

@@ -4,9 +4,9 @@
 
 #include <Sources/Headers/Game Objects/MyShield.h>
 
-MyShield::MyShield(QGraphicsItem *parent) :
+MyShield::MyShield() :
 		QGraphicsPixmapItem(QPixmap(MyRes::shld_add).scaled(MyRes::shld_size, Qt::KeepAspectRatio,
-		                                                    Qt::SmoothTransformation), parent) {
+		                                                    Qt::SmoothTransformation)) {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	vlc = new QPointF(0, 0);
 }

@@ -9,7 +9,7 @@ MyShip::MyShip(QGraphicsItem *parent) :
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	setPos(MyRes::x_offset, MyRes::y_offset);
 	vlc = new QPointF(0, 0);
-	shpshld = new MyShipShield();
+	shpshld = new MyShipShield(this);
 	shpshld->setGraphicsEffect(new QGraphicsDropShadowEffect());
 	shld_tmr = new QTimer();
 	QTimer::connect(shld_tmr, SIGNAL(timeout()), this, SLOT(deactivate_shld()));
@@ -24,7 +24,7 @@ MyShip::MyShip(const QPixmap &pixmap, QGraphicsItem *parent) :
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	setPos(MyRes::x_offset, MyRes::y_offset);
 	vlc = new QPointF(0, 0);
-	shpshld = new MyShipShield();
+	shpshld = new MyShipShield(this);
 	shpshld->setGraphicsEffect(new QGraphicsDropShadowEffect());
 	shld_tmr = new QTimer();
 	QTimer::connect(shld_tmr, SIGNAL(timeout()), this, SLOT(deactivate_shld()));
