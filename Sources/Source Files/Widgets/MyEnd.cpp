@@ -2,7 +2,7 @@
 // Created by kahrabian on 7/17/15.
 //
 
-#include <Sources/Headers/MyEnd.h>
+#include <Sources/Headers/Widgets/MyEnd.h>
 
 MyEnd::MyEnd(QWidget *parent, Qt::WindowFlags f) :
 		QWidget(parent, f) {

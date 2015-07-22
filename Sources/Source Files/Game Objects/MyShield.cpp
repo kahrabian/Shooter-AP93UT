@@ -2,7 +2,7 @@
 // Created by kahrabian on 7/13/15.
 //
 
-#include <Sources/Headers/Game/MyShield.h>
+#include <Sources/Headers/Game Objects/MyShield.h>
 
 MyShield::MyShield(QGraphicsItem *parent) :
 		QGraphicsPixmapItem(QPixmap(MyRes::shld_add).scaled(MyRes::shld_size, Qt::KeepAspectRatio,

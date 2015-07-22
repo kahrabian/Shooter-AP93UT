@@ -14,7 +14,7 @@
 #include <QFile>
 #include <QKeyEvent>
 #include <Sources/Headers/Resources.h>
-#include <Sources/Headers/MyaudioTab.h>
+#include <Sources/Headers/Settings/MyaudioTab.h>
 
 class MyPause : public QWidget {
 Q_OBJECT

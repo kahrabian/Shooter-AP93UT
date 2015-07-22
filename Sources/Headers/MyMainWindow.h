@@ -13,14 +13,14 @@
 #include <QDesktopWidget>
 #include <QMediaPlayer>
 #include <QPixmap>
-#include <Sources/Headers/Game/MyGame.h>
+#include <Sources/Headers/Widgets/MyGame.h>
 #include <Sources/Headers/Resources.h>
-#include <Sources/Headers/MyMenu.h>
-#include <Sources/Headers/MyTutorial.h>
-#include <Sources/Headers/MySetting.h>
-#include <Sources/Headers/MyName.h>
-#include <Sources/Headers/MyPause.h>
-#include <Sources/Headers/MyEnd.h>
+#include <Sources/Headers/Widgets/MyMenu.h>
+#include <Sources/Headers/Widgets/MyTutorial.h>
+#include <Sources/Headers/Widgets/MySetting.h>
+#include <Sources/Headers/Widgets/MyName.h>
+#include <Sources/Headers/Widgets/MyPause.h>
+#include <Sources/Headers/Widgets/MyEnd.h>
 
 class MyMainWindow : QMainWindow {
 Q_OBJECT

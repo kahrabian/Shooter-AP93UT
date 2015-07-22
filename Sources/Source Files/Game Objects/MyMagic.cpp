@@ -2,7 +2,7 @@
 // Created by kahrabian on 7/18/15.
 //
 
-#include <Sources/Headers/Game/MyMagic.h>
+#include <Sources/Headers/Game Objects/MyMagic.h>
 
 MyMagic::MyMagic(QGraphicsItem *parent) :
 		QGraphicsPixmapItem(

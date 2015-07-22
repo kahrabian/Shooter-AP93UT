@@ -2,7 +2,7 @@
 // Created by kahrabian on 7/20/15.
 //
 
-#include <Sources/Headers/Game/MyShipShield.h>
+#include <Sources/Headers/Game Objects/MyShipShield.h>
 
 MyShipShield::MyShipShield(QGraphicsItem *parent) :
 		QGraphicsPixmapItem(QPixmap(MyRes::shp_shld_add).scaled(MyRes::shp_shld_size, Qt::KeepAspectRatio,

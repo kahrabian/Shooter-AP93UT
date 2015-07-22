@@ -5,30 +5,25 @@
 #ifndef SHOOTER_AP93UT_MYALIEN_H
 #define SHOOTER_AP93UT_MYALIEN_H
 
+#include <QGraphicsDropShadowEffect>
 #include <QGraphicsPixmapItem>
 #include <QElapsedTimer>
 #include <QPointF>
 #include <QPixmap>
+#include <Sources/Headers/Resources.h>
 
-class MyAlien : public QGraphicsPixmapItem {
+class MyAlien : public QObject, public QGraphicsPixmapItem {
 public:
 	MyAlien(QGraphicsItem *parent = 0);
 
-	MyAlien(const QPixmap &pixmap, QGraphicsItem *parent = 0);
-
 	~MyAlien();
 
-	void updt(qint64 = 0);
+	void updt();
 
 private:
-	QElapsedTimer *frm_tmr;
-
 	int typ;
 
-	QTimer blt_tmr;
-
 	int mss;
-	QPointF *pos;
 	QPointF *vlc;
 	QPointF *acc;
 	QPointF *frc;

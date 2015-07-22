@@ -17,12 +17,13 @@
 #include <QSet>
 #include <QTextStream>
 #include <QTransform>
-#include <Sources/Headers/Game/MyStar.h>
-#include <Sources/Headers/Game/MyShield.h>
-#include <Sources/Headers/Game/MyMagic.h>
-#include <Sources/Headers/Game/MyLife.h>
-#include <Sources/Headers/Game/MyShipShield.h>
-#include <Sources/Headers/Game/MyAsteroid.h>
+#include <Sources/Headers/Game Objects/MyBullet.h>
+#include <Sources/Headers/Game Objects/MyStar.h>
+#include <Sources/Headers/Game Objects/MyShield.h>
+#include <Sources/Headers/Game Objects/MyMagic.h>
+#include <Sources/Headers/Game Objects/MyLife.h>
+#include <Sources/Headers/Game Objects/MyShipShield.h>
+#include <Sources/Headers/Game Objects/MyAsteroid.h>
 #include <Sources/Headers/Resources.h>
 
 class MyShip : public QObject, public QGraphicsPixmapItem {

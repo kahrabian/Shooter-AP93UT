@@ -2,7 +2,7 @@
 // Created by kahrabian on 7/12/15.
 //
 
-#include <Sources/Headers/Game/MyGame.h>
+#include <Sources/Headers/Widgets/MyGame.h>
 
 MyGame::MyGame(QWidget *parent) :
 		QGraphicsView(parent) {
@@ -18,6 +18,9 @@ MyGame::MyGame(QWidget *parent) :
 	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]));
 	gscn->addItem(tmp);
 	gscn->addItem(tmp->shpshld);
+	tmp1 = new MyMagic();
+	tmp1->setPos(1000, 100);
+	gscn->addItem(tmp1);
 	setScene(gscn);
 	setSceneRect(viewport()->frameGeometry());
 	timer_id = startTimer(MyRes::frm_dly);
@@ -49,11 +52,23 @@ void MyGame::timerEvent(QTimerEvent *event) {
 	             viewport()->frameGeometry().height());
 	QList<QGraphicsItem *> items = gscn->items();
 			foreach(QGraphicsItem *i, items) {
-			if (dynamic_cast<MyShip *>(i))
-				dynamic_cast<MyShip *>(i)->updt(prsd_kys);
+//			if (dynamic_cast<MyAlien *>(i))
+//				dynamic_cast<MyAlien *>(i)->updt();
 			if (dynamic_cast<MyAsteroid *>(i))
 				dynamic_cast<MyAsteroid *>(i)->updt();
 			if (dynamic_cast<MyBullet *>(i))
 				dynamic_cast<MyBullet *>(i)->updt();
+			if (dynamic_cast<MyMagic *>(i))
+				dynamic_cast<MyMagic *>(i)->updt();
+			if (dynamic_cast<MyShield *>(i))
+				dynamic_cast<MyShield *>(i)->updt();
+			if (dynamic_cast<MyShield *>(i))
+				dynamic_cast<MyShield *>(i)->updt();
+			if (dynamic_cast<MyShip *>(i))
+				dynamic_cast<MyShip *>(i)->updt(prsd_kys);
+			if (dynamic_cast<MyShipShield *>(i))
+				dynamic_cast<MyShipShield *>(i)->updt();
+			if (dynamic_cast<MyStar *>(i))
+				dynamic_cast<MyStar *>(i)->updt();
 		}
 }

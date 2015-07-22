@@ -2,7 +2,7 @@
 // Created by kahrabian on 7/13/15.
 //
 
-#include <Sources/Headers/Game/MyAsteroid.h>
+#include <Sources/Headers/Game Objects/MyAsteroid.h>
 
 MyAsteroid::MyAsteroid(QGraphicsItem *parent) :
 		QGraphicsPixmapItem(parent) {

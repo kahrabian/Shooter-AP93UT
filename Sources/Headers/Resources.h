@@ -16,7 +16,7 @@ namespace MyRes {
     // Project properties
     const int frm_dly = 30;
     const int gm_drtn = 120000;
-    const int vw_mvmnt = 1;
+    const int vw_mvmnt = 3;
     const int shp_mvmnt = 5;
     const int lsr_mvmnt = 40;
     const int lsr_cnt = 2;

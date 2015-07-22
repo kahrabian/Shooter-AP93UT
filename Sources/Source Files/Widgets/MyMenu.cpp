@@ -2,7 +2,7 @@
 // Created by kahrabian on 7/3/15.
 //
 
-#include <Sources/Headers/MyMenu.h>
+#include <Sources/Headers/Widgets/MyMenu.h>
 
 MyMenu::MyMenu(QWidget *parent, Qt::WindowFlags f) :
 		QWidget(parent, f) {

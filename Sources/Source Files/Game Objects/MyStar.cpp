@@ -2,7 +2,7 @@
 // Created by kahrabian on 7/13/15.
 //
 
-#include <Sources/Headers/Game/MyStar.h>
+#include <Sources/Headers/Game Objects/MyStar.h>
 
 MyStar::MyStar(QGraphicsItem *parent) :
 		QGraphicsPixmapItem(QPixmap(MyRes::str_add).scaled(MyRes::str_size, Qt::KeepAspectRatio,

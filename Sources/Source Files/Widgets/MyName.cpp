@@ -2,7 +2,7 @@
 // Created by kahrabian on 7/16/15.
 //
 
-#include <Sources/Headers/MyName.h>
+#include <Sources/Headers/Widgets/MyName.h>
 
 MyName::MyName(QWidget *parent, Qt::WindowFlags f) :
 		QWidget(parent, f) {

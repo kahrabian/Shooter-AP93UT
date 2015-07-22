@@ -2,7 +2,7 @@
 // Created by kahrabian on 7/13/15.
 //
 
-#include <Sources/Headers/Game/MyBullet.h>
+#include <Sources/Headers/Game Objects/MyBullet.h>
 
 MyBullet::MyBullet(int lsr_num, int rtn, QGraphicsItem *parent) :
 		QGraphicsPixmapItem(QPixmap(MyRes::lsr_add[lsr_num]).scaled(MyRes::lsr_size, Qt::KeepAspectRatio,

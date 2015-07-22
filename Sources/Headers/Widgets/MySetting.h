@@ -19,10 +19,10 @@
 #include <QToolButton>
 #include <QTextStream>
 #include <Sources/Headers/Resources.h>
-#include <Sources/Headers/MythmTab.h>
-#include <Sources/Headers/MyaudioTab.h>
-#include <Sources/Headers/MymodeTab.h>
-#include <Sources/Headers/MyaiTab.h>
+#include <Sources/Headers/Settings/MythmTab.h>
+#include <Sources/Headers/Settings/MyaudioTab.h>
+#include <Sources/Headers/Settings/MymodeTab.h>
+#include <Sources/Headers/Settings/MyaiTab.h>
 
 
 class MySetting : public QWidget {

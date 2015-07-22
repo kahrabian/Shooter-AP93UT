@@ -2,7 +2,7 @@
 // Created by kahrabian on 7/7/15.
 //
 
-#include <Sources/Headers/MySetting.h>
+#include <Sources/Headers/Widgets/MySetting.h>
 
 MySetting::MySetting(QWidget *parent, Qt::WindowFlags f) :
 		QWidget(parent, f) {

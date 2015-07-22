@@ -2,8 +2,7 @@
 // Created by kahrabian on 7/12/15.
 //
 
-#include <Sources/Headers/Game/MyShip.h>
-#include <Sources/Headers/Game/MyBullet.h>
+#include <Sources/Headers/Game Objects/MyShip.h>
 
 MyShip::MyShip(QGraphicsItem *parent) :
 		QGraphicsPixmapItem(parent), QObject() {

@@ -2,7 +2,7 @@
 // Created by kahrabian on 7/11/15.
 //
 
-#include <Sources/Headers/MyaiTab.h>
+#include <Sources/Headers/Settings/MyaiTab.h>
 
 MyaiTab::MyaiTab(QWidget *parent, Qt::WindowFlags f) :
 		QWidget(parent, f) {

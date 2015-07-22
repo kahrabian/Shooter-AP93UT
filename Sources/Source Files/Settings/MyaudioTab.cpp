@@ -2,7 +2,7 @@
 // Created by kahrabian on 7/11/15.
 //
 
-#include <Sources/Headers/MyaudioTab.h>
+#include <Sources/Headers/Settings/MyaudioTab.h>
 
 MyaudioTab::MyaudioTab(QWidget *parent, Qt::WindowFlags f) :
 		QWidget(parent, f) {
