@@ -75,7 +75,7 @@ void MyShip::cllsn_dtctn() {
 			else if (dynamic_cast<MyShip *>(i)) {
 				lf--;
 			}
-			else if (dynamic_cast<MyShipShield *>(i)) {
+			else if (dynamic_cast<MyShipShield *>(i) && dynamic_cast<MyShipShield *>(i) != shpshld) {
 				lf--;
 				dynamic_cast<MyShipShield *>(i)->dstry();
 			}
