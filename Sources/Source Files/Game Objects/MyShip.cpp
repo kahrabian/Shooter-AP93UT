@@ -117,7 +117,7 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 			scene()->addItem(tmp);
 		}
 		else {
-			for (int i = -45; i <= 45; i += 9) {
+			for (int i = -MyRes::lsr_rtn_max; i <= MyRes::lsr_rtn_max; i += MyRes::lsr_rtn_stp) {
 				MyBullet *tmp = new MyBullet(0, i);
 				tmp->setPos(pos().x() + pixmap().width(),
 				            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));

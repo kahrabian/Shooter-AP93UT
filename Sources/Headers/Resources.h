@@ -33,6 +33,8 @@ namespace MyRes {
     const int aln_frtm = 500;
     const int rtn_max = 30;
     const int rtn_stp = 3;
+    const int lsr_rtn_max = 30;
+    const int lsr_rtn_stp = 3;
     const int x_offset = 10;
     const int y_offset = 15;
     extern const QSize lf_size;
