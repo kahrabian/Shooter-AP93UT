@@ -29,7 +29,7 @@ void MyBullet::cllsn_dtctn() {
 				dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
 				scene()->removeItem(i);
 				hide();
-//				emit scrGained();
+				emit scrGained();
 			}
 			else if (dynamic_cast<MyAsteroid *>(i)) {
 				scene()->removeItem(i);

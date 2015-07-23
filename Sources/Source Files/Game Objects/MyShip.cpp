@@ -62,23 +62,23 @@ void MyShip::deactivate_mgc() {
 
 void MyShip::scrIncrement() {
 	scr++;
-	QTextStream X(stderr);
-	X << scr << endl;
+//	QTextStream X(stderr);
+//	X << scr << endl;
 }
 
 void MyShip::cllsn_dtctn() {
 	QList<QGraphicsItem *> clldng_items = collidingItems(Qt::ItemSelectionMode::IntersectsItemShape);
 			foreach(QGraphicsItem *i, clldng_items) {
 			if (dynamic_cast<MyLife *>(i)) {
-				scr++;
+				lf++;
 				scene()->removeItem(i);
 			}
 			else if (dynamic_cast<MyMagic *>(i)) {
-				activate_shld();
+				activate_mgc();
 				scene()->removeItem(i);
 			}
 			else if (dynamic_cast<MyShield *>(i)) {
-				activate_mgc();
+				activate_shld();
 				scene()->removeItem(i);
 			}
 			else if (dynamic_cast<MyShip *>(i)) {
@@ -89,7 +89,7 @@ void MyShip::cllsn_dtctn() {
 				dynamic_cast<MyShipShield *>(i)->dstry();
 			}
 			else if (dynamic_cast<MyStar *>(i)) {
-				lf++;
+				scr++;
 				scene()->removeItem(i);
 			}
 			else if (dynamic_cast<MyAlien *>(i)) {
@@ -98,7 +98,7 @@ void MyShip::cllsn_dtctn() {
 				scene()->removeItem(i);
 				// Add Explosion
 			}
-			else if (dynamic_cast<MyAlien *>(i) || dynamic_cast<MyAsteroid *>(i) || dynamic_cast<MyBullet *>(i)) {
+			else if (dynamic_cast<MyAsteroid *>(i) || dynamic_cast<MyBullet *>(i)) {
 				lf--;
 				scene()->removeItem(i);
 				// Add Explosion

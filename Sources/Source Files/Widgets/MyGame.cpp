@@ -65,8 +65,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 	             viewport()->frameGeometry().height());
 	QList<QGraphicsItem *> items = gscn->items();
 
-	QTextStream X(stderr);
-	X << items.size() << endl;
+//	QTextStream X(stderr);
+//	X << items.size() << endl;
 
 			foreach(QGraphicsItem *i, items) {
 			if (dynamic_cast<MyAlien *>(i)) {
