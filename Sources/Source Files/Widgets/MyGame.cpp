@@ -77,10 +77,14 @@ void MyGame::timerEvent(QTimerEvent *event) {
 					dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
 					scene()->removeItem(i);
 				}
-
 			}
 			else if (dynamic_cast<MyAsteroid *>(i)) {
 				dynamic_cast<MyAsteroid *>(i)->updt();
+				if (dynamic_cast<MyAsteroid *>(i)->sceneBoundingRect().right() < sceneRect().left() ||
+				    dynamic_cast<MyAsteroid *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
+				    dynamic_cast<MyAsteroid *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
+					scene()->removeItem(i);
+				}
 			}
 			else if (dynamic_cast<MyBullet *>(i)) {
 				dynamic_cast<MyBullet *>(i)->updt();
@@ -93,18 +97,36 @@ void MyGame::timerEvent(QTimerEvent *event) {
 			}
 			else if (dynamic_cast<MyExplosion *>(i)) {
 				dynamic_cast<MyExplosion *>(i)->updt();
-				if (!dynamic_cast<MyExplosion *>(i)->isVisible()) {
+				if (!dynamic_cast<MyExplosion *>(i)->isVisible() ||
+				    dynamic_cast<MyExplosion *>(i)->sceneBoundingRect().right() < sceneRect().left() ||
+				    dynamic_cast<MyExplosion *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
+				    dynamic_cast<MyExplosion *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
 					scene()->removeItem(i);
 				}
 			}
 			else if (dynamic_cast<MyLife *>(i)) {
-				dynamic_cast<MyMagic *>(i)->updt();
+				dynamic_cast<MyLife *>(i)->updt();
+				if (dynamic_cast<MyLife *>(i)->sceneBoundingRect().right() < sceneRect().left() ||
+				    dynamic_cast<MyLife *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
+				    dynamic_cast<MyLife *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
+					scene()->removeItem(i);
+				}
 			}
 			else if (dynamic_cast<MyMagic *>(i)) {
-				dynamic_cast<MyShield *>(i)->updt();
+				dynamic_cast<MyMagic *>(i)->updt();
+				if (dynamic_cast<MyMagic *>(i)->sceneBoundingRect().right() < sceneRect().left() ||
+				    dynamic_cast<MyMagic *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
+				    dynamic_cast<MyMagic *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
+					scene()->removeItem(i);
+				}
 			}
 			else if (dynamic_cast<MyShield *>(i)) {
 				dynamic_cast<MyShield *>(i)->updt();
+				if (dynamic_cast<MyShield *>(i)->sceneBoundingRect().right() < sceneRect().left() ||
+				    dynamic_cast<MyShield *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
+				    dynamic_cast<MyShield *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
+					scene()->removeItem(i);
+				}
 			}
 			else if (dynamic_cast<MyShip *>(i)) {
 				dynamic_cast<MyShip *>(i)->updt(prsd_kys);
@@ -114,6 +136,11 @@ void MyGame::timerEvent(QTimerEvent *event) {
 			}
 			else if (dynamic_cast<MyStar *>(i)) {
 				dynamic_cast<MyStar *>(i)->updt();
+				if (dynamic_cast<MyStar *>(i)->sceneBoundingRect().right() < sceneRect().left() ||
+				    dynamic_cast<MyStar *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
+				    dynamic_cast<MyStar *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
+					scene()->removeItem(i);
+				}
 			}
 		}
 }
