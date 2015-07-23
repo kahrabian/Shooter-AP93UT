@@ -46,7 +46,7 @@ private:
 	QGraphicsScene *gscn;
 
 	MyShip *tmp;
-	MyExplosion *tmp1;
+	MyAlien *tmp1;
 
 	int timer_id;
 

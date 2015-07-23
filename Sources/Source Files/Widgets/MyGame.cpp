@@ -18,9 +18,20 @@ MyGame::MyGame(QWidget *parent) :
 	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]));
 	gscn->addItem(tmp);
 	gscn->addItem(tmp->shpshld);
-	tmp1 = new MyExplosion();
+
+	tmp1 = new MyAlien();
 	tmp1->setPos(500, 100);
 	gscn->addItem(tmp1);
+
+
+	tmp1 = new MyAlien();
+	tmp1->setPos(1000, 100);
+	gscn->addItem(tmp1);
+
+	tmp1 = new MyAlien();
+	tmp1->setPos(1500, 100);
+	gscn->addItem(tmp1);
+
 	setScene(gscn);
 	setSceneRect(viewport()->frameGeometry());
 	timer_id = startTimer(MyRes::frm_dly);
@@ -53,9 +64,20 @@ void MyGame::timerEvent(QTimerEvent *event) {
 	setSceneRect(sceneRect().x() + MyRes::vw_mvmnt, 0, viewport()->frameGeometry().width(),
 	             viewport()->frameGeometry().height());
 	QList<QGraphicsItem *> items = gscn->items();
+
+	QTextStream X(stderr);
+	X << items.size() << endl;
+
 			foreach(QGraphicsItem *i, items) {
 			if (dynamic_cast<MyAlien *>(i)) {
 				dynamic_cast<MyAlien *>(i)->updt();
+				if (dynamic_cast<MyAlien *>(i)->sceneBoundingRect().right() < sceneRect().left() ||
+				    dynamic_cast<MyAlien *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
+				    dynamic_cast<MyAlien *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
+					dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
+					scene()->removeItem(i);
+				}
+
 			}
 			else if (dynamic_cast<MyAsteroid *>(i)) {
 				dynamic_cast<MyAsteroid *>(i)->updt();

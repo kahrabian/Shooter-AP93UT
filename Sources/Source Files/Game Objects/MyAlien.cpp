@@ -42,7 +42,7 @@ void MyAlien::timerEvent(QTimerEvent *event) {
 //		            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
 //		scene()->addItem(tmp);
 //	}
-	if (typ == 0) {
+	if (typ == 1) {
 		MyBullet *tmp = new MyBullet(1, 0, -1);
 		tmp->setPos(pos().x(),
 		            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));

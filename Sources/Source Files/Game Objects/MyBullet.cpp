@@ -25,7 +25,7 @@ MyBullet::~MyBullet() {
 void MyBullet::cllsn_dtctn() {
 	QList<QGraphicsItem *> clldng_items = collidingItems(Qt::ItemSelectionMode::IntersectsItemShape);
 			foreach(QGraphicsItem *i, clldng_items) {
-			if (dynamic_cast<MyAlien *>(i)) {
+			if (dynamic_cast<MyAlien *>(i) && vlc->x() > 0) {
 				dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
 				scene()->removeItem(i);
 				hide();

@@ -25,8 +25,8 @@ MyShip::MyShip(const QPixmap &pixmap) :
 	QTimer::connect(shpshld, SIGNAL(shieldDestroyd()), this, SLOT(deactivate_shld()));
 	QTimer::connect(mgc_tmr, SIGNAL(timeout()), this, SLOT(deactivate_mgc()));
 
-	activate_shld();
-	activate_mgc();
+	deactivate_shld();
+	deactivate_mgc();
 }
 
 MyShip::~MyShip() {
@@ -62,6 +62,8 @@ void MyShip::deactivate_mgc() {
 
 void MyShip::scrIncrement() {
 	scr++;
+	QTextStream X(stderr);
+	X << scr << endl;
 }
 
 void MyShip::cllsn_dtctn() {
