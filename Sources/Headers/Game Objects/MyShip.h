@@ -51,6 +51,7 @@ private:
 	QTimer *shld_tmr;
 	bool mgc = false;
 	QTimer *mgc_tmr;
+	QElapsedTimer *lsr_tmr;
 
 	int mss;
 	QPointF *vlc;

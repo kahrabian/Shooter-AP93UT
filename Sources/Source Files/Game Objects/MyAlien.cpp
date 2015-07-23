@@ -20,7 +20,7 @@ MyAlien::MyAlien() :
 	}
 
 	vlc = new QPointF(0, 0);
-	tmr_id = startTimer(MyRes::aln_frtm);
+	tmr_id = startTimer(MyRes::aln_lsrdly);
 }
 
 MyAlien::~MyAlien() {

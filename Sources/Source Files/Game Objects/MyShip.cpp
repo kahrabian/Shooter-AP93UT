@@ -18,6 +18,9 @@ MyShip::MyShip(const QPixmap &pixmap) :
 	shld_tmr = new QTimer();
 	mgc_tmr = new QTimer();
 
+	lsr_tmr = new QElapsedTimer();
+	lsr_tmr->start();
+
 	QTimer::connect(shld_tmr, SIGNAL(timeout()), this, SLOT(deactivate_shld()));
 	QTimer::connect(shpshld, SIGNAL(shieldDestroyd()), this, SLOT(deactivate_shld()));
 	QTimer::connect(mgc_tmr, SIGNAL(timeout()), this, SLOT(deactivate_mgc()));
@@ -109,7 +112,7 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 		vlc->setX(vlc->x() - MyRes::shp_mvmnt);
 	if (prsd_kys->find(Qt::Key_Right) != prsd_kys->end())
 		vlc->setX(vlc->x() + MyRes::shp_mvmnt);
-	if (prsd_kys->find(Qt::Key_Space) != prsd_kys->end()) {
+	if (prsd_kys->find(Qt::Key_Space) != prsd_kys->end() && lsr_tmr->elapsed() >= MyRes::shp_lsrdly) {
 		if (!mgc) {
 			MyBullet *tmp = new MyBullet(0);
 			tmp->setPos(pos().x() + pixmap().width(),
@@ -124,6 +127,7 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 				scene()->addItem(tmp);
 			}
 		}
+		lsr_tmr->restart();
 	}
 }
 

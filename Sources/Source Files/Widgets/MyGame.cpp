@@ -29,6 +29,7 @@ MyGame::MyGame(QWidget *parent) :
 MyGame::~MyGame() { }
 
 void MyGame::unpause() {
+	// Unpause everything
 	timer_id = startTimer(MyRes::frm_dly);
 }
 
@@ -38,6 +39,7 @@ void MyGame::restart() {
 void MyGame::keyPressEvent(QKeyEvent *event) {
 	prsd_kys->insert(event->key());
 	if (event->key() == Qt::Key_Escape) {
+		// Pause everything
 		killTimer(timer_id);
 		emit gamePaused();
 	}
@@ -61,6 +63,9 @@ void MyGame::timerEvent(QTimerEvent *event) {
 			else if (dynamic_cast<MyBullet *>(i)) {
 				dynamic_cast<MyBullet *>(i)->updt();
 				if (!dynamic_cast<MyBullet *>(i)->isVisible()) {
+					scene()->removeItem(i);
+				}
+				else if (!dynamic_cast<MyBullet *>(i)->sceneBoundingRect().intersects(sceneRect())) {
 					scene()->removeItem(i);
 				}
 			}

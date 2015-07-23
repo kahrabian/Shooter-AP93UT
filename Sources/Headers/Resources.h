@@ -31,7 +31,8 @@ namespace MyRes {
 
     // Game properties
     const int spcl_tm = 5000;
-    const int aln_frtm = 500;
+    const int aln_lsrdly = 500;
+    const int shp_lsrdly = 400;
     const int rtn_max = 30;
     const int rtn_stp = 3;
     const int lsr_rtn_max = 30;
