@@ -88,10 +88,11 @@ void MyGame::timerEvent(QTimerEvent *event) {
 			}
 			else if (dynamic_cast<MyBullet *>(i)) {
 				dynamic_cast<MyBullet *>(i)->updt();
-				if (!dynamic_cast<MyBullet *>(i)->isVisible()) {
-					scene()->removeItem(i);
-				}
-				else if (!dynamic_cast<MyBullet *>(i)->sceneBoundingRect().intersects(sceneRect())) {
+				if (!dynamic_cast<MyBullet *>(i)->isVisible() ||
+				    dynamic_cast<MyBullet *>(i)->sceneBoundingRect().right() < sceneRect().left() ||
+				    dynamic_cast<MyBullet *>(i)->sceneBoundingRect().left() > sceneRect().right() ||
+				    dynamic_cast<MyBullet *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
+				    dynamic_cast<MyBullet *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
 					scene()->removeItem(i);
 				}
 			}
