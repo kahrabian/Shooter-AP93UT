@@ -46,8 +46,12 @@ private:
 	QGraphicsScene *gscn;
 
 	MyShip *tmp;
-	MyShield *tmp1;
-	MyShield *tmp1;
+	MyAlien *tmp1;
+	MyAsteroid *tmp2;
+	MyLife *tmp3;
+	MyMagic *tmp4;
+	MyShield *tmp5;
+	MyStar *tmp6;
 
 	int timer_id;
 
