@@ -6,7 +6,7 @@
 
 MyBullet::MyBullet(int lsr_num, int rtn, int dir) :
 		QGraphicsPixmapItem(QPixmap(MyRes::lsr_add[lsr_num]).scaled(MyRes::lsr_size, Qt::KeepAspectRatio,
-		                                                            Qt::SmoothTransformation)) {
+		                                                            Qt::SmoothTransformation)), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	if (dir == -1)
 		MyBullet::rtn = 180 - rtn;
@@ -26,10 +26,10 @@ void MyBullet::cllsn_dtctn() {
 	QList<QGraphicsItem *> clldng_items = collidingItems(Qt::ItemSelectionMode::IntersectsItemShape);
 			foreach(QGraphicsItem *i, clldng_items) {
 			if (dynamic_cast<MyAlien *>(i)) {
-				// Add Point to shooter
 				dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
 				scene()->removeItem(i);
 				hide();
+//				emit scrGained();
 			}
 			else if (dynamic_cast<MyAsteroid *>(i)) {
 				scene()->removeItem(i);

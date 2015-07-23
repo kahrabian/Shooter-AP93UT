@@ -14,13 +14,21 @@
 #include <Sources/Headers/Game Objects/MyAsteroid.h>
 #include <Sources/Headers/Resources.h>
 
-class MyBullet : public QGraphicsPixmapItem {
+class MyShip;
+
+class MyBullet : public QObject, public QGraphicsPixmapItem {
+Q_OBJECT
+
 public:
 	MyBullet(int, int = 0, int = 1);
 
 	~MyBullet();
 
 	void updt();
+
+signals:
+
+	void scrGained();
 
 private:
 	int rtn;

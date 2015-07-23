@@ -43,11 +43,10 @@ private:
 
 	int rtn = 0;
 	QString *name;
-	QRectF *init_rct;
 
 	int lf = 0;
 	int scr = 0;
-	bool shld = false;
+//	bool shld = false;
 	QTimer *shld_tmr;
 	bool mgc = false;
 	QTimer *mgc_tmr;
@@ -69,7 +68,6 @@ private:
 	void updt_pos();
 
 private slots:
-
 	void activate_shld();
 
 	void deactivate_shld();
@@ -77,6 +75,8 @@ private slots:
 	void activate_mgc();
 
 	void deactivate_mgc();
+
+	void scrIncrement();
 };
 
 #endif //SHOOTER_AP93UT_MYSHIP_H

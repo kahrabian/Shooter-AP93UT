@@ -39,13 +39,13 @@ void MyShip::cnstrct_shldpxmp() {
 }
 
 void MyShip::activate_shld() {
-	shld = true;
+//	shld = true;
 	shpshld->show();
 	shld_tmr->start(MyRes::spcl_tm);
 }
 
 void MyShip::deactivate_shld() {
-	shld = false;
+//	shld = false;
 	shpshld->hide();
 	shld_tmr->stop();
 }
@@ -58,6 +58,10 @@ void MyShip::activate_mgc() {
 void MyShip::deactivate_mgc() {
 	mgc = false;
 	mgc_tmr->stop();
+}
+
+void MyShip::scrIncrement() {
+	scr++;
 }
 
 void MyShip::cllsn_dtctn() {
@@ -114,17 +118,17 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 		vlc->setX(vlc->x() + MyRes::shp_mvmnt);
 	if (prsd_kys->find(Qt::Key_Space) != prsd_kys->end() && lsr_tmr->elapsed() >= MyRes::shp_lsrdly) {
 		if (!mgc) {
-			MyBullet *tmp = new MyBullet(0);
-			tmp->setPos(pos().x() + pixmap().width(),
+			MyBullet *lsr = new MyBullet(0);
+			lsr->setPos(pos().x() + pixmap().width(),
 			            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
-			scene()->addItem(tmp);
+			scene()->addItem(lsr);
 		}
 		else {
 			for (int i = -MyRes::lsr_rtn_max; i <= MyRes::lsr_rtn_max; i += MyRes::lsr_rtn_stp) {
-				MyBullet *tmp = new MyBullet(0, i);
-				tmp->setPos(pos().x() + pixmap().width(),
+				MyBullet *lsr = new MyBullet(0, i);
+				lsr->setPos(pos().x() + pixmap().width(),
 				            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
-				scene()->addItem(tmp);
+				scene()->addItem(lsr);
 			}
 		}
 		lsr_tmr->restart();
