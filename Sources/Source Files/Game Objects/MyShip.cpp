@@ -122,6 +122,7 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 			lsr->setPos(pos().x() + pixmap().width(),
 			            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
 			scene()->addItem(lsr);
+			QObject::connect(lsr, SIGNAL(scrGained()), this, SLOT(scrIncrement()));
 		}
 		else {
 			for (int i = -MyRes::lsr_rtn_max; i <= MyRes::lsr_rtn_max; i += MyRes::lsr_rtn_stp) {
@@ -129,6 +130,7 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 				lsr->setPos(pos().x() + pixmap().width(),
 				            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
 				scene()->addItem(lsr);
+				QObject::connect(lsr, SIGNAL(scrGained()), this, SLOT(scrIncrement()));
 			}
 		}
 		lsr_tmr->restart();
