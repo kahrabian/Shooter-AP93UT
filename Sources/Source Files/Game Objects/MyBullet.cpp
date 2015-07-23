@@ -31,7 +31,7 @@ void MyBullet::cllsn_dtctn() {
 				hide();
 				emit scrGained();
 			}
-			else if (dynamic_cast<MyAsteroid *>(i)) {
+			else if (dynamic_cast<MyAsteroid *>(i) && vlc->x() > 0) {
 				scene()->removeItem(i);
 				hide();
 			}

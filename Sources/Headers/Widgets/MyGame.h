@@ -47,6 +47,7 @@ private:
 
 	MyShip *tmp;
 	MyShield *tmp1;
+	MyShield *tmp1;
 
 	int timer_id;
 
