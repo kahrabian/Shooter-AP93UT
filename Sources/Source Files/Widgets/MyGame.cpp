@@ -18,8 +18,8 @@ MyGame::MyGame(QWidget *parent) :
 	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]));
 	gscn->addItem(tmp);
 	gscn->addItem(tmp->shpshld);
-	tmp1 = new MyAlien();
-	tmp1->setPos(1000, 100);
+	tmp1 = new MyExplosion();
+	tmp1->setPos(500, 100);
 	gscn->addItem(tmp1);
 	setScene(gscn);
 	setSceneRect(viewport()->frameGeometry());
@@ -61,6 +61,12 @@ void MyGame::timerEvent(QTimerEvent *event) {
 			else if (dynamic_cast<MyBullet *>(i)) {
 				dynamic_cast<MyBullet *>(i)->updt();
 				if (!dynamic_cast<MyBullet *>(i)->isVisible()) {
+					scene()->removeItem(i);
+				}
+			}
+			else if (dynamic_cast<MyExplosion *>(i)) {
+				dynamic_cast<MyExplosion *>(i)->updt();
+				if (!dynamic_cast<MyExplosion *>(i)->isVisible()) {
 					scene()->removeItem(i);
 				}
 			}

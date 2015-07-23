@@ -25,6 +25,7 @@ namespace MyRes {
     const int shp_cnt = 5;
     const int aln_bss_cnt = 5;
     const int aln_nrml_cnt = 11;
+    const int expln_frcnt = 90;
     const int astrd_frcnt = 16;
     const int astrd_typcnt = 7;
 
@@ -60,6 +61,7 @@ namespace MyRes {
     extern const QString aln_bss_adds[aln_bss_cnt];
     extern const QString aln_nrml_adds[aln_nrml_cnt];
     extern const QString env_adds[env_cnt];
+    extern const QString expln_adds[expln_frcnt];
     extern const QString astrd_adds[astrd_typcnt][astrd_frcnt];
     extern const QString str_add;
     extern const QString shld_add;

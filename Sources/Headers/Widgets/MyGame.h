@@ -21,6 +21,7 @@
 #include <Sources/Headers/Game Objects/MyLife.h>
 #include <Sources/Headers/Game Objects/MyShield.h>
 #include <Sources/Headers/Game Objects/MyMagic.h>
+#include <Sources/Headers/Game Objects/MyExplosion.h>
 #include <Sources/Headers/Resources.h>
 
 class MyGame : public QGraphicsView {
@@ -45,7 +46,7 @@ private:
 	QGraphicsScene *gscn;
 
 	MyShip *tmp;
-	MyAlien *tmp1;
+	MyExplosion *tmp1;
 
 	int timer_id;
 
