@@ -20,21 +20,22 @@ MyGame::MyGame(QWidget *parent) :
 	gscn->addItem(tmp->shpshld);
 
 	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("2"));
+	tmp->setPos(20, 400);
 	gscn->addItem(tmp);
 	gscn->addItem(tmp->shpshld);
 
-	tmp1 = new MyAlien();
+	tmp1 = new MyShield();
 	tmp1->setPos(500, 100);
 	gscn->addItem(tmp1);
 
 
-	tmp1 = new MyAlien();
-	tmp1->setPos(1000, 100);
+	tmp1 = new MyShield();
+	tmp1->setPos(1000, 400);
 	gscn->addItem(tmp1);
 
-	tmp1 = new MyAlien();
-	tmp1->setPos(1500, 100);
-	gscn->addItem(tmp1);
+//	tmp1 = new MyShield();
+//	tmp1->setPos(1500, 100);
+//	gscn->addItem(tmp1);
 
 	setScene(gscn);
 	setSceneRect(viewport()->frameGeometry());
