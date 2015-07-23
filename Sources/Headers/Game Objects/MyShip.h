@@ -32,7 +32,7 @@ Q_OBJECT
 	friend class MyGame;
 
 public:
-	MyShip(const QPixmap &pixmap);
+	MyShip(const QPixmap &, QString *);
 
 	~MyShip();
 

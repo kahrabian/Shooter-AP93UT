@@ -4,11 +4,12 @@
 
 #include <Sources/Headers/Game Objects/MyShip.h>
 
-MyShip::MyShip(const QPixmap &pixmap) :
+MyShip::MyShip(const QPixmap &pixmap, QString *name) :
 		QGraphicsPixmapItem(pixmap.scaled(MyRes::shp_size, Qt::KeepAspectRatio,
 		                                  Qt::SmoothTransformation)), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	setPos(MyRes::x_offset, MyRes::y_offset);
+	MyShip::name = name;
 
 	vlc = new QPointF(0, 0);
 
@@ -106,15 +107,45 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 	vlc->setY(0);
 	vlc->setX(0);
 
-	if (prsd_kys->find(Qt::Key_Up) != prsd_kys->end())
+	if (prsd_kys->find(Qt::Key_Up) != prsd_kys->end() && name->compare("1") == 0)
 		vlc->setY(vlc->y() - MyRes::shp_mvmnt);
-	if (prsd_kys->find(Qt::Key_Down) != prsd_kys->end())
+	if (prsd_kys->find(Qt::Key_Down) != prsd_kys->end() && name->compare("1") == 0)
 		vlc->setY(vlc->y() + MyRes::shp_mvmnt);
-	if (prsd_kys->find(Qt::Key_Left) != prsd_kys->end())
+	if (prsd_kys->find(Qt::Key_Left) != prsd_kys->end() && name->compare("1") == 0)
 		vlc->setX(vlc->x() - MyRes::shp_mvmnt);
-	if (prsd_kys->find(Qt::Key_Right) != prsd_kys->end())
+	if (prsd_kys->find(Qt::Key_Right) != prsd_kys->end() && name->compare("1") == 0)
 		vlc->setX(vlc->x() + MyRes::shp_mvmnt);
-	if (prsd_kys->find(Qt::Key_Space) != prsd_kys->end() && lsr_tmr->elapsed() >= MyRes::shp_lsrdly) {
+	if (prsd_kys->find(Qt::Key_Space) != prsd_kys->end() && name->compare("1") == 0 &&
+	    lsr_tmr->elapsed() >= MyRes::shp_lsrdly) {
+		if (!mgc) {
+			MyBullet *lsr = new MyBullet(0);
+			lsr->setPos(pos().x() + pixmap().width(),
+			            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
+			scene()->addItem(lsr);
+			QObject::connect(lsr, SIGNAL(scrGained()), this, SLOT(scrIncrement()));
+		}
+		else {
+			for (int i = -MyRes::lsr_rtn_max; i <= MyRes::lsr_rtn_max; i += MyRes::lsr_rtn_stp) {
+				MyBullet *lsr = new MyBullet(0, i);
+				lsr->setPos(pos().x() + pixmap().width(),
+				            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
+				scene()->addItem(lsr);
+				QObject::connect(lsr, SIGNAL(scrGained()), this, SLOT(scrIncrement()));
+			}
+		}
+		lsr_tmr->restart();
+	}
+
+	if (prsd_kys->find(Qt::Key_W) != prsd_kys->end() && name->compare("1") != 0)
+		vlc->setY(vlc->y() - MyRes::shp_mvmnt);
+	if (prsd_kys->find(Qt::Key_S) != prsd_kys->end() && name->compare("1") != 0)
+		vlc->setY(vlc->y() + MyRes::shp_mvmnt);
+	if (prsd_kys->find(Qt::Key_A) != prsd_kys->end() && name->compare("1") != 0)
+		vlc->setX(vlc->x() - MyRes::shp_mvmnt);
+	if (prsd_kys->find(Qt::Key_D) != prsd_kys->end() && name->compare("1") != 0)
+		vlc->setX(vlc->x() + MyRes::shp_mvmnt);
+	if (prsd_kys->find(Qt::Key_X) != prsd_kys->end() && name->compare("1") != 0 &&
+	    lsr_tmr->elapsed() >= MyRes::shp_lsrdly) {
 		if (!mgc) {
 			MyBullet *lsr = new MyBullet(0);
 			lsr->setPos(pos().x() + pixmap().width(),

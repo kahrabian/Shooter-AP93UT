@@ -15,7 +15,11 @@ MyGame::MyGame(QWidget *parent) :
 			QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(MyRes::tl_size, Qt::KeepAspectRatio,
 			                                                        Qt::SmoothTransformation)));
 	// Test
-	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]));
+	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("1"));
+	gscn->addItem(tmp);
+	gscn->addItem(tmp->shpshld);
+
+	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("2"));
 	gscn->addItem(tmp);
 	gscn->addItem(tmp->shpshld);
 
@@ -64,10 +68,6 @@ void MyGame::timerEvent(QTimerEvent *event) {
 	setSceneRect(sceneRect().x() + MyRes::vw_mvmnt, 0, viewport()->frameGeometry().width(),
 	             viewport()->frameGeometry().height());
 	QList<QGraphicsItem *> items = gscn->items();
-
-//	QTextStream X(stderr);
-//	X << items.size() << endl;
-
 			foreach(QGraphicsItem *i, items) {
 			if (dynamic_cast<MyAlien *>(i)) {
 				dynamic_cast<MyAlien *>(i)->updt();
