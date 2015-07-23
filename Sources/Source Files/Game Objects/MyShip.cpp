@@ -39,13 +39,11 @@ void MyShip::cnstrct_shldpxmp() {
 }
 
 void MyShip::activate_shld() {
-//	shld = true;
 	shpshld->show();
 	shld_tmr->start(MyRes::spcl_tm);
 }
 
 void MyShip::deactivate_shld() {
-//	shld = false;
 	shpshld->hide();
 	shld_tmr->stop();
 }
@@ -62,8 +60,6 @@ void MyShip::deactivate_mgc() {
 
 void MyShip::scrIncrement() {
 	scr++;
-//	QTextStream X(stderr);
-//	X << scr << endl;
 }
 
 void MyShip::cllsn_dtctn() {

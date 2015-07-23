@@ -46,7 +46,6 @@ private:
 
 	int lf = 0;
 	int scr = 0;
-//	bool shld = false;
 	QTimer *shld_tmr;
 	bool mgc = false;
 	QTimer *mgc_tmr;
