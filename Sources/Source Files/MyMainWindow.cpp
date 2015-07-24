@@ -79,7 +79,7 @@ void MyMainWindow::newg_bttn_clicked() {
 }
 
 void MyMainWindow::resm_bttn_clicked() {
-	widget_stack->setCurrentWidget(stng);
+//	widget_stack->setCurrentWidget(stng);
 }
 
 void MyMainWindow::strt_bttn_clicked() {
