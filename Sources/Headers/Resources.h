@@ -40,7 +40,7 @@ namespace MyRes {
     const int x_offset = 10;
     const int y_offset = 15;
     const int expln_astrd_crrctn = 30;
-    const int expln_aln_big_crrctn = 30;
+    const int expln_aln_bg_crrctn = 30;
     const int expln_aln_smll_crrctn = 15;
     const int expln_lsr_crrctn = 7;
     extern const QSize lf_size;
@@ -84,6 +84,17 @@ namespace MyRes {
     extern const QString background_add;
     extern const QString scrnsht_add;
     extern const QString mainwin_icon_add;
+    extern const QString sf_expln_aln_bg_add;
+    extern const QString sf_expln_aln_smll_add;
+    extern const QString sf_expln_astrd_add;
+    extern const QString sf_expln_lsr_add;
+    extern const QString sf_expln_shp_add;
+    extern const QString sf_expln_shpshld_add;
+    extern const QString sf_lf_add;
+    extern const QString sf_lsr_add;
+    extern const QString sf_mgc_add;
+    extern const QString sf_shld_add;
+    extern const QString sf_str_add;
 
     // Stylesheets
     extern const QString mainwdg_stlsheet;

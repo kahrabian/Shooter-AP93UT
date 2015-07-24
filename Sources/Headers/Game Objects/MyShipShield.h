@@ -6,6 +6,7 @@
 #define SHOOTER_AP93UT_MYSHIPSHIELD_H
 
 #include <QGraphicsDropShadowEffect>
+#include <QSoundEffect>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
 #include <QElapsedTimer>

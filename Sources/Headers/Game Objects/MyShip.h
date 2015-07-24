@@ -17,6 +17,7 @@
 #include <QSet>
 #include <QTextStream>
 #include <QTransform>
+#include <QSoundEffect>
 #include <Sources/Headers/Game Objects/MyBullet.h>
 #include <Sources/Headers/Game Objects/MyStar.h>
 #include <Sources/Headers/Game Objects/MyShield.h>

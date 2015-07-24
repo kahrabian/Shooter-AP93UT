@@ -7,6 +7,7 @@
 
 #include <QGraphicsDropShadowEffect>
 #include <QGraphicsPixmapItem>
+#include <QSoundEffect>
 #include <QElapsedTimer>
 #include <QPointF>
 #include <QPixmap>

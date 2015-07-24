@@ -75,7 +75,7 @@ void MyGame::keyReleaseEvent(QKeyEvent *event) {
 void MyGame::timerEvent(QTimerEvent *event) {
 	setSceneRect(sceneRect().x() + MyRes::vw_mvmnt, 0, viewport()->frameGeometry().width(),
 	             viewport()->frameGeometry().height());
-	QList<QGraphicsItem *> items = gscn->items();
+	QList<QGraphicsItem *> items = scene()->items();
 			foreach(QGraphicsItem *i, items) {
 			if (dynamic_cast<MyAlien *>(i)) {
 				dynamic_cast<MyAlien *>(i)->updt();

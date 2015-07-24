@@ -156,11 +156,28 @@ namespace MyRes {
     const QString mgc_add[mgc_cnt] = {"Resources/Objects/Magic/mgc1.png", "Resources/Objects/Magic/mgc2.png",
                                       "Resources/Objects/Magic/mgc3.png", "Resources/Objects/Magic/mgc4.png"};
     const QString stng_add("Resources/resume.txt");
-    const QString mainmuse_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/main_music.wav");
+    const QString mainmuse_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Musics/main_music.wav");
     const QString logo_add("Resources/logo.png");
     const QString background_add("{background-image: url(Resources/main_background.jpg);}");
     const QString scrnsht_add("Resources/scrnsht.png");
     const QString mainwin_icon_add("Resources/icon.ico");
+    const QString sf_expln_aln_bg_add(
+		    "/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Explosions/expln_aln_bg.wav");
+    const QString sf_expln_aln_smll_add(
+		    "/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Explosions/expln_aln_smll.wav");
+    const QString sf_expln_astrd_add(
+		    "/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Explosions/expln_astrd.wav");
+    const QString sf_expln_lsr_add(
+		    "/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Explosions/expln_lsr.wav");
+    const QString sf_expln_shpshld_add(
+		    "/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Explosions/expln_shpshld.wav");
+    const QString sf_expln_shp_add(
+		    "/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Explosions/expln_shp.wav");
+    const QString sf_lf_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Other/lf.wav");
+    const QString sf_lsr_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Other/lsr.wav");
+    const QString sf_mgc_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Other/mgc.wav");
+    const QString sf_shld_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Other/shld.wav");
+    const QString sf_str_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Other/str.wav");
 
     // Stylesheets
     const QString mainwdg_stlsheet("QWidget {background-color: rgba(0, 0, 0, 60%);}");
