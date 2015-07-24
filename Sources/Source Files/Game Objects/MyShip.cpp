@@ -64,10 +64,12 @@ void MyShip::scrIncrement() {
 }
 
 void MyShip::ply_sf(QString &add) {
-	QSoundEffect *sf = new QSoundEffect();
-	sf->setSource(QUrl::fromLocalFile(add));
-	sf->setVolume(SettingData::sfVol / 100.0);
-	sf->play();
+	if (!SettingData::sfMut) {
+		QSoundEffect *sf = new QSoundEffect();
+		sf->setSource(QUrl::fromLocalFile(add));
+		sf->setVolume(SettingData::sfVol / 100.0);
+		sf->play();
+	}
 }
 
 void MyShip::cllsn_dtctn() {

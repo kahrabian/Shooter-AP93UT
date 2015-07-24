@@ -40,10 +40,12 @@ void MyAlien::updt() {
 }
 
 void MyAlien::ply_sf(QString &add) {
-	QSoundEffect *sf = new QSoundEffect();
-	sf->setSource(QUrl::fromLocalFile(add));
-	sf->setVolume(SettingData::sfVol / 100.0);
-	sf->play();
+	if (!SettingData::sfMut && sceneBoundingRect().intersects(scene()->views().first()->sceneRect())) {
+		QSoundEffect *sf = new QSoundEffect();
+		sf->setSource(QUrl::fromLocalFile(add));
+		sf->setVolume(SettingData::sfVol / 100.0);
+		sf->play();
+	}
 }
 
 void MyAlien::timerEvent(QTimerEvent *event) {

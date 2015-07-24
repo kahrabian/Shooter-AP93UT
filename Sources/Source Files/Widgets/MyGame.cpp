@@ -29,7 +29,7 @@ MyGame::MyGame(QWidget *parent) :
 //	gscn->addItem(tmp7);
 //
 	tmp1 = new MyAlien();
-	tmp1->setPos(1000, 50);
+	tmp1->setPos(1500, 50);
 	gscn->addItem(tmp1);
 
 //	tmp2 = new MyAsteroid();

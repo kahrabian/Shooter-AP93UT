@@ -23,10 +23,12 @@ MyBullet::~MyBullet() {
 }
 
 void MyBullet::ply_sf(QString &add) {
-	QSoundEffect *sf = new QSoundEffect();
-	sf->setSource(QUrl::fromLocalFile(add));
-	sf->setVolume(SettingData::sfVol / 100.0);
-	sf->play();
+	if (!SettingData::sfMut) {
+		QSoundEffect *sf = new QSoundEffect();
+		sf->setSource(QUrl::fromLocalFile(add));
+		sf->setVolume(SettingData::sfVol / 100.0);
+		sf->play();
+	}
 }
 
 void MyBullet::cllsn_dtctn() {
