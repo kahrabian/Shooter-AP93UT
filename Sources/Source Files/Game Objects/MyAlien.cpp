@@ -31,6 +31,10 @@ int MyAlien::getTmr_id() const {
 	return tmr_id;
 }
 
+int MyAlien::getTyp() const {
+	return typ;
+}
+
 void MyAlien::updt() {
 	setPos(pos().x() + vlc->x(), pos().y() + vlc->y());
 }

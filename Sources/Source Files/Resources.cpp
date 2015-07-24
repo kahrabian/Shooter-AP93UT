@@ -16,11 +16,11 @@ namespace MyRes {
     const QSize aln_smllsize(140, 140);
     const QSize shp_size(100, 100);
     const QSize shp_shld_size(150, 150);
-    const QSize expl_aln_smll_size(175, 175);
-    const QSize expl_aln_bg_size(350, 350);
-    const QSize expl_lsr_size(75, 75);
-    const QSize expl_shp_size(300, 300);
-    const QSize expl_astrd_size(400, 400);
+    const QSize expln_aln_smll_size(175, 175);
+    const QSize expln_aln_bg_size(350, 350);
+    const QSize expln_lsr_size(75, 75);
+    const QSize expln_shp_size(300, 300);
+    const QSize expln_astrd_size(400, 400);
 
     // Contents size
     const QSize img_init_size(541, 323);

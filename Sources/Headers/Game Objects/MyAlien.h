@@ -27,6 +27,8 @@ public:
 
 	int getTmr_id() const;
 
+	int getTyp() const;
+
 private:
 	int typ;
 

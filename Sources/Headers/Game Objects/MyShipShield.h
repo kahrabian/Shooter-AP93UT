@@ -11,6 +11,7 @@
 #include <QElapsedTimer>
 #include <QPointF>
 #include <QPixmap>
+#include <Sources/Headers/Game Objects/MyExplosion.h>
 #include <Sources/Headers/Game Objects/MyAsteroid.h>
 #include <Sources/Headers/Game Objects/MyBullet.h>
 #include <Sources/Headers/Resources.h>

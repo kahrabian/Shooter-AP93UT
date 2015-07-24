@@ -49,11 +49,11 @@ namespace MyRes {
     extern const QSize aln_smllsize;
     extern const QSize shp_size;
     extern const QSize shp_shld_size;
-    extern const QSize expl_aln_smll_size;
-    extern const QSize expl_aln_bg_size;
-    extern const QSize expl_lsr_size;
-    extern const QSize expl_shp_size;
-    extern const QSize expl_astrd_size;
+    extern const QSize expln_aln_smll_size;
+    extern const QSize expln_aln_bg_size;
+    extern const QSize expln_lsr_size;
+    extern const QSize expln_shp_size;
+    extern const QSize expln_astrd_size;
 
     // Contents size
     extern const QSize img_init_size;
