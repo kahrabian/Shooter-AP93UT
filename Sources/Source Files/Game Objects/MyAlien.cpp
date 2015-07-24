@@ -7,6 +7,7 @@
 MyAlien::MyAlien() :
 		QGraphicsPixmapItem() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
+	fast = false;
 	typ = rand() % 2;
 	if (typ == 0) {
 		setPixmap(QPixmap(MyRes::aln_nrml_adds[rand() % MyRes::aln_nrml_cnt]).scaled(MyRes::aln_smllsize,
@@ -33,6 +34,15 @@ int MyAlien::getTmr_id() const {
 
 int MyAlien::getTyp() const {
 	return typ;
+}
+
+void MyAlien::change_speed() {
+	killTimer(tmr_id);
+	if (fast)
+		tmr_id = startTimer(MyRes::frm_dly);
+	else
+		tmr_id = startTimer(MyRes::frm_dly / 4);
+	fast = !fast;
 }
 
 void MyAlien::updt() {

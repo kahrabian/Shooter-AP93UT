@@ -56,7 +56,7 @@ private:
 	MyShield *tmp5;
 	MyStar *tmp6;
 
-	int timer_id;
+	int tmr_id;
 
 	void change_speed();
 

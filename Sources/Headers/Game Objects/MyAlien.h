@@ -33,6 +33,8 @@ public:
 	int getTyp() const;
 
 private:
+	bool fast;
+
 	int typ;
 
 	int tmr_id;
@@ -41,6 +43,10 @@ private:
 	QPointF *vlc;
 	QPointF *acc;
 	QPointF *frc;
+
+private slots:
+
+	void change_speed();
 
 protected:
 	void timerEvent(QTimerEvent *);
