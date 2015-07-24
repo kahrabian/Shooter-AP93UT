@@ -48,6 +48,7 @@ private:
 	MyShip *tmp;
 	MyAlien *tmp1;
 	MyAsteroid *tmp2;
+	MyExplosion *tmp7;
 	MyLife *tmp3;
 	MyMagic *tmp4;
 	MyShield *tmp5;

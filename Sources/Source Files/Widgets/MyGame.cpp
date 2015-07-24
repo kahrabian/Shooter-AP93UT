@@ -24,21 +24,25 @@ MyGame::MyGame(QWidget *parent) :
 	gscn->addItem(tmp);
 	gscn->addItem(tmp->shpshld);
 
-	tmp1 = new MyAlien();
-	tmp1->setPos(1000, 100);
-	gscn->addItem(tmp1);
-
-	tmp2 = new MyAsteroid();
-	tmp2->setPos(500, 50);
-	gscn->addItem(tmp2);
-
-	tmp6 = new MyStar();
-	tmp6->setPos(200, 100);
-	gscn->addItem(tmp6);
-
-	tmp5 = new MyShield();
-	tmp5->setPos(200, 400);
-	gscn->addItem(tmp5);
+//	tmp7 = new MyExplosion();
+//	tmp7->setPos(300, 50);
+//	gscn->addItem(tmp7);
+//
+//	tmp1 = new MyAlien();
+//	tmp1->setPos(500, 50);
+//	gscn->addItem(tmp1);
+//
+//	tmp2 = new MyAsteroid();
+//	tmp2->setPos(500, 50);
+//	gscn->addItem(tmp2);
+//
+//	tmp6 = new MyStar();
+//	tmp6->setPos(200, 100);
+//	gscn->addItem(tmp6);
+//
+//	tmp5 = new MyShield();
+//	tmp5->setPos(200, 400);
+//	gscn->addItem(tmp5);
 
 	setScene(gscn);
 	setSceneRect(viewport()->frameGeometry());

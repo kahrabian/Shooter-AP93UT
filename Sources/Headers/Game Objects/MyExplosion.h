@@ -14,7 +14,7 @@
 
 class MyExplosion : public QGraphicsPixmapItem {
 public:
-	MyExplosion();
+	MyExplosion(QSize *);
 
 	~MyExplosion();
 
@@ -22,6 +22,8 @@ public:
 
 private:
 	int frm_num;
+
+	QSize *expln_size;
 
 	QPointF *vlc;
 };

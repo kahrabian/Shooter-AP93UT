@@ -4,11 +4,12 @@
 
 #include <Sources/Headers/Game Objects/MyExplosion.h>
 
-MyExplosion::MyExplosion() :
+MyExplosion::MyExplosion(QSize *expln_size) :
 		QGraphicsPixmapItem() {
-	frm_num = 0;
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
+	frm_num = 0;
 	vlc = new QPointF(0, 0);
+	MyExplosion::expln_size = expln_size;
 }
 
 MyExplosion::~MyExplosion() {
@@ -17,7 +18,7 @@ MyExplosion::~MyExplosion() {
 
 void MyExplosion::updt() {
 	// Size
-	setPixmap(QPixmap(MyRes::expln_adds[(frm_num / 2) % MyRes::expln_frcnt]).scaled(MyRes::astrd_size,
+	setPixmap(QPixmap(MyRes::expln_adds[(frm_num / 2) % MyRes::expln_frcnt]).scaled((*expln_size),
 	                                                                                Qt::KeepAspectRatio,
 	                                                                                Qt::SmoothTransformation));
 	setPos(pos().x() + vlc->x(), pos().y() + vlc->y());
