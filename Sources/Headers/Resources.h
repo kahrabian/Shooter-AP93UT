@@ -39,6 +39,10 @@ namespace MyRes {
     const int lsr_rtn_stp = 3;
     const int x_offset = 10;
     const int y_offset = 15;
+    const int expln_astrd_crrctn = 30;
+    const int expln_aln_big_crrctn = 30;
+    const int expln_aln_smll_crrctn = 15;
+    const int expln_lsr_crrctn = 7;
     extern const QSize lf_size;
     extern const QSize lsr_size;
     extern const QSize str_size;
