@@ -41,6 +41,8 @@ signals:
 	void gameEnded();
 
 private:
+	bool fast;
+
 	QSet<int> *prsd_kys;
 
 	QGraphicsScene *gscn;
@@ -55,6 +57,8 @@ private:
 	MyStar *tmp6;
 
 	int timer_id;
+
+	void change_speed();
 
 	void unpause();
 

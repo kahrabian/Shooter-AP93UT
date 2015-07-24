@@ -48,7 +48,6 @@ void MyMainWindow::game_ended() {
 	med_player->setMuted(SettingData::mMut);
 	med_player->play();
 	widget_stack->setCurrentWidget(end);
-//	game->restart();
 }
 
 void MyMainWindow::exit_bttn_clicked() {
