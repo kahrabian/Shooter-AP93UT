@@ -199,6 +199,7 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 		vlc->setX(vlc->x() + MyRes::shp_mvmnt);
 	if (prsd_kys->find(Qt::Key_X) != prsd_kys->end() && name->compare("1") != 0 &&
 	    lsr_tmr->elapsed() >= MyRes::shp_lsrdly) {
+		ply_sf(const_cast<QString &>(MyRes::sf_shp_lsr_add));
 		if (!mgc) {
 			MyBullet *lsr = new MyBullet(0);
 			lsr->setPos(pos().x() + pixmap().width(),
