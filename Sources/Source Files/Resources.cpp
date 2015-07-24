@@ -178,6 +178,8 @@ namespace MyRes {
     const QString sf_mgc_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Other/mgc.wav");
     const QString sf_shld_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Other/shld.wav");
     const QString sf_str_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Other/str.wav");
+    const QString sf_shp_shp_add(
+		    "/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Other/shp_shp.wav");
 
     // Stylesheets
     const QString mainwdg_stlsheet("QWidget {background-color: rgba(0, 0, 0, 60%);}");

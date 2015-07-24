@@ -61,6 +61,8 @@ private:
 
 	void cllsn_dtctn();
 
+	void ply_sf(QString &);
+
 	void updt_vlc(QSet<int> *);
 
 	void updt_rtn();

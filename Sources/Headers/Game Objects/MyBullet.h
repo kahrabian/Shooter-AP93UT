@@ -38,6 +38,8 @@ private:
 	QPointF *vlc;
 
 	void cllsn_dtctn();
+
+	void ply_sf(QString &);
 };
 
 #endif //SHOOTER_AP93UT_MYBULLET_H

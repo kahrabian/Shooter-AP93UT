@@ -63,54 +63,48 @@ void MyShip::scrIncrement() {
 	scr++;
 }
 
+void MyShip::ply_sf(QString &add) {
+	QSoundEffect *sf = new QSoundEffect();
+	sf->setSource(QUrl::fromLocalFile(add));
+	sf->setVolume(SettingData::sfVol / 100.0);
+	sf->play();
+}
+
 void MyShip::cllsn_dtctn() {
 	QList<QGraphicsItem *> clldng_items = collidingItems(Qt::ItemSelectionMode::IntersectsItemShape);
 			foreach(QGraphicsItem *i, clldng_items) {
 			if (dynamic_cast<MyLife *>(i)) {
-				QSoundEffect *sf = new QSoundEffect();
-				sf->setSource(QUrl::fromLocalFile(MyRes::sf_lf_add));
-				sf->setVolume(SettingData::sfVol / 100.0);
-				sf->play();
+				ply_sf(const_cast<QString &>(MyRes::sf_lf_add));
 				lf++;
 				scene()->removeItem(i);
 			}
 			else if (dynamic_cast<MyMagic *>(i)) {
-				QSoundEffect *sf = new QSoundEffect();
-				sf->setSource(QUrl::fromLocalFile(MyRes::sf_mgc_add));
-				sf->setVolume(SettingData::sfVol / 100.0);
-				sf->play();
+				ply_sf(const_cast<QString &>(MyRes::sf_mgc_add));
 				activate_mgc();
 				scene()->removeItem(i);
 			}
 			else if (dynamic_cast<MyShield *>(i)) {
-				QSoundEffect *sf = new QSoundEffect();
-				sf->setSource(QUrl::fromLocalFile(MyRes::sf_shld_add));
-				sf->setVolume(SettingData::sfVol / 100.0);
-				sf->play();
+				ply_sf(const_cast<QString &>(MyRes::sf_shld_add));
 				activate_shld();
 				scene()->removeItem(i);
 			}
 			else if (dynamic_cast<MyShip *>(i)) {
+				ply_sf(const_cast<QString &>(MyRes::sf_shp_shp_add));
 				lf--;
 			}
 			else if (dynamic_cast<MyShipShield *>(i) && dynamic_cast<MyShipShield *>(i) != shpshld) {
+				ply_sf(const_cast<QString &>(MyRes::sf_expln_shpshld_add));
 				lf--;
 				dynamic_cast<MyShipShield *>(i)->dstry();
 			}
 			else if (dynamic_cast<MyStar *>(i)) {
-				QSoundEffect *sf = new QSoundEffect();
-				sf->setSource(QUrl::fromLocalFile(MyRes::sf_str_add));
-				sf->setVolume(SettingData::sfVol / 100.0);
-				sf->play();
+				ply_sf(const_cast<QString &>(MyRes::sf_str_add));
 				scr++;
 				scene()->removeItem(i);
 			}
 			else if (dynamic_cast<MyAlien *>(i)) {
 				if (dynamic_cast<MyAlien *>(i)->getTyp() == 0) {
-					QSoundEffect *sf = new QSoundEffect();
-					sf->setSource(QUrl::fromLocalFile(MyRes::sf_expln_aln_bg_add));
-					sf->setVolume(SettingData::sfVol / 100.0);
-					sf->play();
+					ply_sf(const_cast<QString &>(MyRes::sf_expln_aln_bg_add));
 					MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_aln_bg_size));
 					expln->setPos(dynamic_cast<MyAlien *>(i)->x() + (dynamic_cast<MyAlien *>(i)->pixmap().width() / 2) -
 					              (MyRes::expln_aln_bg_size.width() / 2), dynamic_cast<MyAlien *>(i)->y() +
@@ -121,10 +115,7 @@ void MyShip::cllsn_dtctn() {
 					scene()->addItem(expln);
 				}
 				else {
-					QSoundEffect *sf = new QSoundEffect();
-					sf->setSource(QUrl::fromLocalFile(MyRes::sf_expln_aln_smll_add));
-					sf->setVolume(SettingData::sfVol / 100.0);
-					sf->play();
+					ply_sf(const_cast<QString &>(MyRes::sf_expln_aln_smll_add));
 					MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_aln_smll_size));
 					expln->setPos(dynamic_cast<MyAlien *>(i)->x() + (dynamic_cast<MyAlien *>(i)->pixmap().width() / 2) -
 					              (MyRes::expln_aln_smll_size.width() / 2), dynamic_cast<MyAlien *>(i)->y() +
@@ -139,10 +130,7 @@ void MyShip::cllsn_dtctn() {
 				scene()->removeItem(i);
 			}
 			else if (dynamic_cast<MyAsteroid *>(i)) {
-				QSoundEffect *sf = new QSoundEffect();
-				sf->setSource(QUrl::fromLocalFile(MyRes::sf_expln_astrd_add));
-				sf->setVolume(SettingData::sfVol / 100.0);
-				sf->play();
+				ply_sf(const_cast<QString &>(MyRes::sf_expln_astrd_add));
 				MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_astrd_size));
 				expln->setPos(
 						dynamic_cast<MyAsteroid *>(i)->x() + (dynamic_cast<MyAsteroid *>(i)->pixmap().width() / 2) -
@@ -154,10 +142,7 @@ void MyShip::cllsn_dtctn() {
 				scene()->removeItem(i);
 			}
 			else if (dynamic_cast<MyBullet *>(i)) {
-				QSoundEffect *sf = new QSoundEffect();
-				sf->setSource(QUrl::fromLocalFile(MyRes::sf_expln_lsr_add));
-				sf->setVolume(SettingData::sfVol / 100.0);
-				sf->play();
+				ply_sf(const_cast<QString &>(MyRes::sf_expln_lsr_add));
 				MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_lsr_size));
 				expln->setPos(dynamic_cast<MyBullet *>(i)->x() + (dynamic_cast<MyBullet *>(i)->pixmap().width() / 2) -
 				              (MyRes::expln_lsr_size.width() / 2),

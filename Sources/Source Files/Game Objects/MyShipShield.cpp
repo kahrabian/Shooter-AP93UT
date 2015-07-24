@@ -18,14 +18,19 @@ MyShipShield::~MyShipShield() {
 void MyShipShield::dstry() {
 	emit shieldDestroyd();
 }
+
+void MyShipShield::ply_sf(QString &add) {
+	QSoundEffect *sf = new QSoundEffect();
+	sf->setSource(QUrl::fromLocalFile(add));
+	sf->setVolume(SettingData::sfVol / 100.0);
+	sf->play();
+}
+
 void MyShipShield::cllsn_dtctn() {
 	QList<QGraphicsItem *> clldng_items = collidingItems(Qt::ItemSelectionMode::IntersectsItemShape);
 			foreach(QGraphicsItem *i, clldng_items) {
 			if (dynamic_cast<MyAsteroid *>(i) && isVisible()) {
-				QSoundEffect *sf = new QSoundEffect();
-				sf->setSource(QUrl::fromLocalFile(MyRes::sf_expln_astrd_add));
-				sf->setVolume(SettingData::sfVol / 100.0);
-				sf->play();
+				ply_sf(const_cast<QString &>(MyRes::sf_expln_astrd_add));
 				MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_astrd_size));
 				expln->setPos(
 						dynamic_cast<MyAsteroid *>(i)->x() + (dynamic_cast<MyAsteroid *>(i)->pixmap().width() / 2) -
@@ -36,10 +41,7 @@ void MyShipShield::cllsn_dtctn() {
 				scene()->removeItem(i);
 			}
 			if (dynamic_cast<MyBullet *>(i) && isVisible()) {
-				QSoundEffect *sf = new QSoundEffect();
-				sf->setSource(QUrl::fromLocalFile(MyRes::sf_expln_lsr_add));
-				sf->setVolume(SettingData::sfVol / 100.0);
-				sf->play();
+				ply_sf(const_cast<QString &>(MyRes::sf_expln_lsr_add));
 				MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_lsr_size));
 				expln->setPos(dynamic_cast<MyBullet *>(i)->x() + (dynamic_cast<MyBullet *>(i)->pixmap().width() / 2) -
 				              (MyRes::expln_lsr_size.width() / 2),
@@ -50,10 +52,7 @@ void MyShipShield::cllsn_dtctn() {
 			}
 			else if (dynamic_cast<MyAlien *>(i) && isVisible()) {
 				if (dynamic_cast<MyAlien *>(i)->getTyp() == 0) {
-					QSoundEffect *sf = new QSoundEffect();
-					sf->setSource(QUrl::fromLocalFile(MyRes::sf_expln_aln_bg_add));
-					sf->setVolume(SettingData::sfVol / 100.0);
-					sf->play();
+					ply_sf(const_cast<QString &>(MyRes::sf_expln_aln_bg_add));
 					MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_aln_bg_size));
 					expln->setPos(dynamic_cast<MyAlien *>(i)->x() + (dynamic_cast<MyAlien *>(i)->pixmap().width() / 2) -
 					              (MyRes::expln_aln_bg_size.width() / 2), dynamic_cast<MyAlien *>(i)->y() +
@@ -63,10 +62,7 @@ void MyShipShield::cllsn_dtctn() {
 					scene()->addItem(expln);
 				}
 				else {
-					QSoundEffect *sf = new QSoundEffect();
-					sf->setSource(QUrl::fromLocalFile(MyRes::sf_expln_aln_smll_add));
-					sf->setVolume(SettingData::sfVol / 100.0);
-					sf->play();
+					ply_sf(const_cast<QString &>(MyRes::sf_expln_aln_smll_add));
 					MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_aln_smll_size));
 					expln->setPos(dynamic_cast<MyAlien *>(i)->x() + (dynamic_cast<MyAlien *>(i)->pixmap().width() / 2) -
 					              (MyRes::expln_aln_smll_size.width() / 2), dynamic_cast<MyAlien *>(i)->y() +
@@ -75,15 +71,13 @@ void MyShipShield::cllsn_dtctn() {
 							(MyRes::expln_aln_smll_size.height() / 2) + MyRes::expln_aln_smll_crrctn);
 					scene()->addItem(expln);
 				}
+				ply_sf(const_cast<QString &>(MyRes::sf_expln_shpshld_add));
 				dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
 				scene()->removeItem(i);
 				emit shieldDestroyd();
 			}
 			else if (dynamic_cast<MyShipShield *>(i) && dynamic_cast<MyShipShield *>(i)->isVisible() && isVisible()) {
-				QSoundEffect *sf = new QSoundEffect();
-				sf->setSource(QUrl::fromLocalFile(MyRes::sf_expln_shpshld_add));
-				sf->setVolume(SettingData::sfVol / 100.0);
-				sf->play();
+				ply_sf(const_cast<QString &>(MyRes::sf_expln_shpshld_add));
 				dynamic_cast<MyShipShield *>(i)->dstry();
 				emit shieldDestroyd();
 			}
