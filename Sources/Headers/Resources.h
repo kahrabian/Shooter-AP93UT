@@ -79,7 +79,10 @@ namespace MyRes {
     extern const QString lsr_add[lsr_cnt];
     extern const QString mgc_add[mgc_cnt];
     extern const QString stng_add;
-    extern const QString mainmuse_add;
+    extern const QString mnmuse_add;
+    extern const QString gmmuse_add;
+    extern const QString psmuse_add;
+    extern const QString endmuse_add;
     extern const QString logo_add;
     extern const QString background_add;
     extern const QString scrnsht_add;

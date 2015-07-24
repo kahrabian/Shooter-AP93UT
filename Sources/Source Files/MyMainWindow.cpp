@@ -15,12 +15,24 @@ MyMainWindow::MyMainWindow(QWidget *parent, Qt::WindowFlags flag) :
 MyMainWindow::~MyMainWindow() { }
 
 void MyMainWindow::game_paused() {
+	gm_muse_pstn = med_player->position();
+	med_player->setMedia(QUrl::fromLocalFile(MyRes::psmuse_add));
+	med_player->setVolume(SettingData::mVol);
+	med_player->setMuted(SettingData::mMut);
+	med_player->play();
+
 	QPixmap::grabWidget(game, game->frameGeometry()).save(MyRes::scrnsht_add);
 	ps->set_bckgrnd();
 	widget_stack->setCurrentWidget(ps);
 }
 
 void MyMainWindow::game_unpaused() {
+	med_player->setMedia(QUrl::fromLocalFile(MyRes::gmmuse_add));
+	med_player->setVolume(SettingData::mVol);
+	med_player->setMuted(SettingData::mMut);
+	med_player->setPosition(gm_muse_pstn);
+	med_player->play();
+
 	widget_stack->setCurrentWidget(game);
 	game->unpause();
 }
@@ -31,8 +43,12 @@ void MyMainWindow::game_restart() {
 }
 
 void MyMainWindow::game_ended() {
+	med_player->setMedia(QUrl::fromLocalFile(MyRes::endmuse_add));
+	med_player->setVolume(SettingData::mVol);
+	med_player->setMuted(SettingData::mMut);
+	med_player->play();
 	widget_stack->setCurrentWidget(end);
-	game->restart();
+//	game->restart();
 }
 
 void MyMainWindow::exit_bttn_clicked() {
@@ -40,6 +56,12 @@ void MyMainWindow::exit_bttn_clicked() {
 }
 
 void MyMainWindow::back_bttn_clicked() {
+	if (widget_stack->currentWidget() == end || widget_stack->currentWidget() == ps) {
+		med_player->setMedia(QUrl::fromLocalFile(MyRes::mnmuse_add));
+		med_player->setVolume(SettingData::mVol);
+		med_player->setMuted(SettingData::mMut);
+		med_player->play();
+	}
 	widget_stack->setCurrentWidget(menu);
 }
 
@@ -61,6 +83,11 @@ void MyMainWindow::resm_bttn_clicked() {
 }
 
 void MyMainWindow::strt_bttn_clicked() {
+	gm_muse_pstn = 0;
+	med_player->setMedia(QUrl::fromLocalFile(MyRes::gmmuse_add));
+	med_player->setVolume(SettingData::mVol);
+	med_player->setMuted(SettingData::mMut);
+	med_player->play();
 	SettingData::p1_nm = name->frst_nm_txt->text();
 	SettingData::p2_nm = name->scnd_nm_txt->text();
 	game = new MyGame(widget_stack);
@@ -79,7 +106,7 @@ void MyMainWindow::set_init_pos() {
 
 void MyMainWindow::set_media() {
 	med_player = new QMediaPlayer(this);
-	med_player->setMedia(QUrl::fromLocalFile(MyRes::mainmuse_add));
+	med_player->setMedia(QUrl::fromLocalFile(MyRes::mnmuse_add));
 	med_player->setVolume(SettingData::mVol);
 	med_player->setMuted(SettingData::mMut);
 	med_player->play();
@@ -104,6 +131,7 @@ void MyMainWindow::cnstrct_stack() {
 	widget_stack->addWidget(stng);
 	name = new MyName(widget_stack);
 	widget_stack->addWidget(name);
+	game = 0;
 	ps = new MyPause(widget_stack);
 	widget_stack->addWidget(ps);
 	end = new MyEnd(widget_stack);

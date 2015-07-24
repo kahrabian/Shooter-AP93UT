@@ -58,6 +58,7 @@ public slots:
 	void update_stng();
 
 private:
+	qint64 gm_muse_pstn;
 	QMediaPlayer *med_player;
 	QStackedWidget *widget_stack;
 	MyMenu *menu;

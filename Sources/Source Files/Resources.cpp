@@ -156,7 +156,10 @@ namespace MyRes {
     const QString mgc_add[mgc_cnt] = {"Resources/Objects/Magic/mgc1.png", "Resources/Objects/Magic/mgc2.png",
                                       "Resources/Objects/Magic/mgc3.png", "Resources/Objects/Magic/mgc4.png"};
     const QString stng_add("Resources/resume.txt");
-    const QString mainmuse_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Musics/main_music.wav");
+    const QString mnmuse_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Musics/main.wav");
+    const QString gmmuse_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Musics/game.wav");
+    const QString psmuse_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Musics/pause.wav");
+    const QString endmuse_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Musics/end.wav");
     const QString logo_add("Resources/logo.png");
     const QString background_add("{background-image: url(Resources/main_background.jpg);}");
     const QString scrnsht_add("Resources/scrnsht.png");
