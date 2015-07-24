@@ -174,7 +174,10 @@ namespace MyRes {
     const QString sf_expln_shp_add(
 		    "/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Explosions/expln_shp.wav");
     const QString sf_lf_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Other/lf.wav");
-    const QString sf_lsr_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Other/lsr.wav");
+    const QString sf_aln_lsr_add(
+		    "/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Other/aln_lsr.wav");
+    const QString sf_shp_lsr_add(
+		    "/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Other/shp_lsr.wav");
     const QString sf_mgc_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Other/mgc.wav");
     const QString sf_shld_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Other/shld.wav");
     const QString sf_str_add("/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Other/str.wav");

@@ -91,7 +91,8 @@ namespace MyRes {
     extern const QString sf_expln_shp_add;
     extern const QString sf_expln_shpshld_add;
     extern const QString sf_lf_add;
-    extern const QString sf_lsr_add;
+    extern const QString sf_aln_lsr_add;
+    extern const QString sf_shp_lsr_add;
     extern const QString sf_mgc_add;
     extern const QString sf_shld_add;
     extern const QString sf_str_add;

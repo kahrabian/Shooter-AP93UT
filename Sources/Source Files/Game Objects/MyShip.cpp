@@ -169,12 +169,8 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 		vlc->setX(vlc->x() + MyRes::shp_mvmnt);
 	if (prsd_kys->find(Qt::Key_Space) != prsd_kys->end() && name->compare("1") == 0 &&
 	    lsr_tmr->elapsed() >= MyRes::shp_lsrdly) {
+		ply_sf(const_cast<QString &>(MyRes::sf_shp_lsr_add));
 		if (!mgc) {
-			QSoundEffect *sf = new QSoundEffect();
-			sf->setSource(QUrl::fromLocalFile(MyRes::sf_lsr_add));
-			sf->setVolume(SettingData::sfVol / 100.0);
-			sf->play();
-
 			MyBullet *lsr = new MyBullet(0);
 			lsr->setPos(pos().x() + pixmap().width(),
 			            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
@@ -182,11 +178,6 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 			QObject::connect(lsr, SIGNAL(scrGained()), this, SLOT(scrIncrement()));
 		}
 		else {
-			QSoundEffect *sf = new QSoundEffect();
-			sf->setSource(QUrl::fromLocalFile(MyRes::sf_lsr_add));
-			sf->setVolume(SettingData::sfVol / 100.0);
-			sf->play();
-
 			for (int i = -MyRes::lsr_rtn_max; i <= MyRes::lsr_rtn_max; i += MyRes::lsr_rtn_stp) {
 				MyBullet *lsr = new MyBullet(0, i);
 				lsr->setPos(pos().x() + pixmap().width(),

@@ -25,6 +25,8 @@ public:
 
 	void updt();
 
+	void ply_sf(QString &);
+
 	int getTmr_id() const;
 
 	int getTyp() const;

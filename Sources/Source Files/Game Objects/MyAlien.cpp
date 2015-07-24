@@ -39,14 +39,16 @@ void MyAlien::updt() {
 	setPos(pos().x() + vlc->x(), pos().y() + vlc->y());
 }
 
+void MyAlien::ply_sf(QString &add) {
+	QSoundEffect *sf = new QSoundEffect();
+	sf->setSource(QUrl::fromLocalFile(add));
+	sf->setVolume(SettingData::sfVol / 100.0);
+	sf->play();
+}
+
 void MyAlien::timerEvent(QTimerEvent *event) {
-//	for (int i = -45; i <= 45; i += 9) {
-//		MyBullet *tmp = new MyBullet(1, i, -1);
-//		tmp->setPos(pos().x(),
-//		            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
-//		scene()->addItem(tmp);
-//	}
 	if (typ == 1) {
+		ply_sf(const_cast<QString &>(MyRes::sf_aln_lsr_add));
 		MyBullet *tmp = new MyBullet(1, 0, -1);
 		tmp->setPos(pos().x(),
 		            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
