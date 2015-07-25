@@ -10,6 +10,7 @@ MyShip::MyShip(const QPixmap &pixmap, QString *name) :
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	setPos(MyRes::x_offset, MyRes::y_offset);
 	MyShip::name = name;
+	fast = false;
 
 	vlc = new QPointF(0, 0);
 
@@ -69,6 +70,44 @@ void MyShip::ply_sf(QString &add) {
 		sf->setSource(QUrl::fromLocalFile(add));
 		sf->setVolume(SettingData::sfVol / 100.0);
 		sf->play();
+	}
+}
+
+void MyShip::change_speed() {
+	fast = !fast;
+	if (fast) {
+		if (shld_tmr->isActive())
+			shld_tmr->start(shld_tmr->remainingTime() / 4);
+		if (mgc_tmr->isActive())
+			mgc_tmr->start(mgc_tmr->remainingTime() / 4);
+	}
+	else {
+		if (shld_tmr->isActive())
+			shld_tmr->start(shld_tmr->remainingTime() * 4);
+		if (mgc_tmr->isActive())
+			mgc_tmr->start(mgc_tmr->remainingTime() * 4);
+	}
+}
+
+void MyShip::game_paused() {
+	if (shld_tmr->isActive())
+		shld_tmr->stop();
+	if (mgc_tmr->isActive())
+		mgc_tmr->stop();
+}
+
+void MyShip::game_unpaused() {
+	if (fast) {
+		if (shld_tmr->isActive())
+			shld_tmr->start(shld_tmr->remainingTime() / 4);
+		if (mgc_tmr->isActive())
+			mgc_tmr->start(mgc_tmr->remainingTime() / 4);
+	}
+	else {
+		if (shld_tmr->isActive())
+			shld_tmr->start(shld_tmr->remainingTime() * 4);
+		if (mgc_tmr->isActive())
+			mgc_tmr->start(mgc_tmr->remainingTime() * 4);
 	}
 }
 

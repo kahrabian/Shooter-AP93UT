@@ -54,17 +54,20 @@ MyGame::~MyGame() { }
 
 void MyGame::change_speed() {
 	// Fast everything using signals
+	fast = !fast;
 	killTimer(tmr_id);
 	if (fast)
-		tmr_id = startTimer(MyRes::frm_dly);
-	else
 		tmr_id = startTimer(MyRes::frm_dly / 4);
-	fast = !fast;
+	else
+		tmr_id = startTimer(MyRes::frm_dly);
 }
 
 void MyGame::unpause() {
 	// Unpause everything using signals
-	tmr_id = startTimer(MyRes::frm_dly);
+	if (fast)
+		tmr_id = startTimer(MyRes::frm_dly / 4);
+	else
+		tmr_id = startTimer(MyRes::frm_dly);
 }
 
 void MyGame::restart() {

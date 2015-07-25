@@ -24,6 +24,12 @@ public:
 
 	~MyAlien();
 
+	void game_paused();
+
+	void game_unpaused();
+
+	void change_speed();
+
 	void updt();
 
 	void ply_sf(QString &);
@@ -43,10 +49,6 @@ private:
 	QPointF *vlc;
 	QPointF *acc;
 	QPointF *frc;
-
-private slots:
-
-	void change_speed();
 
 protected:
 	void timerEvent(QTimerEvent *);

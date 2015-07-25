@@ -37,12 +37,23 @@ int MyAlien::getTyp() const {
 }
 
 void MyAlien::change_speed() {
+	fast = !fast;
 	killTimer(tmr_id);
 	if (fast)
-		tmr_id = startTimer(MyRes::frm_dly);
-	else
 		tmr_id = startTimer(MyRes::frm_dly / 4);
-	fast = !fast;
+	else
+		tmr_id = startTimer(MyRes::frm_dly);
+}
+
+void MyAlien::game_paused() {
+	killTimer(tmr_id);
+}
+
+void MyAlien::game_unpaused() {
+	if (fast)
+		tmr_id = startTimer(MyRes::frm_dly / 4);
+	else
+		tmr_id = startTimer(MyRes::frm_dly);
 }
 
 void MyAlien::updt() {

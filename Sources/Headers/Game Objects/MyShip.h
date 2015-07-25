@@ -37,11 +37,18 @@ public:
 
 	~MyShip();
 
+	void game_paused();
+
+	void game_unpaused();
+
+	void change_speed();
+
 	void updt(QSet<int> * = 0);
 
 private:
 	MyShipShield *shpshld;
 
+	bool fast;
 	int rtn = 0;
 	QString *name;
 
