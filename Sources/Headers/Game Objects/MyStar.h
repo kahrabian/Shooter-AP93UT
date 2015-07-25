@@ -12,7 +12,9 @@
 #include <QPixmap>
 #include <Sources/Headers/Resources.h>
 
-class MyStar : public QGraphicsPixmapItem {
+class MyStar : public QObject, public QGraphicsPixmapItem {
+Q_OBJECT
+
 public:
 	MyStar();
 

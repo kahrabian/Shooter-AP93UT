@@ -6,7 +6,7 @@
 
 MyLife::MyLife() :
 		QGraphicsPixmapItem(QPixmap(MyRes::lf_add).scaled(MyRes::lf_size, Qt::KeepAspectRatio,
-		                                                  Qt::SmoothTransformation)) {
+		                                                  Qt::SmoothTransformation)), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	vlc = new QPointF(0, 0);
 }

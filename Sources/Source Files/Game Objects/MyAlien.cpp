@@ -5,7 +5,7 @@
 #include <Sources/Headers/Game Objects/MyAlien.h>
 
 MyAlien::MyAlien() :
-		QGraphicsPixmapItem() {
+		QGraphicsPixmapItem(), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	fast = false;
 	typ = rand() % 2;

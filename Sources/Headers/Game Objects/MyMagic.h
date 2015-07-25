@@ -12,7 +12,9 @@
 #include <QPixmap>
 #include <Sources/Headers/Resources.h>
 
-class MyMagic : public QGraphicsPixmapItem {
+class MyMagic : public QObject, public QGraphicsPixmapItem {
+Q_OBJECT
+
 public:
 	MyMagic();
 

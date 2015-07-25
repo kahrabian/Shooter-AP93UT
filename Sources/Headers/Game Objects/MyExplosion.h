@@ -12,7 +12,9 @@
 #include <QPixmap>
 #include <Sources/Headers/Resources.h>
 
-class MyExplosion : public QGraphicsPixmapItem {
+class MyExplosion : public QObject, public QGraphicsPixmapItem {
+Q_OBJECT
+
 public:
 	MyExplosion(QSize *);
 

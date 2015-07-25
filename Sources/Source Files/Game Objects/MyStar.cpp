@@ -6,7 +6,7 @@
 
 MyStar::MyStar() :
 		QGraphicsPixmapItem(QPixmap(MyRes::str_add).scaled(MyRes::str_size, Qt::KeepAspectRatio,
-		                                                   Qt::SmoothTransformation)) {
+		                                                   Qt::SmoothTransformation)), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	vlc = new QPointF(0, 0);
 }

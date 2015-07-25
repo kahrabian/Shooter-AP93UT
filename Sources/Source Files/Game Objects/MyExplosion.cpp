@@ -5,7 +5,7 @@
 #include <Sources/Headers/Game Objects/MyExplosion.h>
 
 MyExplosion::MyExplosion(QSize *expln_size) :
-		QGraphicsPixmapItem() {
+		QGraphicsPixmapItem(), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	frm_num = 0;
 	vlc = new QPointF(0, 0);

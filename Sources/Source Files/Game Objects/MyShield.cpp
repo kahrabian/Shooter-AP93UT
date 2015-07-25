@@ -6,7 +6,7 @@
 
 MyShield::MyShield() :
 		QGraphicsPixmapItem(QPixmap(MyRes::shld_add).scaled(MyRes::shld_size, Qt::KeepAspectRatio,
-		                                                    Qt::SmoothTransformation)) {
+		                                                    Qt::SmoothTransformation)), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	vlc = new QPointF(0, 0);
 }

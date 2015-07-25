@@ -12,7 +12,9 @@
 #include <QPixmap>
 #include <Sources/Headers/Resources.h>
 
-class MyShield : public QGraphicsPixmapItem {
+class MyShield : public QObject, public QGraphicsPixmapItem {
+Q_OBJECT
+
 public:
 	MyShield();
 

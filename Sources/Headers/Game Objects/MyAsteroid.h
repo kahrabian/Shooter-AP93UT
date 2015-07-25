@@ -12,7 +12,9 @@
 #include <QPixmap>
 #include <Sources/Headers/Resources.h>
 
-class MyAsteroid : public QGraphicsPixmapItem {
+class MyAsteroid : public QObject, public QGraphicsPixmapItem {
+Q_OBJECT
+
 public:
 	MyAsteroid();
 

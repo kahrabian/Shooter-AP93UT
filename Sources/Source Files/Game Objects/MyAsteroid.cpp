@@ -5,7 +5,7 @@
 #include <Sources/Headers/Game Objects/MyAsteroid.h>
 
 MyAsteroid::MyAsteroid() :
-		QGraphicsPixmapItem() {
+		QGraphicsPixmapItem(), QObject() {
 	astrd_num = rand() % MyRes::astrd_typcnt;
 	frm_num = 0;
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
