@@ -32,16 +32,16 @@ MyShip::MyShip(const QPixmap &pixmap, QString *name) :
 	lsr_tmr->start(MyRes::shp_lsrdly);
 
 	if (*MyShip::name == "1") {
-		scr_txt = new QGraphicsTextItem(SettingData::p1_nm + "Score: " + QString(scr));
+		scr_txt = new QGraphicsTextItem(SettingData::p1_nm + " Score: " + QString(scr));
 	}
 	else {
-		scr_txt = new QGraphicsTextItem(SettingData::p2_nm + "Score: " + QString(scr));
+		scr_txt = new QGraphicsTextItem(SettingData::p2_nm + " Score: " + QString(scr));
 	}
 	if (*MyShip::name == "1") {
-		lf_txt = new QGraphicsTextItem(SettingData::p1_nm + "Life: " + QString(lf));
+		lf_txt = new QGraphicsTextItem(SettingData::p1_nm + " Life: " + QString(lf));
 	}
 	else {
-		lf_txt = new QGraphicsTextItem(SettingData::p2_nm + "Life: " + QString(lf));
+		lf_txt = new QGraphicsTextItem(SettingData::p2_nm + " Life: " + QString(lf));
 	}
 
 	QTimer::connect(shld_tmr, SIGNAL(timeout()), this, SLOT(deactivate_shld()));
@@ -272,16 +272,16 @@ void MyShip::updt_txt() {
 	scr_txt->setPos(scr_txt->pos().x() + MyRes::vw_mvmnt, scr_txt->pos().y());
 	lf_txt->setPos(lf_txt->pos().x() + MyRes::vw_mvmnt, lf_txt->pos().y());
 	if (*MyShip::name == "1") {
-		scr_txt->setPlainText(SettingData::p1_nm + "Score: " + QString(scr));
+		scr_txt->setPlainText(SettingData::p1_nm + " Score: " + QString(scr));
 	}
 	else {
-		scr_txt->setPlainText(SettingData::p2_nm + "Score: " + QString(scr));
+		scr_txt->setPlainText(SettingData::p2_nm + " Score: " + QString(scr));
 	}
 	if (*MyShip::name == "1") {
-		lf_txt->setPlainText(SettingData::p1_nm + "Life: " + QString(lf));
+		lf_txt->setPlainText(SettingData::p1_nm + " Life: " + QString(lf));
 	}
 	else {
-		lf_txt->setPlainText(SettingData::p2_nm + "Life: " + QString(lf));
+		lf_txt->setPlainText(SettingData::p2_nm + " Life: " + QString(lf));
 	}
 }
 

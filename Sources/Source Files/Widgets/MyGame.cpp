@@ -19,6 +19,8 @@ MyGame::MyGame(QWidget *parent) :
 	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("1"));
 	gscn->addItem(tmp);
 	gscn->addItem(tmp->shpshld);
+	gscn->addItem(tmp->scr_txt);
+	tmp->scr_txt->setPos(0, 0);
 
 	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("2"));
 	tmp->setPos(20, 400);
