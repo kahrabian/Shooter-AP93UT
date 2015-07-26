@@ -40,7 +40,8 @@ void MyShipShield::cllsn_dtctn() {
 						dynamic_cast<MyAsteroid *>(i)->y() + (dynamic_cast<MyAsteroid *>(i)->pixmap().height() / 2) -
 								(MyRes::expln_astrd_size.height() / 2) + MyRes::expln_astrd_crrctn);
 				scene()->addItem(expln);
-				scene()->removeItem(i);
+//				scene()->removeItem(i);
+				dynamic_cast<MyAsteroid *>(i)->hide();
 			}
 			if (dynamic_cast<MyBullet *>(i) && isVisible()) {
 				ply_sf(const_cast<QString &>(MyRes::sf_expln_lsr_add));
@@ -50,7 +51,8 @@ void MyShipShield::cllsn_dtctn() {
 				              dynamic_cast<MyBullet *>(i)->y() + (dynamic_cast<MyBullet *>(i)->pixmap().height() / 2) -
 						              (MyRes::expln_lsr_size.height() / 2) + MyRes::expln_lsr_crrctn);
 				scene()->addItem(expln);
-				scene()->removeItem(i);
+//				scene()->removeItem(i);
+				dynamic_cast<MyBullet *>(i)->hide();
 			}
 			else if (dynamic_cast<MyAlien *>(i) && isVisible()) {
 				if (dynamic_cast<MyAlien *>(i)->getTyp() == 0) {
@@ -75,7 +77,8 @@ void MyShipShield::cllsn_dtctn() {
 				}
 				ply_sf(const_cast<QString &>(MyRes::sf_expln_shpshld_add));
 				dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
-				scene()->removeItem(i);
+//				scene()->removeItem(i);
+				dynamic_cast<MyAlien *>(i)->hide();
 				emit shieldDestroyd();
 			}
 			else if (dynamic_cast<MyShipShield *>(i) && dynamic_cast<MyShipShield *>(i)->isVisible() && isVisible()) {

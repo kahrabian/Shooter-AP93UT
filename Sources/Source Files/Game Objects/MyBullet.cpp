@@ -65,7 +65,8 @@ void MyBullet::cllsn_dtctn() {
 				scene()->addItem(expln);
 
 				dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
-				scene()->removeItem(i);
+				dynamic_cast<MyAlien *>(i)->hide();
+//				scene()->removeItem(i);
 				hide();
 				ply_sf(const_cast<QString &>(MyRes::sf_str_add));
 				emit scrGained();
@@ -87,7 +88,8 @@ void MyBullet::cllsn_dtctn() {
 				              MyRes::expln_lsr_crrctn);
 				scene()->addItem(expln);
 
-				scene()->removeItem(i);
+				dynamic_cast<MyAsteroid *>(i)->hide();
+//				scene()->removeItem(i);
 				hide();
 			}
 		}

@@ -175,17 +175,20 @@ void MyShip::cllsn_dtctn() {
 			if (dynamic_cast<MyLife *>(i)) {
 				ply_sf(const_cast<QString &>(MyRes::sf_lf_add));
 				lf++;
-				scene()->removeItem(i);
+//				scene()->removeItem(i);
+				dynamic_cast<MyLife *>(i)->hide();
 			}
 			else if (dynamic_cast<MyMagic *>(i)) {
 				ply_sf(const_cast<QString &>(MyRes::sf_mgc_add));
 				activate_mgc();
-				scene()->removeItem(i);
+//				scene()->removeItem(i);
+				dynamic_cast<MyMagic *>(i)->hide();
 			}
 			else if (dynamic_cast<MyShield *>(i)) {
 				ply_sf(const_cast<QString &>(MyRes::sf_shld_add));
 				activate_shld();
-				scene()->removeItem(i);
+//				scene()->removeItem(i);
+				dynamic_cast<MyShield *>(i)->hide();
 			}
 			else if (dynamic_cast<MyShip *>(i)) {
 				ply_sf(const_cast<QString &>(MyRes::sf_shp_shp_add));
@@ -199,7 +202,8 @@ void MyShip::cllsn_dtctn() {
 			else if (dynamic_cast<MyStar *>(i)) {
 				ply_sf(const_cast<QString &>(MyRes::sf_str_add));
 				scr++;
-				scene()->removeItem(i);
+//				scene()->removeItem(i);
+				dynamic_cast<MyStar *>(i)->hide();
 			}
 			else if (dynamic_cast<MyAlien *>(i)) {
 				if (dynamic_cast<MyAlien *>(i)->getTyp() == 0) {
@@ -226,7 +230,8 @@ void MyShip::cllsn_dtctn() {
 				}
 				lf--;
 				dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
-				scene()->removeItem(i);
+//				scene()->removeItem(i);
+				dynamic_cast<MyAlien *>(i)->hide();
 			}
 			else if (dynamic_cast<MyAsteroid *>(i)) {
 				ply_sf(const_cast<QString &>(MyRes::sf_expln_astrd_add));
@@ -238,7 +243,8 @@ void MyShip::cllsn_dtctn() {
 						(MyRes::expln_astrd_size.height() / 2) + MyRes::expln_astrd_crrctn);
 				scene()->addItem(expln);
 				lf--;
-				scene()->removeItem(i);
+//				scene()->removeItem(i);
+				dynamic_cast<MyAsteroid *>(i)->hide();
 			}
 			else if (dynamic_cast<MyBullet *>(i)) {
 				ply_sf(const_cast<QString &>(MyRes::sf_expln_lsr_add));
@@ -249,7 +255,8 @@ void MyShip::cllsn_dtctn() {
 				              (MyRes::expln_lsr_size.height() / 2) + MyRes::expln_lsr_crrctn);
 				scene()->addItem(expln);
 				lf--;
-				scene()->removeItem(i);
+//				scene()->removeItem(i);
+				dynamic_cast<MyBullet *>(i)->hide();
 			}
 		}
 }

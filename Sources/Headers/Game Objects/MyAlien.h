@@ -30,6 +30,8 @@ public:
 
 	void change_speed();
 
+	void updt_pos();
+
 	void updt();
 
 	void ply_sf(QString &);
