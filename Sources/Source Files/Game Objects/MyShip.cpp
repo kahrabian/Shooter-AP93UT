@@ -258,14 +258,18 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 	vlc->setY(0);
 	vlc->setX(0);
 
-	if (prsd_kys->find(Qt::Key_Up) != prsd_kys->end() && name->compare("1") == 0)
+	if (prsd_kys->find(Qt::Key_Up) != prsd_kys->end() && name->compare("1") == 0) {
 		vlc->setY(vlc->y() - MyRes::shp_mvmnt);
-	if (prsd_kys->find(Qt::Key_Down) != prsd_kys->end() && name->compare("1") == 0)
+	}
+	if (prsd_kys->find(Qt::Key_Down) != prsd_kys->end() && name->compare("1") == 0) {
 		vlc->setY(vlc->y() + MyRes::shp_mvmnt);
-	if (prsd_kys->find(Qt::Key_Left) != prsd_kys->end() && name->compare("1") == 0)
+	}
+	if (prsd_kys->find(Qt::Key_Left) != prsd_kys->end() && name->compare("1") == 0) {
 		vlc->setX(vlc->x() - MyRes::shp_mvmnt);
-	if (prsd_kys->find(Qt::Key_Right) != prsd_kys->end() && name->compare("1") == 0)
+	}
+	if (prsd_kys->find(Qt::Key_Right) != prsd_kys->end() && name->compare("1") == 0) {
 		vlc->setX(vlc->x() + MyRes::shp_mvmnt);
+	}
 	if (prsd_kys->find(Qt::Key_Space) != prsd_kys->end() && name->compare("1") == 0 && lsr) {
 		ply_sf(const_cast<QString &>(MyRes::sf_shp_lsr_add));
 		if (!mgc) {
@@ -287,14 +291,18 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 		deactivate_lsr();
 	}
 
-	if (prsd_kys->find(Qt::Key_W) != prsd_kys->end() && name->compare("1") != 0)
+	if (prsd_kys->find(Qt::Key_W) != prsd_kys->end() && name->compare("1") != 0) {
 		vlc->setY(vlc->y() - MyRes::shp_mvmnt);
-	if (prsd_kys->find(Qt::Key_S) != prsd_kys->end() && name->compare("1") != 0)
+	}
+	if (prsd_kys->find(Qt::Key_S) != prsd_kys->end() && name->compare("1") != 0) {
 		vlc->setY(vlc->y() + MyRes::shp_mvmnt);
-	if (prsd_kys->find(Qt::Key_A) != prsd_kys->end() && name->compare("1") != 0)
+	}
+	if (prsd_kys->find(Qt::Key_A) != prsd_kys->end() && name->compare("1") != 0) {
 		vlc->setX(vlc->x() - MyRes::shp_mvmnt);
-	if (prsd_kys->find(Qt::Key_D) != prsd_kys->end() && name->compare("1") != 0)
+	}
+	if (prsd_kys->find(Qt::Key_D) != prsd_kys->end() && name->compare("1") != 0) {
 		vlc->setX(vlc->x() + MyRes::shp_mvmnt);
+	}
 	if (prsd_kys->find(Qt::Key_X) != prsd_kys->end() && name->compare("1") != 0 && lsr) {
 		ply_sf(const_cast<QString &>(MyRes::sf_shp_lsr_add));
 		if (!mgc) {
@@ -318,14 +326,18 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 }
 
 void MyShip::updt_rtn() {
-	if (vlc->y() > 0 && rtn < MyRes::rtn_max)
+	if (vlc->y() > 0 && rtn < MyRes::rtn_max) {
 		rtn += MyRes::rtn_stp;
-	else if (vlc->y() < 0 && rtn > -MyRes::rtn_max)
+	}
+	else if (vlc->y() < 0 && rtn > -MyRes::rtn_max) {
 		rtn -= MyRes::rtn_stp;
-	else if (vlc->y() == 0 && rtn < 0)
+	}
+	else if (vlc->y() == 0 && rtn < 0) {
 		rtn += MyRes::rtn_stp;
-	else if (vlc->y() == 0 && rtn > 0)
+	}
+	else if (vlc->y() == 0 && rtn > 0) {
 		rtn -= MyRes::rtn_stp;
+	}
 }
 
 void MyShip::updt_pos() {
@@ -339,13 +351,14 @@ void MyShip::updt_pos() {
 			scene()->views().first()->mapFromScene(mapToScene(boundingRect().bottomRight()))));
 	QRectF vw_rct(scene()->views().first()->viewport()->rect());
 
-	if (tplft.x() + vlc->x() >= MyRes::x_offset && bttmrght.x() + vlc->x() <= vw_rct.width() - MyRes::x_offset)
+	if (tplft.x() + vlc->x() >= MyRes::x_offset && bttmrght.x() + vlc->x() <= vw_rct.width() - MyRes::x_offset) {
 		setPos(pos().x() + vlc->x(), pos().y());
-
+	}
 	if ((tplft.y() + vlc->y() >= MyRes::y_offset && bttmrght.y() + vlc->y() <= vw_rct.height() - MyRes::y_offset) ||
 	    (tplft.y() + vlc->y() < MyRes::y_offset && vlc->y() > 0) ||
-	    ((bttmrght.y() + vlc->y() > vw_rct.height() - MyRes::y_offset) && vlc->y() < 0))
+			((bttmrght.y() + vlc->y() > vw_rct.height() - MyRes::y_offset) && vlc->y() < 0)) {
 		setPos(pos().x(), pos().y() + vlc->y());
+	}
 	cnstrct_shldpxmp();
 }
 
