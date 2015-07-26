@@ -17,7 +17,6 @@ MyExplosion::~MyExplosion() {
 }
 
 void MyExplosion::updt() {
-	// Size
 	setPixmap(QPixmap(MyRes::expln_adds[(frm_num / 2) % MyRes::expln_frcnt]).scaled((*expln_size),
 	                                                                                Qt::KeepAspectRatio,
 	                                                                                Qt::SmoothTransformation));
