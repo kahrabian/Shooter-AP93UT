@@ -99,6 +99,7 @@ void MyGame::unpause() {
 				dynamic_cast<MyShip *>(i)->game_unpaused();
 			}
 		}
+	prsd_kys->clear();
 }
 
 void MyGame::restart() {

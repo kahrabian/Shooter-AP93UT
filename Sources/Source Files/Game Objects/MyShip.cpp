@@ -109,38 +109,40 @@ void MyShip::ply_sf(QString &add) {
 void MyShip::change_speed() {
 	fast = !fast;
 	if (fast) {
-		if (shld_tmr->isActive())
+		if (shld_tmr->isActive()) {
 			shld_tmr->start(shld_tmr->remainingTime() / 4);
-		if (mgc_tmr->isActive())
+		}
+		if (mgc_tmr->isActive()) {
 			mgc_tmr->start(mgc_tmr->remainingTime() / 4);
-		if (lsr_tmr->isActive())
+		}
+		if (lsr_tmr->isActive()) {
 			lsr_tmr->start(lsr_tmr->remainingTime() / 4);
+		}
 	}
 	else {
-		if (shld_tmr->isActive())
+		if (shld_tmr->isActive()) {
 			shld_tmr->start(shld_tmr->remainingTime() * 4);
-		if (mgc_tmr->isActive())
+		}
+		if (mgc_tmr->isActive()) {
 			mgc_tmr->start(mgc_tmr->remainingTime() * 4);
-		if (lsr_tmr->isActive())
+		}
+		if (lsr_tmr->isActive()) {
 			lsr_tmr->start(lsr_tmr->remainingTime() * 4);
+		}
 	}
 }
 
 void MyShip::game_paused() {
-	QTextStream X(stderr);
 	if (shld_tmr->isActive()) {
 		shld_tmr_elpsd = shld_tmr->remainingTime();
-		X << "shld: " << shld_tmr_elpsd << endl;
 		shld_tmr->stop();
 	}
 	if (mgc_tmr->isActive()) {
 		mgc_tmr_elpsd = mgc_tmr->remainingTime();
-		X << "mgc: " << mgc_tmr_elpsd << endl;
 		mgc_tmr->stop();
 	}
 	if (lsr_tmr->isActive()) {
 		lsr_tmr_elpsd = lsr_tmr->remainingTime();
-		X << "lsr: " << lsr_tmr_elpsd << endl;
 		lsr_tmr->stop();
 	}
 }
