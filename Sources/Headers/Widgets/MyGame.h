@@ -46,6 +46,12 @@ private:
 	QSet<int> *prsd_kys;
 
 	QGraphicsScene *gscn;
+	QGraphicsScene *gscn_s;
+
+	QGraphicsTextItem *stg_1;
+	QGraphicsTextItem *stg_2;
+	QGraphicsTextItem *stg_3;
+	QGraphicsTextItem *stg_4;
 
 	MyShip *tmp;
 	MyAlien *tmp1;

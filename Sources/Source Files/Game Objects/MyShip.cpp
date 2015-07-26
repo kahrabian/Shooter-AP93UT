@@ -12,7 +12,7 @@ MyShip::MyShip(const QPixmap &pixmap, QString *name) :
 	MyShip::name = name;
 	fast = false;
 	rtn = 0;
-	lf = 0;
+	lf = 10;
 	scr = 0;
 	lsr = true;
 	mgc = false;
@@ -28,8 +28,21 @@ MyShip::MyShip(const QPixmap &pixmap, QString *name) :
 	mgc_tmr_elpsd = 0;
 
 	lsr_tmr = new QTimer();
-	mgc_tmr_elpsd = 0;
+	lsr_tmr_elpsd = 0;
 	lsr_tmr->start(MyRes::shp_lsrdly);
+
+	if (*MyShip::name == "1") {
+		scr_txt = new QGraphicsTextItem(SettingData::p1_nm + "Score: " + QString(scr));
+	}
+	else {
+		scr_txt = new QGraphicsTextItem(SettingData::p2_nm + "Score: " + QString(scr));
+	}
+	if (*MyShip::name == "1") {
+		lf_txt = new QGraphicsTextItem(SettingData::p1_nm + "Life: " + QString(lf));
+	}
+	else {
+		lf_txt = new QGraphicsTextItem(SettingData::p2_nm + "Life: " + QString(lf));
+	}
 
 	QTimer::connect(shld_tmr, SIGNAL(timeout()), this, SLOT(deactivate_shld()));
 	QTimer::connect(shpshld, SIGNAL(shieldDestroyd()), this, SLOT(deactivate_shld()));
@@ -255,6 +268,23 @@ void MyShip::cllsn_dtctn() {
 		}
 }
 
+void MyShip::updt_txt() {
+	scr_txt->setPos(scr_txt->pos().x() + MyRes::vw_mvmnt, scr_txt->pos().y());
+	lf_txt->setPos(lf_txt->pos().x() + MyRes::vw_mvmnt, lf_txt->pos().y());
+	if (*MyShip::name == "1") {
+		scr_txt->setPlainText(SettingData::p1_nm + "Score: " + QString(scr));
+	}
+	else {
+		scr_txt->setPlainText(SettingData::p2_nm + "Score: " + QString(scr));
+	}
+	if (*MyShip::name == "1") {
+		lf_txt->setPlainText(SettingData::p1_nm + "Life: " + QString(lf));
+	}
+	else {
+		lf_txt->setPlainText(SettingData::p2_nm + "Life: " + QString(lf));
+	}
+}
+
 void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 	vlc->setY(0);
 	vlc->setX(0);
@@ -342,6 +372,7 @@ void MyShip::updt_rtn() {
 }
 
 void MyShip::updt_pos() {
+	setPos(pos().x() + MyRes::vw_mvmnt, pos().y());
 	setTransform(QTransform().translate(pixmap().size().width() / 2, pixmap().size().height() / 2).rotate(-rtn,
 	                                                                                                      Qt::XAxis).translate(
 			-pixmap().size().width() / 2, -pixmap().size().height() / 2));
@@ -364,9 +395,9 @@ void MyShip::updt_pos() {
 }
 
 void MyShip::updt(QSet<int> *prsd_kys) {
-	setPos(pos().x() + MyRes::vw_mvmnt, pos().y());
 	cllsn_dtctn();
 	updt_vlc(prsd_kys);
 	updt_rtn();
 	updt_pos();
+	updt_txt();
 }

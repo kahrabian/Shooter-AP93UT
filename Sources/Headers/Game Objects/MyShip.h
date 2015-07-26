@@ -48,6 +48,9 @@ public:
 private:
 	MyShipShield *shpshld;
 
+	QGraphicsTextItem *scr_txt;
+	QGraphicsTextItem *lf_txt;
+
 	bool fast;
 	int rtn;
 	QString *name;
@@ -73,6 +76,8 @@ private:
 	void cllsn_dtctn();
 
 	void ply_sf(QString &);
+
+	void updt_txt();
 
 	void updt_vlc(QSet<int> *);
 
