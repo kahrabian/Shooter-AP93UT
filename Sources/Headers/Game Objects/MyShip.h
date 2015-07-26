@@ -54,10 +54,13 @@ private:
 
 	int lf;
 	int scr;
+	int shld_tmr_elpsd;
 	QTimer *shld_tmr;
 	bool mgc;
+	int mgc_tmr_elpsd;
 	QTimer *mgc_tmr;
 	bool lsr;
+	int lsr_tmr_elpsd;
 	QTimer *lsr_tmr;
 
 	int mss;

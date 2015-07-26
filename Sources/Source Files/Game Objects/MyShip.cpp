@@ -11,11 +11,11 @@ MyShip::MyShip(const QPixmap &pixmap, QString *name) :
 	setPos(MyRes::x_offset, MyRes::y_offset);
 	MyShip::name = name;
 	fast = false;
-	lsr = true;
-	mgc = false;
+	rtn = 0;
 	lf = 0;
 	scr = 0;
-	rtn = 0;
+	lsr = true;
+	mgc = false;
 
 	vlc = new QPointF(0, 0);
 
@@ -23,9 +23,12 @@ MyShip::MyShip(const QPixmap &pixmap, QString *name) :
 	shpshld->setGraphicsEffect(new QGraphicsDropShadowEffect());
 
 	shld_tmr = new QTimer();
+	shld_tmr_elpsd = 0;
 	mgc_tmr = new QTimer();
+	mgc_tmr_elpsd = 0;
 
 	lsr_tmr = new QTimer();
+	mgc_tmr_elpsd = 0;
 	lsr_tmr->start(MyRes::shp_lsrdly);
 
 	QTimer::connect(shld_tmr, SIGNAL(timeout()), this, SLOT(deactivate_shld()));
@@ -110,27 +113,58 @@ void MyShip::change_speed() {
 			shld_tmr->start(shld_tmr->remainingTime() / 4);
 		if (mgc_tmr->isActive())
 			mgc_tmr->start(mgc_tmr->remainingTime() / 4);
+		if (lsr_tmr->isActive())
+			lsr_tmr->start(lsr_tmr->remainingTime() / 4);
 	}
 	else {
 		if (shld_tmr->isActive())
 			shld_tmr->start(shld_tmr->remainingTime() * 4);
 		if (mgc_tmr->isActive())
 			mgc_tmr->start(mgc_tmr->remainingTime() * 4);
+		if (lsr_tmr->isActive())
+			lsr_tmr->start(lsr_tmr->remainingTime() * 4);
 	}
 }
 
 void MyShip::game_paused() {
-	if (shld_tmr->isActive())
+	QTextStream X(stderr);
+	if (shld_tmr->isActive()) {
+		shld_tmr_elpsd = shld_tmr->remainingTime();
+		X << "shld: " << shld_tmr_elpsd << endl;
 		shld_tmr->stop();
-	if (mgc_tmr->isActive())
+	}
+	if (mgc_tmr->isActive()) {
+		mgc_tmr_elpsd = mgc_tmr->remainingTime();
+		X << "mgc: " << mgc_tmr_elpsd << endl;
 		mgc_tmr->stop();
+	}
+	if (lsr_tmr->isActive()) {
+		lsr_tmr_elpsd = lsr_tmr->remainingTime();
+		X << "lsr: " << lsr_tmr_elpsd << endl;
+		lsr_tmr->stop();
+	}
 }
 
 void MyShip::game_unpaused() {
-	if (shld_tmr->remainingTime() > 0)
-		shld_tmr->start(shld_tmr->remainingTime());
-	if (mgc_tmr->remainingTime() > 0)
-		mgc_tmr->start(mgc_tmr->remainingTime());
+	if (shld_tmr_elpsd > 0) {
+		shld_tmr->start(shld_tmr_elpsd);
+	}
+	if (mgc_tmr_elpsd > 0) {
+		mgc_tmr->start(mgc_tmr_elpsd);
+	}
+	if (lsr_tmr_elpsd > 0) {
+		lsr_tmr->start(lsr_tmr_elpsd);
+	}
+	else if (lsr_tmr_elpsd == 0) {
+		if (fast) {
+			lsr_tmr->start(MyRes::shp_lsrdly / 4);
+		}
+		else {
+			lsr_tmr->start(MyRes::shp_lsrdly);
+		}
+		activate_lsr();
+	}
+
 }
 
 void MyShip::cllsn_dtctn() {

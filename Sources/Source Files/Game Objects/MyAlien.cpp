@@ -40,9 +40,9 @@ void MyAlien::change_speed() {
 	fast = !fast;
 	killTimer(tmr_id);
 	if (fast)
-		tmr_id = startTimer(MyRes::frm_dly / 4);
+		tmr_id = startTimer(MyRes::aln_lsrdly / 4);
 	else
-		tmr_id = startTimer(MyRes::frm_dly);
+		tmr_id = startTimer(MyRes::aln_lsrdly);
 }
 
 void MyAlien::game_paused() {
@@ -51,9 +51,9 @@ void MyAlien::game_paused() {
 
 void MyAlien::game_unpaused() {
 	if (fast)
-		tmr_id = startTimer(MyRes::frm_dly / 4);
+		tmr_id = startTimer(MyRes::aln_lsrdly / 4);
 	else
-		tmr_id = startTimer(MyRes::frm_dly);
+		tmr_id = startTimer(MyRes::aln_lsrdly);
 }
 
 void MyAlien::updt() {
