@@ -20,7 +20,7 @@ MyAlien::MyAlien() :
 		                                                                             Qt::SmoothTransformation));
 	}
 
-	vlc = new QPointF(0, 10);
+	vlc = new QPointF(5, 10);
 	tmr_id = startTimer(MyRes::aln_lsrdly);
 }
 
@@ -60,7 +60,7 @@ void MyAlien::game_unpaused() {
 	}
 }
 
-/*void MyAlien::updt_pos() {
+void MyAlien::updt() {
 	QPointF tplft(scene()->views().first()->viewport()->mapToParent(
 			scene()->views().first()->mapFromScene(mapToScene(boundingRect().topLeft()))));
 	QPointF bttmrght(scene()->views().first()->viewport()->mapToParent(
@@ -69,24 +69,6 @@ void MyAlien::game_unpaused() {
 	if ((tplft.y() + vlc->y() >= MyRes::y_offset && bttmrght.y() + vlc->y() <= vw_rct.height() - MyRes::y_offset) ||
 	    (tplft.y() + vlc->y() < MyRes::y_offset && vlc->y() > 0) ||
 	    ((bttmrght.y() + vlc->y() > vw_rct.height() - MyRes::y_offset) && vlc->y() < 0)) {
-		setPos(pos().x(), pos().y() + vlc->y());
-	}
-	else {
-		vlc->setY(vlc->y() * (-1));
-	}
-}*/
-
-void MyAlien::updt() {
-//	setPos(pos().x() + vlc->x(), pos().y() + vlc->y());
-//	updt_pos();
-	double tplft_y = scene()->views().first()->viewport()->mapToParent(
-			scene()->views().first()->mapFromScene(mapToScene(boundingRect().topLeft()))).y();
-	double bttmrght_y = scene()->views().first()->viewport()->mapToParent(
-			scene()->views().first()->mapFromScene(mapToScene(boundingRect().bottomRight()))).y();
-	double vw_rct_height = scene()->views().first()->viewport()->rect().height();
-	if ((tplft_y + vlc->y() >= MyRes::y_offset && bttmrght_y + vlc->y() <= vw_rct_height - MyRes::y_offset) ||
-	    (tplft_y + vlc->y() < MyRes::y_offset && vlc->y() > 0) ||
-	    ((bttmrght_y + vlc->y() > vw_rct_height - MyRes::y_offset) && vlc->y() < 0)) {
 		setPos(pos().x(), pos().y() + vlc->y());
 	}
 	else {

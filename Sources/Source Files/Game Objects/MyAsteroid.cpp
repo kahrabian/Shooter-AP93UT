@@ -9,7 +9,7 @@ MyAsteroid::MyAsteroid() :
 	astrd_num = rand() % MyRes::astrd_typcnt;
 	frm_num = 0;
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
-	vlc = new QPointF(0, 0);
+	vlc = new QPointF(-10, 0);
 }
 
 MyAsteroid::~MyAsteroid() {
