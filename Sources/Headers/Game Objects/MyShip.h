@@ -49,15 +49,16 @@ private:
 	MyShipShield *shpshld;
 
 	bool fast;
-	int rtn = 0;
+	int rtn;
 	QString *name;
 
-	int lf = 0;
-	int scr = 0;
+	int lf;
+	int scr;
 	QTimer *shld_tmr;
-	bool mgc = false;
+	bool mgc;
 	QTimer *mgc_tmr;
-	QElapsedTimer *lsr_tmr;
+	bool lsr;
+	QTimer *lsr_tmr;
 
 	int mss;
 	QPointF *vlc;
@@ -84,6 +85,10 @@ private slots:
 	void activate_mgc();
 
 	void deactivate_mgc();
+
+	void activate_lsr();
+
+	void deactivate_lsr();
 
 	void scrIncrement();
 };

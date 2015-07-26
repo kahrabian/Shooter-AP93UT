@@ -11,6 +11,11 @@ MyShip::MyShip(const QPixmap &pixmap, QString *name) :
 	setPos(MyRes::x_offset, MyRes::y_offset);
 	MyShip::name = name;
 	fast = false;
+	lsr = true;
+	mgc = false;
+	lf = 0;
+	scr = 0;
+	rtn = 0;
 
 	vlc = new QPointF(0, 0);
 
@@ -20,12 +25,13 @@ MyShip::MyShip(const QPixmap &pixmap, QString *name) :
 	shld_tmr = new QTimer();
 	mgc_tmr = new QTimer();
 
-	lsr_tmr = new QElapsedTimer();
-	lsr_tmr->start();
+	lsr_tmr = new QTimer();
+	lsr_tmr->start(MyRes::shp_lsrdly);
 
 	QTimer::connect(shld_tmr, SIGNAL(timeout()), this, SLOT(deactivate_shld()));
 	QTimer::connect(shpshld, SIGNAL(shieldDestroyd()), this, SLOT(deactivate_shld()));
 	QTimer::connect(mgc_tmr, SIGNAL(timeout()), this, SLOT(deactivate_mgc()));
+	QTimer::connect(lsr_tmr, SIGNAL(timeout()), this, SLOT(activate_lsr()));
 
 	deactivate_shld();
 	deactivate_mgc();
@@ -42,7 +48,12 @@ void MyShip::cnstrct_shldpxmp() {
 
 void MyShip::activate_shld() {
 	shpshld->show();
-	shld_tmr->start(MyRes::spcl_tm);
+	if (fast) {
+		shld_tmr->start(MyRes::spcl_tm / 4);
+	}
+	else {
+		shld_tmr->start(MyRes::spcl_tm);
+	}
 }
 
 void MyShip::deactivate_shld() {
@@ -52,12 +63,31 @@ void MyShip::deactivate_shld() {
 
 void MyShip::activate_mgc() {
 	mgc = true;
-	mgc_tmr->start(MyRes::spcl_tm);
+	if (fast) {
+		mgc_tmr->start(MyRes::spcl_tm / 4);
+	}
+	else {
+		mgc_tmr->start(MyRes::spcl_tm);
+	}
 }
 
 void MyShip::deactivate_mgc() {
 	mgc = false;
 	mgc_tmr->stop();
+}
+
+void MyShip::activate_lsr() {
+	lsr = true;
+}
+
+void MyShip::deactivate_lsr() {
+	lsr = false;
+	if (fast) {
+		lsr_tmr->start(MyRes::shp_lsrdly / 4);
+	}
+	else {
+		lsr_tmr->start(MyRes::shp_lsrdly);
+	}
 }
 
 void MyShip::scrIncrement() {
@@ -97,18 +127,10 @@ void MyShip::game_paused() {
 }
 
 void MyShip::game_unpaused() {
-	if (fast) {
-		if (shld_tmr->isActive())
-			shld_tmr->start(shld_tmr->remainingTime() / 4);
-		if (mgc_tmr->isActive())
-			mgc_tmr->start(mgc_tmr->remainingTime() / 4);
-	}
-	else {
-		if (shld_tmr->isActive())
-			shld_tmr->start(shld_tmr->remainingTime() * 4);
-		if (mgc_tmr->isActive())
-			mgc_tmr->start(mgc_tmr->remainingTime() * 4);
-	}
+	if (shld_tmr->remainingTime() > 0)
+		shld_tmr->start(shld_tmr->remainingTime());
+	if (mgc_tmr->remainingTime() > 0)
+		mgc_tmr->start(mgc_tmr->remainingTime());
 }
 
 void MyShip::cllsn_dtctn() {
@@ -208,8 +230,7 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 		vlc->setX(vlc->x() - MyRes::shp_mvmnt);
 	if (prsd_kys->find(Qt::Key_Right) != prsd_kys->end() && name->compare("1") == 0)
 		vlc->setX(vlc->x() + MyRes::shp_mvmnt);
-	if (prsd_kys->find(Qt::Key_Space) != prsd_kys->end() && name->compare("1") == 0 &&
-	    lsr_tmr->elapsed() >= MyRes::shp_lsrdly) {
+	if (prsd_kys->find(Qt::Key_Space) != prsd_kys->end() && name->compare("1") == 0 && lsr) {
 		ply_sf(const_cast<QString &>(MyRes::sf_shp_lsr_add));
 		if (!mgc) {
 			MyBullet *lsr = new MyBullet(0);
@@ -227,7 +248,7 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 				QObject::connect(lsr, SIGNAL(scrGained()), this, SLOT(scrIncrement()));
 			}
 		}
-		lsr_tmr->restart();
+		deactivate_lsr();
 	}
 
 	if (prsd_kys->find(Qt::Key_W) != prsd_kys->end() && name->compare("1") != 0)
@@ -238,8 +259,7 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 		vlc->setX(vlc->x() - MyRes::shp_mvmnt);
 	if (prsd_kys->find(Qt::Key_D) != prsd_kys->end() && name->compare("1") != 0)
 		vlc->setX(vlc->x() + MyRes::shp_mvmnt);
-	if (prsd_kys->find(Qt::Key_X) != prsd_kys->end() && name->compare("1") != 0 &&
-	    lsr_tmr->elapsed() >= MyRes::shp_lsrdly) {
+	if (prsd_kys->find(Qt::Key_X) != prsd_kys->end() && name->compare("1") != 0 && lsr) {
 		ply_sf(const_cast<QString &>(MyRes::sf_shp_lsr_add));
 		if (!mgc) {
 			MyBullet *lsr = new MyBullet(0);
@@ -257,7 +277,7 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 				QObject::connect(lsr, SIGNAL(scrGained()), this, SLOT(scrIncrement()));
 			}
 		}
-		lsr_tmr->restart();
+		deactivate_lsr();
 	}
 }
 

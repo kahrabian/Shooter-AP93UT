@@ -53,21 +53,52 @@ MyGame::MyGame(QWidget *parent) :
 MyGame::~MyGame() { }
 
 void MyGame::change_speed() {
-	// Fast everything using signals
 	fast = !fast;
 	killTimer(tmr_id);
 	if (fast)
 		tmr_id = startTimer(MyRes::frm_dly / 4);
 	else
 		tmr_id = startTimer(MyRes::frm_dly);
+	QList<QGraphicsItem *> items = scene()->items();
+			foreach(QGraphicsItem *i, items) {
+			if (dynamic_cast<MyAlien *>(i)) {
+				dynamic_cast<MyAlien *>(i)->change_speed();
+			}
+			if (dynamic_cast<MyShip *>(i)) {
+				dynamic_cast<MyShip *>(i)->change_speed();
+			}
+		}
+}
+
+
+void MyGame::pause() {
+	killTimer(tmr_id);
+	QList<QGraphicsItem *> items = scene()->items();
+			foreach(QGraphicsItem *i, items) {
+			if (dynamic_cast<MyAlien *>(i)) {
+				dynamic_cast<MyAlien *>(i)->game_paused();
+			}
+			if (dynamic_cast<MyShip *>(i)) {
+				dynamic_cast<MyShip *>(i)->game_paused();
+			}
+		}
+	emit gamePaused();
 }
 
 void MyGame::unpause() {
-	// Unpause everything using signals
 	if (fast)
 		tmr_id = startTimer(MyRes::frm_dly / 4);
 	else
 		tmr_id = startTimer(MyRes::frm_dly);
+	QList<QGraphicsItem *> items = scene()->items();
+			foreach(QGraphicsItem *i, items) {
+			if (dynamic_cast<MyAlien *>(i)) {
+				dynamic_cast<MyAlien *>(i)->game_unpaused();
+			}
+			if (dynamic_cast<MyShip *>(i)) {
+				dynamic_cast<MyShip *>(i)->game_unpaused();
+			}
+		}
 }
 
 void MyGame::restart() {
@@ -76,9 +107,7 @@ void MyGame::restart() {
 void MyGame::keyPressEvent(QKeyEvent *event) {
 	prsd_kys->insert(event->key());
 	if (event->key() == Qt::Key_Escape) {
-		// Pause everything using signals
-		killTimer(tmr_id);
-		emit gamePaused();
+		pause();
 	}
 	if (event->key() == Qt::Key_F) {
 		change_speed();
@@ -92,7 +121,6 @@ void MyGame::keyReleaseEvent(QKeyEvent *event) {
 void MyGame::timerEvent(QTimerEvent *event) {
 	setSceneRect(sceneRect().x() + MyRes::vw_mvmnt, 0, viewport()->frameGeometry().width(),
 	             viewport()->frameGeometry().height());
-	// Update using signals
 	QList<QGraphicsItem *> items = scene()->items();
 			foreach(QGraphicsItem *i, items) {
 			if (dynamic_cast<MyAlien *>(i)) {

@@ -60,6 +60,8 @@ private:
 
 	void change_speed();
 
+	void pause();
+
 	void unpause();
 
 	void restart();
