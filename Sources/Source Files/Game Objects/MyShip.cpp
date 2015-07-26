@@ -172,25 +172,22 @@ void MyShip::game_unpaused() {
 void MyShip::cllsn_dtctn() {
 	QList<QGraphicsItem *> clldng_items = collidingItems(Qt::ItemSelectionMode::IntersectsItemShape);
 			foreach(QGraphicsItem *i, clldng_items) {
-			if (dynamic_cast<MyLife *>(i)) {
+			if (dynamic_cast<MyLife *>(i) && dynamic_cast<MyLife *>(i)->isVisible()) {
 				ply_sf(const_cast<QString &>(MyRes::sf_lf_add));
 				lf++;
-//				scene()->removeItem(i);
 				dynamic_cast<MyLife *>(i)->hide();
 			}
-			else if (dynamic_cast<MyMagic *>(i)) {
+			else if (dynamic_cast<MyMagic *>(i) && dynamic_cast<MyMagic *>(i)->isVisible()) {
 				ply_sf(const_cast<QString &>(MyRes::sf_mgc_add));
 				activate_mgc();
-//				scene()->removeItem(i);
 				dynamic_cast<MyMagic *>(i)->hide();
 			}
-			else if (dynamic_cast<MyShield *>(i)) {
+			else if (dynamic_cast<MyShield *>(i) && dynamic_cast<MyShield *>(i)->isVisible()) {
 				ply_sf(const_cast<QString &>(MyRes::sf_shld_add));
 				activate_shld();
-//				scene()->removeItem(i);
 				dynamic_cast<MyShield *>(i)->hide();
 			}
-			else if (dynamic_cast<MyShip *>(i)) {
+			else if (dynamic_cast<MyShip *>(i) && dynamic_cast<MyShip *>(i)->isVisible()) {
 				ply_sf(const_cast<QString &>(MyRes::sf_shp_shp_add));
 				lf--;
 			}
@@ -199,13 +196,12 @@ void MyShip::cllsn_dtctn() {
 				lf--;
 				dynamic_cast<MyShipShield *>(i)->dstry();
 			}
-			else if (dynamic_cast<MyStar *>(i)) {
+			else if (dynamic_cast<MyStar *>(i) && dynamic_cast<MyStar *>(i)->isVisible()) {
 				ply_sf(const_cast<QString &>(MyRes::sf_str_add));
 				scr++;
-//				scene()->removeItem(i);
 				dynamic_cast<MyStar *>(i)->hide();
 			}
-			else if (dynamic_cast<MyAlien *>(i)) {
+			else if (dynamic_cast<MyAlien *>(i) && dynamic_cast<MyAlien *>(i)->isVisible()) {
 				if (dynamic_cast<MyAlien *>(i)->getTyp() == 0) {
 					ply_sf(const_cast<QString &>(MyRes::sf_expln_aln_bg_add));
 					MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_aln_bg_size));
@@ -230,10 +226,9 @@ void MyShip::cllsn_dtctn() {
 				}
 				lf--;
 				dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
-//				scene()->removeItem(i);
 				dynamic_cast<MyAlien *>(i)->hide();
 			}
-			else if (dynamic_cast<MyAsteroid *>(i)) {
+			else if (dynamic_cast<MyAsteroid *>(i) && dynamic_cast<MyAsteroid *>(i)->isVisible()) {
 				ply_sf(const_cast<QString &>(MyRes::sf_expln_astrd_add));
 				MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_astrd_size));
 				expln->setPos(
@@ -243,10 +238,9 @@ void MyShip::cllsn_dtctn() {
 						(MyRes::expln_astrd_size.height() / 2) + MyRes::expln_astrd_crrctn);
 				scene()->addItem(expln);
 				lf--;
-//				scene()->removeItem(i);
 				dynamic_cast<MyAsteroid *>(i)->hide();
 			}
-			else if (dynamic_cast<MyBullet *>(i)) {
+			else if (dynamic_cast<MyBullet *>(i) && dynamic_cast<MyBullet *>(i)->isVisible()) {
 				ply_sf(const_cast<QString &>(MyRes::sf_expln_lsr_add));
 				MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_lsr_size));
 				expln->setPos(dynamic_cast<MyBullet *>(i)->x() + (dynamic_cast<MyBullet *>(i)->pixmap().width() / 2) -
@@ -255,7 +249,6 @@ void MyShip::cllsn_dtctn() {
 				              (MyRes::expln_lsr_size.height() / 2) + MyRes::expln_lsr_crrctn);
 				scene()->addItem(expln);
 				lf--;
-//				scene()->removeItem(i);
 				dynamic_cast<MyBullet *>(i)->hide();
 			}
 		}

@@ -34,7 +34,7 @@ void MyBullet::ply_sf(QString &add) {
 void MyBullet::cllsn_dtctn() {
 	QList<QGraphicsItem *> clldng_items = collidingItems(Qt::ItemSelectionMode::IntersectsItemShape);
 			foreach(QGraphicsItem *i, clldng_items) {
-			if (dynamic_cast<MyAlien *>(i) && vlc->x() > 0) {
+			if (dynamic_cast<MyAlien *>(i) && dynamic_cast<MyAlien *>(i)->isVisible() && vlc->x() > 0) {
 				if (dynamic_cast<MyAlien *>(i)->getTyp() == 0) {
 					ply_sf(const_cast<QString &>(MyRes::sf_expln_aln_bg_add));
 					MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_aln_bg_size));
@@ -66,12 +66,11 @@ void MyBullet::cllsn_dtctn() {
 
 				dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
 				dynamic_cast<MyAlien *>(i)->hide();
-//				scene()->removeItem(i);
 				hide();
 				ply_sf(const_cast<QString &>(MyRes::sf_str_add));
 				emit scrGained();
 			}
-			else if (dynamic_cast<MyAsteroid *>(i) && vlc->x() > 0) {
+			else if (dynamic_cast<MyAsteroid *>(i) && dynamic_cast<MyAsteroid *>(i)->isVisible() && vlc->x() > 0) {
 				ply_sf(const_cast<QString &>(MyRes::sf_expln_astrd_add));
 				MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_astrd_size));
 				expln->setPos(
@@ -89,7 +88,6 @@ void MyBullet::cllsn_dtctn() {
 				scene()->addItem(expln);
 
 				dynamic_cast<MyAsteroid *>(i)->hide();
-//				scene()->removeItem(i);
 				hide();
 			}
 		}
