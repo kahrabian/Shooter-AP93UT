@@ -31,9 +31,11 @@ MyGame::MyGame(QWidget *parent) :
 //
 	tmp1 = new MyAlien();
 	tmp1->setPos(1500, 50);
-	gscn->addItem(tmp1);//	tmp2 = new MyAsteroid();
-//	tmp2->setPos(1000, 50);
-//	gscn->addItem(tmp2);
+	gscn->addItem(tmp1);
+
+	tmp2 = new MyAsteroid();
+	tmp2->setPos(1000, 400);
+	gscn->addItem(tmp2);
 
 
 	tmp2 = new MyAsteroid();
@@ -43,7 +45,7 @@ MyGame::MyGame(QWidget *parent) :
 //	tmp6 = new MyStar();
 //	tmp6->setPos(200, 100);
 //	gscn->addItem(tmp6);
-//
+
 	tmp5 = new MyShield();
 	tmp5->setPos(200, 50);
 	gscn->addItem(tmp5);
@@ -72,7 +74,6 @@ void MyGame::change_speed() {
 			}
 		}
 }
-
 
 void MyGame::pause() {
 	killTimer(tmr_id);
@@ -207,5 +208,10 @@ void MyGame::timerEvent(QTimerEvent *event) {
 					scene()->removeItem(i);
 				}
 			}
+		}
+	items = scene()->items();
+			foreach(QGraphicsItem *i, items) {
+			if (!dynamic_cast<MyShipShield *>(i) && !i->isVisible())
+				scene()->removeItem(i);
 		}
 }

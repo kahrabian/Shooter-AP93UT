@@ -191,7 +191,8 @@ void MyShip::cllsn_dtctn() {
 				ply_sf(const_cast<QString &>(MyRes::sf_shp_shp_add));
 				lf--;
 			}
-			else if (dynamic_cast<MyShipShield *>(i) && dynamic_cast<MyShipShield *>(i) != shpshld) {
+			else if (dynamic_cast<MyShipShield *>(i) && dynamic_cast<MyShipShield *>(i)->isVisible() &&
+			         dynamic_cast<MyShipShield *>(i) != shpshld) {
 				ply_sf(const_cast<QString &>(MyRes::sf_expln_shpshld_add));
 				lf--;
 				dynamic_cast<MyShipShield *>(i)->dstry();
