@@ -48,15 +48,6 @@ private:
 	QGraphicsScene *gscn;
 	QGraphicsScene *gscn_s;
 
-//	MyShip *tmp;
-//	MyAlien *tmp1;
-//	MyAsteroid *tmp2;
-//	MyExplosion *tmp7;
-//	MyLife *tmp3;
-//	MyMagic *tmp4;
-//	MyShield *tmp5;
-//	MyStar *tmp6;
-
 	int tmr_id;
 
 	void change_speed();
