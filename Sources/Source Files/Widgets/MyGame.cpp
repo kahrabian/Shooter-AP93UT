@@ -20,14 +20,11 @@ MyGame::MyGame(QWidget *parent) :
 		QGraphicsPixmapItem *stg = new QGraphicsPixmapItem(
 				QPixmap(MyRes::stg_add[i]).scaled(MyRes::stg_size, Qt::IgnoreAspectRatio,
 				                                  Qt::SmoothTransformation));
-		stg->setPos(MyRes::app_size.width() + i * (MyRes::stg_size.width() + MyRes::app_size.width() +
-		                                           (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()), 0);
+		stg->setPos(i * (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()), 0);
 		gscn->addItem(stg);
 	}
 
 	restart();
-	setScene(gscn);
-	setSceneRect(viewport()->frameGeometry());
 	tmr_id = startTimer(MyRes::frm_dly);
 }
 
@@ -63,6 +60,9 @@ void MyGame::restart() {
 		                     MyRes::txtitem_y_crrctn);
 		gscn->addItem(test->scr_txt);
 		gscn->addItem(test->lf_txt);
+		setScene(gscn);
+		setSceneRect(viewport()->frameGeometry());
+		bld_stg1();
 	}
 //	else if(tmp == "1") {
 //
@@ -100,7 +100,7 @@ void MyGame::pause() {
 			if (dynamic_cast<MyAlien *>(i)) {
 				dynamic_cast<MyAlien *>(i)->game_paused();
 			}
-			if (dynamic_cast<MyShip *>(i)) {
+			else if (dynamic_cast<MyShip *>(i)) {
 				dynamic_cast<MyShip *>(i)->game_paused();
 			}
 		}
@@ -117,11 +117,36 @@ void MyGame::unpause() {
 			if (dynamic_cast<MyAlien *>(i)) {
 				dynamic_cast<MyAlien *>(i)->game_unpaused();
 			}
-			if (dynamic_cast<MyShip *>(i)) {
+			else if (dynamic_cast<MyShip *>(i)) {
 				dynamic_cast<MyShip *>(i)->game_unpaused();
 			}
 		}
 	prsd_kys->clear();
+}
+
+void MyGame::bld_stg1() {
+	QTextStream X(stderr);
+	for (int i = 0; i < 20; i++) {
+		MyAsteroid *tmp = new MyAsteroid();
+		tmp->setPos(MyRes::app_size.width() +
+		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
+		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
+		tmp->updt();
+		scene()->addItem(tmp);
+		X << tmp->x() << endl;
+	}
+}
+
+void MyGame::bld_stg2() {
+
+}
+
+void MyGame::bld_stg3() {
+
+}
+
+void MyGame::bld_bss() {
+
 }
 
 void MyGame::keyPressEvent(QKeyEvent *event) {
@@ -141,8 +166,9 @@ void MyGame::keyReleaseEvent(QKeyEvent *event) {
 void MyGame::timerEvent(QTimerEvent *event) {
 	setSceneRect(sceneRect().x() + MyRes::vw_mvmnt, 0, viewport()->frameGeometry().width(),
 	             viewport()->frameGeometry().height());
-	QList<QGraphicsItem *> items = scene()->items();
-			foreach(QGraphicsItem *i, items) {
+//	QList<QGraphicsItem *> items = scene()->items();
+	QList<QGraphicsItem *> itms = items(geometry());
+			foreach(QGraphicsItem *i, itms) {
 			if (dynamic_cast<MyAlien *>(i)) {
 				dynamic_cast<MyAlien *>(i)->updt();
 				if (!dynamic_cast<MyAlien *>(i)->isVisible() ||
@@ -224,8 +250,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				}
 			}
 		}
-	items = scene()->items();
-			foreach(QGraphicsItem *i, items) {
+	itms = items(geometry());
+			foreach(QGraphicsItem *i, itms) {
 			if (!dynamic_cast<MyShipShield *>(i) && !dynamic_cast<MyShip *>(i) && !i->isVisible()) {
 				scene()->removeItem(i);
 			}

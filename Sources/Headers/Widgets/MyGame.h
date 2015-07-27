@@ -56,6 +56,14 @@ private:
 
 	void change_speed();
 
+	void bld_stg1();
+
+	void bld_stg2();
+
+	void bld_stg3();
+
+	void bld_bss();
+
 	void pause();
 
 	void unpause();

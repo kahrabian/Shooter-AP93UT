@@ -10,6 +10,7 @@
 #include <QVector>
 #include <QMediaPlaylist>
 #include <QRect>
+#include <QFont>
 #include <Sources/Headers/SettingData.h>
 
 namespace MyRes {
@@ -30,6 +31,7 @@ namespace MyRes {
     const int astrd_typcnt = 7;
 
     // Game properties
+    const int shp_lf = 10;
     const int spcl_tm = 5000;
     const int aln_lsrdly = 500;
     const int shp_lsrdly = 400;
@@ -62,6 +64,7 @@ namespace MyRes {
     extern const QSize expln_lsr_size;
     extern const QSize expln_shp_size;
     extern const QSize expln_astrd_size;
+    extern const QFont txt_font;
 
     // Contents size
     extern const QSize img_init_size;

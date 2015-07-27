@@ -22,12 +22,12 @@ namespace MyRes {
     const QSize expln_lsr_size(75, 75);
     const QSize expln_shp_size(300, 300);
     const QSize expln_astrd_size(400, 400);
+    const QFont txt_font("Times", 14, QFont::Bold);
 
     // Contents size
     const QSize img_init_size(541, 323);
     const QSize app_size(1120, 630);
-    const QRect scn_rct(0, 0, stg_cnt * (app_size.width() + stg_size.width() + app_size.width() + (gm_drtn / frm_dly)) +
-                              app_size.width(), app_size.height());
+    const QRect scn_rct(0, 0, stg_cnt * (app_size.width() + (gm_drtn / frm_dly) + app_size.width()), app_size.height());
     const QSize tl_size(50, 50);
 
     // Resource location addresses
