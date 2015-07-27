@@ -8,7 +8,12 @@ MyShip::MyShip(const QPixmap &pixmap, QString *name) :
 		QGraphicsPixmapItem(pixmap.scaled(MyRes::shp_size, Qt::KeepAspectRatio,
 		                                  Qt::SmoothTransformation)), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
-	setPos(MyRes::x_offset, MyRes::y_offset);
+	if (*name == "1") {
+		setPos(MyRes::x_offset, MyRes::y_offset);
+	}
+	else {
+		setPos(MyRes::x_offset, MyRes::app_size.height() - MyRes::shp_size.height() - MyRes::y_offset);
+	}
 	MyShip::name = name;
 	fast = false;
 	rtn = 0;
@@ -34,16 +39,12 @@ MyShip::MyShip(const QPixmap &pixmap, QString *name) :
 	if (*MyShip::name == "1") {
 		scr_txt = new QGraphicsTextItem(SettingData::p1_nm + " Score: " + QString::number(scr));
 		scr_txt->setFont(QFont("Times", 14, QFont::Bold));
-	}
-	else {
-		scr_txt = new QGraphicsTextItem(SettingData::p2_nm + " Score: " + QString::number(scr));
-		scr_txt->setFont(QFont("Times", 14, QFont::Bold));
-	}
-	if (*MyShip::name == "1") {
 		lf_txt = new QGraphicsTextItem(SettingData::p1_nm + " Life: " + QString::number(lf));
 		lf_txt->setFont(QFont("Times", 14, QFont::Bold));
 	}
 	else {
+		scr_txt = new QGraphicsTextItem(SettingData::p2_nm + " Score: " + QString::number(scr));
+		scr_txt->setFont(QFont("Times", 14, QFont::Bold));
 		lf_txt = new QGraphicsTextItem(SettingData::p2_nm + " Life: " + QString::number(lf));
 		lf_txt->setFont(QFont("Times", 14, QFont::Bold));
 	}
