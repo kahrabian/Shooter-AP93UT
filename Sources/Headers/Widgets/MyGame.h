@@ -34,6 +34,8 @@ public:
 
 	~MyGame();
 
+	void restart();
+
 signals:
 
 	void gamePaused();
@@ -50,13 +52,13 @@ private:
 
 	int tmr_id;
 
+	int cur_stg;
+
 	void change_speed();
 
 	void pause();
 
 	void unpause();
-
-	void restart();
 
 protected:
 	void keyPressEvent(QKeyEvent *);

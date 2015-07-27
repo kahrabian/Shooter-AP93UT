@@ -6,9 +6,10 @@
 
 MyGame::MyGame(QWidget *parent) :
 		QGraphicsView(parent) {
-	fast = false;
-	prsd_kys = new QSet<int>();
 	resize(MyRes::app_size);
+	fast = false;
+	cur_stg = 0;
+	prsd_kys = new QSet<int>();
 
 	gscn = new QGraphicsScene();
 	gscn->setSceneRect(MyRes::scn_rct);
@@ -24,34 +25,55 @@ MyGame::MyGame(QWidget *parent) :
 		gscn->addItem(stg);
 	}
 
-	// Test
-	MyShip *tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("1"));
-	gscn->addItem(tmp);
-	gscn->addItem(tmp->shpshld);
-	tmp->scr_txt->setPos(size().width() - tmp->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
-	                     MyRes::txtitem_y_crrctn);
-	tmp->lf_txt->setPos(size().width() - tmp->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
-	                    MyRes::txtitem_y_crrctn + tmp->scr_txt->boundingRect().height());
-	gscn->addItem(tmp->scr_txt);
-	gscn->addItem(tmp->lf_txt);
-
-	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("2"));
-	gscn->addItem(tmp);
-	gscn->addItem(tmp->shpshld);
-	tmp->scr_txt->setPos(size().width() - tmp->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
-	                     size().height() - tmp->scr_txt->boundingRect().height() - MyRes::txtitem_y_crrctn);
-	tmp->lf_txt->setPos(size().width() - tmp->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
-	                    size().height() - tmp->scr_txt->boundingRect().height() - tmp->lf_txt->boundingRect().height() -
-			                    MyRes::txtitem_y_crrctn);
-	gscn->addItem(tmp->scr_txt);
-	gscn->addItem(tmp->lf_txt);
-
+	restart();
 	setScene(gscn);
 	setSceneRect(viewport()->frameGeometry());
 	tmr_id = startTimer(MyRes::frm_dly);
 }
 
 MyGame::~MyGame() { }
+
+void MyGame::restart() {
+	QFile file(MyRes::stng_add);
+	file.open(QIODevice::ReadOnly | QIODevice::Text);
+	QTextStream stream(&file);
+	QString tmp;
+	stream >> tmp;
+	file.close();
+
+	if (tmp == "0") {
+		MyShip *test = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("1"));
+		gscn->addItem(test);
+		gscn->addItem(test->shpshld);
+		test->scr_txt->setPos(size().width() - test->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+		                      MyRes::txtitem_y_crrctn);
+		test->lf_txt->setPos(size().width() - test->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+		                     MyRes::txtitem_y_crrctn + test->scr_txt->boundingRect().height());
+		gscn->addItem(test->scr_txt);
+		gscn->addItem(test->lf_txt);
+
+		test = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("2"));
+		gscn->addItem(test);
+		gscn->addItem(test->shpshld);
+		test->scr_txt->setPos(size().width() - test->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+		                      size().height() - test->scr_txt->boundingRect().height() - MyRes::txtitem_y_crrctn);
+		test->lf_txt->setPos(size().width() - test->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+		                     size().height() - test->scr_txt->boundingRect().height() -
+		                     test->lf_txt->boundingRect().height() -
+		                     MyRes::txtitem_y_crrctn);
+		gscn->addItem(test->scr_txt);
+		gscn->addItem(test->lf_txt);
+	}
+//	else if(tmp == "1") {
+//
+//	}
+//	else if(tmp == "2") {
+//
+//	}
+//	else if(tmp == "3") {
+//
+//	}
+}
 
 void MyGame::change_speed() {
 	fast = !fast;
@@ -100,9 +122,6 @@ void MyGame::unpause() {
 			}
 		}
 	prsd_kys->clear();
-}
-
-void MyGame::restart() {
 }
 
 void MyGame::keyPressEvent(QKeyEvent *event) {
