@@ -33,6 +33,7 @@ namespace MyRes {
     const int spcl_tm = 5000;
     const int aln_lsrdly = 500;
     const int shp_lsrdly = 400;
+    const int stg_cnt = 3;
     const int rtn_max = 30;
     const int rtn_stp = 3;
     const int lsr_rtn_max = 30;
@@ -43,6 +44,7 @@ namespace MyRes {
     const int expln_aln_bg_crrctn = 30;
     const int expln_aln_smll_crrctn = 15;
     const int expln_lsr_crrctn = 7;
+    extern const QSize stg_size;
     extern const QSize lf_size;
     extern const QSize lsr_size;
     extern const QSize str_size;
@@ -87,6 +89,7 @@ namespace MyRes {
     extern const QString background_add;
     extern const QString scrnsht_add;
     extern const QString mainwin_icon_add;
+    extern const QString stg_add[stg_cnt];
     extern const QString sf_expln_aln_bg_add;
     extern const QString sf_expln_aln_smll_add;
     extern const QString sf_expln_astrd_add;

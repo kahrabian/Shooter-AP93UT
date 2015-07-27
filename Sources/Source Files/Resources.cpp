@@ -6,6 +6,7 @@
 
 namespace MyRes {
     // Game properties
+    const QSize stg_size(150, 630);
     const QSize lf_size(35, 35);
     const QSize lsr_size(30, 8);
     const QSize str_size(30, 30);
@@ -25,7 +26,8 @@ namespace MyRes {
     // Contents size
     const QSize img_init_size(541, 323);
     const QSize app_size(1120, 630);
-    const QRect scn_rct(0, 0, app_size.width() + (gm_drtn / frm_dly), app_size.height());
+    const QRect scn_rct(0, 0, stg_cnt * (app_size.width() + stg_size.width() + app_size.width() + (gm_drtn / frm_dly)) +
+                              app_size.width(), app_size.height());
     const QSize tl_size(50, 50);
 
     // Resource location addresses
@@ -164,6 +166,7 @@ namespace MyRes {
     const QString background_add("{background-image: url(Resources/main_background.jpg);}");
     const QString scrnsht_add("Resources/scrnsht.png");
     const QString mainwin_icon_add("Resources/icon.ico");
+    const QString stg_add[stg_cnt] = {"Resources/stg1.png", "Resources/stg2.png", "Resources/stg3.png"};
     const QString sf_expln_aln_bg_add(
 		    "/home/kahrabian/ClionProjects/Shooter-AP93UT/Resources/Sound Effects/Explosions/expln_aln_bg.wav");
     const QString sf_expln_aln_smll_add(

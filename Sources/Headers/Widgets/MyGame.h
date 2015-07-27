@@ -48,19 +48,14 @@ private:
 	QGraphicsScene *gscn;
 	QGraphicsScene *gscn_s;
 
-	QGraphicsTextItem *stg_1;
-	QGraphicsTextItem *stg_2;
-	QGraphicsTextItem *stg_3;
-	QGraphicsTextItem *stg_4;
-
-	MyShip *tmp;
-	MyAlien *tmp1;
-	MyAsteroid *tmp2;
-	MyExplosion *tmp7;
-	MyLife *tmp3;
-	MyMagic *tmp4;
-	MyShield *tmp5;
-	MyStar *tmp6;
+//	MyShip *tmp;
+//	MyAlien *tmp1;
+//	MyAsteroid *tmp2;
+//	MyExplosion *tmp7;
+//	MyLife *tmp3;
+//	MyMagic *tmp4;
+//	MyShield *tmp5;
+//	MyStar *tmp6;
 
 	int tmr_id;
 

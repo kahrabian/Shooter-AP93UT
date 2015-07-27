@@ -15,8 +15,17 @@ MyGame::MyGame(QWidget *parent) :
 	gscn->setBackgroundBrush(
 			QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(MyRes::tl_size, Qt::KeepAspectRatio,
 			                                                        Qt::SmoothTransformation)));
+	for (int i = 0; i < MyRes::stg_cnt; i++) {
+		QGraphicsPixmapItem *stg = new QGraphicsPixmapItem(
+				QPixmap(MyRes::stg_add[i]).scaled(MyRes::stg_size, Qt::IgnoreAspectRatio,
+				                                  Qt::SmoothTransformation));
+		stg->setPos(MyRes::app_size.width() + i * (MyRes::stg_size.width() + MyRes::app_size.width() +
+		                                           (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()), 0);
+		gscn->addItem(stg);
+	}
+
 	// Test
-	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("1"));
+	MyShip *tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("1"));
 	gscn->addItem(tmp);
 	gscn->addItem(tmp->shpshld);
 	gscn->addItem(tmp->scr_txt);
@@ -31,26 +40,26 @@ MyGame::MyGame(QWidget *parent) :
 //	tmp7->setPos(300, 50);
 //	gscn->addItem(tmp7);
 //
-	tmp1 = new MyAlien();
-	tmp1->setPos(1500, 50);
-	gscn->addItem(tmp1);
-
-	tmp2 = new MyAsteroid();
-	tmp2->setPos(1000, 400);
-	gscn->addItem(tmp2);
-
-
-	tmp2 = new MyAsteroid();
-	tmp2->setPos(1000, 50);
-	gscn->addItem(tmp2);
-
+//	tmp1 = new MyAlien();
+//	tmp1->setPos(1500, 50);
+//	gscn->addItem(tmp1);
+//
+//	tmp2 = new MyAsteroid();
+//	tmp2->setPos(1000, 400);
+//	gscn->addItem(tmp2);
+//
+//
+//	tmp2 = new MyAsteroid();
+//	tmp2->setPos(1000, 50);
+//	gscn->addItem(tmp2);
+//
 //	tmp6 = new MyStar();
 //	tmp6->setPos(200, 100);
 //	gscn->addItem(tmp6);
-
-	tmp5 = new MyShield();
-	tmp5->setPos(200, 50);
-	gscn->addItem(tmp5);
+//
+//	tmp5 = new MyShield();
+//	tmp5->setPos(200, 50);
+//	gscn->addItem(tmp5);
 
 	setScene(gscn);
 	setSceneRect(viewport()->frameGeometry());

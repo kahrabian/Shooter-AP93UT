@@ -272,16 +272,16 @@ void MyShip::updt_txt() {
 	scr_txt->setPos(scr_txt->pos().x() + MyRes::vw_mvmnt, scr_txt->pos().y());
 	lf_txt->setPos(lf_txt->pos().x() + MyRes::vw_mvmnt, lf_txt->pos().y());
 	if (*MyShip::name == "1") {
-		scr_txt->setPlainText(SettingData::p1_nm + " Score: " + QString(scr));
+		scr_txt->setPlainText(SettingData::p1_nm + " Score: " + QString::number(scr));
 	}
 	else {
-		scr_txt->setPlainText(SettingData::p2_nm + " Score: " + QString(scr));
+		scr_txt->setPlainText(SettingData::p2_nm + " Score: " + QString::number(scr));
 	}
 	if (*MyShip::name == "1") {
-		lf_txt->setPlainText(SettingData::p1_nm + " Life: " + QString(lf));
+		lf_txt->setPlainText(SettingData::p1_nm + " Life: " + QString::number(lf));
 	}
 	else {
-		lf_txt->setPlainText(SettingData::p2_nm + " Life: " + QString(lf));
+		lf_txt->setPlainText(SettingData::p2_nm + " Life: " + QString::number(lf));
 	}
 }
 
