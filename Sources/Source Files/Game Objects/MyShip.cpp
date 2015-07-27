@@ -229,6 +229,7 @@ void MyShip::cllsn_dtctn() {
 					                                                       2) -
 					                                                      (MyRes::expln_aln_bg_size.height() / 2) +
 							MyRes::expln_aln_bg_crrctn);
+					expln->updt();
 					scene()->addItem(expln);
 				}
 				else {
@@ -240,6 +241,7 @@ void MyShip::cllsn_dtctn() {
 					                                                         2) -
 					                                                        (MyRes::expln_aln_smll_size.height() / 2) +
 					                                                        MyRes::expln_aln_smll_crrctn);
+					expln->updt();
 					scene()->addItem(expln);
 				}
 				lf--;
@@ -254,6 +256,7 @@ void MyShip::cllsn_dtctn() {
 						(MyRes::expln_astrd_size.width() / 2),
 						dynamic_cast<MyAsteroid *>(i)->y() + (dynamic_cast<MyAsteroid *>(i)->pixmap().height() / 2) -
 						(MyRes::expln_astrd_size.height() / 2) + MyRes::expln_astrd_crrctn);
+				expln->updt();
 				scene()->addItem(expln);
 				lf--;
 				dynamic_cast<MyAsteroid *>(i)->hide();
@@ -265,6 +268,7 @@ void MyShip::cllsn_dtctn() {
 				              (MyRes::expln_lsr_size.width() / 2),
 				              dynamic_cast<MyBullet *>(i)->y() + (dynamic_cast<MyBullet *>(i)->pixmap().height() / 2) -
 				              (MyRes::expln_lsr_size.height() / 2) + MyRes::expln_lsr_crrctn);
+				expln->updt();
 				scene()->addItem(expln);
 				lf--;
 				dynamic_cast<MyBullet *>(i)->hide();

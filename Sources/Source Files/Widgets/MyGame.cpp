@@ -167,8 +167,11 @@ void MyGame::timerEvent(QTimerEvent *event) {
 	setSceneRect(sceneRect().x() + MyRes::vw_mvmnt, 0, viewport()->frameGeometry().width(),
 	             viewport()->frameGeometry().height());
 //	QList<QGraphicsItem *> items = scene()->items();
+	QTextStream X(stderr);
+	X << items(geometry()).size() << endl;
 	QList<QGraphicsItem *> itms = items(geometry());
-			foreach(QGraphicsItem *i, itms) {
+
+	foreach(QGraphicsItem *i, itms) {
 			if (dynamic_cast<MyAlien *>(i)) {
 				dynamic_cast<MyAlien *>(i)->updt();
 				if (!dynamic_cast<MyAlien *>(i)->isVisible() ||
