@@ -44,6 +44,8 @@ namespace MyRes {
     const int expln_aln_bg_crrctn = 30;
     const int expln_aln_smll_crrctn = 15;
     const int expln_lsr_crrctn = 7;
+    const int txtitem_x_crrctn = 10;
+    const int txtitem_y_crrctn = 5;
     extern const QSize stg_size;
     extern const QSize lf_size;
     extern const QSize lsr_size;

@@ -28,9 +28,10 @@ MyGame::MyGame(QWidget *parent) :
 	MyShip *tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("1"));
 	gscn->addItem(tmp);
 	gscn->addItem(tmp->shpshld);
-	tmp->scr_txt->setPos(size().width() - tmp->scr_txt->boundingRect().width() - 10, 5);
-	tmp->lf_txt->setPos(size().width() - tmp->lf_txt->boundingRect().width() - 10,
-	                    5 + tmp->scr_txt->boundingRect().height());
+	tmp->scr_txt->setPos(size().width() - tmp->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+	                     MyRes::txtitem_y_crrctn);
+	tmp->lf_txt->setPos(size().width() - tmp->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+	                    MyRes::txtitem_y_crrctn + tmp->scr_txt->boundingRect().height());
 	gscn->addItem(tmp->scr_txt);
 	gscn->addItem(tmp->lf_txt);
 
@@ -38,11 +39,11 @@ MyGame::MyGame(QWidget *parent) :
 	tmp->setPos(20, 400);
 	gscn->addItem(tmp);
 	gscn->addItem(tmp->shpshld);
-	tmp->scr_txt->setPos(size().width() - tmp->scr_txt->boundingRect().width() - 10,
-	                     size().height() - tmp->scr_txt->boundingRect().height() - 5);
-	tmp->lf_txt->setPos(size().width() - tmp->lf_txt->boundingRect().width() - 10,
+	tmp->scr_txt->setPos(size().width() - tmp->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+	                     size().height() - tmp->scr_txt->boundingRect().height() - MyRes::txtitem_y_crrctn);
+	tmp->lf_txt->setPos(size().width() - tmp->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
 	                    size().height() - tmp->scr_txt->boundingRect().height() - tmp->lf_txt->boundingRect().height() -
-	                    5);
+			                    MyRes::txtitem_y_crrctn);
 	gscn->addItem(tmp->scr_txt);
 	gscn->addItem(tmp->lf_txt);
 
