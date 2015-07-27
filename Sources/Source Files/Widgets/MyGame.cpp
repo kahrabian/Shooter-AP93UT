@@ -28,38 +28,23 @@ MyGame::MyGame(QWidget *parent) :
 	MyShip *tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("1"));
 	gscn->addItem(tmp);
 	gscn->addItem(tmp->shpshld);
+	tmp->scr_txt->setPos(size().width() - tmp->scr_txt->boundingRect().width() - 10, 5);
+	tmp->lf_txt->setPos(size().width() - tmp->lf_txt->boundingRect().width() - 10,
+	                    5 + tmp->scr_txt->boundingRect().height());
 	gscn->addItem(tmp->scr_txt);
-	tmp->scr_txt->setPos(0, 0);
+	gscn->addItem(tmp->lf_txt);
 
 	tmp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("2"));
 	tmp->setPos(20, 400);
 	gscn->addItem(tmp);
 	gscn->addItem(tmp->shpshld);
-
-//	tmp7 = new MyExplosion();
-//	tmp7->setPos(300, 50);
-//	gscn->addItem(tmp7);
-//
-//	tmp1 = new MyAlien();
-//	tmp1->setPos(1500, 50);
-//	gscn->addItem(tmp1);
-//
-//	tmp2 = new MyAsteroid();
-//	tmp2->setPos(1000, 400);
-//	gscn->addItem(tmp2);
-//
-//
-//	tmp2 = new MyAsteroid();
-//	tmp2->setPos(1000, 50);
-//	gscn->addItem(tmp2);
-//
-//	tmp6 = new MyStar();
-//	tmp6->setPos(200, 100);
-//	gscn->addItem(tmp6);
-//
-//	tmp5 = new MyShield();
-//	tmp5->setPos(200, 50);
-//	gscn->addItem(tmp5);
+	tmp->scr_txt->setPos(size().width() - tmp->scr_txt->boundingRect().width() - 10,
+	                     size().height() - tmp->scr_txt->boundingRect().height() - 5);
+	tmp->lf_txt->setPos(size().width() - tmp->lf_txt->boundingRect().width() - 10,
+	                    size().height() - tmp->scr_txt->boundingRect().height() - tmp->lf_txt->boundingRect().height() -
+	                    5);
+	gscn->addItem(tmp->scr_txt);
+	gscn->addItem(tmp->lf_txt);
 
 	setScene(gscn);
 	setSceneRect(viewport()->frameGeometry());

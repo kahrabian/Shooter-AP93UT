@@ -32,16 +32,20 @@ MyShip::MyShip(const QPixmap &pixmap, QString *name) :
 	lsr_tmr->start(MyRes::shp_lsrdly);
 
 	if (*MyShip::name == "1") {
-		scr_txt = new QGraphicsTextItem(SettingData::p1_nm + " Score: " + QString(scr));
+		scr_txt = new QGraphicsTextItem(SettingData::p1_nm + " Score: " + QString::number(scr));
+		scr_txt->setFont(QFont("Times", 14, QFont::Bold));
 	}
 	else {
-		scr_txt = new QGraphicsTextItem(SettingData::p2_nm + " Score: " + QString(scr));
+		scr_txt = new QGraphicsTextItem(SettingData::p2_nm + " Score: " + QString::number(scr));
+		scr_txt->setFont(QFont("Times", 14, QFont::Bold));
 	}
 	if (*MyShip::name == "1") {
-		lf_txt = new QGraphicsTextItem(SettingData::p1_nm + " Life: " + QString(lf));
+		lf_txt = new QGraphicsTextItem(SettingData::p1_nm + " Life: " + QString::number(lf));
+		lf_txt->setFont(QFont("Times", 14, QFont::Bold));
 	}
 	else {
-		lf_txt = new QGraphicsTextItem(SettingData::p2_nm + " Life: " + QString(lf));
+		lf_txt = new QGraphicsTextItem(SettingData::p2_nm + " Life: " + QString::number(lf));
+		lf_txt->setFont(QFont("Times", 14, QFont::Bold));
 	}
 
 	QTimer::connect(shld_tmr, SIGNAL(timeout()), this, SLOT(deactivate_shld()));
