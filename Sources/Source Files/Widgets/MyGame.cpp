@@ -207,7 +207,14 @@ void MyGame::timerEvent(QTimerEvent *event) {
 		}
 	items = scene()->items();
 			foreach(QGraphicsItem *i, items) {
-			if (!dynamic_cast<MyShipShield *>(i) && !i->isVisible())
+			if (!dynamic_cast<MyShipShield *>(i) && !dynamic_cast<MyShip *>(i) && !i->isVisible()) {
 				scene()->removeItem(i);
+			}
+			else if (dynamic_cast<MyShip *>(i) && !i->isVisible()) {
+				scene()->removeItem(dynamic_cast<MyShip *>(i)->shpshld);
+				scene()->removeItem(dynamic_cast<MyShip *>(i)->scr_txt);
+				scene()->removeItem(dynamic_cast<MyShip *>(i)->lf_txt);
+				scene()->removeItem(i);
+			}
 		}
 }

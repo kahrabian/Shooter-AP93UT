@@ -184,7 +184,6 @@ void MyShip::game_unpaused() {
 		}
 		activate_lsr();
 	}
-
 }
 
 void MyShip::cllsn_dtctn() {
@@ -405,4 +404,6 @@ void MyShip::updt(QSet<int> *prsd_kys) {
 	updt_rtn();
 	updt_pos();
 	updt_txt();
+	if (lf < 0)
+		hide();
 }
