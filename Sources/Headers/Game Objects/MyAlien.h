@@ -20,7 +20,7 @@ class MyAlien : public QObject, public QGraphicsPixmapItem {
 Q_OBJECT
 
 public:
-	MyAlien();
+	MyAlien(int);
 
 	~MyAlien();
 

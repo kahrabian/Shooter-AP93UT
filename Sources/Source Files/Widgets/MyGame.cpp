@@ -166,7 +166,15 @@ void MyGame::bld_stg1() {
 
 void MyGame::bld_stg2() {
 	for (int i = 0; i < 20 + 10 * SettingData::gDiff; i++) {
-		MyAlien *tmp = new MyAlien();
+		MyAlien *tmp = new MyAlien(1);
+		tmp->setPos(MyRes::app_size.width() +
+		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
+		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
+		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
+		scene()->addItem(tmp);
+	}
+	for (int i = 0; i < 0 + 10 * SettingData::gDiff; i++) {
+		MyAlien *tmp = new MyAlien(2);
 		tmp->setPos(MyRes::app_size.width() +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
@@ -176,6 +184,7 @@ void MyGame::bld_stg2() {
 	for (int i = 0; i < 3; i++) {
 		MyLife *tmp = new MyLife();
 		tmp->setPos(MyRes::app_size.width() +
+				            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
 		scene()->addItem(tmp);
@@ -183,6 +192,7 @@ void MyGame::bld_stg2() {
 	for (int i = 0; i < 6 - SettingData::gDiff; i++) {
 		MyShield *tmp = new MyShield();
 		tmp->setPos(MyRes::app_size.width() +
+				            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
 		scene()->addItem(tmp);
@@ -190,6 +200,7 @@ void MyGame::bld_stg2() {
 	for (int i = 0; i < 6 - SettingData::gDiff; i++) {
 		MyMagic *tmp = new MyMagic();
 		tmp->setPos(MyRes::app_size.width() +
+				            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
 		scene()->addItem(tmp);
@@ -197,6 +208,7 @@ void MyGame::bld_stg2() {
 	for (int i = 0; i < 30; i++) {
 		MyStar *tmp = new MyStar();
 		tmp->setPos(MyRes::app_size.width() +
+				            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
 		scene()->addItem(tmp);
@@ -204,7 +216,42 @@ void MyGame::bld_stg2() {
 }
 
 void MyGame::bld_stg3() {
-
+	for (int i = 0; i < 3; i++) {
+		MyLife *tmp = new MyLife();
+		tmp->setPos(MyRes::app_size.width() +
+		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
+		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
+		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
+		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
+		scene()->addItem(tmp);
+	}
+	for (int i = 0; i < 6 - SettingData::gDiff; i++) {
+		MyShield *tmp = new MyShield();
+		tmp->setPos(MyRes::app_size.width() +
+		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
+		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
+		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
+		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
+		scene()->addItem(tmp);
+	}
+	for (int i = 0; i < 6 - SettingData::gDiff; i++) {
+		MyMagic *tmp = new MyMagic();
+		tmp->setPos(MyRes::app_size.width() +
+		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
+		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
+		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
+		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
+		scene()->addItem(tmp);
+	}
+	for (int i = 0; i < 30; i++) {
+		MyStar *tmp = new MyStar();
+		tmp->setPos(MyRes::app_size.width() +
+		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
+		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
+		            g(rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
+		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
+		scene()->addItem(tmp);
+	}
 }
 
 void MyGame::bld_bss() {
@@ -230,8 +277,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 	             viewport()->frameGeometry().height());
 	QList<QGraphicsItem *> itms = scene()->items();
 	foreach(QGraphicsItem *i, itms) {
-//			if (!sceneRect().intersects(i->sceneBoundingRect()) && !dynamic_cast<MyShip *>(i))
-//				continue;
+			if (sceneRect().right() < i->sceneBoundingRect().left())
+				continue;
 			if (dynamic_cast<MyAlien *>(i)) {
 				dynamic_cast<MyAlien *>(i)->updt();
 				if (!dynamic_cast<MyAlien *>(i)->isVisible() ||

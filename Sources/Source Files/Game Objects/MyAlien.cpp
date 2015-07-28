@@ -4,12 +4,12 @@
 
 #include <Sources/Headers/Game Objects/MyAlien.h>
 
-MyAlien::MyAlien() :
+MyAlien::MyAlien(int typ) :
 		QGraphicsPixmapItem(), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	fast = false;
-	typ = rand() % 2;
-	if (typ == 0) {
+	MyAlien::typ = typ;
+	if (typ == 1) {
 		setPixmap(QPixmap(MyRes::aln_nrml_adds[rand() % MyRes::aln_nrml_cnt]).scaled(MyRes::aln_bgsize,
 		                                                                             Qt::KeepAspectRatio,
 		                                                                             Qt::SmoothTransformation));
@@ -86,7 +86,7 @@ void MyAlien::ply_sf(QString &add) {
 }
 
 void MyAlien::timerEvent(QTimerEvent *event) {
-	if (typ == 1 && scene()->views().first()->sceneRect().intersects(sceneBoundingRect())) {
+	if (typ == 2 && scene()->views().first()->sceneRect().intersects(sceneBoundingRect())) {
 		ply_sf(const_cast<QString &>(MyRes::sf_aln_lsr_add));
 		MyBullet *tmp = new MyBullet(1, 0, -1);
 		tmp->setPos(pos().x(),
