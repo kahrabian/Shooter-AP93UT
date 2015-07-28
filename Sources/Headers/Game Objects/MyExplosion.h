@@ -29,7 +29,7 @@ private:
 
 	QPointF *vlc;
 
-	QPixmap *expln_frms;
+	QPixmap **expln_frms;
 };
 
 #endif //SHOOTER_AP93UT_MYEXPLOSION_H

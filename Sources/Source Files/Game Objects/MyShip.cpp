@@ -59,7 +59,13 @@ MyShip::MyShip(const QPixmap &pixmap, QString *name) :
 }
 
 MyShip::~MyShip() {
-
+	delete shpshld;
+	delete scr_txt;
+	delete lf_txt;
+	delete name;
+	delete mgc_tmr;
+	delete lsr_tmr;
+	delete vlc;
 }
 
 void MyShip::cnstrct_shldpxmp() {

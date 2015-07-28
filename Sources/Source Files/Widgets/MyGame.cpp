@@ -49,20 +49,22 @@ void MyGame::restart() {
 		gscn->addItem(test->scr_txt);
 		gscn->addItem(test->lf_txt);
 
-		test = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("2"));
-		gscn->addItem(test);
-		gscn->addItem(test->shpshld);
-		test->scr_txt->setPos(size().width() - test->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
-		                      size().height() - test->scr_txt->boundingRect().height() - MyRes::txtitem_y_crrctn);
-		test->lf_txt->setPos(size().width() - test->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
-		                     size().height() - test->scr_txt->boundingRect().height() -
-		                     test->lf_txt->boundingRect().height() -
-		                     MyRes::txtitem_y_crrctn);
-		gscn->addItem(test->scr_txt);
-		gscn->addItem(test->lf_txt);
+//		test = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("2"));
+//		gscn->addItem(test);
+//		gscn->addItem(test->shpshld);
+//		test->scr_txt->setPos(size().width() - test->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+//		                      size().height() - test->scr_txt->boundingRect().height() - MyRes::txtitem_y_crrctn);
+//		test->lf_txt->setPos(size().width() - test->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+//		                     size().height() - test->scr_txt->boundingRect().height() -
+//		                     test->lf_txt->boundingRect().height() -
+//		                     MyRes::txtitem_y_crrctn);
+//		gscn->addItem(test->scr_txt);
+//		gscn->addItem(test->lf_txt);
+
 		setScene(gscn);
 		setSceneRect(viewport()->frameGeometry());
 		bld_stg1();
+		bld_stg2();
 	}
 //	else if(tmp == "1") {
 //
@@ -125,24 +127,80 @@ void MyGame::unpause() {
 }
 
 void MyGame::bld_stg1() {
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < 20 + 10 * SettingData::gDiff; i++) {
+		MyAsteroid *tmp = new MyAsteroid();
+		tmp->setPos(MyRes::app_size.width() +
+		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
+		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
+		scene()->addItem(tmp);
+	}
+	for (int i = 0; i < 3; i++) {
+		MyLife *tmp = new MyLife();
+		tmp->setPos(MyRes::app_size.width() +
+		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
+		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
+		scene()->addItem(tmp);
+	}
+	for (int i = 0; i < 6 - SettingData::gDiff; i++) {
 		MyShield *tmp = new MyShield();
 		tmp->setPos(MyRes::app_size.width() +
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
 		scene()->addItem(tmp);
 	}
-//	for (int i = 0; i < 100; i++) {
-//		MyAsteroid *tmp = new MyAsteroid();
-//		tmp->setPos(MyRes::app_size.width() +
-//		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
-//		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
-//		scene()->addItem(tmp);
-//	}
+	for (int i = 0; i < 6 - SettingData::gDiff; i++) {
+		MyMagic *tmp = new MyMagic();
+		tmp->setPos(MyRes::app_size.width() +
+		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
+		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
+		scene()->addItem(tmp);
+	}
+	for (int i = 0; i < 30; i++) {
+		MyStar *tmp = new MyStar();
+		tmp->setPos(MyRes::app_size.width() +
+		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
+		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
+		scene()->addItem(tmp);
+	}
 }
 
 void MyGame::bld_stg2() {
-
+	for (int i = 0; i < 20 + 10 * SettingData::gDiff; i++) {
+		MyAlien *tmp = new MyAlien();
+		tmp->setPos(MyRes::app_size.width() +
+		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
+		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
+		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
+		scene()->addItem(tmp);
+	}
+	for (int i = 0; i < 3; i++) {
+		MyLife *tmp = new MyLife();
+		tmp->setPos(MyRes::app_size.width() +
+		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
+		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
+		scene()->addItem(tmp);
+	}
+	for (int i = 0; i < 6 - SettingData::gDiff; i++) {
+		MyShield *tmp = new MyShield();
+		tmp->setPos(MyRes::app_size.width() +
+		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
+		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
+		scene()->addItem(tmp);
+	}
+	for (int i = 0; i < 6 - SettingData::gDiff; i++) {
+		MyMagic *tmp = new MyMagic();
+		tmp->setPos(MyRes::app_size.width() +
+		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
+		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
+		scene()->addItem(tmp);
+	}
+	for (int i = 0; i < 30; i++) {
+		MyStar *tmp = new MyStar();
+		tmp->setPos(MyRes::app_size.width() +
+		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
+		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
+		scene()->addItem(tmp);
+	}
 }
 
 void MyGame::bld_stg3() {
@@ -171,10 +229,6 @@ void MyGame::timerEvent(QTimerEvent *event) {
 	setSceneRect(sceneRect().x() + MyRes::vw_mvmnt, 0, viewport()->frameGeometry().width(),
 	             viewport()->frameGeometry().height());
 	QList<QGraphicsItem *> itms = scene()->items();
-//	QTextStream X(stderr);
-//	X << items(geometry()).size() << endl;
-//	QList<QGraphicsItem *> itms = items(geometry());
-
 	foreach(QGraphicsItem *i, itms) {
 			if (!sceneRect().intersects(i->sceneBoundingRect()))// && !dynamic_cast<MyShip *>(i))
 				continue;
@@ -186,6 +240,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyAlien *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
 					dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
 					scene()->removeItem(i);
+					MyAlien *tmp = dynamic_cast<MyAlien *>(i);
+					delete tmp;
 				}
 			}
 			else if (dynamic_cast<MyAsteroid *>(i)) {
@@ -195,6 +251,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyAsteroid *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
 				    dynamic_cast<MyAsteroid *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
 					scene()->removeItem(i);
+					MyAsteroid *tmp = dynamic_cast<MyAsteroid *>(i);
+					delete tmp;
 				}
 			}
 			else if (dynamic_cast<MyBullet *>(i)) {
@@ -205,6 +263,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyBullet *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
 				    dynamic_cast<MyBullet *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
 					scene()->removeItem(i);
+					MyBullet *tmp = dynamic_cast<MyBullet *>(i);
+					delete tmp;
 				}
 			}
 			else if (dynamic_cast<MyExplosion *>(i)) {
@@ -214,6 +274,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyExplosion *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
 				    dynamic_cast<MyExplosion *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
 					scene()->removeItem(i);
+//					MyExplosion *tmp = dynamic_cast<MyExplosion *>(i);
+//					delete tmp;
 				}
 			}
 			else if (dynamic_cast<MyLife *>(i)) {
@@ -223,6 +285,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyLife *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
 				    dynamic_cast<MyLife *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
 					scene()->removeItem(i);
+					MyLife *tmp = dynamic_cast<MyLife *>(i);
+					delete tmp;
 				}
 			}
 			else if (dynamic_cast<MyMagic *>(i)) {
@@ -232,6 +296,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyMagic *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
 				    dynamic_cast<MyMagic *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
 					scene()->removeItem(i);
+					MyMagic *tmp = dynamic_cast<MyMagic *>(i);
+					delete tmp;
 				}
 			}
 			else if (dynamic_cast<MyShield *>(i)) {
@@ -241,6 +307,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyShield *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
 				    dynamic_cast<MyShield *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
 					scene()->removeItem(i);
+					MyShield *tmp = dynamic_cast<MyShield *>(i);
+					delete tmp;
 				}
 			}
 			else if (dynamic_cast<MyShip *>(i)) {
@@ -256,6 +324,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyStar *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
 				    dynamic_cast<MyStar *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
 					scene()->removeItem(i);
+					MyStar *tmp = dynamic_cast<MyStar *>(i);
+					delete tmp;
 				}
 			}
 		}
@@ -264,12 +334,14 @@ void MyGame::timerEvent(QTimerEvent *event) {
 //			foreach(QGraphicsItem *i, itms) {
 //			if (!dynamic_cast<MyShipShield *>(i) && !dynamic_cast<MyShip *>(i) && !i->isVisible()) {
 //				scene()->removeItem(i);
+//				delete i;
 //			}
 //			else if (dynamic_cast<MyShip *>(i) && !i->isVisible()) {
 //				scene()->removeItem(dynamic_cast<MyShip *>(i)->shpshld);
 //				scene()->removeItem(dynamic_cast<MyShip *>(i)->scr_txt);
 //				scene()->removeItem(dynamic_cast<MyShip *>(i)->lf_txt);
 //				scene()->removeItem(i);
+//				delete dynamic_cast<MyShipShield *>(i);
 //			}
 //		}
 }

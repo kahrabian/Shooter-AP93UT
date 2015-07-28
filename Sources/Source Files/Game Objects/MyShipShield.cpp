@@ -12,7 +12,7 @@ MyShipShield::MyShipShield() :
 }
 
 MyShipShield::~MyShipShield() {
-
+	delete vlc;
 }
 
 void MyShipShield::dstry() {

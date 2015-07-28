@@ -66,10 +66,10 @@ private:
 	int lsr_tmr_elpsd;
 	QTimer *lsr_tmr;
 
-	int mss;
+//	int mss;
 	QPointF *vlc;
-	QPointF *acc;
-	QPointF *frc;
+//	QPointF *acc;
+//	QPointF *frc;
 
 	void cnstrct_shldpxmp();
 

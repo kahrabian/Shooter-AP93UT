@@ -26,14 +26,14 @@ private:
 	int astrd_num;
 	int frm_num;
 
-	bool grv;
+//	bool grv;
 
-	int mss;
+//	int mss;
 	QPointF *vlc;
-	QPointF *acc;
-	QPointF *frc;
+//	QPointF *acc;
+//	QPointF *frc;
 
-	QPixmap *astrd_frms;
+	QPixmap **astrd_frms;
 };
 
 #endif //SHOOTER_AP93UT_MYASTEROID_H

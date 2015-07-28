@@ -12,7 +12,7 @@ MyStar::MyStar() :
 }
 
 MyStar::~MyStar() {
-
+	delete vlc;
 }
 
 void MyStar::updt() {

@@ -25,7 +25,7 @@ MyAlien::MyAlien() :
 }
 
 MyAlien::~MyAlien() {
-
+	delete vlc;
 }
 
 int MyAlien::getTmr_id() const {
@@ -86,7 +86,7 @@ void MyAlien::ply_sf(QString &add) {
 }
 
 void MyAlien::timerEvent(QTimerEvent *event) {
-	if (typ == 1) {
+	if (typ == 1 && scene()->views().first()->sceneRect().intersects(sceneBoundingRect())) {
 		ply_sf(const_cast<QString &>(MyRes::sf_aln_lsr_add));
 		MyBullet *tmp = new MyBullet(1, 0, -1);
 		tmp->setPos(pos().x(),

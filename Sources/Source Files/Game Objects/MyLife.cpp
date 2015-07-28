@@ -12,7 +12,7 @@ MyLife::MyLife() :
 }
 
 MyLife::~MyLife() {
-
+	delete vlc;
 }
 
 void MyLife::updt() {

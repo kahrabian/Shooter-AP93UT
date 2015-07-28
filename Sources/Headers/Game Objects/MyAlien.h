@@ -45,10 +45,10 @@ private:
 
 	int tmr_id;
 
-	int mss;
+//	int mss;
 	QPointF *vlc;
-	QPointF *acc;
-	QPointF *frc;
+//	QPointF *acc;
+//	QPointF *frc;
 
 protected:
 	void timerEvent(QTimerEvent *);

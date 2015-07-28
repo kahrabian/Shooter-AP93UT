@@ -12,7 +12,7 @@ MyShield::MyShield() :
 }
 
 MyShield::~MyShield() {
-
+	delete vlc;
 }
 
 void MyShield::updt() {

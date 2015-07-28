@@ -13,7 +13,7 @@ MyMagic::MyMagic() :
 }
 
 MyMagic::~MyMagic() {
-
+	delete vlc;
 }
 
 void MyMagic::updt() {

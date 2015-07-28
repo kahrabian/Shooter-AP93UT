@@ -19,7 +19,7 @@ MyBullet::MyBullet(int lsr_num, int rtn, int dir) :
 }
 
 MyBullet::~MyBullet() {
-
+	delete vlc;
 }
 
 void MyBullet::ply_sf(QString &add) {
