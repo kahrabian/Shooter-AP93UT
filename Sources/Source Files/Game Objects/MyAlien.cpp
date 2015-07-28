@@ -10,12 +10,12 @@ MyAlien::MyAlien() :
 	fast = false;
 	typ = rand() % 2;
 	if (typ == 0) {
-		setPixmap(QPixmap(MyRes::aln_nrml_adds[rand() % MyRes::aln_nrml_cnt]).scaled(MyRes::aln_smllsize,
+		setPixmap(QPixmap(MyRes::aln_nrml_adds[rand() % MyRes::aln_nrml_cnt]).scaled(MyRes::aln_bgsize,
 		                                                                             Qt::KeepAspectRatio,
 		                                                                             Qt::SmoothTransformation));
 	}
 	else {
-		setPixmap(QPixmap(MyRes::aln_nrml_adds[rand() % MyRes::aln_nrml_cnt]).scaled(MyRes::aln_bgsize,
+		setPixmap(QPixmap(MyRes::aln_nrml_adds[rand() % MyRes::aln_nrml_cnt]).scaled(MyRes::aln_smllsize,
 		                                                                             Qt::KeepAspectRatio,
 		                                                                             Qt::SmoothTransformation));
 	}

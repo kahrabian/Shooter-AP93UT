@@ -125,16 +125,20 @@ void MyGame::unpause() {
 }
 
 void MyGame::bld_stg1() {
-//	QTextStream X(stderr);
-	for (int i = 0; i < 40; i++) {
-//		MyExplosion *tmp = new MyExplosion(const_cast<QSize *>(&MyRes::expln_aln_bg_size));
-		MyAsteroid *tmp = new MyAsteroid();
+	for (int i = 0; i < 10; i++) {
+		MyShield *tmp = new MyShield();
 		tmp->setPos(MyRes::app_size.width() +
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
 		scene()->addItem(tmp);
-//		X << tmp->x() << endl;
 	}
+//	for (int i = 0; i < 100; i++) {
+//		MyAsteroid *tmp = new MyAsteroid();
+//		tmp->setPos(MyRes::app_size.width() +
+//		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
+//		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
+//		scene()->addItem(tmp);
+//	}
 }
 
 void MyGame::bld_stg2() {

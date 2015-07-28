@@ -7,16 +7,16 @@
 namespace MyRes {
     // Game properties
     const QSize stg_size(150, 630);
-    const QSize lf_size(35, 35);
+    const QSize lf_size(25, 25);
     const QSize lsr_size(30, 8);
-    const QSize str_size(30, 30);
-    const QSize mgc_size(40, 40);
-    const QSize shld_size(43, 43);
-    const QSize astrd_size(350, 350);
-    const QSize aln_bgsize(70, 70);
-    const QSize aln_smllsize(140, 140);
-    const QSize shp_size(100, 100);
-    const QSize shp_shld_size(150, 150);
+    const QSize str_size(20, 20);
+    const QSize mgc_size(30, 30);
+    const QSize shld_size(33, 33);
+    const QSize astrd_size(150, 150);
+    const QSize aln_smllsize(50, 50);
+    const QSize aln_bgsize(100, 100);
+    const QSize shp_size(75, 75);
+    const QSize shp_shld_size(120, 120);
     const QSize expln_aln_smll_size(175, 175);
     const QSize expln_aln_bg_size(350, 350);
     const QSize expln_lsr_size(75, 75);
