@@ -65,6 +65,7 @@ void MyGame::restart() {
 		setSceneRect(viewport()->frameGeometry());
 		bld_stg1();
 		bld_stg2();
+		bld_stg3();
 	}
 //	else if(tmp == "1") {
 //
@@ -102,7 +103,7 @@ void MyGame::pause() {
 			if (dynamic_cast<MyAlien *>(i)) {
 				dynamic_cast<MyAlien *>(i)->game_paused();
 			}
-			else if (dynamic_cast<MyShip *>(i)) {
+			if (dynamic_cast<MyShip *>(i)) {
 				dynamic_cast<MyShip *>(i)->game_paused();
 			}
 		}
@@ -119,7 +120,7 @@ void MyGame::unpause() {
 			if (dynamic_cast<MyAlien *>(i)) {
 				dynamic_cast<MyAlien *>(i)->game_unpaused();
 			}
-			else if (dynamic_cast<MyShip *>(i)) {
+			if (dynamic_cast<MyShip *>(i)) {
 				dynamic_cast<MyShip *>(i)->game_unpaused();
 			}
 		}
@@ -128,7 +129,7 @@ void MyGame::unpause() {
 
 void MyGame::bld_stg1() {
 	for (int i = 0; i < 20 + 10 * SettingData::gDiff; i++) {
-		MyAsteroid *tmp = new MyAsteroid();
+		MyAsteroid *tmp = new MyAsteroid(1);
 		tmp->setPos(MyRes::app_size.width() +
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
@@ -216,6 +217,15 @@ void MyGame::bld_stg2() {
 }
 
 void MyGame::bld_stg3() {
+	for (int i = 0; i < 20 + 10 * SettingData::gDiff; i++) {
+		MyAsteroid *tmp = new MyAsteroid(2);
+		tmp->setPos(MyRes::app_size.width() +
+		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
+		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
+		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
+		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
+		scene()->addItem(tmp);
+	}
 	for (int i = 0; i < 3; i++) {
 		MyLife *tmp = new MyLife();
 		tmp->setPos(MyRes::app_size.width() +

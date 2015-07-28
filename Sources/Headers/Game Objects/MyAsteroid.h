@@ -7,6 +7,8 @@
 
 #include <QGraphicsDropShadowEffect>
 #include <QGraphicsPixmapItem>
+#include <QGraphicsView>
+#include <QGraphicsScene>
 #include <QElapsedTimer>
 #include <QPointF>
 #include <QPixmap>
@@ -16,7 +18,7 @@ class MyAsteroid : public QObject, public QGraphicsPixmapItem {
 Q_OBJECT
 
 public:
-	MyAsteroid();
+	MyAsteroid(int);
 
 	~MyAsteroid();
 
@@ -26,6 +28,7 @@ private:
 	int astrd_num;
 	int frm_num;
 
+//	int typ;
 //	bool grv;
 
 //	int mss;
