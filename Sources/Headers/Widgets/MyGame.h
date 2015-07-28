@@ -50,6 +50,9 @@ private:
 	QGraphicsScene *gscn;
 	QGraphicsScene *gscn_s;
 
+	MyShip *shp1;
+	MyShip *shp2;
+
 	int tmr_id;
 
 	int cur_stg;
@@ -63,6 +66,8 @@ private:
 	void bld_stg3();
 
 	void bld_bss();
+
+	void clean();
 
 	void pause();
 

@@ -29,9 +29,84 @@ MyGame::MyGame(QWidget *parent) :
 }
 
 MyGame::~MyGame() {
+	clean();
 	delete prsd_kys;
 	delete gscn;
-	delete gscn_s;
+//	delete gscn_s;
+}
+
+void MyGame::clean() {
+	killTimer(tmr_id);
+	QList<QGraphicsItem *> itms = scene()->items();
+			foreach(QGraphicsItem *i, itms) {
+			if (dynamic_cast<MyAlien *>(i)) {
+				dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
+				scene()->removeItem(i);
+				MyAlien *tmp = dynamic_cast<MyAlien *>(i);
+				delete tmp;
+				continue;
+			}
+			else if (dynamic_cast<MyAsteroid *>(i)) {
+				scene()->removeItem(i);
+				MyAsteroid *tmp = dynamic_cast<MyAsteroid *>(i);
+				delete tmp;
+				continue;
+			}
+			else if (dynamic_cast<MyBullet *>(i)) {
+				scene()->removeItem(i);
+				MyBullet *tmp = dynamic_cast<MyBullet *>(i);
+				delete tmp;
+				continue;
+			}
+			else if (dynamic_cast<MyExplosion *>(i)) {
+				scene()->removeItem(i);
+				MyExplosion *tmp = dynamic_cast<MyExplosion *>(i);
+				delete tmp;
+				continue;
+			}
+			else if (dynamic_cast<MyLife *>(i)) {
+				scene()->removeItem(i);
+				MyLife *tmp = dynamic_cast<MyLife *>(i);
+				delete tmp;
+				continue;
+			}
+			else if (dynamic_cast<MyMagic *>(i)) {
+				scene()->removeItem(i);
+				MyMagic *tmp = dynamic_cast<MyMagic *>(i);
+				delete tmp;
+				continue;
+			}
+			else if (dynamic_cast<MyShield *>(i)) {
+				scene()->removeItem(i);
+				MyShield *tmp = dynamic_cast<MyShield *>(i);
+				delete tmp;
+				continue;
+			}
+			else if (dynamic_cast<MyShip *>(i)) {
+				scene()->removeItem(i);
+				MyShip *tmp = dynamic_cast<MyShip *>(i);
+				delete tmp;
+				continue;
+			}
+			else if (dynamic_cast<MyShipShield *>(i)) {
+				scene()->removeItem(i);
+				MyShipShield *tmp = dynamic_cast<MyShipShield *>(i);
+				delete tmp;
+				continue;
+			}
+			else if (dynamic_cast<MyStar *>(i)) {
+				scene()->removeItem(i);
+				MyStar *tmp = dynamic_cast<MyStar *>(i);
+				delete tmp;
+				continue;
+			}
+			else if (dynamic_cast<QGraphicsTextItem *>(i)) {
+				scene()->removeItem(i);
+				QGraphicsTextItem *tmp = dynamic_cast<QGraphicsTextItem *>(i);
+				delete tmp;
+				continue;
+			}
+		}
 }
 
 void MyGame::restart() {
@@ -43,28 +118,28 @@ void MyGame::restart() {
 	file.close();
 
 	if (tmp == "0") {
-		MyShip *shp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("1"));
-		gscn->addItem(shp);
-		gscn->addItem(shp->shpshld);
-		shp->scr_txt->setPos(size().width() - shp->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+		shp1 = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("1"));
+		gscn->addItem(shp1);
+		gscn->addItem(shp1->shpshld);
+		shp1->scr_txt->setPos(size().width() - shp1->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
 		                      MyRes::txtitem_y_crrctn);
-		shp->lf_txt->setPos(size().width() - shp->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
-		                    MyRes::txtitem_y_crrctn + shp->scr_txt->boundingRect().height());
-		gscn->addItem(shp->scr_txt);
-		gscn->addItem(shp->lf_txt);
+		shp1->lf_txt->setPos(size().width() - shp1->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+		                     MyRes::txtitem_y_crrctn + shp1->scr_txt->boundingRect().height());
+		gscn->addItem(shp1->scr_txt);
+		gscn->addItem(shp1->lf_txt);
 
 		if (SettingData::gMode != 1) {
-			shp = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("2"));
-			gscn->addItem(shp);
-			gscn->addItem(shp->shpshld);
-			shp->scr_txt->setPos(size().width() - shp->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
-			                     size().height() - shp->scr_txt->boundingRect().height() - MyRes::txtitem_y_crrctn);
-			shp->lf_txt->setPos(size().width() - shp->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
-			                    size().height() - shp->scr_txt->boundingRect().height() -
-			                    shp->lf_txt->boundingRect().height() -
+			shp2 = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("2"));
+			gscn->addItem(shp2);
+			gscn->addItem(shp2->shpshld);
+			shp2->scr_txt->setPos(size().width() - shp2->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+			                      size().height() - shp2->scr_txt->boundingRect().height() - MyRes::txtitem_y_crrctn);
+			shp2->lf_txt->setPos(size().width() - shp2->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+			                     size().height() - shp2->scr_txt->boundingRect().height() -
+			                     shp2->lf_txt->boundingRect().height() -
 			                    MyRes::txtitem_y_crrctn);
-			gscn->addItem(shp->scr_txt);
-			gscn->addItem(shp->lf_txt);
+			gscn->addItem(shp2->scr_txt);
+			gscn->addItem(shp2->lf_txt);
 		}
 
 		setScene(gscn);
@@ -289,6 +364,32 @@ void MyGame::keyReleaseEvent(QKeyEvent *event) {
 }
 
 void MyGame::timerEvent(QTimerEvent *event) {
+	if (sceneRect().x() >
+	    MyRes::stg_cnt * (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) -
+	    MyRes::app_size.width()) {
+		if (SettingData::gMode == 1) {
+
+		}
+		else {
+			if (shp1->scr > shp2->scr) {
+				emit gameEnded(1);
+			}
+			else if (shp1->scr < shp2->scr) {
+				emit gameEnded(2);
+			}
+			else {
+				if (shp1->lf > shp2->lf) {
+					emit gameEnded(1);
+				}
+				else if (shp1->lf < shp2->lf) {
+					emit gameEnded(2);
+				}
+				else {
+					emit gameEnded(3);
+				}
+			}
+		}
+	}
 	setSceneRect(sceneRect().x() + MyRes::vw_mvmnt, 0, viewport()->frameGeometry().width(),
 	             viewport()->frameGeometry().height());
 	QList<QGraphicsItem *> itms = scene()->items();
@@ -383,6 +484,25 @@ void MyGame::timerEvent(QTimerEvent *event) {
 			}
 			if (dynamic_cast<MyShip *>(i)) {
 				dynamic_cast<MyShip *>(i)->updt(prsd_kys);
+				if (!dynamic_cast<MyShip *>(i)->isVisible()) {
+					scene()->removeItem(dynamic_cast<MyShip *>(i)->shpshld);
+					scene()->removeItem(dynamic_cast<MyShip *>(i)->scr_txt);
+					scene()->removeItem(dynamic_cast<MyShip *>(i)->lf_txt);
+					scene()->removeItem(i);
+					if (dynamic_cast<MyShip *>(i)->name->compare("1") == 0) {
+						if (SettingData::gMode == 1) {
+							emit gameEnded(0);
+						}
+						else {
+							emit gameEnded(2);
+						}
+					}
+					else {
+						emit gameEnded(1);
+					}
+					MyShip *tmp = dynamic_cast<MyShip *>(i);
+					delete tmp;
+				}
 				continue;
 			}
 			if (dynamic_cast<MyShipShield *>(i)) {

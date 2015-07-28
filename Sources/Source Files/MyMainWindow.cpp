@@ -38,21 +38,30 @@ void MyMainWindow::game_unpaused() {
 }
 
 void MyMainWindow::game_restart() {
-	widget_stack->setCurrentWidget(game);
-	game->restart();
+//	widget_stack->setCurrentWidget(game);
+//	game->restart();
+	delete game;
+	strt_bttn_clicked();
 }
 
 void MyMainWindow::game_ended(int val) {
+	delete game;
 	med_player->setMedia(QUrl::fromLocalFile(MyRes::endmuse_add));
 	med_player->setVolume(SettingData::mVol);
 	med_player->setMuted(SettingData::mMut);
 	med_player->play();
-	if (val == 0)
+	if (val == 0) {
 		end->txt->setText("Game Over");
-	else if (val == 1)
+	}
+	else if (val == 1) {
 		end->txt->setText("The Winner is " + SettingData::p1_nm);
-	else if (val == 2)
+	}
+	else if (val == 2) {
 		end->txt->setText("The Winner is " + SettingData::p2_nm);
+	}
+	else if (val == 3) {
+		end->txt->setText("Draw !!!");
+	}
 	widget_stack->setCurrentWidget(end);
 }
 
@@ -61,6 +70,9 @@ void MyMainWindow::exit_bttn_clicked() {
 }
 
 void MyMainWindow::back_bttn_clicked() {
+	if (widget_stack->currentWidget() == ps) {
+		delete game;
+	}
 	if (widget_stack->currentWidget() == end || widget_stack->currentWidget() == ps) {
 		med_player->setMedia(QUrl::fromLocalFile(MyRes::mnmuse_add));
 		med_player->setVolume(SettingData::mVol);
