@@ -281,8 +281,6 @@ void MyShip::cllsn_dtctn() {
 }
 
 void MyShip::updt_txt() {
-	scr_txt->setPos(scr_txt->pos().x() + MyRes::vw_mvmnt, scr_txt->pos().y());
-	lf_txt->setPos(lf_txt->pos().x() + MyRes::vw_mvmnt, lf_txt->pos().y());
 	if (*MyShip::name == "1") {
 		scr_txt->setPlainText(SettingData::p1_nm + " Score: " + QString::number(scr));
 	}
@@ -295,6 +293,28 @@ void MyShip::updt_txt() {
 	else {
 		lf_txt->setPlainText(SettingData::p2_nm + " Life: " + QString::number(lf));
 	}
+	if (name->compare("1") == 0) {
+		scr_txt->setPos(scene()->views().first()->mapToScene(0, 0).x() + scene()->views().first()->size().width() -
+		                scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+		                MyRes::txtitem_y_crrctn);
+		lf_txt->setPos(scene()->views().first()->mapToScene(0, 0).x() + scene()->views().first()->size().width() -
+		               lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+		               MyRes::txtitem_y_crrctn + scr_txt->boundingRect().height());
+	}
+	else {
+		scr_txt->setPos(
+				scene()->views().first()->mapToScene(0, 0).x() + scene()->views().first()->size().width() -
+				scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+				scene()->views().first()->size().height() - scr_txt->boundingRect().height() - MyRes::txtitem_y_crrctn);
+		lf_txt->setPos(
+				scene()->views().first()->mapToScene(0, 0).x() + scene()->views().first()->size().width() -
+				lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+				scene()->views().first()->size().height() - scr_txt->boundingRect().height() -
+				lf_txt->boundingRect().height() -
+				MyRes::txtitem_y_crrctn);
+	}
+//	scr_txt->setPos(scr_txt->pos().x() + MyRes::vw_mvmnt, scr_txt->pos().y());
+//	lf_txt->setPos(lf_txt->pos().x() + MyRes::vw_mvmnt, lf_txt->pos().y());
 }
 
 void MyShip::updt_vlc(QSet<int> *prsd_kys) {
