@@ -230,8 +230,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 	             viewport()->frameGeometry().height());
 	QList<QGraphicsItem *> itms = scene()->items();
 	foreach(QGraphicsItem *i, itms) {
-			if (!sceneRect().intersects(i->sceneBoundingRect()) && !dynamic_cast<MyShip *>(i))
-				continue;
+//			if (!sceneRect().intersects(i->sceneBoundingRect()) && !dynamic_cast<MyShip *>(i))
+//				continue;
 			if (dynamic_cast<MyAlien *>(i)) {
 				dynamic_cast<MyAlien *>(i)->updt();
 				if (!dynamic_cast<MyAlien *>(i)->isVisible() ||
@@ -243,8 +243,9 @@ void MyGame::timerEvent(QTimerEvent *event) {
 					MyAlien *tmp = dynamic_cast<MyAlien *>(i);
 					delete tmp;
 				}
+				continue;
 			}
-			else if (dynamic_cast<MyAsteroid *>(i)) {
+			if (dynamic_cast<MyAsteroid *>(i)) {
 				dynamic_cast<MyAsteroid *>(i)->updt();
 				if (!dynamic_cast<MyAsteroid *>(i)->isVisible() ||
 				    dynamic_cast<MyAsteroid *>(i)->sceneBoundingRect().right() < sceneRect().left() ||
@@ -254,8 +255,9 @@ void MyGame::timerEvent(QTimerEvent *event) {
 					MyAsteroid *tmp = dynamic_cast<MyAsteroid *>(i);
 					delete tmp;
 				}
+				continue;
 			}
-			else if (dynamic_cast<MyBullet *>(i)) {
+			if (dynamic_cast<MyBullet *>(i)) {
 				dynamic_cast<MyBullet *>(i)->updt();
 				if (!dynamic_cast<MyBullet *>(i)->isVisible() ||
 				    dynamic_cast<MyBullet *>(i)->sceneBoundingRect().right() < sceneRect().left() ||
@@ -266,8 +268,9 @@ void MyGame::timerEvent(QTimerEvent *event) {
 					MyBullet *tmp = dynamic_cast<MyBullet *>(i);
 					delete tmp;
 				}
+				continue;
 			}
-			else if (dynamic_cast<MyExplosion *>(i)) {
+			if (dynamic_cast<MyExplosion *>(i)) {
 				dynamic_cast<MyExplosion *>(i)->updt();
 				if (!dynamic_cast<MyExplosion *>(i)->isVisible() ||
 				    dynamic_cast<MyExplosion *>(i)->sceneBoundingRect().right() < sceneRect().left() ||
@@ -277,8 +280,9 @@ void MyGame::timerEvent(QTimerEvent *event) {
 					MyExplosion *tmp = dynamic_cast<MyExplosion *>(i);
 					delete tmp;
 				}
+				continue;
 			}
-			else if (dynamic_cast<MyLife *>(i)) {
+			if (dynamic_cast<MyLife *>(i)) {
 				dynamic_cast<MyLife *>(i)->updt();
 				if (!dynamic_cast<MyLife *>(i)->isVisible() ||
 				    dynamic_cast<MyLife *>(i)->sceneBoundingRect().right() < sceneRect().left() ||
@@ -288,8 +292,9 @@ void MyGame::timerEvent(QTimerEvent *event) {
 					MyLife *tmp = dynamic_cast<MyLife *>(i);
 					delete tmp;
 				}
+				continue;
 			}
-			else if (dynamic_cast<MyMagic *>(i)) {
+			if (dynamic_cast<MyMagic *>(i)) {
 				dynamic_cast<MyMagic *>(i)->updt();
 				if (!dynamic_cast<MyMagic *>(i)->isVisible() ||
 				    dynamic_cast<MyMagic *>(i)->sceneBoundingRect().right() < sceneRect().left() ||
@@ -299,8 +304,9 @@ void MyGame::timerEvent(QTimerEvent *event) {
 					MyMagic *tmp = dynamic_cast<MyMagic *>(i);
 					delete tmp;
 				}
+				continue;
 			}
-			else if (dynamic_cast<MyShield *>(i)) {
+			if (dynamic_cast<MyShield *>(i)) {
 				dynamic_cast<MyShield *>(i)->updt();
 				if (!dynamic_cast<MyShield *>(i)->isVisible() ||
 				    dynamic_cast<MyShield *>(i)->sceneBoundingRect().right() < sceneRect().left() ||
@@ -310,14 +316,17 @@ void MyGame::timerEvent(QTimerEvent *event) {
 					MyShield *tmp = dynamic_cast<MyShield *>(i);
 					delete tmp;
 				}
+				continue;
 			}
-			else if (dynamic_cast<MyShip *>(i)) {
+			if (dynamic_cast<MyShip *>(i)) {
 				dynamic_cast<MyShip *>(i)->updt(prsd_kys);
+				continue;
 			}
-			else if (dynamic_cast<MyShipShield *>(i)) {
+			if (dynamic_cast<MyShipShield *>(i)) {
 				dynamic_cast<MyShipShield *>(i)->updt();
+				continue;
 			}
-			else if (dynamic_cast<MyStar *>(i)) {
+			if (dynamic_cast<MyStar *>(i)) {
 				dynamic_cast<MyStar *>(i)->updt();
 				if (!dynamic_cast<MyStar *>(i)->isVisible() ||
 				    dynamic_cast<MyStar *>(i)->sceneBoundingRect().right() < sceneRect().left() ||
@@ -327,21 +336,7 @@ void MyGame::timerEvent(QTimerEvent *event) {
 					MyStar *tmp = dynamic_cast<MyStar *>(i);
 					delete tmp;
 				}
+				continue;
 			}
 		}
-//	itms = items(geometry());
-//	itms = scene()->items();
-//			foreach(QGraphicsItem *i, itms) {
-//			if (!dynamic_cast<MyShipShield *>(i) && !dynamic_cast<MyShip *>(i) && !i->isVisible()) {
-//				scene()->removeItem(i);
-//				delete i;
-//			}
-//			else if (dynamic_cast<MyShip *>(i) && !i->isVisible()) {
-//				scene()->removeItem(dynamic_cast<MyShip *>(i)->shpshld);
-//				scene()->removeItem(dynamic_cast<MyShip *>(i)->scr_txt);
-//				scene()->removeItem(dynamic_cast<MyShip *>(i)->lf_txt);
-//				scene()->removeItem(i);
-//				delete dynamic_cast<MyShipShield *>(i);
-//			}
-//		}
 }
