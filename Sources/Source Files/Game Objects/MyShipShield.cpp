@@ -63,7 +63,6 @@ void MyShipShield::cllsn_dtctn() {
 					                                                      (dynamic_cast<MyAlien *>(i)->pixmap().height() /
 					                                                       2) -
 							(MyRes::expln_aln_bg_size.height() / 2) + MyRes::expln_aln_bg_crrctn);
-					expln->updt();
 					scene()->addItem(expln);
 				}
 				else {
@@ -74,7 +73,6 @@ void MyShipShield::cllsn_dtctn() {
 					                                                        (dynamic_cast<MyAlien *>(i)->pixmap().height() /
 					                                                         2) -
 							(MyRes::expln_aln_smll_size.height() / 2) + MyRes::expln_aln_smll_crrctn);
-					expln->updt();
 					scene()->addItem(expln);
 				}
 				ply_sf(const_cast<QString &>(MyRes::sf_expln_shpshld_add));

@@ -32,6 +32,8 @@ private:
 	QPointF *vlc;
 	QPointF *acc;
 	QPointF *frc;
+
+	QPixmap *astrd_frms;
 };
 
 #endif //SHOOTER_AP93UT_MYASTEROID_H

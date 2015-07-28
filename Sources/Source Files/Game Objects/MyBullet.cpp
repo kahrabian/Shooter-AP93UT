@@ -44,7 +44,6 @@ void MyBullet::cllsn_dtctn() {
 					                                                       2) -
 					                                                      (MyRes::expln_aln_bg_size.height() / 2) +
 							MyRes::expln_aln_bg_crrctn);
-					expln->updt();
 					scene()->addItem(expln);
 				}
 				else {
@@ -56,7 +55,6 @@ void MyBullet::cllsn_dtctn() {
 					                                                         2) -
 					                                                        (MyRes::expln_aln_smll_size.height() / 2) +
 					                                                        MyRes::expln_aln_smll_crrctn);
-					expln->updt();
 					scene()->addItem(expln);
 				}
 				ply_sf(const_cast<QString &>(MyRes::sf_expln_lsr_add));
@@ -64,7 +62,6 @@ void MyBullet::cllsn_dtctn() {
 				expln->setPos(x() + (pixmap().width() / 2) - (MyRes::expln_lsr_size.width() / 2),
 				              y() + (pixmap().height() / 2) - (MyRes::expln_lsr_size.height() / 2) +
 				              MyRes::expln_lsr_crrctn);
-				expln->updt();
 				scene()->addItem(expln);
 
 				dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
@@ -81,7 +78,6 @@ void MyBullet::cllsn_dtctn() {
 						(MyRes::expln_astrd_size.width() / 2),
 						dynamic_cast<MyAsteroid *>(i)->y() + (dynamic_cast<MyAsteroid *>(i)->pixmap().height() / 2) -
 						(MyRes::expln_astrd_size.height() / 2) + MyRes::expln_astrd_crrctn);
-				expln->updt();
 				scene()->addItem(expln);
 
 				ply_sf(const_cast<QString &>(MyRes::sf_expln_lsr_add));
@@ -89,7 +85,6 @@ void MyBullet::cllsn_dtctn() {
 				expln->setPos(x() + (pixmap().width() / 2) - (MyRes::expln_lsr_size.width() / 2),
 				              y() + (pixmap().height() / 2) - (MyRes::expln_lsr_size.height() / 2) +
 				              MyRes::expln_lsr_crrctn);
-				expln->updt();
 				scene()->addItem(expln);
 
 				dynamic_cast<MyAsteroid *>(i)->hide();

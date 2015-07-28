@@ -229,7 +229,6 @@ void MyShip::cllsn_dtctn() {
 					                                                       2) -
 					                                                      (MyRes::expln_aln_bg_size.height() / 2) +
 							MyRes::expln_aln_bg_crrctn);
-					expln->updt();
 					scene()->addItem(expln);
 				}
 				else {
@@ -241,7 +240,6 @@ void MyShip::cllsn_dtctn() {
 					                                                         2) -
 					                                                        (MyRes::expln_aln_smll_size.height() / 2) +
 					                                                        MyRes::expln_aln_smll_crrctn);
-					expln->updt();
 					scene()->addItem(expln);
 				}
 				lf--;
