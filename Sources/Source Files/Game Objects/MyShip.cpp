@@ -313,8 +313,6 @@ void MyShip::updt_txt() {
 				lf_txt->boundingRect().height() -
 				MyRes::txtitem_y_crrctn);
 	}
-//	scr_txt->setPos(scr_txt->pos().x() + MyRes::vw_mvmnt, scr_txt->pos().y());
-//	lf_txt->setPos(lf_txt->pos().x() + MyRes::vw_mvmnt, lf_txt->pos().y());
 }
 
 void MyShip::updt_vlc(QSet<int> *prsd_kys) {
