@@ -40,7 +40,7 @@ signals:
 
 	void gamePaused();
 
-	void gameEnded();
+	void gameEnded(int);
 
 private:
 	bool fast;

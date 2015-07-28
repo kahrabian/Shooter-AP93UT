@@ -230,7 +230,7 @@ void MyGame::timerEvent(QTimerEvent *event) {
 	             viewport()->frameGeometry().height());
 	QList<QGraphicsItem *> itms = scene()->items();
 	foreach(QGraphicsItem *i, itms) {
-			if (!sceneRect().intersects(i->sceneBoundingRect()))// && !dynamic_cast<MyShip *>(i))
+			if (!sceneRect().intersects(i->sceneBoundingRect()) && !dynamic_cast<MyShip *>(i))
 				continue;
 			if (dynamic_cast<MyAlien *>(i)) {
 				dynamic_cast<MyAlien *>(i)->updt();
@@ -274,8 +274,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyExplosion *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
 				    dynamic_cast<MyExplosion *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
 					scene()->removeItem(i);
-//					MyExplosion *tmp = dynamic_cast<MyExplosion *>(i);
-//					delete tmp;
+					MyExplosion *tmp = dynamic_cast<MyExplosion *>(i);
+					delete tmp;
 				}
 			}
 			else if (dynamic_cast<MyLife *>(i)) {

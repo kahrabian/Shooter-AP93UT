@@ -37,7 +37,7 @@ public slots:
 
 	void game_restart();
 
-	void game_ended();
+	void game_ended(int);
 
 	void strt_bttn_clicked();
 

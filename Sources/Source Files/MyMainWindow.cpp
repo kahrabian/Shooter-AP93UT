@@ -42,11 +42,17 @@ void MyMainWindow::game_restart() {
 	game->restart();
 }
 
-void MyMainWindow::game_ended() {
+void MyMainWindow::game_ended(int val) {
 	med_player->setMedia(QUrl::fromLocalFile(MyRes::endmuse_add));
 	med_player->setVolume(SettingData::mVol);
 	med_player->setMuted(SettingData::mMut);
 	med_player->play();
+	if (val == 0)
+		end->txt->setText("Game Over");
+	else if (val == 1)
+		end->txt->setText("The Winner is " + SettingData::p1_nm);
+	else if (val == 2)
+		end->txt->setText("The Winner is " + SettingData::p2_nm);
 	widget_stack->setCurrentWidget(end);
 }
 
@@ -93,7 +99,7 @@ void MyMainWindow::strt_bttn_clicked() {
 	widget_stack->addWidget(game);
 	widget_stack->setCurrentWidget(game);
 	QObject::connect(game, SIGNAL(gamePaused()), this, SLOT(game_paused()));
-	QObject::connect(game, SIGNAL(gameEnded()), this, SLOT(game_ended()));
+	QObject::connect(game, SIGNAL(gameEnded(int)), this, SLOT(game_ended(int)));
 }
 
 void MyMainWindow::set_init_pos() {
