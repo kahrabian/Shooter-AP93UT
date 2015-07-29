@@ -62,6 +62,9 @@ void MyMainWindow::game_ended(int val) {
 	else if (val == 3) {
 		end->txt->setText("Draw !!!");
 	}
+	else if (val == 4) {
+		end->txt->setText("The Winners are " + SettingData::p1_nm + " & " + SettingData::p2_nm);
+	}
 	widget_stack->setCurrentWidget(end);
 }
 

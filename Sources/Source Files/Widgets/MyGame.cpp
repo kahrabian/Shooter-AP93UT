@@ -412,14 +412,8 @@ void MyGame::keyReleaseEvent(QKeyEvent *event) {
 void MyGame::timerEvent(QTimerEvent *event) {
 	if (sceneRect().x() >
 	    MyRes::stg_cnt * (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) -
-			    MyRes::app_size.width() /*&& scene() == gscn*/) {
-//		if (SettingData::gMode == 1) {
-//			clean();
-//			bld_bss();
-//			return;
-//		}
-//		else {
-		if (SettingData::gMode != 1) {
+			    MyRes::app_size.width()) {
+		if (SettingData::gMode == 3) {
 			if (shp1->scr > shp2->scr) {
 				emit gameEnded(1);
 			}
@@ -452,7 +446,24 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				}
 			}
 		if (!f) {
-			emit gameEnded(1);
+			if (SettingData::gMode == 2) {
+				emit gameEnded(4);
+			}
+			else {
+				emit gameEnded(1);
+			}
+			return;
+		}
+	}
+	if (SettingData::gMode == 2) {
+		bool f = false;
+				foreach(QGraphicsItem *i, itms) {
+				if (dynamic_cast<MyShip *>(i)) {
+					f = true;
+				}
+			}
+		if (!f) {
+			emit gameEnded(0);
 			return;
 		}
 	}
@@ -570,12 +581,12 @@ void MyGame::timerEvent(QTimerEvent *event) {
 							emit gameEnded(0);
 							return;
 						}
-						else {
+						else if (SettingData::gMode == 3) {
 							emit gameEnded(2);
 							return;
 						}
 					}
-					else {
+					else if (SettingData::gMode == 3) {
 						emit gameEnded(1);
 						return;
 					}
