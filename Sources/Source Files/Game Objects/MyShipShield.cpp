@@ -45,14 +45,18 @@ void MyShipShield::cllsn_dtctn() {
 			}
 			else if (dynamic_cast<MyAlienBoss *>(i) && dynamic_cast<MyAlienBoss *>(i)->isVisible()) {
 				ply_sf(const_cast<QString &>(MyRes::sf_expln_astrd_add));
-				MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_astrd_size));
-				expln->setPos(
-						dynamic_cast<MyAlienBoss *>(i)->x() + (dynamic_cast<MyAlienBoss *>(i)->pixmap().width() / 2) -
-						(MyRes::expln_astrd_size.width() / 2),
-						dynamic_cast<MyAlienBoss *>(i)->y() + (dynamic_cast<MyAlienBoss *>(i)->pixmap().height() / 2) -
-						(MyRes::expln_astrd_size.height() / 2) + MyRes::expln_astrd_crrctn);
-				expln->updt();
-				scene()->addItem(expln);
+				if (dynamic_cast<MyAlienBoss *>(i)->getStg() == 0) {
+					MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_astrd_size));
+					expln->setPos(
+							dynamic_cast<MyAlienBoss *>(i)->x() +
+							(dynamic_cast<MyAlienBoss *>(i)->pixmap().width() / 2) -
+							(MyRes::expln_astrd_size.width() / 2),
+							dynamic_cast<MyAlienBoss *>(i)->y() +
+							(dynamic_cast<MyAlienBoss *>(i)->pixmap().height() / 2) -
+							(MyRes::expln_astrd_size.height() / 2) + MyRes::expln_astrd_crrctn);
+					expln->updt();
+					scene()->addItem(expln);
+				}
 				dynamic_cast<MyAlienBoss *>(i)->hide();
 
 				if (dynamic_cast<MyAlienBoss *>(i)->getStg() != 0) {

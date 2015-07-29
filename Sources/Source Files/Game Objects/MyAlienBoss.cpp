@@ -10,7 +10,7 @@ MyAlienBoss::MyAlienBoss(int stg) :
 	astrd_frms = new QPixmap *[MyRes::astrd_frcnt];
 	astrd_num = rand() % MyRes::astrd_typcnt;
 	frm_num = 0;
-	setGraphicsEffect(new QGraphicsDropShadowEffect());
+//	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	if (rand() % 2 == 0) {
 		vlc = new QPointF(-10, -10);
 	}

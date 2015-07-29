@@ -35,6 +35,7 @@ MyGame::MyGame(QWidget *parent) :
 }
 
 MyGame::~MyGame() {
+	killTimer(tmr_id);
 	clean();
 	delete prsd_kys;
 	delete gscn;
@@ -42,7 +43,6 @@ MyGame::~MyGame() {
 }
 
 void MyGame::clean() {
-	killTimer(tmr_id);
 	QList<QGraphicsItem *> itms = scene()->items();
 			foreach(QGraphicsItem *i, itms) {
 			if (dynamic_cast<MyAlien *>(i)) {
@@ -129,34 +129,7 @@ void MyGame::restart() {
 	stream >> tmp;
 	file.close();
 
-//		setScene(gscn);
-	setScene(gscn_s);
-
 	if (tmp == "0") {
-		shp1 = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("1"));
-		scene()->addItem(shp1);
-		scene()->addItem(shp1->shpshld);
-		shp1->scr_txt->setPos(size().width() - shp1->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
-		                      MyRes::txtitem_y_crrctn);
-		shp1->lf_txt->setPos(size().width() - shp1->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
-		                     MyRes::txtitem_y_crrctn + shp1->scr_txt->boundingRect().height());
-		scene()->addItem(shp1->scr_txt);
-		scene()->addItem(shp1->lf_txt);
-
-		if (SettingData::gMode != 1) {
-			shp2 = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("2"));
-			scene()->addItem(shp2);
-			scene()->addItem(shp2->shpshld);
-			shp2->scr_txt->setPos(size().width() - shp2->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
-			                      size().height() - shp2->scr_txt->boundingRect().height() - MyRes::txtitem_y_crrctn);
-			shp2->lf_txt->setPos(size().width() - shp2->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
-			                     size().height() - shp2->scr_txt->boundingRect().height() -
-			                     shp2->lf_txt->boundingRect().height() -
-			                    MyRes::txtitem_y_crrctn);
-			scene()->addItem(shp2->scr_txt);
-			scene()->addItem(shp2->lf_txt);
-		}
-
 		setSceneRect(viewport()->frameGeometry());
 //		bld_stg1();
 //		bld_stg2();
@@ -224,6 +197,30 @@ void MyGame::unpause() {
 }
 
 void MyGame::bld_stg1() {
+	setScene(gscn);
+	shp1 = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("1"));
+	scene()->addItem(shp1);
+	scene()->addItem(shp1->shpshld);
+	shp1->scr_txt->setPos(size().width() - shp1->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+	                      MyRes::txtitem_y_crrctn);
+	shp1->lf_txt->setPos(size().width() - shp1->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+	                     MyRes::txtitem_y_crrctn + shp1->scr_txt->boundingRect().height());
+	scene()->addItem(shp1->scr_txt);
+	scene()->addItem(shp1->lf_txt);
+
+	if (SettingData::gMode != 1) {
+		shp2 = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("2"));
+		scene()->addItem(shp2);
+		scene()->addItem(shp2->shpshld);
+		shp2->scr_txt->setPos(size().width() - shp2->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+		                      size().height() - shp2->scr_txt->boundingRect().height() - MyRes::txtitem_y_crrctn);
+		shp2->lf_txt->setPos(size().width() - shp2->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+		                     size().height() - shp2->scr_txt->boundingRect().height() -
+		                     shp2->lf_txt->boundingRect().height() -
+		                     MyRes::txtitem_y_crrctn);
+		scene()->addItem(shp2->scr_txt);
+		scene()->addItem(shp2->lf_txt);
+	}
 	for (int i = 0; i < 20 + 10 * SettingData::gDiff; i++) {
 		MyAsteroid *tmp = new MyAsteroid(1);
 		tmp->setPos(MyRes::app_size.width() +
@@ -379,9 +376,20 @@ void MyGame::bld_stg3() {
 }
 
 void MyGame::bld_bss() {
+	setScene(gscn_s);
+	shp1 = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("1"));
+	scene()->addItem(shp1);
+	scene()->addItem(shp1->shpshld);
+	shp1->scr_txt->setPos(size().width() - shp1->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+	                      MyRes::txtitem_y_crrctn);
+	shp1->lf_txt->setPos(size().width() - shp1->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+	                     MyRes::txtitem_y_crrctn + shp1->scr_txt->boundingRect().height());
+	scene()->addItem(shp1->scr_txt);
+	scene()->addItem(shp1->lf_txt);
+
 	MyAlienBoss *tmp = new MyAlienBoss(6);
-	tmp->setPos(1500, 300);
-	gscn_s->addItem(tmp);
+	tmp->setPos(1300, 300);
+	scene()->addItem(tmp);
 }
 
 void MyGame::keyPressEvent(QKeyEvent *event) {
@@ -403,7 +411,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 	    MyRes::stg_cnt * (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) -
 	    MyRes::app_size.width()) {
 		if (SettingData::gMode == 1) {
-			// Boss
+			clean();
+			bld_bss();
 		}
 		else {
 			if (shp1->scr > shp2->scr) {
