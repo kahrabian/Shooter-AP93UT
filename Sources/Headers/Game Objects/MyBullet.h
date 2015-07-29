@@ -14,6 +14,7 @@
 #include <Sources/Headers/Game Objects/MyAlien.h>
 #include <Sources/Headers/Game Objects/MyAsteroid.h>
 #include <Sources/Headers/Game Objects/MyExplosion.h>
+#include <Sources/Headers/Game Objects/MyAlienBoss.h>
 #include <Sources/Headers/Resources.h>
 
 class MyShip;

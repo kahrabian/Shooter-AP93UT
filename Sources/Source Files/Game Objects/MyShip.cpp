@@ -249,6 +249,27 @@ void MyShip::cllsn_dtctn() {
 				dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
 				dynamic_cast<MyAlien *>(i)->hide();
 			}
+			else if (dynamic_cast<MyAlienBoss *>(i) && dynamic_cast<MyAlienBoss *>(i)->isVisible()) {
+				ply_sf(const_cast<QString &>(MyRes::sf_expln_astrd_add));
+				MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_astrd_size));
+				expln->setPos(
+						dynamic_cast<MyAlienBoss *>(i)->x() + (dynamic_cast<MyAlienBoss *>(i)->pixmap().width() / 2) -
+						(MyRes::expln_astrd_size.width() / 2),
+						dynamic_cast<MyAlienBoss *>(i)->y() + (dynamic_cast<MyAlienBoss *>(i)->pixmap().height() / 2) -
+						(MyRes::expln_astrd_size.height() / 2) + MyRes::expln_astrd_crrctn);
+				expln->updt();
+				scene()->addItem(expln);
+				lf--;
+				dynamic_cast<MyAlienBoss *>(i)->hide();
+
+				if (dynamic_cast<MyAlienBoss *>(i)->getStg() != 0) {
+					for (int j = 0; j < 2; j++) {
+						MyAlienBoss *bss = new MyAlienBoss(dynamic_cast<MyAlienBoss *>(i)->getStg() - 1);
+						bss->setPos(dynamic_cast<MyAlienBoss *>(i)->pos());
+						scene()->addItem(bss);
+					}
+				}
+			}
 			else if (dynamic_cast<MyAsteroid *>(i) && dynamic_cast<MyAsteroid *>(i)->isVisible()) {
 				ply_sf(const_cast<QString &>(MyRes::sf_expln_astrd_add));
 				MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_astrd_size));

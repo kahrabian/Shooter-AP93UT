@@ -23,6 +23,8 @@ public:
 
 	~MyAlienBoss();
 
+	int getStg() const;
+
 	void updt();
 
 private:
@@ -34,8 +36,6 @@ private:
 	QPointF *vlc;
 
 	QPixmap **astrd_frms;
-
-	void cllsn_dtctn();
 };
 
 #endif //SHOOTER_AP93UT_MYALIENBOSS_H

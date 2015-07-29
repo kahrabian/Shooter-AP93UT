@@ -16,6 +16,12 @@ MyGame::MyGame(QWidget *parent) :
 	gscn->setBackgroundBrush(
 			QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(MyRes::tl_size, Qt::KeepAspectRatio,
 			                                                        Qt::SmoothTransformation)));
+	gscn_s = new QGraphicsScene();
+	gscn_s->setSceneRect(MyRes::scn_rct);
+	gscn_s->setBackgroundBrush(
+			QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(MyRes::tl_size, Qt::KeepAspectRatio,
+			                                                        Qt::SmoothTransformation)));
+
 	for (int i = 0; i < MyRes::stg_cnt; i++) {
 		QGraphicsPixmapItem *stg = new QGraphicsPixmapItem(
 				QPixmap(MyRes::stg_add[i]).scaled(MyRes::stg_size, Qt::IgnoreAspectRatio,
@@ -43,6 +49,12 @@ void MyGame::clean() {
 				dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
 				scene()->removeItem(i);
 				MyAlien *tmp = dynamic_cast<MyAlien *>(i);
+				delete tmp;
+				continue;
+			}
+			else if (dynamic_cast<MyAlienBoss *>(i)) {
+				scene()->removeItem(i);
+				MyAlienBoss *tmp = dynamic_cast<MyAlienBoss *>(i);
 				delete tmp;
 				continue;
 			}
@@ -117,36 +129,39 @@ void MyGame::restart() {
 	stream >> tmp;
 	file.close();
 
+//		setScene(gscn);
+	setScene(gscn_s);
+
 	if (tmp == "0") {
 		shp1 = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("1"));
-		gscn->addItem(shp1);
-		gscn->addItem(shp1->shpshld);
+		scene()->addItem(shp1);
+		scene()->addItem(shp1->shpshld);
 		shp1->scr_txt->setPos(size().width() - shp1->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
 		                      MyRes::txtitem_y_crrctn);
 		shp1->lf_txt->setPos(size().width() - shp1->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
 		                     MyRes::txtitem_y_crrctn + shp1->scr_txt->boundingRect().height());
-		gscn->addItem(shp1->scr_txt);
-		gscn->addItem(shp1->lf_txt);
+		scene()->addItem(shp1->scr_txt);
+		scene()->addItem(shp1->lf_txt);
 
 		if (SettingData::gMode != 1) {
 			shp2 = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("2"));
-			gscn->addItem(shp2);
-			gscn->addItem(shp2->shpshld);
+			scene()->addItem(shp2);
+			scene()->addItem(shp2->shpshld);
 			shp2->scr_txt->setPos(size().width() - shp2->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
 			                      size().height() - shp2->scr_txt->boundingRect().height() - MyRes::txtitem_y_crrctn);
 			shp2->lf_txt->setPos(size().width() - shp2->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
 			                     size().height() - shp2->scr_txt->boundingRect().height() -
 			                     shp2->lf_txt->boundingRect().height() -
 			                    MyRes::txtitem_y_crrctn);
-			gscn->addItem(shp2->scr_txt);
-			gscn->addItem(shp2->lf_txt);
+			scene()->addItem(shp2->scr_txt);
+			scene()->addItem(shp2->lf_txt);
 		}
 
-		setScene(gscn);
 		setSceneRect(viewport()->frameGeometry());
-		bld_stg1();
-		bld_stg2();
-		bld_stg3();
+//		bld_stg1();
+//		bld_stg2();
+//		bld_stg3();
+		bld_bss();
 	}
 //	else if(tmp == "1") {
 //
@@ -298,8 +313,26 @@ void MyGame::bld_stg2() {
 }
 
 void MyGame::bld_stg3() {
-	for (int i = 0; i < 20 + 10 * SettingData::gDiff; i++) {
+	for (int i = 0; i < 10 + 5 * SettingData::gDiff; i++) {
 		MyAsteroid *tmp = new MyAsteroid(2);
+		tmp->setPos(MyRes::app_size.width() +
+		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
+		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
+		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
+		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
+		scene()->addItem(tmp);
+	}
+	for (int i = 0; i < 10 + 5 * SettingData::gDiff; i++) {
+		MyAlien *tmp = new MyAlien(1);
+		tmp->setPos(MyRes::app_size.width() +
+		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
+		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
+		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
+		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
+		scene()->addItem(tmp);
+	}
+	for (int i = 0; i < 5 + 5 * SettingData::gDiff; i++) {
+		MyAlien *tmp = new MyAlien(2);
 		tmp->setPos(MyRes::app_size.width() +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
@@ -346,7 +379,9 @@ void MyGame::bld_stg3() {
 }
 
 void MyGame::bld_bss() {
-
+	MyAlienBoss *tmp = new MyAlienBoss(6);
+	tmp->setPos(1500, 300);
+	gscn_s->addItem(tmp);
 }
 
 void MyGame::keyPressEvent(QKeyEvent *event) {
@@ -368,7 +403,7 @@ void MyGame::timerEvent(QTimerEvent *event) {
 	    MyRes::stg_cnt * (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) -
 	    MyRes::app_size.width()) {
 		if (SettingData::gMode == 1) {
-
+			// Boss
 		}
 		else {
 			if (shp1->scr > shp2->scr) {
@@ -405,6 +440,18 @@ void MyGame::timerEvent(QTimerEvent *event) {
 					dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
 					scene()->removeItem(i);
 					MyAlien *tmp = dynamic_cast<MyAlien *>(i);
+					delete tmp;
+				}
+				continue;
+			}
+			if (dynamic_cast<MyAlienBoss *>(i)) {
+				dynamic_cast<MyAlienBoss *>(i)->updt();
+				if (!dynamic_cast<MyAlienBoss *>(i)->isVisible() ||
+				    dynamic_cast<MyAlienBoss *>(i)->sceneBoundingRect().right() < sceneRect().left() ||
+				    dynamic_cast<MyAlienBoss *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
+				    dynamic_cast<MyAlienBoss *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
+					scene()->removeItem(i);
+					MyAlienBoss *tmp = dynamic_cast<MyAlienBoss *>(i);
 					delete tmp;
 				}
 				continue;

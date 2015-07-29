@@ -11,7 +11,12 @@ MyAlienBoss::MyAlienBoss(int stg) :
 	astrd_num = rand() % MyRes::astrd_typcnt;
 	frm_num = 0;
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
-	vlc = new QPointF(-10, -10);
+	if (rand() % 2 == 0) {
+		vlc = new QPointF(-10, -10);
+	}
+	else {
+		vlc = new QPointF(-10, 10);
+	}
 	for (int i = 0; i < MyRes::astrd_frcnt; i++) {
 		astrd_frms[i] = new QPixmap(MyRes::astrd_adds[astrd_num][i]);
 	}
@@ -26,35 +31,12 @@ MyAlienBoss::~MyAlienBoss() {
 	delete vlc;
 }
 
-void MyAlienBoss::cllsn_dtctn() {
-	QList<QGraphicsItem *> clldng_items = collidingItems(Qt::ItemSelectionMode::IntersectsItemShape);
-			foreach(QGraphicsItem *i, clldng_items) {
-//			if (dynamic_cast<MyShip *>(i) && dynamic_cast<MyShip *>(i)->isVisible()) {
-//				ply_sf(const_cast<QString &>(MyRes::sf_shp_shp_add));
-//				lf--;
-//			}
-//			else if (dynamic_cast<MyShipShield *>(i) && dynamic_cast<MyShipShield *>(i)->isVisible() &&
-//			         dynamic_cast<MyShipShield *>(i) != shpshld) {
-//				ply_sf(const_cast<QString &>(MyRes::sf_expln_shpshld_add));
-//				lf--;
-//				dynamic_cast<MyShipShield *>(i)->dstry();
-//			}
-//			if (dynamic_cast<MyBullet *>(i) && dynamic_cast<MyBullet *>(i)->isVisible() && isVisible()) {
-//				ply_sf(const_cast<QString &>(MyRes::sf_expln_lsr_add));
-//				MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_lsr_size));
-//				expln->setPos(dynamic_cast<MyBullet *>(i)->x() + (dynamic_cast<MyBullet *>(i)->pixmap().width() / 2) -
-//				              (MyRes::expln_lsr_size.width() / 2),
-//				              dynamic_cast<MyBullet *>(i)->y() + (dynamic_cast<MyBullet *>(i)->pixmap().height() / 2) -
-//				              (MyRes::expln_lsr_size.height() / 2) + MyRes::expln_lsr_crrctn);
-//				expln->updt();
-//				scene()->addItem(expln);
-//				dynamic_cast<MyBullet *>(i)->hide();
-//			}
-		}
+int MyAlienBoss::getStg() const {
+	return stg;
 }
 
 void MyAlienBoss::updt() {
-	cllsn_dtctn();
+	setPos(pos().x() + MyRes::vw_mvmnt, pos().y());
 	frm_num = (frm_num + 1) % (3 * MyRes::astrd_frcnt);
 	setPixmap(astrd_frms[(frm_num / 3) % MyRes::astrd_frcnt]->scaled(MyRes::astrd_size, Qt::KeepAspectRatio,
 	                                                                 Qt::SmoothTransformation));

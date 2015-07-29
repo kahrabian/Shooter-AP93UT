@@ -25,6 +25,7 @@
 #include <Sources/Headers/Game Objects/MyLife.h>
 #include <Sources/Headers/Game Objects/MyShipShield.h>
 #include <Sources/Headers/Game Objects/MyAsteroid.h>
+#include <Sources/Headers/Game Objects/MyAlienBoss.h>
 #include <Sources/Headers/Resources.h>
 
 class MyShip : public QObject, public QGraphicsPixmapItem {
