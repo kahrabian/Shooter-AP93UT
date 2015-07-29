@@ -16,11 +16,11 @@ MyGame::MyGame(QWidget *parent) :
 	gscn->setBackgroundBrush(
 			QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(MyRes::tl_size, Qt::KeepAspectRatio,
 			                                                        Qt::SmoothTransformation)));
-	gscn_s = new QGraphicsScene();
-	gscn_s->setSceneRect(MyRes::scn_rct);
-	gscn_s->setBackgroundBrush(
-			QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(MyRes::tl_size, Qt::KeepAspectRatio,
-			                                                        Qt::SmoothTransformation)));
+//	gscn_s = new QGraphicsScene();
+//	gscn_s->setSceneRect(MyRes::scn_rct);
+//	gscn_s->setBackgroundBrush(
+//			QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(MyRes::tl_size, Qt::KeepAspectRatio,
+//			                                                        Qt::SmoothTransformation)));
 
 	for (int i = 0; i < MyRes::stg_cnt; i++) {
 		QGraphicsPixmapItem *stg = new QGraphicsPixmapItem(
@@ -133,7 +133,7 @@ void MyGame::restart() {
 		bld_stg1();
 		bld_stg2();
 		bld_stg3();
-//		bld_bss();
+		bld_bss();
 	}
 //	else if(tmp == "1") {
 //
@@ -376,22 +376,23 @@ void MyGame::bld_stg3() {
 }
 
 void MyGame::bld_bss() {
-	setScene(gscn_s);
-	setSceneRect(viewport()->frameGeometry());
-	QTextStream X(stderr);
-	X << 1 << endl;
-	scene()->addItem(shp1);
-	scene()->addItem(shp1->shpshld);
-	shp1->scr_txt->setPos(size().width() - shp1->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
-	                      MyRes::txtitem_y_crrctn);
-	shp1->lf_txt->setPos(size().width() - shp1->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
-	                     MyRes::txtitem_y_crrctn + shp1->scr_txt->boundingRect().height());
-	scene()->addItem(shp1->scr_txt);
-	scene()->addItem(shp1->lf_txt);
-
-	MyAlienBoss *tmp = new MyAlienBoss(4, -1, -1);
-	tmp->setPos(1300, 300);
-	scene()->addItem(tmp);
+//	setScene(gscn_s);
+//	setSceneRect(viewport()->frameGeometry());
+//	scene()->addItem(shp1);
+//	shp1->setPos(mapFromScene(shp1->pos()));
+//	scene()->addItem(shp1->shpshld);
+//	shp1->scr_txt->setPos(size().width() - shp1->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+//	                      MyRes::txtitem_y_crrctn);
+//	shp1->lf_txt->setPos(size().width() - shp1->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
+//	                     MyRes::txtitem_y_crrctn + shp1->scr_txt->boundingRect().height());
+//	scene()->addItem(shp1->scr_txt);
+//	scene()->addItem(shp1->lf_txt);
+//
+	MyAlienBoss *bss = new MyAlienBoss(4, -1, -1);
+	bss->setPos(
+			MyRes::stg_cnt * (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
+			100, rand() % (viewport()->height() - bss->pixmap().height()));
+	scene()->addItem(bss);
 }
 
 void MyGame::keyPressEvent(QKeyEvent *event) {
@@ -411,13 +412,14 @@ void MyGame::keyReleaseEvent(QKeyEvent *event) {
 void MyGame::timerEvent(QTimerEvent *event) {
 	if (sceneRect().x() >
 	    MyRes::stg_cnt * (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) -
-			    MyRes::app_size.width() && scene() == gscn) {
-		if (SettingData::gMode == 1) {
+			    MyRes::app_size.width() /*&& scene() == gscn*/) {
+//		if (SettingData::gMode == 1) {
 //			clean();
-			bld_bss();
-			return;
-		}
-		else {
+//			bld_bss();
+//			return;
+//		}
+//		else {
+		if (SettingData::gMode != 1) {
 			if (shp1->scr > shp2->scr) {
 				emit gameEnded(1);
 			}
@@ -440,7 +442,9 @@ void MyGame::timerEvent(QTimerEvent *event) {
 	setSceneRect(sceneRect().x() + MyRes::vw_mvmnt, 0, viewport()->frameGeometry().width(),
 	             viewport()->frameGeometry().height());
 	QList<QGraphicsItem *> itms = scene()->items();
-	if (scene() == gscn_s) {
+	if (sceneRect().x() >
+	    MyRes::stg_cnt * (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) -
+	    MyRes::app_size.width()) {
 		bool f = false;
 				foreach(QGraphicsItem *i, itms) {
 				if (dynamic_cast<MyAlienBoss *>(i)) {

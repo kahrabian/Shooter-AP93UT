@@ -48,7 +48,7 @@ private:
 	QSet<int> *prsd_kys;
 
 	QGraphicsScene *gscn;
-	QGraphicsScene *gscn_s;
+//	QGraphicsScene *gscn_s;
 
 	MyShip *shp1;
 	MyShip *shp2;
