@@ -29,11 +29,13 @@ int MyAlienBoss::getStg() const {
 	return stg;
 }
 
-void MyAlienBoss::updt() {
-	setPos(pos().x() + MyRes::vw_mvmnt, pos().y());
-	frm_num = (frm_num + 1) % (3 * MyRes::astrd_frcnt);
-	setPixmap(astrd_frms[(frm_num / 3) % MyRes::astrd_frcnt]->scaled(MyRes::astrd_size, Qt::KeepAspectRatio,
-	                                                                 Qt::SmoothTransformation));
+void MyAlienBoss::updt(int mode) {
+	if (mode == 0) {
+		setPos(pos().x() + MyRes::vw_mvmnt, pos().y());
+		frm_num = (frm_num + 1) % (3 * MyRes::astrd_frcnt);
+		setPixmap(astrd_frms[(frm_num / 3) % MyRes::astrd_frcnt]->scaled(MyRes::astrd_size, Qt::KeepAspectRatio,
+		                                                                 Qt::SmoothTransformation));
+	}
 	QPointF tplft(scene()->views().first()->viewport()->mapToParent(
 			scene()->views().first()->mapFromScene(mapToScene(boundingRect().topLeft()))));
 	QPointF bttmrght(scene()->views().first()->viewport()->mapToParent(

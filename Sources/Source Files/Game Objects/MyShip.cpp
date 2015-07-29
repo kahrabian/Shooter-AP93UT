@@ -210,6 +210,63 @@ void MyShip::cllsn_dtctn() {
 			else if (dynamic_cast<MyShip *>(i) && dynamic_cast<MyShip *>(i)->isVisible()) {
 				ply_sf(const_cast<QString &>(MyRes::sf_shp_shp_add));
 				lf--;
+				QPointF tplft(scene()->views().first()->viewport()->mapToParent(
+						scene()->views().first()->mapFromScene(mapToScene(boundingRect().topLeft()))));
+				QPointF bttmrght(scene()->views().first()->viewport()->mapToParent(
+						scene()->views().first()->mapFromScene(mapToScene(boundingRect().bottomRight()))));
+				QPointF tplft_i(scene()->views().first()->viewport()->mapToParent(
+						scene()->views().first()->mapFromScene(mapToScene(i->boundingRect().topLeft()))));
+				QPointF bttmrght_i(scene()->views().first()->viewport()->mapToParent(
+						scene()->views().first()->mapFromScene(mapToScene(i->boundingRect().bottomRight()))));
+				QRectF vw_rct(scene()->views().first()->viewport()->rect());
+				if (sceneBoundingRect().bottom() > i->sceneBoundingRect().top()) {
+					while (collidesWithItem(i, Qt::IntersectsItemShape)) {
+						if ((tplft.y() - 5 >= MyRes::y_offset &&
+						     bttmrght.y() - 5 <= vw_rct.height() - MyRes::y_offset)) {
+							setPos(pos().x(), pos().y() - 5);
+						}
+						if ((tplft_i.y() + 5 >= MyRes::y_offset &&
+						     bttmrght_i.y() + 5 <= vw_rct.height() - MyRes::y_offset)) {
+							i->setPos(i->pos().x(), i->pos().y() + 5);
+						}
+					}
+				}
+				else if (sceneBoundingRect().top() < i->sceneBoundingRect().bottom()) {
+					while (collidesWithItem(i, Qt::IntersectsItemShape)) {
+						if ((tplft.y() + 5 >= MyRes::y_offset &&
+						     bttmrght.y() + 5 <= vw_rct.height() - MyRes::y_offset)) {
+							setPos(pos().x(), pos().y() + 5);
+						}
+						if ((tplft_i.y() - 5 >= MyRes::y_offset &&
+						     bttmrght_i.y() - 5 <= vw_rct.height() - MyRes::y_offset)) {
+							i->setPos(i->pos().x(), i->pos().y() - 5);
+						}
+					}
+				}
+				else if (sceneBoundingRect().right() > i->sceneBoundingRect().left()) {
+					while (collidesWithItem(i, Qt::IntersectsItemShape)) {
+						if ((tplft.x() - 5 >= MyRes::x_offset &&
+						     bttmrght.x() - 5 <= vw_rct.width() - MyRes::x_offset)) {
+							setPos(pos().x() - 5, pos().y());
+						}
+						if ((tplft_i.x() + 5 >= MyRes::x_offset &&
+						     bttmrght_i.x() + 5 <= vw_rct.width() - MyRes::x_offset)) {
+							i->setPos(i->pos().x() + 5, i->pos().y());
+						}
+					}
+				}
+				else if (sceneBoundingRect().left() < i->sceneBoundingRect().right()) {
+					while (collidesWithItem(i, Qt::IntersectsItemShape)) {
+						if ((tplft.x() + 5 >= MyRes::x_offset &&
+						     bttmrght.x() + 5 <= vw_rct.width() - MyRes::x_offset)) {
+							setPos(pos().x() + 5, pos().y());
+						}
+						if ((tplft_i.x() - 5 >= MyRes::x_offset &&
+						     bttmrght_i.x() - 5 <= vw_rct.width() - MyRes::x_offset)) {
+							i->setPos(i->pos().x() - 5, i->pos().y());
+						}
+					}
+				}
 			}
 			else if (dynamic_cast<MyShipShield *>(i) && dynamic_cast<MyShipShield *>(i)->isVisible() &&
 			         dynamic_cast<MyShipShield *>(i) != shpshld) {
@@ -249,31 +306,34 @@ void MyShip::cllsn_dtctn() {
 				dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
 				dynamic_cast<MyAlien *>(i)->hide();
 			}
-//			else if (dynamic_cast<MyAlienBoss *>(i) && dynamic_cast<MyAlienBoss *>(i)->isVisible()) {
-//				ply_sf(const_cast<QString &>(MyRes::sf_expln_astrd_add));
-//				if (dynamic_cast<MyAlienBoss *>(i)->getStg() == 0) {
-//					MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_astrd_size));
-//					expln->setPos(
-//							dynamic_cast<MyAlienBoss *>(i)->x() +
-//							(dynamic_cast<MyAlienBoss *>(i)->pixmap().width() / 2) -
-//							(MyRes::expln_astrd_size.width() / 2),
-//							dynamic_cast<MyAlienBoss *>(i)->y() +
-//							(dynamic_cast<MyAlienBoss *>(i)->pixmap().height() / 2) -
-//							(MyRes::expln_astrd_size.height() / 2) + MyRes::expln_astrd_crrctn);
-//					expln->updt();
-//					scene()->addItem(expln);
-//				}
-//				lf--;
-//				dynamic_cast<MyAlienBoss *>(i)->hide();
-//
-//				if (dynamic_cast<MyAlienBoss *>(i)->getStg() != 0) {
-//					for (int j = -1; j <= 1; j += 2) {
-//						MyAlienBoss *bss = new MyAlienBoss(dynamic_cast<MyAlienBoss *>(i)->getStg() - 1, j, j);
-//						bss->setPos(dynamic_cast<MyAlienBoss *>(i)->pos());
-//						scene()->addItem(bss);
-//					}
-//				}
-//			}
+			else if (dynamic_cast<MyAlienBoss *>(i) && dynamic_cast<MyAlienBoss *>(i)->isVisible()) {
+				ply_sf(const_cast<QString &>(MyRes::sf_expln_astrd_add));
+				if (dynamic_cast<MyAlienBoss *>(i)->getStg() == 0) {
+					MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_astrd_size));
+					expln->setPos(
+							dynamic_cast<MyAlienBoss *>(i)->x() +
+							(dynamic_cast<MyAlienBoss *>(i)->pixmap().width() / 2) -
+							(MyRes::expln_astrd_size.width() / 2),
+							dynamic_cast<MyAlienBoss *>(i)->y() +
+							(dynamic_cast<MyAlienBoss *>(i)->pixmap().height() / 2) -
+							(MyRes::expln_astrd_size.height() / 2) + MyRes::expln_astrd_crrctn);
+					expln->updt();
+					scene()->addItem(expln);
+				}
+				lf--;
+				dynamic_cast<MyAlienBoss *>(i)->hide();
+
+				if (dynamic_cast<MyAlienBoss *>(i)->getStg() != 0) {
+					for (int j = -1; j <= 1; j += 2) {
+						MyAlienBoss *bss = new MyAlienBoss(dynamic_cast<MyAlienBoss *>(i)->getStg() - 1, j, j);
+						bss->setPos(dynamic_cast<MyAlienBoss *>(i)->pos());
+						scene()->addItem(bss);
+						while (collidesWithItem(bss, Qt::IntersectsItemShape)) {
+							bss->updt(1);
+						}
+					}
+				}
+			}
 			else if (dynamic_cast<MyAsteroid *>(i) && dynamic_cast<MyAsteroid *>(i)->isVisible()) {
 				ply_sf(const_cast<QString &>(MyRes::sf_expln_astrd_add));
 				MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_astrd_size));
@@ -374,19 +434,52 @@ void MyShip::updt_vlc(QSet<int> *prsd_kys) {
 		deactivate_lsr();
 	}
 
-	if (prsd_kys->find(Qt::Key_W) != prsd_kys->end() && name->compare("1") != 0) {
+	if (prsd_kys->find(Qt::Key_W) != prsd_kys->end() && name->compare("2") == 0) {
 		vlc->setY(vlc->y() - MyRes::shp_mvmnt);
 	}
-	if (prsd_kys->find(Qt::Key_S) != prsd_kys->end() && name->compare("1") != 0) {
+	if (prsd_kys->find(Qt::Key_S) != prsd_kys->end() && name->compare("2") == 0) {
 		vlc->setY(vlc->y() + MyRes::shp_mvmnt);
 	}
-	if (prsd_kys->find(Qt::Key_A) != prsd_kys->end() && name->compare("1") != 0) {
+	if (prsd_kys->find(Qt::Key_A) != prsd_kys->end() && name->compare("2") == 0) {
 		vlc->setX(vlc->x() - MyRes::shp_mvmnt);
 	}
-	if (prsd_kys->find(Qt::Key_D) != prsd_kys->end() && name->compare("1") != 0) {
+	if (prsd_kys->find(Qt::Key_D) != prsd_kys->end() && name->compare("2") == 0) {
 		vlc->setX(vlc->x() + MyRes::shp_mvmnt);
 	}
-	if (prsd_kys->find(Qt::Key_X) != prsd_kys->end() && name->compare("1") != 0 && lsr) {
+	if (prsd_kys->find(Qt::Key_X) != prsd_kys->end() && name->compare("2") == 0 && lsr) {
+		ply_sf(const_cast<QString &>(MyRes::sf_shp_lsr_add));
+		if (!mgc) {
+			MyBullet *lsr = new MyBullet(0);
+			lsr->setPos(pos().x() + pixmap().width(),
+			            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
+			scene()->addItem(lsr);
+			QObject::connect(lsr, SIGNAL(scrGained()), this, SLOT(scrIncrement()));
+		}
+		else {
+			for (int i = -MyRes::lsr_rtn_max; i <= MyRes::lsr_rtn_max; i += MyRes::lsr_rtn_stp) {
+				MyBullet *lsr = new MyBullet(0, i);
+				lsr->setPos(pos().x() + pixmap().width(),
+				            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
+				scene()->addItem(lsr);
+				QObject::connect(lsr, SIGNAL(scrGained()), this, SLOT(scrIncrement()));
+			}
+		}
+		deactivate_lsr();
+	}
+
+	if (prsd_kys->find(-Qt::Key_W) != prsd_kys->end() && name->compare("ai") == 0) {
+		vlc->setY(vlc->y() - MyRes::shp_mvmnt);
+	}
+	if (prsd_kys->find(-Qt::Key_S) != prsd_kys->end() && name->compare("ai") == 0) {
+		vlc->setY(vlc->y() + MyRes::shp_mvmnt);
+	}
+	if (prsd_kys->find(-Qt::Key_A) != prsd_kys->end() && name->compare("ai") == 0) {
+		vlc->setX(vlc->x() - MyRes::shp_mvmnt);
+	}
+	if (prsd_kys->find(-Qt::Key_D) != prsd_kys->end() && name->compare("ai") == 0) {
+		vlc->setX(vlc->x() + MyRes::shp_mvmnt);
+	}
+	if (prsd_kys->find(-Qt::Key_X) != prsd_kys->end() && name->compare("ai") == 0 && lsr) {
 		ply_sf(const_cast<QString &>(MyRes::sf_shp_lsr_add));
 		if (!mgc) {
 			MyBullet *lsr = new MyBullet(0);

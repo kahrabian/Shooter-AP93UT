@@ -25,7 +25,7 @@ public:
 
 	int getStg() const;
 
-	void updt();
+	void updt(int = 0);
 
 private:
 	int astrd_num;
