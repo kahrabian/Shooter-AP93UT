@@ -31,6 +31,8 @@ MyShip::MyShip(const QPixmap &pixmap, QString *name) :
 	shld_tmr_elpsd = 0;
 	mgc_tmr = new QTimer();
 	mgc_tmr_elpsd = 0;
+	lf_tmr = new QTimer();
+	lf_tmr_elpsd = 0;
 
 	lsr_tmr = new QTimer();
 	lsr_tmr_elpsd = 0;
@@ -53,6 +55,7 @@ MyShip::MyShip(const QPixmap &pixmap, QString *name) :
 	QTimer::connect(shpshld, SIGNAL(shieldDestroyd()), this, SLOT(deactivate_shld()));
 	QTimer::connect(mgc_tmr, SIGNAL(timeout()), this, SLOT(deactivate_mgc()));
 	QTimer::connect(lsr_tmr, SIGNAL(timeout()), this, SLOT(activate_lsr()));
+	QTimer::connect(lf_tmr, SIGNAL(timeout()), this, SLOT(deactivate_lf()));
 
 	deactivate_shld();
 	deactivate_mgc();
@@ -62,6 +65,7 @@ MyShip::~MyShip() {
 	delete name;
 	delete mgc_tmr;
 	delete lsr_tmr;
+	delete lf_tmr;
 	delete vlc;
 }
 
@@ -114,6 +118,14 @@ void MyShip::deactivate_lsr() {
 	}
 }
 
+void MyShip::activate_lf() {
+	lf_tmr->start(2000);
+}
+
+void MyShip::deactivate_lf() {
+	lf_tmr->stop();
+}
+
 void MyShip::scrIncrement() {
 	scr++;
 }
@@ -139,6 +151,9 @@ void MyShip::change_speed() {
 		if (lsr_tmr->isActive()) {
 			lsr_tmr->start(lsr_tmr->remainingTime() / 4);
 		}
+		if (lf_tmr->isActive()) {
+			lf_tmr->start(lf_tmr->remainingTime() / 4);
+		}
 	}
 	else {
 		if (shld_tmr->isActive()) {
@@ -149,6 +164,9 @@ void MyShip::change_speed() {
 		}
 		if (lsr_tmr->isActive()) {
 			lsr_tmr->start(lsr_tmr->remainingTime() * 4);
+		}
+		if (lf_tmr->isActive()) {
+			lf_tmr->start(lf_tmr->remainingTime() * 4);
 		}
 	}
 }
@@ -166,6 +184,10 @@ void MyShip::game_paused() {
 		lsr_tmr_elpsd = lsr_tmr->remainingTime();
 		lsr_tmr->stop();
 	}
+	if (lf_tmr->isActive()) {
+		lf_tmr_elpsd = lf_tmr->remainingTime();
+		lf_tmr->stop();
+	}
 }
 
 void MyShip::game_unpaused() {
@@ -174,6 +196,9 @@ void MyShip::game_unpaused() {
 	}
 	if (mgc_tmr_elpsd > 0) {
 		mgc_tmr->start(mgc_tmr_elpsd);
+	}
+	if (lf_tmr_elpsd > 0) {
+		lf_tmr->start(lf_tmr_elpsd);
 	}
 	if (lsr_tmr_elpsd > 0) {
 		lsr_tmr->start(lsr_tmr_elpsd);
@@ -207,71 +232,18 @@ void MyShip::cllsn_dtctn() {
 				activate_shld();
 				dynamic_cast<MyShield *>(i)->hide();
 			}
-			else if (dynamic_cast<MyShip *>(i) && dynamic_cast<MyShip *>(i)->isVisible()) {
+			else if (dynamic_cast<MyShip *>(i) && dynamic_cast<MyShip *>(i)->isVisible() && !lf_tmr->isActive()) {
 				ply_sf(const_cast<QString &>(MyRes::sf_shp_shp_add));
 				lf--;
-				QPointF tplft(scene()->views().first()->viewport()->mapToParent(
-						scene()->views().first()->mapFromScene(mapToScene(boundingRect().topLeft()))));
-				QPointF bttmrght(scene()->views().first()->viewport()->mapToParent(
-						scene()->views().first()->mapFromScene(mapToScene(boundingRect().bottomRight()))));
-				QPointF tplft_i(scene()->views().first()->viewport()->mapToParent(
-						scene()->views().first()->mapFromScene(mapToScene(i->boundingRect().topLeft()))));
-				QPointF bttmrght_i(scene()->views().first()->viewport()->mapToParent(
-						scene()->views().first()->mapFromScene(mapToScene(i->boundingRect().bottomRight()))));
-				QRectF vw_rct(scene()->views().first()->viewport()->rect());
-				if (sceneBoundingRect().bottom() > i->sceneBoundingRect().top()) {
-					while (collidesWithItem(i, Qt::IntersectsItemShape)) {
-						if ((tplft.y() - 5 >= MyRes::y_offset &&
-						     bttmrght.y() - 5 <= vw_rct.height() - MyRes::y_offset)) {
-							setPos(pos().x(), pos().y() - 5);
-						}
-						if ((tplft_i.y() + 5 >= MyRes::y_offset &&
-						     bttmrght_i.y() + 5 <= vw_rct.height() - MyRes::y_offset)) {
-							i->setPos(i->pos().x(), i->pos().y() + 5);
-						}
-					}
-				}
-				else if (sceneBoundingRect().top() < i->sceneBoundingRect().bottom()) {
-					while (collidesWithItem(i, Qt::IntersectsItemShape)) {
-						if ((tplft.y() + 5 >= MyRes::y_offset &&
-						     bttmrght.y() + 5 <= vw_rct.height() - MyRes::y_offset)) {
-							setPos(pos().x(), pos().y() + 5);
-						}
-						if ((tplft_i.y() - 5 >= MyRes::y_offset &&
-						     bttmrght_i.y() - 5 <= vw_rct.height() - MyRes::y_offset)) {
-							i->setPos(i->pos().x(), i->pos().y() - 5);
-						}
-					}
-				}
-				else if (sceneBoundingRect().right() > i->sceneBoundingRect().left()) {
-					while (collidesWithItem(i, Qt::IntersectsItemShape)) {
-						if ((tplft.x() - 5 >= MyRes::x_offset &&
-						     bttmrght.x() - 5 <= vw_rct.width() - MyRes::x_offset)) {
-							setPos(pos().x() - 5, pos().y());
-						}
-						if ((tplft_i.x() + 5 >= MyRes::x_offset &&
-						     bttmrght_i.x() + 5 <= vw_rct.width() - MyRes::x_offset)) {
-							i->setPos(i->pos().x() + 5, i->pos().y());
-						}
-					}
-				}
-				else if (sceneBoundingRect().left() < i->sceneBoundingRect().right()) {
-					while (collidesWithItem(i, Qt::IntersectsItemShape)) {
-						if ((tplft.x() + 5 >= MyRes::x_offset &&
-						     bttmrght.x() + 5 <= vw_rct.width() - MyRes::x_offset)) {
-							setPos(pos().x() + 5, pos().y());
-						}
-						if ((tplft_i.x() - 5 >= MyRes::x_offset &&
-						     bttmrght_i.x() - 5 <= vw_rct.width() - MyRes::x_offset)) {
-							i->setPos(i->pos().x() - 5, i->pos().y());
-						}
-					}
-				}
+				activate_lf();
 			}
 			else if (dynamic_cast<MyShipShield *>(i) && dynamic_cast<MyShipShield *>(i)->isVisible() &&
 			         dynamic_cast<MyShipShield *>(i) != shpshld) {
 				ply_sf(const_cast<QString &>(MyRes::sf_expln_shpshld_add));
-				lf--;
+				if (!lf_tmr->isActive()) {
+					lf--;
+					activate_lf();
+				}
 				dynamic_cast<MyShipShield *>(i)->dstry();
 			}
 			else if (dynamic_cast<MyStar *>(i) && dynamic_cast<MyStar *>(i)->isVisible()) {
@@ -302,7 +274,10 @@ void MyShip::cllsn_dtctn() {
 					                                                        MyRes::expln_aln_smll_crrctn);
 					scene()->addItem(expln);
 				}
-				lf--;
+				if (!lf_tmr->isActive()) {
+					lf--;
+					activate_lf();
+				}
 				dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
 				dynamic_cast<MyAlien *>(i)->hide();
 			}
@@ -320,7 +295,10 @@ void MyShip::cllsn_dtctn() {
 					expln->updt();
 					scene()->addItem(expln);
 				}
-				lf--;
+				if (!lf_tmr->isActive()) {
+					lf--;
+					activate_lf();
+				}
 				dynamic_cast<MyAlienBoss *>(i)->hide();
 
 				if (dynamic_cast<MyAlienBoss *>(i)->getStg() != 0) {
@@ -346,7 +324,10 @@ void MyShip::cllsn_dtctn() {
 						(MyRes::expln_astrd_size.height() / 2) + MyRes::expln_astrd_crrctn);
 				expln->updt();
 				scene()->addItem(expln);
-				lf--;
+				if (!lf_tmr->isActive()) {
+					lf--;
+					activate_lf();
+				}
 				dynamic_cast<MyAsteroid *>(i)->hide();
 			}
 			else if (dynamic_cast<MyBullet *>(i) && dynamic_cast<MyBullet *>(i)->isVisible()) {
@@ -358,7 +339,10 @@ void MyShip::cllsn_dtctn() {
 				              (MyRes::expln_lsr_size.height() / 2) + MyRes::expln_lsr_crrctn);
 				expln->updt();
 				scene()->addItem(expln);
-				lf--;
+				if (!lf_tmr->isActive()) {
+					lf--;
+					activate_lf();
+				}
 				dynamic_cast<MyBullet *>(i)->hide();
 			}
 		}

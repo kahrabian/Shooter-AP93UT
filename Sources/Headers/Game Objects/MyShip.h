@@ -67,6 +67,9 @@ private:
 	int lsr_tmr_elpsd;
 	QTimer *lsr_tmr;
 
+	int lf_tmr_elpsd;
+	QTimer *lf_tmr;
+
 //	int mss;
 	QPointF *vlc;
 //	QPointF *acc;
@@ -98,6 +101,10 @@ private slots:
 	void activate_lsr();
 
 	void deactivate_lsr();
+
+	void activate_lf();
+
+	void deactivate_lf();
 
 	void scrIncrement();
 };
