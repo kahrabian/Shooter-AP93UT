@@ -16,12 +16,6 @@ MyGame::MyGame(QWidget *parent) :
 	gscn->setBackgroundBrush(
 			QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(MyRes::tl_size, Qt::KeepAspectRatio,
 			                                                        Qt::SmoothTransformation)));
-//	gscn_s = new QGraphicsScene();
-//	gscn_s->setSceneRect(MyRes::scn_rct);
-//	gscn_s->setBackgroundBrush(
-//			QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(MyRes::tl_size, Qt::KeepAspectRatio,
-//			                                                        Qt::SmoothTransformation)));
-
 	for (int i = 0; i < MyRes::stg_cnt; i++) {
 		QGraphicsPixmapItem *stg = new QGraphicsPixmapItem(
 				QPixmap(MyRes::stg_add[i]).scaled(MyRes::stg_size, Qt::IgnoreAspectRatio,
@@ -39,7 +33,6 @@ MyGame::~MyGame() {
 	clean();
 	delete prsd_kys;
 	delete gscn;
-//	delete gscn_s;
 }
 
 void MyGame::clean() {
@@ -135,15 +128,6 @@ void MyGame::restart() {
 		bld_stg3();
 		bld_bss();
 	}
-//	else if(tmp == "1") {
-//
-//	}
-//	else if(tmp == "2") {
-//
-//	}
-//	else if(tmp == "3") {
-//
-//	}
 }
 
 void MyGame::change_speed() {
@@ -376,18 +360,6 @@ void MyGame::bld_stg3() {
 }
 
 void MyGame::bld_bss() {
-//	setScene(gscn_s);
-//	setSceneRect(viewport()->frameGeometry());
-//	scene()->addItem(shp1);
-//	shp1->setPos(mapFromScene(shp1->pos()));
-//	scene()->addItem(shp1->shpshld);
-//	shp1->scr_txt->setPos(size().width() - shp1->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
-//	                      MyRes::txtitem_y_crrctn);
-//	shp1->lf_txt->setPos(size().width() - shp1->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
-//	                     MyRes::txtitem_y_crrctn + shp1->scr_txt->boundingRect().height());
-//	scene()->addItem(shp1->scr_txt);
-//	scene()->addItem(shp1->lf_txt);
-//
 	MyAlienBoss *bss = new MyAlienBoss(4, -1, -1);
 	bss->setPos(
 			MyRes::stg_cnt * (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
