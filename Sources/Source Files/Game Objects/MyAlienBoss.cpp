@@ -4,19 +4,13 @@
 
 #include <Sources/Headers/Game Objects/MyAlienBoss.h>
 
-MyAlienBoss::MyAlienBoss(int stg) :
+MyAlienBoss::MyAlienBoss(int stg, int x_dir, int y_dir) :
 		QGraphicsPixmapItem(), QObject() {
 	MyAlienBoss::stg = stg;
 	astrd_frms = new QPixmap *[MyRes::astrd_frcnt];
 	astrd_num = rand() % MyRes::astrd_typcnt;
 	frm_num = 0;
-//	setGraphicsEffect(new QGraphicsDropShadowEffect());
-	if (rand() % 2 == 0) {
-		vlc = new QPointF(-10, -10);
-	}
-	else {
-		vlc = new QPointF(-10, 10);
-	}
+	vlc = new QPointF(x_dir * 10, y_dir * 10);
 	for (int i = 0; i < MyRes::astrd_frcnt; i++) {
 		astrd_frms[i] = new QPixmap(MyRes::astrd_adds[astrd_num][i]);
 	}

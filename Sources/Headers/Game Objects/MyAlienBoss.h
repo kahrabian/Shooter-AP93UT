@@ -19,7 +19,7 @@ class MyAlienBoss : public QObject, public QGraphicsPixmapItem {
 Q_OBJECT
 
 public:
-	MyAlienBoss(int);
+	MyAlienBoss(int, int, int);
 
 	~MyAlienBoss();
 

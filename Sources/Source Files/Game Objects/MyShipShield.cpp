@@ -43,7 +43,7 @@ void MyShipShield::cllsn_dtctn() {
 				scene()->addItem(expln);
 				dynamic_cast<MyAsteroid *>(i)->hide();
 			}
-			else if (dynamic_cast<MyAlienBoss *>(i) && dynamic_cast<MyAlienBoss *>(i)->isVisible()) {
+			else if (dynamic_cast<MyAlienBoss *>(i) && dynamic_cast<MyAlienBoss *>(i)->isVisible() && isVisible()) {
 				ply_sf(const_cast<QString &>(MyRes::sf_expln_astrd_add));
 				if (dynamic_cast<MyAlienBoss *>(i)->getStg() == 0) {
 					MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_astrd_size));
@@ -60,8 +60,8 @@ void MyShipShield::cllsn_dtctn() {
 				dynamic_cast<MyAlienBoss *>(i)->hide();
 
 				if (dynamic_cast<MyAlienBoss *>(i)->getStg() != 0) {
-					for (int j = 0; j < 2; j++) {
-						MyAlienBoss *bss = new MyAlienBoss(dynamic_cast<MyAlienBoss *>(i)->getStg() - 1);
+					for (int j = -1; j <= 1; j += 2) {
+						MyAlienBoss *bss = new MyAlienBoss(dynamic_cast<MyAlienBoss *>(i)->getStg() - 1, j, j);
 						bss->setPos(dynamic_cast<MyAlienBoss *>(i)->pos());
 						scene()->addItem(bss);
 					}

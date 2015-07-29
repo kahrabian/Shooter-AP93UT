@@ -9,7 +9,7 @@ MyAlien::MyAlien(int typ) :
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	fast = false;
 	MyAlien::typ = typ;
-	if (typ == 1) {
+	if (typ == 1 || typ == 3) {
 		setPixmap(QPixmap(MyRes::aln_nrml_adds[rand() % MyRes::aln_nrml_cnt]).scaled(MyRes::aln_bgsize,
 		                                                                             Qt::KeepAspectRatio,
 		                                                                             Qt::SmoothTransformation));
@@ -19,8 +19,17 @@ MyAlien::MyAlien(int typ) :
 		                                                                             Qt::KeepAspectRatio,
 		                                                                             Qt::SmoothTransformation));
 	}
-
-	vlc = new QPointF(5, 10);
+	if (typ == 1 || typ == 2) {
+		vlc = new QPointF(0, 10);
+	}
+	else {
+		if (rand() % 2 == 0) {
+			vlc = new QPointF(-10, -10);
+		}
+		else {
+			vlc = new QPointF(-10, 10);
+		}
+	}
 	tmr_id = startTimer(MyRes::aln_lsrdly);
 }
 
@@ -69,7 +78,7 @@ void MyAlien::updt() {
 	if ((tplft.y() + vlc->y() >= MyRes::y_offset && bttmrght.y() + vlc->y() <= vw_rct.height() - MyRes::y_offset) ||
 	    (tplft.y() + vlc->y() < MyRes::y_offset && vlc->y() > 0) ||
 	    ((bttmrght.y() + vlc->y() > vw_rct.height() - MyRes::y_offset) && vlc->y() < 0)) {
-		setPos(pos().x(), pos().y() + vlc->y());
+		setPos(pos().x() + vlc->x(), pos().y() + vlc->y());
 	}
 	else {
 		vlc->setY(vlc->y() * (-1));
@@ -86,7 +95,7 @@ void MyAlien::ply_sf(QString &add) {
 }
 
 void MyAlien::timerEvent(QTimerEvent *event) {
-	if (typ == 2 && scene()->views().first()->sceneRect().intersects(sceneBoundingRect())) {
+	if ((typ == 2 || typ == 4) && scene()->views().first()->sceneRect().intersects(sceneBoundingRect())) {
 		ply_sf(const_cast<QString &>(MyRes::sf_aln_lsr_add));
 		MyBullet *tmp = new MyBullet(1, 0, -1);
 		tmp->setPos(pos().x(),

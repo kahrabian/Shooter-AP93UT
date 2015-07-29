@@ -38,9 +38,9 @@ void MyMainWindow::game_unpaused() {
 }
 
 void MyMainWindow::game_restart() {
-//	widget_stack->setCurrentWidget(game);
-//	game->restart();
-	delete game;
+	if (widget_stack->currentWidget() == ps) {
+		delete game;
+	}
 	strt_bttn_clicked();
 }
 

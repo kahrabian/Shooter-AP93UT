@@ -116,8 +116,8 @@ void MyBullet::cllsn_dtctn() {
 				hide();
 
 				if (dynamic_cast<MyAlienBoss *>(i)->getStg() != 0) {
-					for (int j = 0; j < 2; j++) {
-						MyAlienBoss *bss = new MyAlienBoss(dynamic_cast<MyAlienBoss *>(i)->getStg() - 1);
+					for (int j = -1; j <= 1; j += 2) {
+						MyAlienBoss *bss = new MyAlienBoss(dynamic_cast<MyAlienBoss *>(i)->getStg() - 1, j, j);
 						bss->setPos(dynamic_cast<MyAlienBoss *>(i)->pos());
 						scene()->addItem(bss);
 					}

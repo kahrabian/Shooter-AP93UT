@@ -130,11 +130,10 @@ void MyGame::restart() {
 	file.close();
 
 	if (tmp == "0") {
-		setSceneRect(viewport()->frameGeometry());
-//		bld_stg1();
-//		bld_stg2();
-//		bld_stg3();
-		bld_bss();
+		bld_stg1();
+		bld_stg2();
+		bld_stg3();
+//		bld_bss();
 	}
 //	else if(tmp == "1") {
 //
@@ -198,6 +197,7 @@ void MyGame::unpause() {
 
 void MyGame::bld_stg1() {
 	setScene(gscn);
+	setSceneRect(viewport()->frameGeometry());
 	shp1 = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("1"));
 	scene()->addItem(shp1);
 	scene()->addItem(shp1->shpshld);
@@ -320,7 +320,7 @@ void MyGame::bld_stg3() {
 		scene()->addItem(tmp);
 	}
 	for (int i = 0; i < 10 + 5 * SettingData::gDiff; i++) {
-		MyAlien *tmp = new MyAlien(1);
+		MyAlien *tmp = new MyAlien(3);
 		tmp->setPos(MyRes::app_size.width() +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
@@ -329,7 +329,7 @@ void MyGame::bld_stg3() {
 		scene()->addItem(tmp);
 	}
 	for (int i = 0; i < 5 + 5 * SettingData::gDiff; i++) {
-		MyAlien *tmp = new MyAlien(2);
+		MyAlien *tmp = new MyAlien(4);
 		tmp->setPos(MyRes::app_size.width() +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
@@ -377,7 +377,9 @@ void MyGame::bld_stg3() {
 
 void MyGame::bld_bss() {
 	setScene(gscn_s);
-	shp1 = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("1"));
+	setSceneRect(viewport()->frameGeometry());
+	QTextStream X(stderr);
+	X << 1 << endl;
 	scene()->addItem(shp1);
 	scene()->addItem(shp1->shpshld);
 	shp1->scr_txt->setPos(size().width() - shp1->scr_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
@@ -387,7 +389,7 @@ void MyGame::bld_bss() {
 	scene()->addItem(shp1->scr_txt);
 	scene()->addItem(shp1->lf_txt);
 
-	MyAlienBoss *tmp = new MyAlienBoss(6);
+	MyAlienBoss *tmp = new MyAlienBoss(4, -1, -1);
 	tmp->setPos(1300, 300);
 	scene()->addItem(tmp);
 }
@@ -409,10 +411,11 @@ void MyGame::keyReleaseEvent(QKeyEvent *event) {
 void MyGame::timerEvent(QTimerEvent *event) {
 	if (sceneRect().x() >
 	    MyRes::stg_cnt * (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) -
-	    MyRes::app_size.width()) {
+			    MyRes::app_size.width() && scene() == gscn) {
 		if (SettingData::gMode == 1) {
-			clean();
+//			clean();
 			bld_bss();
+			return;
 		}
 		else {
 			if (shp1->scr > shp2->scr) {
@@ -437,6 +440,19 @@ void MyGame::timerEvent(QTimerEvent *event) {
 	setSceneRect(sceneRect().x() + MyRes::vw_mvmnt, 0, viewport()->frameGeometry().width(),
 	             viewport()->frameGeometry().height());
 	QList<QGraphicsItem *> itms = scene()->items();
+	if (scene() == gscn_s) {
+		bool f = false;
+				foreach(QGraphicsItem *i, itms) {
+				if (dynamic_cast<MyAlienBoss *>(i)) {
+					f = true;
+				}
+			}
+		if (!f) {
+			emit gameEnded(1);
+			return;
+		}
+	}
+	itms = scene()->items();
 	foreach(QGraphicsItem *i, itms) {
 			if (sceneRect().right() < i->sceneBoundingRect().left())
 				continue;
@@ -548,13 +564,16 @@ void MyGame::timerEvent(QTimerEvent *event) {
 					if (dynamic_cast<MyShip *>(i)->name->compare("1") == 0) {
 						if (SettingData::gMode == 1) {
 							emit gameEnded(0);
+							return;
 						}
 						else {
 							emit gameEnded(2);
+							return;
 						}
 					}
 					else {
 						emit gameEnded(1);
+						return;
 					}
 					MyShip *tmp = dynamic_cast<MyShip *>(i);
 					delete tmp;
