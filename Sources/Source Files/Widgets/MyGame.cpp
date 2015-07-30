@@ -479,10 +479,13 @@ void MyGame::timerEvent(QTimerEvent *event) {
 					if (dynamic_cast<MyAsteroid *>(i)->grv) {
 						dynamic_cast<MyAsteroid *>(i)->grv_fld->hide();
 					}
-					scene()->removeItem(i);
 					if (!dynamic_cast<MyAsteroid *>(i)->isAln()) {
+						scene()->removeItem(i);
 						MyAsteroid *astrd = dynamic_cast<MyAsteroid *>(i);
 						delete astrd;
+					}
+					else {
+						dynamic_cast<MyAsteroid *>(i)->hide();
 					}
 				}
 			}
@@ -583,8 +586,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 			}
 			else if (dynamic_cast<MyGravityField *>(i) && !dynamic_cast<MyGravityField *>(i)->isVisible()) {
 				scene()->removeItem(i);
-				MyGravityField *grv_fld = dynamic_cast<MyGravityField *>(i);
-				delete grv_fld;
+//				MyGravityField *grv_fld = dynamic_cast<MyGravityField *>(i);
+//				delete grv_fld;
 			}
 		}
 }

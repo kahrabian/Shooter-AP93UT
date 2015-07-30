@@ -79,8 +79,8 @@ void MyAlien::cllsn_dtctn() {
 	}
 	QList<QGraphicsItem *> clldng_items = collidingItems(Qt::ItemSelectionMode::IntersectsItemShape);
 			foreach(QGraphicsItem *i, clldng_items) {
-			if (dynamic_cast<MyGravityField *>(i) && !dynamic_cast<MyGravityField *>(i)->getPar()->isAln() &&
-			    i->isVisible()) {
+			if (dynamic_cast<MyGravityField *>(i) && i->isVisible() &&
+			    !dynamic_cast<MyGravityField *>(i)->getPar()->isAln()) {
 				rttn = true;
 				dynamic_cast<MyGravityField *>(i)->getPar()->setAln(true);
 				par = dynamic_cast<MyGravityField *>(i)->getPar();
