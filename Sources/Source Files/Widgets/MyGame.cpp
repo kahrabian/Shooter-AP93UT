@@ -472,7 +472,7 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyAsteroid *>(i)->sceneBoundingRect().right() < sceneRect().left() ||
 				    dynamic_cast<MyAsteroid *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
 				    dynamic_cast<MyAsteroid *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
-					scene()->removeItem(dynamic_cast<MyAsteroid *>(i)->grv_fld);
+					dynamic_cast<MyAsteroid *>(i)->grv_fld->hide();
 					scene()->removeItem(i);
 					MyAsteroid *astrd = dynamic_cast<MyAsteroid *>(i);
 					delete astrd;
@@ -572,6 +572,11 @@ void MyGame::timerEvent(QTimerEvent *event) {
 					MyStar *str = dynamic_cast<MyStar *>(i);
 					delete str;
 				}
+			}
+			else if (dynamic_cast<QGraphicsEllipseItem *>(i) && !dynamic_cast<QGraphicsEllipseItem *>(i)->isVisible()) {
+				scene()->removeItem(i);
+				MyStar *grv_fld = dynamic_cast<MyStar *>(i);
+				delete grv_fld;
 			}
 		}
 }
