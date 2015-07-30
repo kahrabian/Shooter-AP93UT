@@ -8,6 +8,7 @@ MyAlien::MyAlien(int typ) :
 		QGraphicsPixmapItem(), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	fast = false;
+	rttn = false;
 	rtn = 0;
 	MyAlien::typ = typ;
 	if (typ == 1 || typ == 3) {
