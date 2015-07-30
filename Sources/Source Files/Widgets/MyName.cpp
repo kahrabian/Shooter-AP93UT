@@ -18,7 +18,7 @@ MyName::MyName(QWidget *parent, Qt::WindowFlags f) :
 MyName::~MyName() { }
 
 void MyName::reset() {
-	if (SettingData::gMode == 3) {
+	if (SettingData::gMode == 1) {
 		scnd_nm_lbl->hide();
 		scnd_nm_txt->hide();
 		frst_nm_lbl->setText("Player name:");
@@ -32,7 +32,6 @@ void MyName::reset() {
 
 void MyName::cnstrct_nm() {
 	nm_lay->addWidget(logo);
-//	nm_lay->addLayout(frst_nm_lay);
 	nm_lay->addLayout(frm_lay);
 	nm_lay->addLayout(btns);
 }

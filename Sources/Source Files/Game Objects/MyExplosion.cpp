@@ -22,7 +22,6 @@ MyExplosion::~MyExplosion() {
 		delete expln_frms[i / 3];
 	}
 	delete[] expln_frms;
-//	delete expln_size;
 	delete vlc;
 }
 

@@ -77,7 +77,7 @@ void MyShip::cnstrct_shldpxmp() {
 void MyShip::activate_shld() {
 	shpshld->show();
 	if (fast) {
-		shld_tmr->start(MyRes::spcl_tm / 4);
+		shld_tmr->start(MyRes::spcl_tm / MyRes::fst_vlc);
 	}
 	else {
 		shld_tmr->start(MyRes::spcl_tm);
@@ -92,7 +92,7 @@ void MyShip::deactivate_shld() {
 void MyShip::activate_mgc() {
 	mgc = true;
 	if (fast) {
-		mgc_tmr->start(MyRes::spcl_tm / 4);
+		mgc_tmr->start(MyRes::spcl_tm / MyRes::fst_vlc);
 	}
 	else {
 		mgc_tmr->start(MyRes::spcl_tm);
@@ -111,7 +111,7 @@ void MyShip::activate_lsr() {
 void MyShip::deactivate_lsr() {
 	lsr = false;
 	if (fast) {
-		lsr_tmr->start(MyRes::shp_lsrdly / 4);
+		lsr_tmr->start(MyRes::shp_lsrdly / MyRes::fst_vlc);
 	}
 	else {
 		lsr_tmr->start(MyRes::shp_lsrdly);
@@ -119,7 +119,7 @@ void MyShip::deactivate_lsr() {
 }
 
 void MyShip::activate_lf() {
-	lf_tmr->start(2000);
+	lf_tmr->start(MyRes::lf_tm);
 }
 
 void MyShip::deactivate_lf() {
@@ -143,30 +143,30 @@ void MyShip::change_speed() {
 	fast = !fast;
 	if (fast) {
 		if (shld_tmr->isActive()) {
-			shld_tmr->start(shld_tmr->remainingTime() / 4);
+			shld_tmr->start(shld_tmr->remainingTime() / MyRes::fst_vlc);
 		}
 		if (mgc_tmr->isActive()) {
-			mgc_tmr->start(mgc_tmr->remainingTime() / 4);
+			mgc_tmr->start(mgc_tmr->remainingTime() / MyRes::fst_vlc);
 		}
 		if (lsr_tmr->isActive()) {
-			lsr_tmr->start(lsr_tmr->remainingTime() / 4);
+			lsr_tmr->start(lsr_tmr->remainingTime() / MyRes::fst_vlc);
 		}
 		if (lf_tmr->isActive()) {
-			lf_tmr->start(lf_tmr->remainingTime() / 4);
+			lf_tmr->start(lf_tmr->remainingTime() / MyRes::fst_vlc);
 		}
 	}
 	else {
 		if (shld_tmr->isActive()) {
-			shld_tmr->start(shld_tmr->remainingTime() * 4);
+			shld_tmr->start(shld_tmr->remainingTime() * MyRes::fst_vlc);
 		}
 		if (mgc_tmr->isActive()) {
-			mgc_tmr->start(mgc_tmr->remainingTime() * 4);
+			mgc_tmr->start(mgc_tmr->remainingTime() * MyRes::fst_vlc);
 		}
 		if (lsr_tmr->isActive()) {
-			lsr_tmr->start(lsr_tmr->remainingTime() * 4);
+			lsr_tmr->start(lsr_tmr->remainingTime() * MyRes::fst_vlc);
 		}
 		if (lf_tmr->isActive()) {
-			lf_tmr->start(lf_tmr->remainingTime() * 4);
+			lf_tmr->start(lf_tmr->remainingTime() * MyRes::fst_vlc);
 		}
 	}
 }
@@ -205,7 +205,7 @@ void MyShip::game_unpaused() {
 	}
 	else if (lsr_tmr_elpsd == 0) {
 		if (fast) {
-			lsr_tmr->start(MyRes::shp_lsrdly / 4);
+			lsr_tmr->start(MyRes::shp_lsrdly / MyRes::fst_vlc);
 		}
 		else {
 			lsr_tmr->start(MyRes::shp_lsrdly);
