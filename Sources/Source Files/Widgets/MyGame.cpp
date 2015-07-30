@@ -41,63 +41,68 @@ void MyGame::clean() {
 			if (dynamic_cast<MyAlien *>(i)) {
 				dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
 				scene()->removeItem(i);
-				MyAlien *tmp = dynamic_cast<MyAlien *>(i);
-				delete tmp;
+				MyAlien *aln = dynamic_cast<MyAlien *>(i);
+				delete aln;
 			}
 			else if (dynamic_cast<MyAlienBoss *>(i)) {
 				scene()->removeItem(i);
-				MyAlienBoss *tmp = dynamic_cast<MyAlienBoss *>(i);
-				delete tmp;
+				MyAlienBoss *bss = dynamic_cast<MyAlienBoss *>(i);
+				delete bss;
 			}
 			else if (dynamic_cast<MyAsteroid *>(i)) {
 				scene()->removeItem(i);
-				MyAsteroid *tmp = dynamic_cast<MyAsteroid *>(i);
-				delete tmp;
+				MyAsteroid *astrd = dynamic_cast<MyAsteroid *>(i);
+				delete astrd;
 			}
 			else if (dynamic_cast<MyBullet *>(i)) {
 				scene()->removeItem(i);
-				MyBullet *tmp = dynamic_cast<MyBullet *>(i);
-				delete tmp;
+				MyBullet *lsr = dynamic_cast<MyBullet *>(i);
+				delete lsr;
 			}
 			else if (dynamic_cast<MyExplosion *>(i)) {
 				scene()->removeItem(i);
-				MyExplosion *tmp = dynamic_cast<MyExplosion *>(i);
-				delete tmp;
+				MyExplosion *explsn = dynamic_cast<MyExplosion *>(i);
+				delete explsn;
 			}
 			else if (dynamic_cast<MyLife *>(i)) {
 				scene()->removeItem(i);
-				MyLife *tmp = dynamic_cast<MyLife *>(i);
-				delete tmp;
+				MyLife *lf = dynamic_cast<MyLife *>(i);
+				delete lf;
 			}
 			else if (dynamic_cast<MyMagic *>(i)) {
 				scene()->removeItem(i);
-				MyMagic *tmp = dynamic_cast<MyMagic *>(i);
-				delete tmp;
+				MyMagic *mgc = dynamic_cast<MyMagic *>(i);
+				delete mgc;
 			}
 			else if (dynamic_cast<MyShield *>(i)) {
 				scene()->removeItem(i);
-				MyShield *tmp = dynamic_cast<MyShield *>(i);
-				delete tmp;
+				MyShield *shld = dynamic_cast<MyShield *>(i);
+				delete shld;
 			}
 			else if (dynamic_cast<MyShip *>(i)) {
 				scene()->removeItem(i);
-				MyShip *tmp = dynamic_cast<MyShip *>(i);
-				delete tmp;
+				MyShip *shp = dynamic_cast<MyShip *>(i);
+				delete shp;
 			}
 			else if (dynamic_cast<MyShipShield *>(i)) {
 				scene()->removeItem(i);
-				MyShipShield *tmp = dynamic_cast<MyShipShield *>(i);
-				delete tmp;
+				MyShipShield *shp_shld = dynamic_cast<MyShipShield *>(i);
+				delete shp_shld;
 			}
 			else if (dynamic_cast<MyStar *>(i)) {
 				scene()->removeItem(i);
-				MyStar *tmp = dynamic_cast<MyStar *>(i);
-				delete tmp;
+				MyStar *str = dynamic_cast<MyStar *>(i);
+				delete str;
 			}
 			else if (dynamic_cast<QGraphicsTextItem *>(i)) {
 				scene()->removeItem(i);
-				QGraphicsTextItem *tmp = dynamic_cast<QGraphicsTextItem *>(i);
-				delete tmp;
+				QGraphicsTextItem *txt = dynamic_cast<QGraphicsTextItem *>(i);
+				delete txt;
+			}
+			else if (dynamic_cast<QGraphicsEllipseItem *>(i)) {
+				scene()->removeItem(i);
+				QGraphicsEllipseItem *ellps = dynamic_cast<QGraphicsEllipseItem *>(i);
+				delete ellps;
 			}
 		}
 }
@@ -106,11 +111,11 @@ void MyGame::restart() {
 	QFile file(MyRes::stng_add);
 	file.open(QIODevice::ReadOnly | QIODevice::Text);
 	QTextStream stream(&file);
-	QString tmp;
-	stream >> tmp;
+	QString inp;
+	stream >> inp;
 	file.close();
 
-	if (tmp == "0") {
+	if (inp == "0") {
 		bld_stg1();
 		bld_stg2();
 		bld_stg3();
@@ -242,118 +247,118 @@ void MyGame::bld_stg1() {
 
 void MyGame::bld_stg2() {
 	for (int i = 0; i < MyRes::stg_aln_bg[1][SettingData::gDiff - 1]; i++) {
-		MyAlien *tmp = new MyAlien(1);
-		tmp->setPos(MyRes::app_size.width() +
+		MyAlien *aln_bg = new MyAlien(1);
+		aln_bg->setPos(MyRes::app_size.width() +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
-		scene()->addItem(tmp);
+		scene()->addItem(aln_bg);
 	}
 	for (int i = 0; i < MyRes::stg_aln_smll[1][SettingData::gDiff - 1]; i++) {
-		MyAlien *tmp = new MyAlien(2);
-		tmp->setPos(MyRes::app_size.width() +
+		MyAlien *aln_smll = new MyAlien(2);
+		aln_smll->setPos(MyRes::app_size.width() +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
-		scene()->addItem(tmp);
+		scene()->addItem(aln_smll);
 	}
 	for (int i = 0; i < MyRes::stg_lf; i++) {
-		MyLife *tmp = new MyLife();
-		tmp->setPos(MyRes::app_size.width() +
+		MyLife *lf = new MyLife();
+		lf->setPos(MyRes::app_size.width() +
 				            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
-		scene()->addItem(tmp);
+		scene()->addItem(lf);
 	}
 	for (int i = 0; i < MyRes::stg_shld[SettingData::gDiff - 1]; i++) {
-		MyShield *tmp = new MyShield();
-		tmp->setPos(MyRes::app_size.width() +
+		MyShield *shld = new MyShield();
+		shld->setPos(MyRes::app_size.width() +
 				            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
-		scene()->addItem(tmp);
+		scene()->addItem(shld);
 	}
 	for (int i = 0; i < MyRes::stg_mgc[SettingData::gDiff - 1]; i++) {
-		MyMagic *tmp = new MyMagic();
-		tmp->setPos(MyRes::app_size.width() +
+		MyMagic *mgc = new MyMagic();
+		mgc->setPos(MyRes::app_size.width() +
 				            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
-		scene()->addItem(tmp);
+		scene()->addItem(mgc);
 	}
 	for (int i = 0; i < MyRes::stg_str; i++) {
-		MyStar *tmp = new MyStar();
-		tmp->setPos(MyRes::app_size.width() +
+		MyStar *str = new MyStar();
+		str->setPos(MyRes::app_size.width() +
 				            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
-		scene()->addItem(tmp);
+		scene()->addItem(str);
 	}
 }
 
 void MyGame::bld_stg3() {
 	for (int i = 0; i < MyRes::stg_astrd[2][SettingData::gDiff - 1]; i++) {
-		MyAsteroid *tmp = new MyAsteroid(2);
-		tmp->setPos(MyRes::app_size.width() +
+		MyAsteroid *astrd = new MyAsteroid(2);
+		astrd->setPos(MyRes::app_size.width() +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
-		scene()->addItem(tmp);
+		scene()->addItem(astrd);
 	}
 	for (int i = 0; i < MyRes::stg_aln_bg[2][SettingData::gDiff - 1]; i++) {
-		MyAlien *tmp = new MyAlien(3);
-		tmp->setPos(MyRes::app_size.width() +
+		MyAlien *aln_bg = new MyAlien(3);
+		aln_bg->setPos(MyRes::app_size.width() +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
-		scene()->addItem(tmp);
+		scene()->addItem(aln_bg);
 	}
 	for (int i = 0; i < MyRes::stg_aln_smll[2][SettingData::gDiff - 1]; i++) {
-		MyAlien *tmp = new MyAlien(4);
-		tmp->setPos(MyRes::app_size.width() +
+		MyAlien *aln_smll = new MyAlien(4);
+		aln_smll->setPos(MyRes::app_size.width() +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
-		scene()->addItem(tmp);
+		scene()->addItem(aln_smll);
 	}
 	for (int i = 0; i < MyRes::stg_lf; i++) {
-		MyLife *tmp = new MyLife();
-		tmp->setPos(MyRes::app_size.width() +
+		MyLife *lf = new MyLife();
+		lf->setPos(MyRes::app_size.width() +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
-		scene()->addItem(tmp);
+		scene()->addItem(lf);
 	}
 	for (int i = 0; i < MyRes::stg_shld[SettingData::gDiff - 1]; i++) {
-		MyShield *tmp = new MyShield();
-		tmp->setPos(MyRes::app_size.width() +
+		MyShield *shld = new MyShield();
+		shld->setPos(MyRes::app_size.width() +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
-		scene()->addItem(tmp);
+		scene()->addItem(shld);
 	}
 	for (int i = 0; i < MyRes::stg_mgc[SettingData::gDiff - 1]; i++) {
-		MyMagic *tmp = new MyMagic();
-		tmp->setPos(MyRes::app_size.width() +
+		MyMagic *mgc = new MyMagic();
+		mgc->setPos(MyRes::app_size.width() +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
-		scene()->addItem(tmp);
+		scene()->addItem(mgc);
 	}
 	for (int i = 0; i < MyRes::stg_str; i++) {
-		MyStar *tmp = new MyStar();
-		tmp->setPos(MyRes::app_size.width() +
+		MyStar *str = new MyStar();
+		str->setPos(MyRes::app_size.width() +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
 				            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
-		scene()->addItem(tmp);
+		scene()->addItem(str);
 	}
 }
 
@@ -446,8 +451,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyAlien *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
 					dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
 					scene()->removeItem(i);
-					MyAlien *tmp = dynamic_cast<MyAlien *>(i);
-					delete tmp;
+					MyAlien *aln = dynamic_cast<MyAlien *>(i);
+					delete aln;
 				}
 			}
 			else if (dynamic_cast<MyAlienBoss *>(i)) {
@@ -457,8 +462,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyAlienBoss *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
 				    dynamic_cast<MyAlienBoss *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
 					scene()->removeItem(i);
-					MyAlienBoss *tmp = dynamic_cast<MyAlienBoss *>(i);
-					delete tmp;
+					MyAlienBoss *bss = dynamic_cast<MyAlienBoss *>(i);
+					delete bss;
 				}
 			}
 			else if (dynamic_cast<MyAsteroid *>(i)) {
@@ -467,9 +472,10 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyAsteroid *>(i)->sceneBoundingRect().right() < sceneRect().left() ||
 				    dynamic_cast<MyAsteroid *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
 				    dynamic_cast<MyAsteroid *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
+					scene()->removeItem(dynamic_cast<MyAsteroid *>(i)->grv_fld);
 					scene()->removeItem(i);
-					MyAsteroid *tmp = dynamic_cast<MyAsteroid *>(i);
-					delete tmp;
+					MyAsteroid *astrd = dynamic_cast<MyAsteroid *>(i);
+					delete astrd;
 				}
 			}
 			else if (dynamic_cast<MyBullet *>(i)) {
@@ -480,8 +486,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyBullet *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
 				    dynamic_cast<MyBullet *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
 					scene()->removeItem(i);
-					MyBullet *tmp = dynamic_cast<MyBullet *>(i);
-					delete tmp;
+					MyBullet *lsr = dynamic_cast<MyBullet *>(i);
+					delete lsr;
 				}
 			}
 			else if (dynamic_cast<MyExplosion *>(i)) {
@@ -491,8 +497,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyExplosion *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
 				    dynamic_cast<MyExplosion *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
 					scene()->removeItem(i);
-					MyExplosion *tmp = dynamic_cast<MyExplosion *>(i);
-					delete tmp;
+					MyExplosion *explsn = dynamic_cast<MyExplosion *>(i);
+					delete explsn;
 				}
 			}
 			else if (dynamic_cast<MyLife *>(i)) {
@@ -502,8 +508,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyLife *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
 				    dynamic_cast<MyLife *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
 					scene()->removeItem(i);
-					MyLife *tmp = dynamic_cast<MyLife *>(i);
-					delete tmp;
+					MyLife *lf = dynamic_cast<MyLife *>(i);
+					delete lf;
 				}
 			}
 			else if (dynamic_cast<MyMagic *>(i)) {
@@ -513,8 +519,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyMagic *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
 				    dynamic_cast<MyMagic *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
 					scene()->removeItem(i);
-					MyMagic *tmp = dynamic_cast<MyMagic *>(i);
-					delete tmp;
+					MyMagic *mgc = dynamic_cast<MyMagic *>(i);
+					delete mgc;
 				}
 			}
 			else if (dynamic_cast<MyShield *>(i)) {
@@ -524,8 +530,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyShield *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
 				    dynamic_cast<MyShield *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
 					scene()->removeItem(i);
-					MyShield *tmp = dynamic_cast<MyShield *>(i);
-					delete tmp;
+					MyShield *shld = dynamic_cast<MyShield *>(i);
+					delete shld;
 				}
 			}
 			else if (dynamic_cast<MyShip *>(i)) {
@@ -549,8 +555,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 						emit gameEnded(1);
 						return;
 					}
-					MyShip *tmp = dynamic_cast<MyShip *>(i);
-					delete tmp;
+					MyShip *shp = dynamic_cast<MyShip *>(i);
+					delete shp;
 				}
 			}
 			else if (dynamic_cast<MyShipShield *>(i)) {
@@ -563,8 +569,8 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyStar *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
 				    dynamic_cast<MyStar *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
 					scene()->removeItem(i);
-					MyStar *tmp = dynamic_cast<MyStar *>(i);
-					delete tmp;
+					MyStar *str = dynamic_cast<MyStar *>(i);
+					delete str;
 				}
 			}
 		}

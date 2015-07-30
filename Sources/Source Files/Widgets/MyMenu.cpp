@@ -25,14 +25,14 @@ void MyMenu::cnstrct_btns() {
 	QFile file(MyRes::stng_add);
 	file.open(QIODevice::ReadOnly | QIODevice::Text);
 	QTextStream stream(&file);
-	QString tmp;
-	stream >> tmp;
+	QString inp;
+	stream >> inp;
 	file.close();
 
 	btns = new QHBoxLayout();
 	rsm = new QPushButton("Resume", this);
 	btns->addWidget(rsm);
-	if (tmp == "0")
+	if (inp == "0")
 		rsm->hide();
 	start = new QPushButton("New Game", this);
 	btns->addWidget(start);

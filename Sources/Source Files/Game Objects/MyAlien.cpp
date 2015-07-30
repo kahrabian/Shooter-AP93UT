@@ -97,9 +97,9 @@ void MyAlien::ply_sf(QString &add) {
 void MyAlien::timerEvent(QTimerEvent *event) {
 	if ((typ == 2 || typ == 4) && scene()->views().first()->sceneRect().intersects(sceneBoundingRect())) {
 		ply_sf(const_cast<QString &>(MyRes::sf_aln_lsr_add));
-		MyBullet *tmp = new MyBullet(1, 0, -1);
-		tmp->setPos(pos().x(),
+		MyBullet *lsr = new MyBullet(1, 0, -1);
+		lsr->setPos(pos().x(),
 		            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
-		scene()->addItem(tmp);
+		scene()->addItem(lsr);
 	}
 }

@@ -36,6 +36,9 @@ MyAsteroid::~MyAsteroid() {
 		delete astrd_frms[i];
 	}
 	delete[] astrd_frms;
+	if (grv) {
+		delete grv_fld;
+	}
 	delete vlc;
 }
 
