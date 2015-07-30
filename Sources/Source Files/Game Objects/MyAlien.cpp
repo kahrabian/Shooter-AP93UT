@@ -33,6 +33,7 @@ MyAlien::MyAlien(int typ) :
 		}
 	}
 	tmr_id = startTimer(MyRes::aln_lsrdly);
+	setZValue(2);
 }
 
 MyAlien::~MyAlien() {
@@ -77,16 +78,11 @@ void MyAlien::cllsn_dtctn() {
 	}
 	QList<QGraphicsItem *> clldng_items = collidingItems(Qt::ItemSelectionMode::IntersectsItemShape);
 			foreach(QGraphicsItem *i, clldng_items) {
-			if (dynamic_cast<MyGravityField *>(i) && !dynamic_cast<MyGravityField *>(i)->isAln() &&
+			if (dynamic_cast<MyGravityField *>(i) && !dynamic_cast<MyGravityField *>(i)->getPar()->isAln() &&
 			    i->isVisible()) {
-				setPos(dynamic_cast<MyGravityField *>(i)->pos().x() +
-				       dynamic_cast<MyGravityField *>(i)->boundingRect().width() / 2 - boundingRect().width() / 2,
-				       dynamic_cast<MyGravityField *>(i)->pos().y() +
-				       dynamic_cast<MyGravityField *>(i)->boundingRect().height() / 2 - boundingRect().height() / 2);
 				rttn = true;
-				vlc->setX(dynamic_cast<MyGravityField *>(i)->getVlc()->x());
-				vlc->setY(dynamic_cast<MyGravityField *>(i)->getVlc()->y());
-				dynamic_cast<MyGravityField *>(i)->setAln(true);
+				dynamic_cast<MyGravityField *>(i)->getPar()->setAln(true);
+				par = dynamic_cast<MyGravityField *>(i)->getPar();
 			}
 		}
 }
@@ -109,6 +105,8 @@ void MyAlien::updt() {
 		rtn = (rtn + 15) % 360;
 		setTransformOriginPoint(pixmap().width() / 2, pixmap().height() / 2);
 		setRotation(rtn);
+		setPos(par->pos().x() + par->pixmap().width() / 2 - pixmap().width() / 2,
+		       par->pos().y() + par->pixmap().height() / 2 - pixmap().height() / 2);
 	}
 	cllsn_dtctn();
 }

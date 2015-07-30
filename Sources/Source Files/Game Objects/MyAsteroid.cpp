@@ -24,7 +24,7 @@ MyAsteroid::MyAsteroid(int typ) :
 	}
 	if (typ == 2) {
 		grv = true;
-		grv_fld = new MyGravityField(boundingRect(), vlc);
+		grv_fld = new MyGravityField(boundingRect(), this);
 	}
 	else {
 		grv = false;
@@ -50,10 +50,6 @@ void MyAsteroid::setAln(bool aln) {
 
 bool MyAsteroid::isAln() const {
 	return aln;
-}
-
-QPointF *MyAsteroid::getVlc() const {
-	return vlc;
 }
 
 void MyAsteroid::updt() {

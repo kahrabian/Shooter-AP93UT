@@ -14,24 +14,20 @@
 #include <QPixmap>
 #include <Sources/Headers/Resources.h>
 
+class MyAsteroid;
+
 class MyGravityField : public QObject, public QGraphicsEllipseItem {
 Q_OBJECT
 
 public:
-	MyGravityField(QRectF, QPointF *);
+	MyGravityField(QRectF, MyAsteroid *);
 
 	~MyGravityField();
 
-	void setAln(bool);
-
-	bool isAln() const;
-
-	QPointF *getVlc() const;
+	MyAsteroid *getPar() const;
 
 private:
-	bool aln;
-
-	QPointF *vlc;
+	MyAsteroid *par;
 };
 
 #endif //SHOOTER_AP93UT_MYGRAVITYFIELD_H

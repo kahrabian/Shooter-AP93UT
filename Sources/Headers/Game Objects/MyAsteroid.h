@@ -31,8 +31,6 @@ public:
 
 	bool isAln() const;
 
-	QPointF *getVlc() const;
-
 private:
 	int astrd_num;
 	int frm_num;

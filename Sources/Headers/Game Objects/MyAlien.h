@@ -12,6 +12,7 @@
 #include <QElapsedTimer>
 #include <QPointF>
 #include <QPixmap>
+#include <Sources/Headers/Game Objects/MyAsteroid.h>
 #include <Sources/Headers/Game Objects/MyBullet.h>
 #include <Sources/Headers/Resources.h>
 
@@ -39,6 +40,8 @@ public:
 	int getTyp() const;
 
 private:
+	MyAsteroid *par;
+
 	bool fast;
 
 	int typ;

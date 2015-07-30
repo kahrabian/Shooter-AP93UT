@@ -4,25 +4,15 @@
 
 #include <Sources/Headers/Game Objects/MyGravityField.h>
 
-MyGravityField::MyGravityField(QRectF rct, QPointF *vlc) :
+MyGravityField::MyGravityField(QRectF rct, MyAsteroid *par) :
 		QGraphicsEllipseItem(rct), QObject() {
-	MyGravityField::vlc = new QPointF(vlc->x(), vlc->y());
-	aln = false;
+	MyGravityField::par = par;
 }
 
 MyGravityField::~MyGravityField() {
-	delete vlc;
+
 }
 
-void MyGravityField::setAln(bool aln) {
-	MyGravityField::aln = aln;
+MyAsteroid *MyGravityField::getPar() const {
+	return par;
 }
-
-bool MyGravityField::isAln() const {
-	return aln;
-}
-
-QPointF *MyGravityField::getVlc() const {
-	return vlc;
-}
-
