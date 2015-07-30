@@ -21,6 +21,10 @@ MyAsteroid::MyAsteroid(int typ) :
 			vlc = new QPointF(-10, 10);
 		}
 	}
+	if (typ == 1) {
+		grv = true;
+		grv_fld = new QGraphicsEllipseItem(boundingRect());
+	}
 	for (int i = 0; i < MyRes::astrd_frcnt; i++) {
 		astrd_frms[i] = new QPixmap(MyRes::astrd_adds[astrd_num][i]);
 	}
@@ -52,5 +56,10 @@ void MyAsteroid::updt() {
 	}
 	else {
 		vlc->setY(vlc->y() * (-1));
+	}
+	if (grv) {
+		grv_fld->setRect(sceneBoundingRect().x() + pixmap().width() / 2 - MyRes::astrd_grv_size.width() / 2,
+		                 sceneBoundingRect().y() + pixmap().height() / 2 - MyRes::astrd_grv_size.height() / 2,
+		                 MyRes::astrd_grv_size.width(), MyRes::astrd_grv_size.height());
 	}
 }

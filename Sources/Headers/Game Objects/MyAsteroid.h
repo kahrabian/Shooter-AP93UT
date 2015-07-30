@@ -17,6 +17,8 @@
 class MyAsteroid : public QObject, public QGraphicsPixmapItem {
 Q_OBJECT
 
+	friend class MyGame;
+
 public:
 	MyAsteroid(int);
 
@@ -28,13 +30,11 @@ private:
 	int astrd_num;
 	int frm_num;
 
-//	int typ;
-//	bool grv;
+	bool grv;
 
-//	int mss;
+	QGraphicsEllipseItem *grv_fld;
+
 	QPointF *vlc;
-//	QPointF *acc;
-//	QPointF *frc;
 
 	QPixmap **astrd_frms;
 };

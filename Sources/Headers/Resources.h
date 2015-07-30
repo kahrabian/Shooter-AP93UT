@@ -58,6 +58,7 @@ namespace MyRes {
     extern const QSize mgc_size;
     extern const QSize shld_size;
     extern const QSize astrd_size;
+    extern const QSize astrd_grv_size;
     extern const QSize aln_bgsize;
     extern const QSize aln_smllsize;
     extern const QSize shp_size;
