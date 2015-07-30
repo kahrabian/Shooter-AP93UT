@@ -10,6 +10,7 @@ MyAlien::MyAlien(int typ) :
 	fast = false;
 	rttn = false;
 	rtn = 0;
+	par = 0;
 	MyAlien::typ = typ;
 	if (typ == 1 || typ == 3) {
 		setPixmap(QPixmap(MyRes::aln_nrml_adds[rand() % MyRes::aln_nrml_cnt]).scaled(MyRes::aln_bgsize,
@@ -88,6 +89,7 @@ void MyAlien::cllsn_dtctn() {
 }
 
 void MyAlien::updt() {
+	cllsn_dtctn();
 	QPointF tplft(scene()->views().first()->viewport()->mapToParent(
 			scene()->views().first()->mapFromScene(mapToScene(boundingRect().topLeft()))));
 	QPointF bttmrght(scene()->views().first()->viewport()->mapToParent(
@@ -108,7 +110,6 @@ void MyAlien::updt() {
 		setPos(par->pos().x() + par->pixmap().width() / 2 - pixmap().width() / 2,
 		       par->pos().y() + par->pixmap().height() / 2 - pixmap().height() / 2);
 	}
-	cllsn_dtctn();
 }
 
 void MyAlien::ply_sf(QString &add) {

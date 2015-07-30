@@ -20,6 +20,8 @@
 class MyAlien : public QObject, public QGraphicsPixmapItem {
 Q_OBJECT
 
+	friend class MyGame;
+
 public:
 	MyAlien(int);
 

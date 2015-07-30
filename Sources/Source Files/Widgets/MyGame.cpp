@@ -452,6 +452,9 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyAlien *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
 					dynamic_cast<MyAlien *>(i)->killTimer(dynamic_cast<MyAlien *>(i)->getTmr_id());
 					scene()->removeItem(i);
+					if (dynamic_cast<MyAlien *>(i)->par != 0) {
+						dynamic_cast<MyAlien *>(i)->par->setAln(false);
+					}
 					MyAlien *aln = dynamic_cast<MyAlien *>(i);
 					delete aln;
 				}
@@ -477,8 +480,10 @@ void MyGame::timerEvent(QTimerEvent *event) {
 						dynamic_cast<MyAsteroid *>(i)->grv_fld->hide();
 					}
 					scene()->removeItem(i);
-					MyAsteroid *astrd = dynamic_cast<MyAsteroid *>(i);
-					delete astrd;
+					if (!dynamic_cast<MyAsteroid *>(i)->isAln()) {
+						MyAsteroid *astrd = dynamic_cast<MyAsteroid *>(i);
+						delete astrd;
+					}
 				}
 			}
 			else if (dynamic_cast<MyBullet *>(i)) {
