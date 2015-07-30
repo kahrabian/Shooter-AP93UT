@@ -296,8 +296,7 @@ void MyGame::bld_stg2() {
 }
 
 void MyGame::bld_stg3() {
-//	for (int i = 0; i < MyRes::stg_astrd[2][SettingData::gDiff - 1]; i++) {
-	for (int i = 0; i < 100; i++) {
+	for (int i = 0; i < MyRes::stg_astrd[2][SettingData::gDiff - 1]; i++) {
 		MyAsteroid *astrd = new MyAsteroid(2);
 		astrd->setPos(MyRes::app_size.width() +
 		            (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()) +
