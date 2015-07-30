@@ -90,8 +90,9 @@ void MyBullet::cllsn_dtctn() {
 
 				dynamic_cast<MyAsteroid *>(i)->hide();
 				hide();
+				QTextStream X(stderr);
 			}
-			else if (dynamic_cast<MyAlienBoss *>(i) && dynamic_cast<MyAlienBoss *>(i)->isVisible() && dir > 0) {
+			else if (dynamic_cast<MyAlienBoss *>(i) && dynamic_cast<MyAlienBoss *>(i)->isVisible()) {
 				ply_sf(const_cast<QString &>(MyRes::sf_expln_astrd_add));
 				if (dynamic_cast<MyAlienBoss *>(i)->getStg() == 0) {
 					MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_astrd_size));

@@ -24,10 +24,11 @@ MyAsteroid::MyAsteroid(int typ) :
 	}
 	if (typ == 2) {
 		grv = true;
-		grv_fld = new MyGravityField(boundingRect(), this);
+		grv_fld = new MyGravityField(boundingRect(), vlc);
 	}
 	else {
 		grv = false;
+		grv_fld = 0;
 	}
 	for (int i = 0; i < MyRes::astrd_frcnt; i++) {
 		astrd_frms[i] = new QPixmap(MyRes::astrd_adds[astrd_num][i]);

@@ -77,16 +77,16 @@ void MyAlien::cllsn_dtctn() {
 	}
 	QList<QGraphicsItem *> clldng_items = collidingItems(Qt::ItemSelectionMode::IntersectsItemShape);
 			foreach(QGraphicsItem *i, clldng_items) {
-			if (dynamic_cast<MyGravityField *>(i) && !dynamic_cast<MyGravityField *>(i)->getPar()->isAln() &&
+			if (dynamic_cast<MyGravityField *>(i) && !dynamic_cast<MyGravityField *>(i)->isAln() &&
 			    i->isVisible()) {
-				setPos(dynamic_cast<MyGravityField *>(i)->getPar()->pos().x() +
-				       dynamic_cast<MyGravityField *>(i)->getPar()->pixmap().width() / 2 - pixmap().width() / 2,
-				       dynamic_cast<MyGravityField *>(i)->getPar()->pos().y() +
-				       dynamic_cast<MyGravityField *>(i)->getPar()->pixmap().height() / 2 - pixmap().height() / 2);
+				setPos(dynamic_cast<MyGravityField *>(i)->pos().x() +
+				       dynamic_cast<MyGravityField *>(i)->boundingRect().width() / 2 - boundingRect().width() / 2,
+				       dynamic_cast<MyGravityField *>(i)->pos().y() +
+				       dynamic_cast<MyGravityField *>(i)->boundingRect().height() / 2 - boundingRect().height() / 2);
 				rttn = true;
-				vlc->setX(dynamic_cast<MyGravityField *>(i)->getPar()->getVlc()->x());
-				vlc->setY(dynamic_cast<MyGravityField *>(i)->getPar()->getVlc()->y());
-				dynamic_cast<MyGravityField *>(i)->getPar()->setAln(true);
+				vlc->setX(dynamic_cast<MyGravityField *>(i)->getVlc()->x());
+				vlc->setY(dynamic_cast<MyGravityField *>(i)->getVlc()->y());
+				dynamic_cast<MyGravityField *>(i)->setAln(true);
 			}
 		}
 }
@@ -126,7 +126,7 @@ void MyAlien::timerEvent(QTimerEvent *event) {
 	if ((typ == 2 || typ == 4) && scene()->views().first()->sceneRect().intersects(sceneBoundingRect())) {
 		ply_sf(const_cast<QString &>(MyRes::sf_aln_lsr_add));
 		MyBullet *lsr = new MyBullet(1, rtn, -1);
-		lsr->setPos(pos().x(),
+		lsr->setPos(pos().x() + (pixmap().width() / 2),
 		            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
 		scene()->addItem(lsr);
 	}

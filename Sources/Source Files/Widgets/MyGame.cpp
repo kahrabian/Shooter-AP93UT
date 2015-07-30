@@ -472,7 +472,9 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				    dynamic_cast<MyAsteroid *>(i)->sceneBoundingRect().right() < sceneRect().left() ||
 				    dynamic_cast<MyAsteroid *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
 				    dynamic_cast<MyAsteroid *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
-					dynamic_cast<MyAsteroid *>(i)->grv_fld->hide();
+					if (dynamic_cast<MyAsteroid *>(i)->grv) {
+						dynamic_cast<MyAsteroid *>(i)->grv_fld->hide();
+					}
 					scene()->removeItem(i);
 					MyAsteroid *astrd = dynamic_cast<MyAsteroid *>(i);
 					delete astrd;

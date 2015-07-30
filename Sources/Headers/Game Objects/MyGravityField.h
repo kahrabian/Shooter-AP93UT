@@ -12,23 +12,26 @@
 #include <QElapsedTimer>
 #include <QPointF>
 #include <QPixmap>
-//#include <Sources/Headers/Game Objects/MyAsteroid.h>
 #include <Sources/Headers/Resources.h>
-
-class MyAsteroid;
 
 class MyGravityField : public QObject, public QGraphicsEllipseItem {
 Q_OBJECT
 
 public:
-	MyGravityField(QRectF, MyAsteroid *);
+	MyGravityField(QRectF, QPointF *);
 
 	~MyGravityField();
 
-	MyAsteroid *getPar() const;
+	void setAln(bool);
+
+	bool isAln() const;
+
+	QPointF *getVlc() const;
 
 private:
-	MyAsteroid *par;
+	bool aln;
+
+	QPointF *vlc;
 };
 
 #endif //SHOOTER_AP93UT_MYGRAVITYFIELD_H
