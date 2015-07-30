@@ -38,6 +38,8 @@ public:
 
 	int getTyp() const;
 
+	void setVlc(QPointF *);
+
 private:
 	bool fast;
 
@@ -45,10 +47,7 @@ private:
 
 	int tmr_id;
 
-//	int mss;
 	QPointF *vlc;
-//	QPointF *acc;
-//	QPointF *frc;
 
 protected:
 	void timerEvent(QTimerEvent *);

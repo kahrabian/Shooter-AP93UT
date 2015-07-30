@@ -26,11 +26,18 @@ public:
 
 	void updt();
 
+	void setAln(bool);
+
+	bool isAln() const;
+
+	QPointF *getVlc() const;
+
 private:
 	int astrd_num;
 	int frm_num;
 
 	bool grv;
+	bool aln;
 
 	QGraphicsEllipseItem *grv_fld;
 

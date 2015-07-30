@@ -45,6 +45,11 @@ int MyAlien::getTyp() const {
 	return typ;
 }
 
+void MyAlien::setVlc(QPointF *vlc) {
+	MyAlien::vlc->setX(vlc->x());
+	MyAlien::vlc->setY(vlc->y());
+}
+
 void MyAlien::change_speed() {
 	fast = !fast;
 	killTimer(tmr_id);

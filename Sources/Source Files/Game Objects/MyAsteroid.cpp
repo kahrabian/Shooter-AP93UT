@@ -9,6 +9,7 @@ MyAsteroid::MyAsteroid(int typ) :
 	astrd_frms = new QPixmap *[MyRes::astrd_frcnt];
 	astrd_num = rand() % MyRes::astrd_typcnt;
 	frm_num = 0;
+	aln = false;
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	if (typ == 1) {
 		vlc = new QPointF(-10, 0);
@@ -25,6 +26,9 @@ MyAsteroid::MyAsteroid(int typ) :
 		grv = true;
 		grv_fld = new QGraphicsEllipseItem(boundingRect());
 	}
+	else {
+		grv = false;
+	}
 	for (int i = 0; i < MyRes::astrd_frcnt; i++) {
 		astrd_frms[i] = new QPixmap(MyRes::astrd_adds[astrd_num][i]);
 	}
@@ -37,6 +41,18 @@ MyAsteroid::~MyAsteroid() {
 	}
 	delete[] astrd_frms;
 	delete vlc;
+}
+
+void MyAsteroid::setAln(bool aln) {
+	MyAsteroid::aln = aln;
+}
+
+bool MyAsteroid::isAln() const {
+	return aln;
+}
+
+QPointF *MyAsteroid::getVlc() const {
+	return vlc;
 }
 
 void MyAsteroid::updt() {
