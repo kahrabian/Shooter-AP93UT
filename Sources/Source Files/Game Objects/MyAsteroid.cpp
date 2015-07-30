@@ -22,7 +22,7 @@ MyAsteroid::MyAsteroid(int typ) :
 			vlc = new QPointF(-10, 10);
 		}
 	}
-	if (typ == 1) {
+	if (typ == 2) {
 		grv = true;
 		grv_fld = new MyGravityField(boundingRect(), this);
 	}

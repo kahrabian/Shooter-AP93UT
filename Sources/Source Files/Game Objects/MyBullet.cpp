@@ -8,6 +8,7 @@ MyBullet::MyBullet(int lsr_num, int rtn, int dir) :
 		QGraphicsPixmapItem(QPixmap(MyRes::lsr_add[lsr_num]).scaled(MyRes::lsr_size, Qt::KeepAspectRatio,
 		                                                            Qt::SmoothTransformation)), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
+	MyBullet::dir = dir;
 	if (dir == -1)
 		MyBullet::rtn = 180 - rtn;
 	else
@@ -34,7 +35,7 @@ void MyBullet::ply_sf(QString &add) {
 void MyBullet::cllsn_dtctn() {
 	QList<QGraphicsItem *> clldng_items = collidingItems(Qt::ItemSelectionMode::IntersectsItemShape);
 			foreach(QGraphicsItem *i, clldng_items) {
-			if (dynamic_cast<MyAlien *>(i) && dynamic_cast<MyAlien *>(i)->isVisible() && vlc->x() > 0) {
+			if (dynamic_cast<MyAlien *>(i) && dynamic_cast<MyAlien *>(i)->isVisible() && dir > 0) {
 				if (dynamic_cast<MyAlien *>(i)->getTyp() == 0) {
 					ply_sf(const_cast<QString &>(MyRes::sf_expln_aln_bg_add));
 					MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_aln_bg_size));
@@ -70,7 +71,7 @@ void MyBullet::cllsn_dtctn() {
 				ply_sf(const_cast<QString &>(MyRes::sf_str_add));
 				emit scrGained();
 			}
-			else if (dynamic_cast<MyAsteroid *>(i) && dynamic_cast<MyAsteroid *>(i)->isVisible() && vlc->x() > 0) {
+			else if (dynamic_cast<MyAsteroid *>(i) && dynamic_cast<MyAsteroid *>(i)->isVisible() && dir > 0) {
 				ply_sf(const_cast<QString &>(MyRes::sf_expln_astrd_add));
 				MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_astrd_size));
 				expln->setPos(
@@ -90,7 +91,7 @@ void MyBullet::cllsn_dtctn() {
 				dynamic_cast<MyAsteroid *>(i)->hide();
 				hide();
 			}
-			else if (dynamic_cast<MyAlienBoss *>(i) && dynamic_cast<MyAlienBoss *>(i)->isVisible()) {
+			else if (dynamic_cast<MyAlienBoss *>(i) && dynamic_cast<MyAlienBoss *>(i)->isVisible() && dir > 0) {
 				ply_sf(const_cast<QString &>(MyRes::sf_expln_astrd_add));
 				if (dynamic_cast<MyAlienBoss *>(i)->getStg() == 0) {
 					MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_astrd_size));

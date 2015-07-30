@@ -36,6 +36,8 @@ signals:
 private:
 	int rtn;
 
+	int dir;
+
 	QPointF *vlc;
 
 	void cllsn_dtctn();

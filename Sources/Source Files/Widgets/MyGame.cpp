@@ -213,7 +213,6 @@ void MyGame::bld_stg1() {
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
 		scene()->addItem(astrd);
-		scene()->addItem(astrd->grv_fld);
 	}
 	for (int i = 0; i < MyRes::stg_lf; i++) {
 		MyLife *lf = new MyLife();
@@ -305,6 +304,7 @@ void MyGame::bld_stg3() {
 		            (rand() % ((MyRes::gm_drtn / MyRes::frm_dly) - MyRes::astrd_size.width() + 1)),
 		            (rand() % (MyRes::app_size.height() - MyRes::astrd_size.height() + 1)));
 		scene()->addItem(astrd);
+		scene()->addItem(astrd->grv_fld);
 	}
 	for (int i = 0; i < MyRes::stg_aln_bg[2][SettingData::gDiff - 1]; i++) {
 		MyAlien *aln_bg = new MyAlien(3);
