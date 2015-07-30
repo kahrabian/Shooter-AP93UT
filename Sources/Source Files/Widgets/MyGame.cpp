@@ -177,6 +177,8 @@ void MyGame::bld_stg1() {
 	                      MyRes::txtitem_y_crrctn);
 	shp1->lf_txt->setPos(size().width() - shp1->lf_txt->boundingRect().width() - MyRes::txtitem_x_crrctn,
 	                     MyRes::txtitem_y_crrctn + shp1->scr_txt->boundingRect().height());
+	shp1->scr_txt->setZValue(1);
+	shp1->lf_txt->setZValue(1);
 	scene()->addItem(shp1->scr_txt);
 	scene()->addItem(shp1->lf_txt);
 
@@ -195,6 +197,8 @@ void MyGame::bld_stg1() {
 		                     size().height() - shp2->scr_txt->boundingRect().height() -
 		                     shp2->lf_txt->boundingRect().height() -
 		                     MyRes::txtitem_y_crrctn);
+		shp2->scr_txt->setZValue(1);
+		shp2->lf_txt->setZValue(1);
 		scene()->addItem(shp2->scr_txt);
 		scene()->addItem(shp2->lf_txt);
 	}
