@@ -12,6 +12,7 @@
 #include <QElapsedTimer>
 #include <QPointF>
 #include <QPixmap>
+#include <Sources/Headers/Game Objects/MyGravityField.h>
 #include <Sources/Headers/Resources.h>
 
 class MyAsteroid : public QObject, public QGraphicsPixmapItem {
@@ -39,7 +40,7 @@ private:
 	bool grv;
 	bool aln;
 
-	QGraphicsEllipseItem *grv_fld;
+	MyGravityField *grv_fld;
 
 	QPointF *vlc;
 

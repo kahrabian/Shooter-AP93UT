@@ -99,10 +99,10 @@ void MyGame::clean() {
 				QGraphicsTextItem *txt = dynamic_cast<QGraphicsTextItem *>(i);
 				delete txt;
 			}
-			else if (dynamic_cast<QGraphicsEllipseItem *>(i)) {
+			else if (dynamic_cast<MyGravityField *>(i)) {
 				scene()->removeItem(i);
-				QGraphicsEllipseItem *ellps = dynamic_cast<QGraphicsEllipseItem *>(i);
-				delete ellps;
+				MyGravityField *grv_fld = dynamic_cast<MyGravityField *>(i);
+				delete grv_fld;
 			}
 		}
 }
@@ -573,9 +573,9 @@ void MyGame::timerEvent(QTimerEvent *event) {
 					delete str;
 				}
 			}
-			else if (dynamic_cast<QGraphicsEllipseItem *>(i) && !dynamic_cast<QGraphicsEllipseItem *>(i)->isVisible()) {
+			else if (dynamic_cast<MyGravityField *>(i) && !dynamic_cast<MyGravityField *>(i)->isVisible()) {
 				scene()->removeItem(i);
-				MyStar *grv_fld = dynamic_cast<MyStar *>(i);
+				MyGravityField *grv_fld = dynamic_cast<MyGravityField *>(i);
 				delete grv_fld;
 			}
 		}

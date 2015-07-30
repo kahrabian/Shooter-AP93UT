@@ -8,6 +8,7 @@ MyAlien::MyAlien(int typ) :
 		QGraphicsPixmapItem(), QObject() {
 	setGraphicsEffect(new QGraphicsDropShadowEffect());
 	fast = false;
+	rtn = 0;
 	MyAlien::typ = typ;
 	if (typ == 1 || typ == 3) {
 		setPixmap(QPixmap(MyRes::aln_nrml_adds[rand() % MyRes::aln_nrml_cnt]).scaled(MyRes::aln_bgsize,
@@ -45,11 +46,6 @@ int MyAlien::getTyp() const {
 	return typ;
 }
 
-void MyAlien::setVlc(QPointF *vlc) {
-	MyAlien::vlc->setX(vlc->x());
-	MyAlien::vlc->setY(vlc->y());
-}
-
 void MyAlien::change_speed() {
 	fast = !fast;
 	killTimer(tmr_id);
@@ -74,6 +70,23 @@ void MyAlien::game_unpaused() {
 	}
 }
 
+void MyAlien::cllsn_dtctn() {
+	QList<QGraphicsItem *> clldng_items = collidingItems(Qt::ItemSelectionMode::IntersectsItemShape);
+			foreach(QGraphicsItem *i, clldng_items) {
+			if (dynamic_cast<MyGravityField *>(i) && !dynamic_cast<MyGravityField *>(i)->getPar()->isAln() &&
+			    i->isVisible()) {
+				setPos(dynamic_cast<MyGravityField *>(i)->getPar()->pos().x() +
+				       dynamic_cast<MyGravityField *>(i)->getPar()->pixmap().width() / 2 - pixmap().width() / 2,
+				       dynamic_cast<MyGravityField *>(i)->getPar()->pos().y() +
+				       dynamic_cast<MyGravityField *>(i)->getPar()->pixmap().height() / 2 - pixmap().height() / 2);
+				rttn = true;
+				vlc->setX(dynamic_cast<MyGravityField *>(i)->getPar()->getVlc()->x());
+				vlc->setY(dynamic_cast<MyGravityField *>(i)->getPar()->getVlc()->y());
+				dynamic_cast<MyGravityField *>(i)->getPar()->setAln(true);
+			}
+		}
+}
+
 void MyAlien::updt() {
 	QPointF tplft(scene()->views().first()->viewport()->mapToParent(
 			scene()->views().first()->mapFromScene(mapToScene(boundingRect().topLeft()))));
@@ -88,6 +101,12 @@ void MyAlien::updt() {
 	else {
 		vlc->setY(vlc->y() * (-1));
 	}
+	if (rttn) {
+		rtn = (rtn + 15) % 360;
+		setTransformOriginPoint(pixmap().width() / 2, pixmap().height() / 2);
+		setRotation(rtn);
+	}
+	cllsn_dtctn();
 }
 
 void MyAlien::ply_sf(QString &add) {
@@ -102,7 +121,7 @@ void MyAlien::ply_sf(QString &add) {
 void MyAlien::timerEvent(QTimerEvent *event) {
 	if ((typ == 2 || typ == 4) && scene()->views().first()->sceneRect().intersects(sceneBoundingRect())) {
 		ply_sf(const_cast<QString &>(MyRes::sf_aln_lsr_add));
-		MyBullet *lsr = new MyBullet(1, 0, -1);
+		MyBullet *lsr = new MyBullet(1, rtn, -1);
 		lsr->setPos(pos().x(),
 		            pos().y() + (pixmap().height() / 2) - (MyRes::lsr_size.height() / 2));
 		scene()->addItem(lsr);

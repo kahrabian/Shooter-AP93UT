@@ -22,6 +22,7 @@
 #include <Sources/Headers/Game Objects/MyShield.h>
 #include <Sources/Headers/Game Objects/MyMagic.h>
 #include <Sources/Headers/Game Objects/MyExplosion.h>
+#include <Sources/Headers/Game Objects/MyGravityField.h>
 #include <Sources/Headers/Resources.h>
 
 class MyGame : public QGraphicsView {

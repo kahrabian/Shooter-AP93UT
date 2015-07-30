@@ -24,7 +24,7 @@ MyAsteroid::MyAsteroid(int typ) :
 	}
 	if (typ == 1) {
 		grv = true;
-		grv_fld = new QGraphicsEllipseItem(boundingRect());
+		grv_fld = new MyGravityField(boundingRect(), this);
 	}
 	else {
 		grv = false;
