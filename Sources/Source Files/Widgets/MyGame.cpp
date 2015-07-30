@@ -592,6 +592,5 @@ void MyGame::timerEvent(QTimerEvent *event) {
 //				MyGravityField *grv_fld = dynamic_cast<MyGravityField *>(i);
 //				delete grv_fld;
 			}
-			}
 		}
 }
