@@ -70,10 +70,7 @@ private:
 	int lf_tmr_elpsd;
 	QTimer *lf_tmr;
 
-//	int mss;
 	QPointF *vlc;
-//	QPointF *acc;
-//	QPointF *frc;
 
 	void cnstrct_shldpxmp();
 

@@ -29,6 +29,7 @@ namespace MyRes {
     const int expln_frcnt = 90;
     const int astrd_frcnt = 16;
     const int astrd_typcnt = 7;
+    const int dff_cnt = 4;
 
     // Game properties
     const int fst_vlc = 4;
@@ -67,6 +68,22 @@ namespace MyRes {
     extern const QSize expln_shp_size;
     extern const QSize expln_astrd_size;
     extern const QFont txt_font;
+
+    // Game stages properties
+    const int bss_offset = 120;
+    const int stg_str = 30;
+    const int stg_lf = 3;
+    const int stg_mgc[dff_cnt] = {5, 4, 3, 2};
+    const int stg_shld[dff_cnt] = {5, 4, 3, 2};
+    const int stg_astrd[stg_cnt][dff_cnt] = {{20, 30, 40, 50},
+                                             {0,  0,  0,  0},
+                                             {10, 20, 30, 40}};
+    const int stg_aln_bg[stg_cnt][dff_cnt] = {{0,  0,  0,  0},
+                                              {20, 30, 40, 50},
+                                              {10, 15, 25, 35}};
+    const int stg_aln_smll[stg_cnt][dff_cnt] = {{0,  0,  0,  0},
+                                                {5,  15, 25, 35},
+                                                {10, 15, 25, 35}};
 
     // Contents size
     extern const QSize img_init_size;
