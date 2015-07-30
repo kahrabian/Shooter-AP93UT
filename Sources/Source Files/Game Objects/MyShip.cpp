@@ -346,6 +346,10 @@ void MyShip::cllsn_dtctn() {
 				}
 				dynamic_cast<MyBullet *>(i)->hide();
 			}
+			else if (dynamic_cast<MyGravityField *>(i) && dynamic_cast<MyGravityField *>(i)->isVisible()) {
+				dynamic_cast<MyGravityField *>(i)->getPar()->setPos(pos().x() + pixmap().width() / 2,
+				                                                    pos().y() + pixmap().height() / 2);
+			}
 		}
 }
 
