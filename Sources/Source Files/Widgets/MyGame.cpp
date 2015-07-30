@@ -585,12 +585,12 @@ void MyGame::timerEvent(QTimerEvent *event) {
 			}
 			else if (dynamic_cast<MyGravityField *>(i) && !dynamic_cast<MyGravityField *>(i)->isVisible()) {
 				scene()->removeItem(i);
-//				if (!dynamic_cast<MyGravityField *>(i)->isVisible() ||
-//				    dynamic_cast<MyGravityField *>(i)->sceneBoundingRect().right() < sceneRect().left() ||
+//				if (dynamic_cast<MyGravityField *>(i)->sceneBoundingRect().right() < sceneRect().left() - 15 ||
 //				    dynamic_cast<MyGravityField *>(i)->sceneBoundingRect().top() > sceneRect().bottom() ||
 //				    dynamic_cast<MyGravityField *>(i)->sceneBoundingRect().bottom() < sceneRect().top()) {
-//				MyGravityField *grv_fld = dynamic_cast<MyGravityField *>(i);
-//				delete grv_fld;
+//					MyGravityField *grv_fld = dynamic_cast<MyGravityField *>(i);
+//					delete grv_fld;
+//				}
 			}
 		}
 }
