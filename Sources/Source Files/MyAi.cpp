@@ -15,7 +15,6 @@ MyAi::~MyAi() {
 
 void MyAi::gnrt_cmmnds() {
 	cmmnds->clear();
-	cmmnds->insert(-Qt::Key_X);
 	QList<QGraphicsItem *> itms = shp->scene()->items();
 	QGraphicsItem *nrst_itm = shp;
 			foreach (QGraphicsItem *i, itms) {
@@ -78,8 +77,18 @@ void MyAi::gnrt_cmmnds() {
 			if (dynamic_cast<MyAlien *>(i)) {
 
 			}
-			else if (dynamic_cast<MyBullet *>(i) && dynamic_cast<MyBullet *>(i)->getDir() == -1) {
+			else if (dynamic_cast<MyAsteroid *>(i)) {
 
+			}
+			else if (dynamic_cast<MyBullet *>(i) && dynamic_cast<MyBullet *>(i)->getDir() == -1) {
+				if (dynamic_cast<MyBullet *>(i)->sceneBoundingRect().y() +
+				    dynamic_cast<MyBullet *>(i)->pixmap().height() / 2 >
+				    shp->sceneBoundingRect().y() + shp->pixmap().height() / 2) {
+
+				}
+				else {
+
+				}
 			}
 			else if (dynamic_cast<MyGravityField *>(i)) {
 
@@ -91,6 +100,7 @@ void MyAi::gnrt_cmmnds() {
 
 			}
 		}
+	cmmnds->insert(-Qt::Key_X);
 }
 
 void MyAi::updt() {
