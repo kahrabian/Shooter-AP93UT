@@ -38,7 +38,7 @@ void MyAi::gnrt_cmmnds() {
 				nrst_itm = i;
 			}
 		}
-	if (!dynamic_cast<MyShip *>(nrst_itm)) {
+	if (nrst_itm != shp) {
 		if (shp->sceneBoundingRect().right() - shp->boundingRect().width() / 2 <
 		    nrst_itm->sceneBoundingRect().left() +
 		    nrst_itm->boundingRect().width() / 2) {
