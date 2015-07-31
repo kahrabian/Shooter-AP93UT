@@ -70,36 +70,91 @@ void MyAi::gnrt_cmmnds() {
 	else {
 		cmmnds->insert(-Qt::Key_A);
 	}
-	itms = shp->scene()->items(shp->sceneBoundingRect().x(),
-	                           shp->sceneBoundingRect().y() + shp->sceneBoundingRect().height() / 2 - 150, 400, 300,
+	bool up = true, down = true, left = true, right = true;
+	itms = shp->scene()->items(shp->sceneBoundingRect().x() + shp->sceneBoundingRect().width() / 2 - 100,
+	                           shp->sceneBoundingRect().y() + shp->sceneBoundingRect().height() / 2 - 100, 200, 200,
 	                           Qt::IntersectsItemShape, Qt::AscendingOrder);
 			foreach (QGraphicsItem *i, itms) {
 			if (dynamic_cast<MyAlien *>(i)) {
-
+				if (dynamic_cast<MyAlien *>(i)->sceneBoundingRect().y() +
+				    dynamic_cast<MyAlien *>(i)->pixmap().height() / 2 >
+				    shp->sceneBoundingRect().y() + shp->pixmap().height() / 2) {
+					up = false;
+				}
+				else {
+					down = false;
+				}
+				if (dynamic_cast<MyAlien *>(i)->sceneBoundingRect().x() +
+				    dynamic_cast<MyAlien *>(i)->pixmap().width() / 2 >
+				    shp->sceneBoundingRect().x() + shp->pixmap().width() / 2) {
+					right = false;
+				}
+				else {
+					left = false;
+				}
 			}
 			else if (dynamic_cast<MyAsteroid *>(i)) {
-
+				if (dynamic_cast<MyAsteroid *>(i)->sceneBoundingRect().y() +
+				    dynamic_cast<MyAsteroid *>(i)->pixmap().height() / 2 >
+				    shp->sceneBoundingRect().y() + shp->pixmap().height() / 2) {
+					up = false;
+				}
+				else {
+					down = false;
+				}
+				if (dynamic_cast<MyAsteroid *>(i)->sceneBoundingRect().x() +
+				    dynamic_cast<MyAsteroid *>(i)->pixmap().width() / 2 >
+				    shp->sceneBoundingRect().x() + shp->pixmap().width() / 2) {
+					right = false;
+				}
+				else {
+					left = false;
+				}
 			}
 			else if (dynamic_cast<MyBullet *>(i) && dynamic_cast<MyBullet *>(i)->getDir() == -1) {
 				if (dynamic_cast<MyBullet *>(i)->sceneBoundingRect().y() +
 				    dynamic_cast<MyBullet *>(i)->pixmap().height() / 2 >
 				    shp->sceneBoundingRect().y() + shp->pixmap().height() / 2) {
-
+					up = false;
 				}
 				else {
-
+					down = false;
+				}
+				if (dynamic_cast<MyBullet *>(i)->sceneBoundingRect().x() +
+				    dynamic_cast<MyBullet *>(i)->pixmap().width() / 2 >
+				    shp->sceneBoundingRect().x() + shp->pixmap().width() / 2) {
+					right = false;
+				}
+				else {
+					left = false;
 				}
 			}
-			else if (dynamic_cast<MyGravityField *>(i)) {
-
-			}
-			else if (dynamic_cast<MyShip *>(i) && shp != i) {
-
-			}
-			else if (dynamic_cast<MyShipShield *>(i) && shp->shpshld != i) {
-
-			}
 		}
+	if (!down && cmmnds->find(-Qt::Key_S) != cmmnds->end()) {
+		cmmnds->remove(-Qt::Key_S);
+	}
+	if (!up && cmmnds->find(-Qt::Key_W) != cmmnds->end()) {
+		cmmnds->remove(-Qt::Key_W);
+	}
+	if (up && !down) {
+		cmmnds->insert(-Qt::Key_W);
+	}
+	if (!up && down) {
+		cmmnds->insert(-Qt::Key_S);
+	}
+
+	if (!right && cmmnds->find(-Qt::Key_D) != cmmnds->end()) {
+		cmmnds->remove(-Qt::Key_D);
+	}
+	if (!left && cmmnds->find(-Qt::Key_A) != cmmnds->end()) {
+		cmmnds->remove(-Qt::Key_A);
+	}
+	if (left && !right) {
+		cmmnds->insert(-Qt::Key_A);
+	}
+	if (!left && right) {
+		cmmnds->insert(-Qt::Key_D);
+	}
 	cmmnds->insert(-Qt::Key_X);
 }
 
