@@ -32,6 +32,7 @@ namespace MyRes {
     const int dff_cnt = 4;
 
     // Game properties
+    const int ai_view = 150;
     const int ai_view_offset = 7;
     const int fst_vlc = 4;
     const int shp_lf = 5;
