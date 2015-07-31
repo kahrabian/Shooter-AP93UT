@@ -46,35 +46,29 @@ void MyAi::gnrt_cmmnds() {
 		if (shp->sceneBoundingRect().right() - shp->boundingRect().width() / 2 <
 		    nrst_itm->sceneBoundingRect().left() +
 				    nrst_itm->boundingRect().width() / 2 - MyRes::ai_view_offset) {
-//			cmmnds->insert(-Qt::Key_D);
 			right = true;
 		}
 		else if (shp->sceneBoundingRect().left() + shp->boundingRect().width() / 2 >
 				nrst_itm->sceneBoundingRect().right() - nrst_itm->boundingRect().width() / 2 + MyRes::ai_view_offset) {
-//			cmmnds->insert(-Qt::Key_A);
 			left = true;
 		}
 		if (shp->sceneBoundingRect().bottom() - shp->boundingRect().height() / 2 <
 		    nrst_itm->sceneBoundingRect().top() +
 				    nrst_itm->boundingRect().height() / 2 - MyRes::ai_view_offset) {
-//			cmmnds->insert(-Qt::Key_S);
 			down = true;
 		}
 		else if (shp->sceneBoundingRect().top() + shp->boundingRect().height() / 2 >
 				nrst_itm->sceneBoundingRect().bottom() - nrst_itm->boundingRect().height() / 2 +
 				MyRes::ai_view_offset) {
-//			cmmnds->insert(-Qt::Key_W);
 			up = true;
 		}
 		if ((nrst_itm->pos().y() < MyRes::y_offset ||
 		     nrst_itm->pos().y() > shp->scene()->views().first()->viewport()->rect().height() - MyRes::y_offset) &&
 		    nrst_itm->pos().x() > shp->pos().x()) {
-//			cmmnds->insert(-Qt::Key_D);
 			right = true;
 		}
 	}
 	else {
-//		cmmnds->insert(-Qt::Key_A);
 		left = true;
 	}
 	itms = shp->scene()->items(shp->sceneBoundingRect().x() + shp->sceneBoundingRect().width() / 2 - 100,
