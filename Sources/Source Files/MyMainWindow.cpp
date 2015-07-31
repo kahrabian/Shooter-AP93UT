@@ -45,7 +45,7 @@ void MyMainWindow::game_restart() {
 }
 
 void MyMainWindow::game_ended(int val) {
-//	delete game;
+	delete game;
 	med_player->setMedia(QUrl::fromLocalFile(MyRes::endmuse_add));
 	med_player->setVolume(SettingData::mVol);
 	med_player->setMuted(SettingData::mMut);
