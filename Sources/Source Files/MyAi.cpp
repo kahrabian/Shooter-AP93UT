@@ -19,6 +19,14 @@ void MyAi::gnrt_cmmnds() {
 	QList<QGraphicsItem *> itms = shp->scene()->items();
 	QGraphicsItem *nrst_itm = itms.first();
 			foreach (QGraphicsItem *i, itms) {
+			if (shp->scene()->views().first()->sceneRect().right() < i->sceneBoundingRect().left())
+				continue;
+			if (dynamic_cast<MyLife *>(i) || dynamic_cast<MyMagic *>(i) || dynamic_cast<MyShield *>(i) ||
+			    dynamic_cast<MyStar *>(i)) {
+				nrst_itm = i;
+			}
+		}
+			foreach (QGraphicsItem *i, itms) {
 			double dx = i->pos().x() + i->boundingRect().width() / 2 - shp->pos().x();
 			double dy = i->pos().y() + i->boundingRect().height() / 2 - shp->pos().y();
 			double dx_cur = nrst_itm->pos().x() + nrst_itm->boundingRect().width() / 2 - shp->pos().x();
@@ -28,19 +36,25 @@ void MyAi::gnrt_cmmnds() {
 				nrst_itm = i;
 			}
 		}
-	if (shp->sceneBoundingRect().right() - shp->boundingRect().width() / 2 <
+	if ((dynamic_cast<MyLife *>(nrst_itm) || dynamic_cast<MyMagic *>(nrst_itm) || dynamic_cast<MyShield *>(nrst_itm) ||
+	     dynamic_cast<MyStar *>(nrst_itm)) && shp->sceneBoundingRect().right() - shp->boundingRect().width() / 2 <
 	    nrst_itm->sceneBoundingRect().left() + nrst_itm->boundingRect().width() / 2) {
 		cmmnds->insert(-Qt::Key_D);
 	}
-	else if (shp->sceneBoundingRect().left() + shp->boundingRect().width() / 2 >
+	else if ((dynamic_cast<MyLife *>(nrst_itm) || dynamic_cast<MyMagic *>(nrst_itm) ||
+	          dynamic_cast<MyShield *>(nrst_itm) ||
+	          dynamic_cast<MyStar *>(nrst_itm)) && shp->sceneBoundingRect().left() + shp->boundingRect().width() / 2 >
 	         nrst_itm->sceneBoundingRect().right() - nrst_itm->boundingRect().width() / 2) {
 		cmmnds->insert(-Qt::Key_A);
 	}
-	if (shp->sceneBoundingRect().bottom() - shp->boundingRect().height() / 2 <
+	if ((dynamic_cast<MyLife *>(nrst_itm) || dynamic_cast<MyMagic *>(nrst_itm) || dynamic_cast<MyShield *>(nrst_itm) ||
+	     dynamic_cast<MyStar *>(nrst_itm)) && shp->sceneBoundingRect().bottom() - shp->boundingRect().height() / 2 <
 	    nrst_itm->sceneBoundingRect().top() + nrst_itm->boundingRect().height() / 2) {
 		cmmnds->insert(-Qt::Key_S);
 	}
-	else if (shp->sceneBoundingRect().top() + shp->boundingRect().height() / 2 >
+	else if ((dynamic_cast<MyLife *>(nrst_itm) || dynamic_cast<MyMagic *>(nrst_itm) ||
+	          dynamic_cast<MyShield *>(nrst_itm) ||
+	          dynamic_cast<MyStar *>(nrst_itm)) && shp->sceneBoundingRect().top() + shp->boundingRect().height() / 2 >
 	         nrst_itm->sceneBoundingRect().bottom() - nrst_itm->boundingRect().height() / 2) {
 		cmmnds->insert(-Qt::Key_W);
 	}
