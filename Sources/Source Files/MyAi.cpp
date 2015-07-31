@@ -71,8 +71,8 @@ void MyAi::gnrt_cmmnds() {
 	else {
 		left = true;
 	}
-	itms = shp->scene()->items(shp->sceneBoundingRect().x() + shp->sceneBoundingRect().width() / 2 - 100,
-	                           shp->sceneBoundingRect().y() + shp->sceneBoundingRect().height() / 2 - 100, 200, 200,
+	itms = shp->scene()->items(shp->sceneBoundingRect().x() + shp->sceneBoundingRect().width() / 2 - 75,
+	                           shp->sceneBoundingRect().y() + shp->sceneBoundingRect().height() / 2 - 75, 150, 150,
 	                           Qt::IntersectsItemShape, Qt::AscendingOrder);
 			foreach (QGraphicsItem *i, itms) {
 			if (!shp->shpshld->isVisible()) {
