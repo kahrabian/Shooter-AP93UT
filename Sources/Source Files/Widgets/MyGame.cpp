@@ -17,6 +17,9 @@ MyGame::MyGame(QWidget *parent) :
 MyGame::~MyGame() {
 	killTimer(tmr_id);
 	clean();
+	if (SettingData::gMode == 3) {
+		delete shp2_ai;
+	}
 	delete prsd_kys;
 	delete gscn;
 }
