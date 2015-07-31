@@ -19,16 +19,22 @@ void MyAi::gnrt_cmmnds() {
 	QList<QGraphicsItem *> itms = shp->scene()->items();
 	QGraphicsItem *nrst_itm = shp;
 			foreach (QGraphicsItem *i, itms) {
-			if (shp->scene()->views().first()->sceneRect().right() < i->sceneBoundingRect().left())
+			if (shp->scene()->views().first()->sceneRect().right() < i->sceneBoundingRect().left()) {
 				continue;
+			}
 			if (dynamic_cast<MyLife *>(i) || dynamic_cast<MyMagic *>(i) || dynamic_cast<MyShield *>(i) ||
 			    dynamic_cast<MyStar *>(i)) {
 				nrst_itm = i;
 			}
 		}
 			foreach (QGraphicsItem *i, itms) {
-			if (shp->scene()->views().first()->sceneRect().right() < i->sceneBoundingRect().left())
+			if (shp->scene()->views().first()->sceneRect().right() < i->sceneBoundingRect().left()) {
 				continue;
+			}
+			if (i->pos().y() < MyRes::y_offset ||
+			    i->pos().y() > shp->scene()->views().first()->viewport()->rect().height() - MyRes::y_offset) {
+				continue;
+			}
 			double dx = i->pos().x() + i->boundingRect().width() / 2 - shp->pos().x();
 			double dy = i->pos().y() + i->boundingRect().height() / 2 - shp->pos().y();
 			double dx_cur = nrst_itm->pos().x() + nrst_itm->boundingRect().width() / 2 - shp->pos().x();
