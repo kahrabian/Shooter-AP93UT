@@ -78,16 +78,16 @@ void MyAi::gnrt_cmmnds() {
 			if (dynamic_cast<MyAlien *>(i)) {
 
 			}
-			else if (dynamic_cast<MyBullet *>(i)) {
+			else if (dynamic_cast<MyBullet *>(i) && dynamic_cast<MyBullet *>(i)->getDir() == -1) {
 
 			}
 			else if (dynamic_cast<MyGravityField *>(i)) {
 
 			}
-			else if (dynamic_cast<MyShip *>(i)) {
+			else if (dynamic_cast<MyShip *>(i) && shp != i) {
 
 			}
-			else if (dynamic_cast<MyShipShield *>(i)) {
+			else if (dynamic_cast<MyShipShield *>(i) && shp->shpshld != i) {
 
 			}
 		}

@@ -33,6 +33,8 @@ Q_OBJECT
 
 	friend class MyGame;
 
+	friend class MyAi;
+
 public:
 	MyShip(const QPixmap &, QString *);
 
