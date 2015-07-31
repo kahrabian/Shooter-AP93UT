@@ -31,10 +31,6 @@ void MyAi::gnrt_cmmnds() {
 			if (shp->scene()->views().first()->sceneRect().right() < i->sceneBoundingRect().left()) {
 				continue;
 			}
-			if (i->pos().y() < MyRes::y_offset ||
-			    i->pos().y() > shp->scene()->views().first()->viewport()->rect().height() - MyRes::y_offset) {
-				continue;
-			}
 			double dx = i->pos().x() + i->boundingRect().width() / 2 - shp->pos().x();
 			double dy = i->pos().y() + i->boundingRect().height() / 2 - shp->pos().y();
 			double dx_cur = nrst_itm->pos().x() + nrst_itm->boundingRect().width() / 2 - shp->pos().x();
@@ -63,6 +59,11 @@ void MyAi::gnrt_cmmnds() {
 		         nrst_itm->sceneBoundingRect().bottom() - nrst_itm->boundingRect().height() / 2) {
 			cmmnds->insert(-Qt::Key_W);
 		}
+		if (nrst_itm->pos().y() < MyRes::y_offset ||
+		    nrst_itm->pos().y() > shp->scene()->views().first()->viewport()->rect().height() - MyRes::y_offset) {
+			cmmnds->insert(-Qt::Key_D);
+		}
+
 	}
 }
 
