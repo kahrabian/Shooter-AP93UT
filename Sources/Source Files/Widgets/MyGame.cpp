@@ -400,19 +400,29 @@ void MyGame::timerEvent(QTimerEvent *event) {
 		if (SettingData::gMode == 3) {
 			if (shp1->scr > shp2->scr) {
 				emit gameEnded(1);
+				killTimer(tmr_id);
+				return;
 			}
 			else if (shp1->scr < shp2->scr) {
 				emit gameEnded(2);
+				killTimer(tmr_id);
+				return;
 			}
 			else {
 				if (shp1->lf > shp2->lf) {
 					emit gameEnded(1);
+					killTimer(tmr_id);
+					return;
 				}
 				else if (shp1->lf < shp2->lf) {
 					emit gameEnded(2);
+					killTimer(tmr_id);
+					return;
 				}
 				else {
 					emit gameEnded(3);
+					killTimer(tmr_id);
+					return;
 				}
 			}
 		}
@@ -426,11 +436,14 @@ void MyGame::timerEvent(QTimerEvent *event) {
 			if (!f) {
 				if (SettingData::gMode == 2) {
 					emit gameEnded(4);
+					killTimer(tmr_id);
+					return;
 				}
 				else {
 					emit gameEnded(1);
+					killTimer(tmr_id);
+					return;
 				}
-				return;
 			}
 		}
 	}
@@ -443,6 +456,7 @@ void MyGame::timerEvent(QTimerEvent *event) {
 			}
 		if (!f) {
 			emit gameEnded(0);
+			killTimer(tmr_id);
 			return;
 		}
 	}
@@ -565,15 +579,18 @@ void MyGame::timerEvent(QTimerEvent *event) {
 					if (dynamic_cast<MyShip *>(i)->name->compare("1") == 0) {
 						if (SettingData::gMode == 1) {
 							emit gameEnded(0);
+							killTimer(tmr_id);
 							return;
 						}
 						else if (SettingData::gMode == 3) {
 							emit gameEnded(2);
+							killTimer(tmr_id);
 							return;
 						}
 					}
 					else if (SettingData::gMode == 3) {
 						emit gameEnded(1);
+						killTimer(tmr_id);
 						return;
 					}
 					MyShip *shp = dynamic_cast<MyShip *>(i);

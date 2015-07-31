@@ -10,7 +10,7 @@ MyAi::MyAi(MyShip *shp) {
 }
 
 MyAi::~MyAi() {
-
+	delete cmmnds;
 }
 
 void MyAi::gnrt_cmmnds() {
