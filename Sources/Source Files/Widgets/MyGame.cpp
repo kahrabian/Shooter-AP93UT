@@ -8,21 +8,7 @@ MyGame::MyGame(QWidget *parent) :
 		QGraphicsView(parent) {
 	resize(MyRes::app_size);
 	fast = false;
-	cur_stg = 0;
 	prsd_kys = new QSet<int>();
-
-	gscn = new QGraphicsScene();
-	gscn->setSceneRect(MyRes::scn_rct);
-	gscn->setBackgroundBrush(
-			QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(MyRes::tl_size, Qt::KeepAspectRatio,
-			                                                        Qt::SmoothTransformation)));
-	for (int i = 0; i < MyRes::stg_cnt; i++) {
-		QGraphicsPixmapItem *stg = new QGraphicsPixmapItem(
-				QPixmap(MyRes::stg_add[i]).scaled(MyRes::stg_size, Qt::IgnoreAspectRatio,
-				                                  Qt::SmoothTransformation));
-		stg->setPos(i * (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()), 0);
-		gscn->addItem(stg);
-	}
 
 	restart();
 	tmr_id = startTimer(MyRes::frm_dly);
@@ -116,6 +102,7 @@ void MyGame::restart() {
 	file.close();
 
 	if (inp == "0") {
+		prpr_scn();
 		bld_stg1();
 		bld_stg2();
 		bld_stg3();
@@ -172,7 +159,19 @@ void MyGame::unpause() {
 	prsd_kys->clear();
 }
 
-void MyGame::bld_stg1() {
+void MyGame::prpr_scn() {
+	gscn = new QGraphicsScene();
+	gscn->setSceneRect(MyRes::scn_rct);
+	gscn->setBackgroundBrush(
+			QBrush(QImage(MyRes::env_adds[SettingData::env]).scaled(MyRes::tl_size, Qt::KeepAspectRatio,
+			                                                        Qt::SmoothTransformation)));
+	for (int i = 0; i < MyRes::stg_cnt; i++) {
+		QGraphicsPixmapItem *stg = new QGraphicsPixmapItem(
+				QPixmap(MyRes::stg_add[i]).scaled(MyRes::stg_size, Qt::IgnoreAspectRatio,
+				                                  Qt::SmoothTransformation));
+		stg->setPos(i * (MyRes::app_size.width() + (MyRes::gm_drtn / MyRes::frm_dly) + MyRes::app_size.width()), 0);
+		gscn->addItem(stg);
+	}
 	setScene(gscn);
 	setSceneRect(viewport()->frameGeometry());
 	shp1 = new MyShip(QPixmap(MyRes::shp_adds[SettingData::uShp]), new QString("1"));
@@ -193,6 +192,7 @@ void MyGame::bld_stg1() {
 		}
 		else {
 			shp2 = new MyShip(QPixmap(MyRes::shp_adds[SettingData::aiShp]), new QString("ai"));
+			shp2_ai = new MyAi(shp2);
 		}
 		scene()->addItem(shp2);
 		scene()->addItem(shp2->shpshld);
@@ -207,6 +207,9 @@ void MyGame::bld_stg1() {
 		scene()->addItem(shp2->scr_txt);
 		scene()->addItem(shp2->lf_txt);
 	}
+}
+
+void MyGame::bld_stg1() {
 	for (int i = 0; i < MyRes::stg_astrd[0][SettingData::gDiff - 1]; i++) {
 		MyAsteroid *astrd = new MyAsteroid(1);
 		astrd->setPos(MyRes::app_size.width() +
@@ -545,7 +548,12 @@ void MyGame::timerEvent(QTimerEvent *event) {
 				}
 			}
 			else if (dynamic_cast<MyShip *>(i)) {
-				dynamic_cast<MyShip *>(i)->updt(prsd_kys);
+				if (dynamic_cast<MyShip *>(i)->name->compare("ai") == 0) {
+					shp2_ai->updt();
+				}
+				else {
+					dynamic_cast<MyShip *>(i)->updt(prsd_kys);
+				}
 				if (!dynamic_cast<MyShip *>(i)->isVisible()) {
 					scene()->removeItem(dynamic_cast<MyShip *>(i)->shpshld);
 					scene()->removeItem(dynamic_cast<MyShip *>(i)->scr_txt);

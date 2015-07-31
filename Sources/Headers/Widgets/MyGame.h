@@ -7,11 +7,9 @@
 
 #include <QGraphicsView>
 #include <QGraphicsScene>
-#include <QElapsedTimer>
 #include <QTimer>
 #include <QList>
 #include <QKeyEvent>
-#include <QTextStream>
 #include <QSet>
 #include <Sources/Headers/Game Objects/MyShip.h>
 #include <Sources/Headers/Game Objects/MyBullet.h>
@@ -23,6 +21,7 @@
 #include <Sources/Headers/Game Objects/MyMagic.h>
 #include <Sources/Headers/Game Objects/MyExplosion.h>
 #include <Sources/Headers/Game Objects/MyGravityField.h>
+#include <Sources/Headers/MyAi.h>
 #include <Sources/Headers/Resources.h>
 
 class MyGame : public QGraphicsView {
@@ -52,12 +51,13 @@ private:
 
 	MyShip *shp1;
 	MyShip *shp2;
+	MyAi *shp2_ai;
 
 	int tmr_id;
 
-	int cur_stg;
-
 	void change_speed();
+
+	void prpr_scn();
 
 	void bld_stg1();
 
