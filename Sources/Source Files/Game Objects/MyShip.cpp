@@ -331,7 +331,7 @@ void MyShip::cllsn_dtctn() {
 				}
 				dynamic_cast<MyAsteroid *>(i)->hide();
 			}
-			else if (dynamic_cast<MyBullet *>(i) && dynamic_cast<MyBullet *>(i)->getDir() == 1 &&
+			else if (dynamic_cast<MyBullet *>(i) && dynamic_cast<MyBullet *>(i)->getDir() == -1 &&
 			         dynamic_cast<MyBullet *>(i)->isVisible()) {
 				ply_sf(const_cast<QString &>(MyRes::sf_expln_lsr_add));
 				MyExplosion *expln = new MyExplosion(const_cast<QSize *>(&MyRes::expln_lsr_size));
