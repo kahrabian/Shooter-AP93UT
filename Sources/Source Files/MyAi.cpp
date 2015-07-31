@@ -71,6 +71,10 @@ void MyAi::gnrt_cmmnds() {
 	else {
 		cmmnds->insert(-Qt::Key_A);
 	}
+	itms = shp->scene()->items(shp->sceneBoundingRect().x(),
+	                           shp->sceneBoundingRect().y() + shp->sceneBoundingRect().height() / 2 - 150, 400, 300,
+	                           Qt::IntersectsItemBoundingRect, Qt::AscendingOrder);
+
 }
 
 void MyAi::updt() {
