@@ -41,7 +41,8 @@ void MyAi::gnrt_cmmnds() {
 			}
 		}
 	if (nrst_itm != shp && nrst_itm->pos().x() < shp->scene()->views().first()->sceneRect().x() +
-	                                             (2.0 * shp->scene()->views().first()->sceneRect().width() / 3)) {
+			                                             (3.0 * shp->scene()->views().first()->sceneRect().width() /
+			                                              4)) {
 		if (shp->sceneBoundingRect().right() - shp->boundingRect().width() / 2 <
 		    nrst_itm->sceneBoundingRect().left() +
 				    nrst_itm->boundingRect().width() / 2 - MyRes::ai_view_offset) {
