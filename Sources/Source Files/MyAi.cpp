@@ -174,19 +174,6 @@ void MyAi::gnrt_cmmnds() {
 				}
 			}
 		}
-	if (!down && cmmnds->find(-Qt::Key_S) != cmmnds->end()) {
-		cmmnds->remove(-Qt::Key_S);
-	}
-	if (!up && cmmnds->find(-Qt::Key_W) != cmmnds->end()) {
-		cmmnds->remove(-Qt::Key_W);
-	}
-	if (!right && cmmnds->find(-Qt::Key_D) != cmmnds->end()) {
-		cmmnds->remove(-Qt::Key_D);
-	}
-	if (!left && cmmnds->find(-Qt::Key_A) != cmmnds->end()) {
-		cmmnds->remove(-Qt::Key_A);
-	}
-
 	if (up) {
 		cmmnds->insert(-Qt::Key_W);
 	}
