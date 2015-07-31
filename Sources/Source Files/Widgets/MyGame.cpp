@@ -53,6 +53,11 @@ void MyGame::clean() {
 				MyExplosion *explsn = dynamic_cast<MyExplosion *>(i);
 				delete explsn;
 			}
+			else if (dynamic_cast<MyGravityField *>(i)) {
+				scene()->removeItem(i);
+				MyGravityField *grv_fld = dynamic_cast<MyGravityField *>(i);
+				delete grv_fld;
+			}
 			else if (dynamic_cast<MyLife *>(i)) {
 				scene()->removeItem(i);
 				MyLife *lf = dynamic_cast<MyLife *>(i);
@@ -87,11 +92,6 @@ void MyGame::clean() {
 				scene()->removeItem(i);
 				QGraphicsTextItem *txt = dynamic_cast<QGraphicsTextItem *>(i);
 				delete txt;
-			}
-			else if (dynamic_cast<MyGravityField *>(i)) {
-				scene()->removeItem(i);
-				MyGravityField *grv_fld = dynamic_cast<MyGravityField *>(i);
-				delete grv_fld;
 			}
 		}
 }
