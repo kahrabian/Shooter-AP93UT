@@ -38,27 +38,25 @@ void MyAi::gnrt_cmmnds() {
 				nrst_itm = i;
 			}
 		}
-	if ((dynamic_cast<MyLife *>(nrst_itm) || dynamic_cast<MyMagic *>(nrst_itm) || dynamic_cast<MyShield *>(nrst_itm) ||
-	     dynamic_cast<MyStar *>(nrst_itm)) && shp->sceneBoundingRect().right() - shp->boundingRect().width() / 2 <
-	    nrst_itm->sceneBoundingRect().left() + nrst_itm->boundingRect().width() / 2) {
-		cmmnds->insert(-Qt::Key_D);
-	}
-	else if ((dynamic_cast<MyLife *>(nrst_itm) || dynamic_cast<MyMagic *>(nrst_itm) ||
-	          dynamic_cast<MyShield *>(nrst_itm) ||
-	          dynamic_cast<MyStar *>(nrst_itm)) && shp->sceneBoundingRect().left() + shp->boundingRect().width() / 2 >
-	         nrst_itm->sceneBoundingRect().right() - nrst_itm->boundingRect().width() / 2) {
-		cmmnds->insert(-Qt::Key_A);
-	}
-	if ((dynamic_cast<MyLife *>(nrst_itm) || dynamic_cast<MyMagic *>(nrst_itm) || dynamic_cast<MyShield *>(nrst_itm) ||
-	     dynamic_cast<MyStar *>(nrst_itm)) && shp->sceneBoundingRect().bottom() - shp->boundingRect().height() / 2 <
-	    nrst_itm->sceneBoundingRect().top() + nrst_itm->boundingRect().height() / 2) {
-		cmmnds->insert(-Qt::Key_S);
-	}
-	else if ((dynamic_cast<MyLife *>(nrst_itm) || dynamic_cast<MyMagic *>(nrst_itm) ||
-	          dynamic_cast<MyShield *>(nrst_itm) ||
-	          dynamic_cast<MyStar *>(nrst_itm)) && shp->sceneBoundingRect().top() + shp->boundingRect().height() / 2 >
-	         nrst_itm->sceneBoundingRect().bottom() - nrst_itm->boundingRect().height() / 2) {
-		cmmnds->insert(-Qt::Key_W);
+	if (!dynamic_cast<MyShip *>(nrst_itm)) {
+		if (shp->sceneBoundingRect().right() - shp->boundingRect().width() / 2 <
+		    nrst_itm->sceneBoundingRect().left() +
+		    nrst_itm->boundingRect().width() / 2) {
+			cmmnds->insert(-Qt::Key_D);
+		}
+		else if (shp->sceneBoundingRect().left() + shp->boundingRect().width() / 2 >
+		         nrst_itm->sceneBoundingRect().right() - nrst_itm->boundingRect().width() / 2) {
+			cmmnds->insert(-Qt::Key_A);
+		}
+		if (shp->sceneBoundingRect().bottom() - shp->boundingRect().height() / 2 <
+		    nrst_itm->sceneBoundingRect().top() +
+		    nrst_itm->boundingRect().height() / 2) {
+			cmmnds->insert(-Qt::Key_S);
+		}
+		else if (shp->sceneBoundingRect().top() + shp->boundingRect().height() / 2 >
+		         nrst_itm->sceneBoundingRect().bottom() - nrst_itm->boundingRect().height() / 2) {
+			cmmnds->insert(-Qt::Key_W);
+		}
 	}
 }
 
