@@ -23,6 +23,10 @@ MyBullet::~MyBullet() {
 	delete vlc;
 }
 
+int MyBullet::getDir() const {
+	return dir;
+}
+
 void MyBullet::ply_sf(QString &add) {
 	if (!SettingData::sfMut) {
 		QSoundEffect *sf = new QSoundEffect();

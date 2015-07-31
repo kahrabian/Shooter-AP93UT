@@ -73,8 +73,24 @@ void MyAi::gnrt_cmmnds() {
 	}
 	itms = shp->scene()->items(shp->sceneBoundingRect().x(),
 	                           shp->sceneBoundingRect().y() + shp->sceneBoundingRect().height() / 2 - 150, 400, 300,
-	                           Qt::IntersectsItemBoundingRect, Qt::AscendingOrder);
+	                           Qt::IntersectsItemShape, Qt::AscendingOrder);
+			foreach (QGraphicsItem *i, itms) {
+			if (dynamic_cast<MyAlien *>(i)) {
 
+			}
+			else if (dynamic_cast<MyBullet *>(i)) {
+
+			}
+			else if (dynamic_cast<MyGravityField *>(i)) {
+
+			}
+			else if (dynamic_cast<MyShip *>(i)) {
+
+			}
+			else if (dynamic_cast<MyShipShield *>(i)) {
+
+			}
+		}
 }
 
 void MyAi::updt() {

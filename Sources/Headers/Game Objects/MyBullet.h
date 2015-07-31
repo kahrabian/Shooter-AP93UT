@@ -29,6 +29,8 @@ public:
 
 	void updt();
 
+	int getDir() const;
+
 signals:
 
 	void scrGained();
